@@ -1,37 +1,46 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:myproducts/core/bloc_observer/bloc_observer.dart';
+import 'package:myproducts/core/di/service_locator.dart';
+import 'package:myproducts/core/resources/app_constants.dart';
+import 'package:myproducts/core/resources/app_routers.dart';
+import 'package:myproducts/core/resources/theme_manager.dart';
 
-void main() {
+Future<void> initializeApp() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupServiceLocator();
+  Bloc.observer = MyBlocObserver();
+}
+
+// getStartWidget
+// todo this will  return i must open any screen
+// Future<Widget> getStartWidget() async {
+//   final AppPreferences appPreferences = getIt<AppPreferences>();
+//   final bool isOnBoardingViewed = await appPreferences.isOnBoardingScreenViewed();
+//   currentUserName = await appPreferences.getUserName();
+//   if (isOnBoardingViewed) {
+//     final bool isLogged = await appPreferences.isLogged();
+//     return isLogged ? const HomeScreen() : const AuthScreen();
+//   } else {
+//     return const OnBoardingScreen();
+//   }
+// }
+void main() async {
+  await initializeApp();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      title: AppConstants.appName,
+      debugShowCheckedModeBanner: false,
+      theme: lightTheme,
+      home: const MyHomePage(title: 'Test'),
+      onGenerateRoute: RouteGenerator.getRoute,
     );
   }
 }

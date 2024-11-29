@@ -1,7 +1,13 @@
+// core/resources/app_colors.dart
 import 'package:flutter/material.dart';
 
 class LightAppColors {
   static const MaterialColor primarySwatch = Colors.blue;
+      static Color maincolorgreen700 =  Color(0XFF179700);
+       static Color maincolorgreen400 =  Color(0XFF20B400);
+      static Color? graycolor =  Colors.grey[700];
+
+
   static  Color primary = hexToColor('076CD8');
   static Color primary2 = hexToColor('007BFF');
   static Color primary3 = hexToColor('3180D6');

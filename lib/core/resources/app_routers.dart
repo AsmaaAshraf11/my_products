@@ -1,7 +1,12 @@
+// core/resources/app_routers.dart
 import 'package:flutter/material.dart';
 import 'package:myproducts/core/di/service_locator.dart';
+import 'package:myproducts/features/onboarding/presentation/views/onboarding_view.dart';
+import 'package:myproducts/features/onboarding/presentation/views/start_view.dart';
 
 class Routes {
+  static const String onboard = "OnboardingView";
+  static const String start = "StartView";
   static const String homeScreen = "/homeScreen";
   static const String storeTimesScreen = "/storeTimesScreen";
   static const String resetPasswordScreen = "/resetPasswordScreen";
@@ -12,6 +17,11 @@ class RouteGenerator {
     switch (settings.name) {
       // todo will add routes and screens here
     // todo this types when navigate route , simple , with var , use BlocProvider
+    case Routes.onboard:
+        return MaterialPageRoute(builder: (_) => const OnboardingView());
+
+        case Routes.start:
+        return MaterialPageRoute(builder: (_) => const StartView());
       // case Routes.homeScreen:
       //   return MaterialPageRoute(builder: (_) => const HomeScreen());
       //

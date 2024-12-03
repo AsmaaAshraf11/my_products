@@ -1,6 +1,5 @@
 // features/onboarding/presentation/views/widgets/onboarding_view_body.dart
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myproducts/core/helper_functions/route_navigation.dart';
 import 'package:myproducts/core/resources/app_assets.dart';

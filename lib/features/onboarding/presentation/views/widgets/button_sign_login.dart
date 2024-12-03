@@ -1,7 +1,9 @@
 // features/onboarding/presentation/views/widgets/button_sign_login.dart
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:myproducts/core/helper_functions/route_navigation.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
+import 'package:myproducts/core/resources/app_routers.dart';
 
 class ButtonSignLogin extends StatelessWidget {
   const ButtonSignLogin({super.key});
@@ -21,7 +23,9 @@ class ButtonSignLogin extends StatelessWidget {
                   bottomLeft: Radius.circular(25)),
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+             pushRoute(context, Routes.loginScreen);
+          },
           child: Text('Log In',
               style: TextStyle(
                 fontSize: 18,
@@ -39,7 +43,9 @@ class ButtonSignLogin extends StatelessWidget {
                   bottomRight: Radius.circular(25)),
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+             pushRoute(context, Routes.signUpScreen);
+          },
           child: const Text('Sign Up',
               style: TextStyle(
                 fontStyle: FontStyle.normal,

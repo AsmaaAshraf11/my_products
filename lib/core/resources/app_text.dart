@@ -1,14 +1,15 @@
+// core/resources/app_text.dart
 import 'package:flutter/material.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_fonts.dart';
 
-class HeadLine24 extends StatelessWidget {
+class HeadLine21 extends StatelessWidget {
   final String text;
   final double fontSize;
   final Color? textColor;
 
-  const HeadLine24(
-      {super.key, required this.text, this.fontSize = FontSize.s24, this.textColor});
+  const HeadLine21(
+      {super.key, required this.text, this.fontSize = FontSize.s21, this.textColor});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,7 @@ class HeadLine24 extends StatelessWidget {
       style: Theme.of(context).textTheme.displayLarge!.copyWith(
             color: textColor??AppColors.black,
             fontSize: fontSize,
+             fontWeight:FontWeight.bold 
           ),
     );
   }
@@ -46,17 +48,18 @@ class TitleText extends StatelessWidget {
   const TitleText(
       {super.key,
       required this.text,
-      this.fontSize = FontSize.s16,
+      this.fontSize = FontSize.s14,
       this.textColor,this.inCenter=true});
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+      style: TextStyle(
             //fontFamily: FontConstants.iBMFontFamily,
             fontSize: fontSize,
-            color: textColor ?? LightAppColors.textBlueGrey,
+            color: textColor ?? LightAppColors.black,
+            fontWeight:FontWeight.w500, 
           ),
       textAlign: inCenter == true ? TextAlign.center : null,
     );
@@ -67,21 +70,24 @@ class TitleMedium extends StatelessWidget {
   final String text;
   final double fontSize;
   final Color? textColor;
+    final bool? inCenter;
 
   const TitleMedium(
       {super.key,
       required this.text,
-      this.fontSize = FontSize.s16,
-      this.textColor});
+      this.fontSize = FontSize.s17,
+      this.textColor, this.inCenter, 
+      });
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.titleMedium!.copyWith(
-            fontFamily: FontConstants.tajawalFontFamily,
+        textAlign: inCenter == true ? TextAlign.center : null,  
+            style: TextStyle(
+           
             fontSize: fontSize,
-            color: textColor ?? AppColors.black,
+            color: textColor ??LightAppColors.graycolor700,
           ),
     );
   }
@@ -90,23 +96,25 @@ class TitleMedium extends StatelessWidget {
 class SmallHeader extends StatelessWidget {
   final String text;
   final double fontSize;
-  final Color color;
+  final Color? color;
 
-  const SmallHeader(
+   const SmallHeader(
       {super.key,
       required this.text,
-      this.fontSize = FontSize.s16,
-      this.color = AppColors.white});
+      this.fontSize = FontSize.s13,
+      this.color ,
+      });
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+      style: TextStyle(
+        //fontWeight: FontWeight.bold,
             fontSize: fontSize,
-            color: color,
+            color:color??  LightAppColors.graycolor600,
           ),
-      textAlign: TextAlign.left,
+   //   textAlign: TextAlign.left,
     );
   }
 }

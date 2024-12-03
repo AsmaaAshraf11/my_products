@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/extension/extensions.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
+import 'package:myproducts/core/resources/app_text.dart';
 import 'package:myproducts/features/onboarding/presentation/views/widgets/onboarding_view_model.dart';
 import 'package:myproducts/main.dart';
 
@@ -35,7 +36,8 @@ class OnboardingViewItem extends StatelessWidget {
         RichText(
           textAlign: TextAlign.center,
           text: TextSpan(
-            text: '${model.title}' + ' ',
+            text: 
+            '${model.title}' + ' ',
             style:TextStyle(
                 fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
             children: [
@@ -48,16 +50,14 @@ class OnboardingViewItem extends StatelessWidget {
         ),
         10.h.heightSizedBox,
         Center(
-          child: Text(
-            '${model.description}',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 17,
-              color: LightAppColors.graycolor,
-              // letterSpacing: 1.2,
-            ),
+           child:TitleMedium(text: model.description,
+           
+           inCenter: true,
+        
+           ),
+         
           ),
-        ),
+        
       ],
     );
   }

@@ -5,7 +5,6 @@ import 'package:myproducts/core/bloc_observer/bloc_observer.dart';
 import 'package:myproducts/core/di/service_locator.dart';
 import 'package:myproducts/core/resources/app_constants.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
-import 'package:myproducts/core/resources/theme_manager.dart';
 import 'package:myproducts/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -38,8 +37,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      child: const MaterialApp(
+    return const ScreenUtilInit(
+      child: MaterialApp(
         title: AppConstants.appName,
         debugShowCheckedModeBanner: false,
        // theme: lightTheme,

@@ -8,7 +8,13 @@ class ImageAssets {
   static const String onBoarding1 = '$imagePath/onboard1.png';
   static const String onBoarding2 = '$imagePath/onboard2.png';
   static const String onBoarding3 = '$imagePath/onboard3.png';
-  
+
+    static const String apple = '$imagePath/apple.png';
+        static const String face = '$imagePath/face.jpg';
+
+
+    static const String google = '$imagePath/Google.png';
+
   // using in app
   static const String logo = '$imagePath/logo.png';
   static const String loginIcon = '$imagePath/boy.png';
@@ -17,8 +23,6 @@ class ImageAssets {
   static const String login = '$imagePath/login.png';
   static const String imageIcon = '$imagePath/image_icon.png';
   static const String mapIcon = '$imagePath/map_icon.png';
-  static const String google = '$imagePath/google.png';
-  static const String apple = '$imagePath/apple.png';
   static const String accept = '$imagePath/accept.png';
   static const String reject = '$imagePath/reject.png';
   static const String clock = '$imagePath/clock.png';

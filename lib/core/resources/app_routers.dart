@@ -1,15 +1,26 @@
 // core/resources/app_routers.dart
 import 'package:flutter/material.dart';
 import 'package:myproducts/core/di/service_locator.dart';
+import 'package:myproducts/features/login/presentation/views/change_password_view.dart';
+import 'package:myproducts/features/login/presentation/views/login_view.dart';
+import 'package:myproducts/features/login/presentation/views/forget_Password_viewdart.dart';
 import 'package:myproducts/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:myproducts/features/onboarding/presentation/views/start_view.dart';
+import 'package:myproducts/features/signUp/presentation/views/sign_up_view.dart';
 
 class Routes {
   static const String onboard = "OnboardingView";
   static const String start = "StartView";
+  static const String loginScreen = "/login_view";
+   static const String forgetPasswordScreen = "/forgetPassword_view";
+      static const String changePasswordScreen = "/change_Password_view";
+      static const String signUpScreen = "/sign_Up_view";
+
+
+ 
   static const String homeScreen = "/homeScreen";
   static const String storeTimesScreen = "/storeTimesScreen";
-  static const String resetPasswordScreen = "/resetPasswordScreen";
+  
 }
 
 class RouteGenerator {
@@ -22,6 +33,18 @@ class RouteGenerator {
 
         case Routes.start:
         return MaterialPageRoute(builder: (_) => const StartView());
+
+        case Routes.loginScreen:
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        
+        case Routes.forgetPasswordScreen:
+        return MaterialPageRoute(builder: (_) => const ForgetPasswordViewdart());
+
+         case Routes.changePasswordScreen:
+        return MaterialPageRoute(builder: (_) => const ChangePaswordView());
+
+        case Routes.signUpScreen:
+        return MaterialPageRoute(builder: (_) => const SignUpView());
       // case Routes.homeScreen:
       //   return MaterialPageRoute(builder: (_) => const HomeScreen());
       //

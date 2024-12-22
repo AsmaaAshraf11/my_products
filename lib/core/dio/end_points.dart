@@ -1,3 +1,4 @@
+// core/dio/end_points.dart
 enum Endpoint {
   login,
   sendCode,
@@ -15,6 +16,7 @@ enum Endpoint {
   resendMail,
   //
   getCategories,
+  getproduct,
   addStore,
   updateStore,
   myStores,
@@ -84,7 +86,9 @@ extension EndpointExtension on Endpoint {
       case Endpoint.resetPassword:
         return 'reset-password';
       case Endpoint.getCategories:
-        return 'type-shops';
+        return 'category-list';
+      case Endpoint.getproduct:
+        return 'category/smartphones';
       case Endpoint.addStore:
         return 'shops';
       case Endpoint.myStores:

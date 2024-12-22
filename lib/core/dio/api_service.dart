@@ -1,3 +1,4 @@
+// core/dio/api_service.dart
 import 'package:dio/dio.dart';
 import 'package:myproducts/core/di/service_locator.dart';
 import 'package:myproducts/core/dio/end_points.dart';
@@ -6,7 +7,7 @@ import 'package:myproducts/core/shared_preferences/app_prefs.dart';
 const String accept = '*/*';
 
 class ApiService {
-  final String _baseUrl = 'https://stores.karnabeet.com/api/owner-shop/';
+  final String _baseUrl = 'https://dummyjson.com/products/';
   final Dio _dio;
   final Map<String, String> _headers = {
     'Accept': accept,
@@ -68,6 +69,7 @@ class ApiService {
     required Endpoint endpoint,
     bool isToken = true,
     String parameter = '',
+    required String endPoint,
   }) async {
     return await _request(
         method: 'GET',

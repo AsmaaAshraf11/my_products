@@ -1,5 +1,8 @@
+// core/di/service_locator.dart
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:myproducts/features/home/data/data_source/home_remote_data_source.dart';
+import 'package:myproducts/features/home/data/repos/home_repo_impl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:myproducts/core/dio/api_service.dart';
 import 'package:myproducts/core/shared_preferences/app_prefs.dart';
@@ -37,6 +40,11 @@ void _registerAppPreferences() {
 
 void _registerRepositories() {
   final apiService = getIt.get<ApiService>();
+  getIt.registerSingleton<HomeRepoImpl>(
+    HomeRepoImpl(
+      homeRemoteDataSource: HomeRemoteDataSourceImpl(apiService),
+    ),
+  );
 
   // todo uncomment this when add repoImp
   // getIt

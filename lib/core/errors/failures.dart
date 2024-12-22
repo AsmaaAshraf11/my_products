@@ -20,8 +20,10 @@ class ServerFailure extends Failure {
     if (errorMessages.containsKey(dioError.type)) {
       return ServerFailure(errorMessages[dioError.type]!);
     } else if (dioError.type == DioExceptionType.badResponse) {
-      return ServerFailure.fromResponse(dioError.response!.statusCode!, dioError.response!.data);
-    } else if (dioError.type == DioExceptionType.unknown && dioError.message!.contains('SocketException')) {
+      return ServerFailure.fromResponse(
+          dioError.response!.statusCode!, dioError.response!.data);
+    } else if (dioError.type == DioExceptionType.unknown &&
+        dioError.message!.contains('SocketException')) {
       return ServerFailure('No Internet Connection');
     } else {
       return ServerFailure('Unexpected Error. Try Again Later!');
@@ -37,7 +39,8 @@ class ServerFailure extends Failure {
       500: 'Internal server error. Please try again later.',
     };
 
-    if (statusErrorMessages.containsKey(statusCode) && response['message'] != null) {
+    if (statusErrorMessages.containsKey(statusCode) &&
+        response['message'] != null) {
       return ServerFailure(response['message'].toString());
     } else if (statusErrorMessages.containsKey(statusCode)) {
       return ServerFailure(statusErrorMessages[statusCode]!);

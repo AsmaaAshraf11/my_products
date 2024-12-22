@@ -43,7 +43,7 @@ class ForgetPasswordBody extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const HeadLine21(
+                      const HeadLine22(
                         text: 'Forget password',
                       ),
                       10.h.heightSizedBox,

@@ -14,15 +14,18 @@ class StartViewTitleAndDescription extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          HeadLine21(text: 'Online Shopping ',
-          fontSize: 24,),
-          // 
+          HeadLine22(
+            text: 'Online Shopping ',
+            fontSize: 24,
+          ),
+          //
           SizedBox(
             height: 10,
           ),
-          TitleMedium(text: 'find your products with high quality and reasonable prices',
-          inCenter: true,)
-         
+          TitleMedium(
+            text: 'find your products with high quality and reasonable prices',
+            inCenter: true,
+          )
         ],
       ),
     );

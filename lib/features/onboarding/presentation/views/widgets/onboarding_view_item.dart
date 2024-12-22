@@ -36,9 +36,8 @@ class OnboardingViewItem extends StatelessWidget {
         RichText(
           textAlign: TextAlign.center,
           text: TextSpan(
-            text: 
-            '${model.title}' + ' ',
-            style:TextStyle(
+            text: '${model.title}' + ' ',
+            style: TextStyle(
                 fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
             children: [
               TextSpan(
@@ -50,14 +49,11 @@ class OnboardingViewItem extends StatelessWidget {
         ),
         10.h.heightSizedBox,
         Center(
-           child:TitleMedium(text: model.description,
-           
-           inCenter: true,
-        
-           ),
-         
+          child: TitleMedium(
+            text: model.description,
+            inCenter: true,
           ),
-        
+        ),
       ],
     );
   }

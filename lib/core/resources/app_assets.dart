@@ -9,16 +9,20 @@ class ImageAssets {
   static const String onBoarding2 = '$imagePath/onboard2.png';
   static const String onBoarding3 = '$imagePath/onboard3.png';
 
-    static const String apple = '$imagePath/apple.png';
-        static const String face = '$imagePath/face.jpg';
+  static const String apple = '$imagePath/apple.png';
+  static const String face = '$imagePath/face.jpg';
+  static const String img1 = '$imagePath/img1.jpg';
 
+  static const String img2 = '$imagePath/img3.jpg';
 
-    static const String google = '$imagePath/Google.png';
+  static const String imge1 = '$imagePath/imge1.png';
+
+  static const String google = '$imagePath/Google.png';
 
   // using in app
   static const String logo = '$imagePath/logo.png';
   static const String loginIcon = '$imagePath/boy.png';
-  static const String profile = '$imagePath/profile.png';
+  static const String profile = '$imagePath/profile.jpg';
   static const String filter = '$imagePath/filter.png';
   static const String login = '$imagePath/login.png';
   static const String imageIcon = '$imagePath/image_icon.png';
@@ -32,7 +36,6 @@ class ImageAssets {
   static const String start1 = "$imagePath/start1.png";
   static const String start2 = "$imagePath/start2.jpeg";
   static const String start3 = "$imagePath/start3.jpeg";
-  
 
   static const String homeHeader = "$imagePath/home_header.png";
   static const String cup = "$imagePath/cup.png";

@@ -15,6 +15,7 @@ class OnboardingViewbody extends StatefulWidget {
   @override
   State<OnboardingViewbody> createState() => _OnboardingViewbodyState();
 }
+
 class _OnboardingViewbodyState extends State<OnboardingViewbody> {
   List<BoardindModel> boarding = [
     BoardindModel(

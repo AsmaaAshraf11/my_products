@@ -8,7 +8,6 @@ const String onBoardingScreenViewed = "onBoardingScreenViewed";
 const String userNameKey = "userNameKey";
 const String languageCodeKey = 'languageCode';
 
-
 class AppPreferences {
   final SharedPreferences _sharedPreferences;
 
@@ -73,17 +72,18 @@ class AppPreferences {
   }
 
   // save store
-  Future<void> saveStoreData({required String storeId,required String storeName}) async {
-    _sharedPreferences.setStringList(savedStore, [storeId,storeName]);
+  Future<void> saveStoreData(
+      {required String storeId, required String storeName}) async {
+    _sharedPreferences.setStringList(savedStore, [storeId, storeName]);
   }
 
   // get filter
   Future<List<String>> getStoreData() async {
     List<String>? store = _sharedPreferences.getStringList(savedStore);
     if (store != null) {
-      return [store[0],store[1]];
+      return [store[0], store[1]];
     } else {
-      return ['0',''];
+      return ['0', ''];
     }
   }
 

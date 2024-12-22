@@ -7,7 +7,6 @@ class ForgetPasswordViewdart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: ForgetPasswordBody());
+    return Scaffold(body: ForgetPasswordBody());
   }
 }

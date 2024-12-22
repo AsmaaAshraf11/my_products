@@ -1,6 +1,7 @@
 // core/resources/app_routers.dart
 import 'package:flutter/material.dart';
 import 'package:myproducts/core/di/service_locator.dart';
+import 'package:myproducts/features/layout/presentation/views/myproducts_layout.dart';
 import 'package:myproducts/features/login/presentation/views/change_password_view.dart';
 import 'package:myproducts/features/login/presentation/views/login_view.dart';
 import 'package:myproducts/features/login/presentation/views/forget_Password_viewdart.dart';
@@ -12,39 +13,40 @@ class Routes {
   static const String onboard = "OnboardingView";
   static const String start = "StartView";
   static const String loginScreen = "/login_view";
-   static const String forgetPasswordScreen = "/forgetPassword_view";
-      static const String changePasswordScreen = "/change_Password_view";
-      static const String signUpScreen = "/sign_Up_view";
+  static const String forgetPasswordScreen = "/forgetPassword_view";
+  static const String changePasswordScreen = "/change_Password_view";
+  static const String signUpScreen = "/sign_Up_view";
 
-
- 
   static const String homeScreen = "/homeScreen";
-  static const String storeTimesScreen = "/storeTimesScreen";
-  
+  static const String layout = "/MyproductsLayout";
 }
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
       // todo will add routes and screens here
-    // todo this types when navigate route , simple , with var , use BlocProvider
-    case Routes.onboard:
+      // todo this types when navigate route , simple , with var , use BlocProvider
+      case Routes.onboard:
         return MaterialPageRoute(builder: (_) => const OnboardingView());
 
-        case Routes.start:
+      case Routes.start:
         return MaterialPageRoute(builder: (_) => const StartView());
 
-        case Routes.loginScreen:
+      case Routes.loginScreen:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
-        
-        case Routes.forgetPasswordScreen:
-        return MaterialPageRoute(builder: (_) => const ForgetPasswordViewdart());
 
-         case Routes.changePasswordScreen:
+      case Routes.forgetPasswordScreen:
+        return MaterialPageRoute(
+            builder: (_) => const ForgetPasswordViewdart());
+
+      case Routes.changePasswordScreen:
         return MaterialPageRoute(builder: (_) => const ChangePaswordView());
 
-        case Routes.signUpScreen:
+      case Routes.signUpScreen:
         return MaterialPageRoute(builder: (_) => const SignUpView());
+
+      case Routes.layout:
+        return MaterialPageRoute(builder: (_) => MyproductsLayout());
       // case Routes.homeScreen:
       //   return MaterialPageRoute(builder: (_) => const HomeScreen());
       //

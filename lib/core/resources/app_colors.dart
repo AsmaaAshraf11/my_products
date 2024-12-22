@@ -3,25 +3,19 @@ import 'package:flutter/material.dart';
 
 class LightAppColors {
   static const MaterialColor primarySwatch = Colors.blue;
-  static Color maincolorgreen700 =  Color(0XFF179700);
-  static Color maincolorgreen400 =  Color(0XFF20B400);
-  static Color? graycolor700 =  Colors.grey[700];
-  static Color graycolor600 =   Colors.grey[600]!;
-   static Color graycolor400 =   Colors.grey[400]!;
-     static Color? pink50 =  Colors.pink[50];
-          static Color? blue50 =  Colors.blue[100];
-               static Color? pink0 =  Colors.pink;
+  static Color maincolorgreen700 = Color(0XFF179700);
+  static Color maincolorgreen400 = Color(0XFF20B400);
+  static Color? graycolor700 = Colors.grey[700];
+  static Color graycolor600 = Colors.grey[600]!;
+  static Color graycolor400 = Colors.grey[400]!;
+  static Color? pink50 = Colors.pink[50];
+  static Color? blue50 = Colors.blue[100];
+  static Color? pink0 = Colors.pink;
+  static Color? white = Colors.white!;
+   static Color? red = Colors.red;
+  static Color? black = Colors.black87!;
 
-
-
- 
-  static  Color?  black= Colors.black87!;
-
-
-
-
-
-  static  Color primary = hexToColor('076CD8');
+  static Color primary = hexToColor('076CD8');
   static Color primary2 = hexToColor('007BFF');
   static Color primary3 = hexToColor('3180D6');
   static Color primary4 = hexToColor('63366E');
@@ -109,6 +103,7 @@ class AppColors {
   static const Color transparentColor = Colors.transparent;
   static Color nearBlack = Colors.black.withOpacity(0.4);
 }
+
 // convert hex code to color
 Color hexToColor(String hex) {
   hex = hex.replaceFirst('#', '');

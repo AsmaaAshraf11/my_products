@@ -24,7 +24,7 @@ class ButtonSignLogin extends StatelessWidget {
             ),
           ),
           onPressed: () {
-             pushRoute(context, Routes.loginScreen);
+            pushRoute(context, Routes.loginScreen);
           },
           child: Text('Log In',
               style: TextStyle(
@@ -44,7 +44,7 @@ class ButtonSignLogin extends StatelessWidget {
             ),
           ),
           onPressed: () {
-             pushRoute(context, Routes.signUpScreen);
+            pushRoute(context, Routes.signUpScreen);
           },
           child: const Text('Sign Up',
               style: TextStyle(

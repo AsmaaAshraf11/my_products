@@ -5,5 +5,10 @@ class BoardindModel {
   final String subTitle;
   final String description;
 
-  BoardindModel( {required this.image, required this.title, required this.description,required this.subTitle,});
+  BoardindModel({
+    required this.image,
+    required this.title,
+    required this.description,
+    required this.subTitle,
+  });
 }

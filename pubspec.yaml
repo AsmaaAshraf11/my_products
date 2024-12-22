@@ -41,6 +41,9 @@ dependencies:
   shared_preferences: ^2.3.3
   flutter_screenutil: ^5.9.3
   smooth_page_indicator: ^1.2.0+3
+  dartz: ^0.10.1
+  flutter_bloc: ^8.1.6
+  flutter_switch: ^0.3.2
 
 dev_dependencies:
   flutter_test:

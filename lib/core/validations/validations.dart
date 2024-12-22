@@ -1,5 +1,3 @@
-
-
 // name
 String? validateName(String? value) {
   if (value == null || value.isEmpty) {
@@ -10,9 +8,10 @@ String? validateName(String? value) {
   }
   return null;
 }
+
 // email
 String? validateEmail(String? value) {
-  if (value == null || value .isEmpty) {
+  if (value == null || value.isEmpty) {
     return 'not_null_email';
   }
   if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
@@ -20,6 +19,7 @@ String? validateEmail(String? value) {
   }
   return null;
 }
+
 // phone
 String? validatePhone(String? value) {
   if (value == null || value.isEmpty) {
@@ -30,6 +30,7 @@ String? validatePhone(String? value) {
   }
   return null;
 }
+
 // password
 String? validatePassword(String? value) {
   if (value == null || value.isEmpty) {
@@ -40,6 +41,7 @@ String? validatePassword(String? value) {
   }
   return null;
 }
+
 // message
 String? validateMessage(String? value) {
   if (value == null || value.isEmpty) {
@@ -50,6 +52,7 @@ String? validateMessage(String? value) {
   }
   return null;
 }
+
 // positive
 String? validatePositiveNumber(String? value) {
   if (value == null || value.isEmpty) {
@@ -64,6 +67,7 @@ String? validatePositiveNumber(String? value) {
   }
   return null;
 }
+
 // positive
 String? validatePositiveIntNumber(String? value) {
   if (value == null || value.isEmpty) {

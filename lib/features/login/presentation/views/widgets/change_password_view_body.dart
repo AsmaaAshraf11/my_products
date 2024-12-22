@@ -55,7 +55,7 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const HeadLine21(
+                              const HeadLine22(
                                 text: 'Change password',
                               ),
                               10.h.heightSizedBox,

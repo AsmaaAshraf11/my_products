@@ -82,6 +82,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             Image.asset(
               ImageAssets.img2,
               width: 180,
+             // width: 175.w,
             )
           ]),
         ),

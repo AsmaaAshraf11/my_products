@@ -9,8 +9,8 @@ class StartViewTitleAndDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(30),
+    return Padding(
+      padding: const EdgeInsets.all(30),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -19,10 +19,10 @@ class StartViewTitleAndDescription extends StatelessWidget {
             fontSize: 24,
           ),
           //
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          TitleMedium(
+          const TitleMedium(
             text: 'find your products with high quality and reasonable prices',
             inCenter: true,
           )

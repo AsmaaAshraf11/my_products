@@ -7,7 +7,7 @@ import 'review.dart';
 
 class Product extends ProductsEntity {
   int? id;
-  String? title;
+  String title;
   String? description;
   String? category;
   double? price;
@@ -31,7 +31,7 @@ class Product extends ProductsEntity {
 
   Product({
     this.id,
-    this.title,
+    required this.title,
     this.description,
     this.category,
     this.price,
@@ -68,7 +68,7 @@ class Product extends ProductsEntity {
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
         id: json['id'] as int?,
-        title: json['title'] as String?,
+        title: json['title']! as String,
         description: json['description'] as String?,
         category: json['category'] as String?,
         price: (json['price'] as num?)?.toDouble(),

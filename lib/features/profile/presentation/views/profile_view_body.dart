@@ -6,6 +6,8 @@ import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_text.dart';
 import 'package:myproducts/features/profile/presentation/views/widgets/list_til.dart';
 import 'package:myproducts/features/profile/presentation/views/widgets/min_button.dart';
+
+import 'widgets/image_profile.dart';
 class ProfileViewBody extends StatefulWidget {
   @override
   State<ProfileViewBody> createState() => _ProfileViewBodyState();
@@ -20,7 +22,8 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        50.h.heightSizedBox,        
+        50.h.heightSizedBox,  
+        ImageProfile(),      
         HeadLine22(
           text: 'Aml Kamal',
         ),

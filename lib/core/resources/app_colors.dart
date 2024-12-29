@@ -13,7 +13,8 @@ class LightAppColors {
   static Color? pink0 = Colors.pink;
   static Color? white = Colors.white!;
    static Color? red = Colors.red;
-  static Color? black = Colors.black87!;
+  static Color? black = Colors.black!;
+  static Color? green300 = Colors.green[300];
 
   static Color primary = hexToColor('076CD8');
   static Color primary2 = hexToColor('007BFF');

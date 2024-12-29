@@ -4,19 +4,23 @@ import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_text.dart';
 
 class Rating extends StatelessWidget {
+  Rating({super.key,this.siz,required this.rating});
+    var siz;
+    String rating;
+    //Color? textColor;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        const Icon(
+        Icon(
           Icons.star_rounded,
-          size: 14,
-          color: Color(0xffFFDD4F),
+          size: siz??19,
+          color: const Color(0xffFFDD4F),
         ),
         SmallHeader(
-          text: '3.99',
-          color: LightAppColors.graycolor400,
+          text: '$rating',
+          color:LightAppColors.graycolor600,
         )
       ],
     );

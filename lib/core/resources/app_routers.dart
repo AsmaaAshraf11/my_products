@@ -1,6 +1,7 @@
 // core/resources/app_routers.dart
 import 'package:flutter/material.dart';
-import 'package:myproducts/core/di/service_locator.dart';
+import 'package:myproducts/features/home/presentation/views/my_cart_view.dart';
+import 'package:myproducts/features/home/presentation/views/product_detail_view.dart';
 import 'package:myproducts/features/layout/presentation/views/myproducts_layout.dart';
 import 'package:myproducts/features/login/presentation/views/change_password_view.dart';
 import 'package:myproducts/features/login/presentation/views/login_view.dart';
@@ -19,6 +20,8 @@ class Routes {
 
   static const String homeScreen = "/homeScreen";
   static const String layout = "/MyproductsLayout";
+  static const String detail = "/prductDetail";
+  static const String cart = "cart";
 }
 
 class RouteGenerator {
@@ -47,6 +50,11 @@ class RouteGenerator {
 
       case Routes.layout:
         return MaterialPageRoute(builder: (_) => MyproductsLayout());
+
+        case Routes.detail:
+        return MaterialPageRoute(builder: (_) => const ProductDetailView());
+        case Routes.cart:
+        return MaterialPageRoute(builder: (_) => const MyCartView());
       // case Routes.homeScreen:
       //   return MaterialPageRoute(builder: (_) => const HomeScreen());
       //

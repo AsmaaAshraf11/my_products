@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/extension/extensions.dart';
 import 'package:myproducts/core/helper_functions/route_navigation.dart';
+import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/resources/app_text.dart';
 import 'package:myproducts/features/login/presentation/views/widgets/background_image.dart';
@@ -20,8 +21,8 @@ class ForgetPasswordBody extends StatelessWidget {
     return Stack(
       children: [
         const BackgroundImage(),
-        const IconbuttonArrowBack(
-          route: Routes.loginScreen,
+         IconbuttonArrowBack(
+          route: Routes.loginScreen, iconColor:LightAppColors.maincolorgreen700, buttonColor: Colors.white,
         ),
         Padding(
             padding: const EdgeInsets.only(top: 150),
@@ -43,7 +44,7 @@ class ForgetPasswordBody extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const HeadLine22(
+                       HeadLine22(
                         text: 'Forget password',
                       ),
                       10.h.heightSizedBox,

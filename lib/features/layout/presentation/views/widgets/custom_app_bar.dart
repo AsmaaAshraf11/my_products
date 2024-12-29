@@ -2,8 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/extension/extensions.dart';
+import 'package:myproducts/core/helper_functions/route_navigation.dart';
 import 'package:myproducts/core/resources/app_assets.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
+import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/resources/app_text.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -20,9 +22,9 @@ class CustomAppBar extends StatelessWidget {
             backgroundImage: AssetImage(ImageAssets.profile),
           ),
           15.w.widthSizedBox,
-          const Column(
+          Column(
             children: [
-              TitleMedium(
+              const TitleMedium(
                 text: 'welcome!',
               ),
               HeadLine22(
@@ -30,31 +32,37 @@ class CustomAppBar extends StatelessWidget {
               ),
             ],
           ),
-          90.w.widthSizedBox,
+          SizedBox(
+            width: context.screenWidth *0.25,
+          ),
           Row(
             children: [
               Container(
-                height: 40,
-                width: 40,
+                height: 35.h,
+                width: 35.w,
                 decoration: BoxDecoration(
                     color: LightAppColors.maincolorgreen700,
                     borderRadius: BorderRadius.circular(12)),
                 child: IconButton(
+                  padding:EdgeInsets.all(0),
                   icon:
-                      Icon(size: 27, Icons.shopping_cart, color: Colors.white),
-                  onPressed: () {},
+                      Icon(size: 26, Icons.shopping_cart, color: Colors.white),
+                  onPressed: () {
+                    pushRoute(context, Routes.cart);
+                  },
                 ),
               ),
               7.w.widthSizedBox,
               Container(
-                height: 40,
-                width: 40,
+                height: 35.h,
+                width: 35.w,
                 decoration: BoxDecoration(
                     color: LightAppColors.maincolorgreen700,
                     borderRadius: BorderRadius.circular(12)),
                 child: IconButton(
+                  padding:EdgeInsets.all(0),
                   icon:
-                      Icon(size: 27, Icons.notifications, color: Colors.white),
+                      Icon(size: 26, Icons.notifications, color: Colors.white),
                   onPressed: () {},
                 ),
               ),

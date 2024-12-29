@@ -7,7 +7,7 @@ class ProductsEntity {
 
   final List<String>? images;
 
-  final String? titleProduct;
+  final String titleProduct;
 
   final String? descriptionProduct;
 

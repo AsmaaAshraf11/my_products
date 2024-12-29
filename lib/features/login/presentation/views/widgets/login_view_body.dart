@@ -31,8 +31,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     return Stack(
       children: [
         const BackgroundImage(),
-        const IconbuttonArrowBack(
-          route: Routes.start,
+         IconbuttonArrowBack(
+          route: Routes.start, iconColor: LightAppColors.maincolorgreen700, buttonColor:  Colors.white,
         ),
         Padding(
             padding: const EdgeInsets.only(top: 150),
@@ -59,7 +59,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const HeadLine22(
+                               HeadLine22(
                                 text: 'Log In',
                               ),
                               10.h.heightSizedBox,

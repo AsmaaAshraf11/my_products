@@ -44,6 +44,8 @@ dependencies:
   dartz: ^0.10.1
   flutter_bloc: ^8.1.6
   flutter_switch: ^0.3.2
+  font_awesome_flutter: ^10.8.0
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_test:

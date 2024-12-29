@@ -1,30 +1,31 @@
 // features/home/presentation/views/widgets/product_item.dart
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:myproducts/core/resources/app_assets.dart';
+import 'package:myproducts/core/helper_functions/route_navigation.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
+import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/resources/app_text.dart';
-import 'package:myproducts/features/home/presentation/manger/Featured_products_Cubit/products_Cubit.dart';
+import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
+import 'package:myproducts/features/home/presentation/views/widgets/custom_product_image.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/rating.dart';
 
 class ProductItem extends StatefulWidget {
+  ProductItem({super.key, required this.productsModel});
+   ProductsEntity productsModel;
+  
   @override
   State<ProductItem> createState() => _ProductItemState();
 }
 
 class _ProductItemState extends State<ProductItem> {
+  
     Color? isfavorite=LightAppColors.graycolor400;
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ProductsCubit, ProductsState>(
-      listener: (BuildContext context, ProductsState state) {
-        if (state is ProductsSuccess) {
-          // print(state.products.length);
-        }
-      },
-      builder: (BuildContext context, ProductsState state) {
         return GestureDetector(
+          onTap:(){
+            pushRoute(context, Routes.detail);
+          } ,
           child: Container(
               // width: 170,
               // height: 200,
@@ -62,21 +63,29 @@ class _ProductItemState extends State<ProductItem> {
                       ),
                     ),
                   ),
-                  Image.asset(
-                    ImageAssets.imge1,
-                    width: 100,
-                  ),
+                  CustomProductImage(
+                imageUrl:widget.productsModel.images?[1]??''),
+            // const SizedBox(
+            //   width: 30,
+            // ),
+                  // Image.asset(
+                  //   ImageAssets.imge1,
+                  //   width: 100,
+                  // ),
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TitleMedium(
-                          text: 'hair oil',
+                          overflow: true,
+                          text:widget. productsModel.titleProduct,
+                          // 'hair oil',
                           textColor: LightAppColors.black,
                           bold: true,
                         ),
                         RichText(
                           text: TextSpan(
-                            text: '${'\$6.99'}' + ' ',
+                            text: '${'\$'}' +'${widget. productsModel.price}',
+                            //'${'\$6.99'}' + ' ',
                             style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
@@ -108,14 +117,14 @@ class _ProductItemState extends State<ProductItem> {
                                 ],
                               ),
                               Row(
-                                children: [Rating()],
+                                children: [Rating(rating: '${widget. productsModel.rating}',)],
                               )
                             ])
                       ])
                 ],
               )),
         );
-      },
-    );
+      }
+    
   }
-}
+

@@ -18,7 +18,9 @@ class FavoritesViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [GridViewPopular()],
+      children: [
+        GridViewPopular(),
+        ],
     );
   }
 }

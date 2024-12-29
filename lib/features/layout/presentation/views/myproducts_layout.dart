@@ -5,8 +5,6 @@ import 'package:myproducts/features/favorites/presentation/views/favorites_view_
 import 'package:myproducts/features/layout/presentation/views/widgets/custom_app_bar.dart';
 import 'package:myproducts/features/home/presentation/views/home_view_body.dart';
 import 'package:myproducts/features/location/presentation/views/location_view_body.dart';
-import 'package:myproducts/features/login/presentation/views/login_view.dart';
-import 'package:myproducts/features/login/presentation/views/widgets/text_form_field.dart';
 import 'package:myproducts/features/profile/presentation/views/profile_view_body.dart';
 
 List<BottomNavigationBarItem> BottomItem = [

@@ -27,8 +27,8 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
     return Stack(
       children: [
         const BackgroundImage(),
-        const IconbuttonArrowBack(
-          route: Routes.loginScreen,
+         IconbuttonArrowBack(
+          route: Routes.loginScreen, iconColor:  LightAppColors.maincolorgreen700, buttonColor: Colors.white,
         ),
         Padding(
             padding: const EdgeInsets.only(top: 150),
@@ -55,7 +55,7 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const HeadLine22(
+                               HeadLine22(
                                 text: 'Change password',
                               ),
                               10.h.heightSizedBox,

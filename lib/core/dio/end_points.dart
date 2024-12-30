@@ -16,6 +16,7 @@ enum Endpoint {
   resendMail,
   //
   getCategories,
+  getCrat,
   getproduct,
   addStore,
   updateStore,
@@ -86,9 +87,11 @@ extension EndpointExtension on Endpoint {
       case Endpoint.resetPassword:
         return 'reset-password';
       case Endpoint.getCategories:
-        return 'category-list';
+        return 'products/category-list';
       case Endpoint.getproduct:
-        return 'category/smartphones';
+        return 'products/category/smartphones';
+      case Endpoint.getCrat:
+        return 'carts';
       case Endpoint.addStore:
         return 'shops';
       case Endpoint.myStores:

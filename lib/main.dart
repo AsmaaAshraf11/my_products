@@ -8,7 +8,9 @@ import 'package:myproducts/core/resources/app_constants.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/features/home/data/repos/home_repo_impl.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchCategory_use_cases.dart';
+import 'package:myproducts/features/home/domain/use_cases/fetchMyCart_use_case.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchProducts_use_cases.dart';
+import 'package:myproducts/features/home/presentation/manger/Featured_cart_cubit/cubit/cart_cubit.dart';
 import 'package:myproducts/features/home/presentation/manger/Featured_category_Cubit/category_Cubit.dart';
 import 'package:myproducts/features/home/presentation/manger/Featured_products_Cubit/products_Cubit.dart';
 import 'package:myproducts/features/onboarding/presentation/views/onboarding_view.dart';
@@ -46,26 +48,33 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       child: MultiBlocProvider(
         providers: [
-                   BlocProvider(
+          BlocProvider(
             create: (context) {
               return ProductsCubit(
                 FetchproductsUseCases(
-                    getIt.get<HomeRepoImpl>(),
-                  
+                  getIt.get<HomeRepoImpl>(),
                 ),
-
               )..fetchProduct();
-              },
+            },
           ),
-          // BlocProvider(
-          //   create: (context) {
-          //     return CategoryCubit(
-          //       FetchcategoryUseCases(
-          //         getIt.get<HomeRepoImpl>(),
-          //       ),
-          //     )..fetchCategory();
-          //   },
-          // ),
+          BlocProvider(
+            create: (context) {
+              return CategoryCubit(
+                FetchcategoryUseCases(
+                  getIt.get<HomeRepoImpl>(),
+                ),
+              )..fetchCategory();
+            },
+          ),
+          BlocProvider(
+            create: (context) {
+              return CartCubit(
+                FetchmycartUseCase(
+                  getIt.get<HomeRepoImpl>(),
+                ),
+              )..fetchCart();
+            },
+          ),
         ],
         child: const MaterialApp(
           title: AppConstants.appName,

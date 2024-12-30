@@ -12,7 +12,7 @@ class LightAppColors {
   static Color? blue50 = Colors.blue[100];
   static Color? pink0 = Colors.pink;
   static Color? white = Colors.white!;
-   static Color? red = Colors.red;
+  static Color? red = Colors.red;
   static Color? black = Colors.black!;
   static Color? green300 = Colors.green[300];
 

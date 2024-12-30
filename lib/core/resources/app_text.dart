@@ -8,10 +8,10 @@ class HeadLine22 extends StatelessWidget {
   final String text;
   final double fontSize;
   final Color? textColor;
-final bool? bold;
+  final bool? bold;
   const HeadLine22(
       {super.key,
-      this.bold=true,
+      this.bold = true,
       required this.text,
       this.fontSize = FontSize.s22,
       this.textColor});
@@ -23,8 +23,7 @@ final bool? bold;
       style: Theme.of(context).textTheme.displayLarge!.copyWith(
           color: textColor ?? AppColors.black,
           fontSize: fontSize,
-          fontWeight: bold==false? FontWeight.normal:FontWeight.bold
-          ),
+          fontWeight: bold == false ? FontWeight.normal : FontWeight.bold),
     );
   }
 }
@@ -46,14 +45,14 @@ class HeadLineText extends StatelessWidget {
 
 class TitleText extends StatelessWidget {
   final String text;
-  final FontWeight ?fontWeight;
+  final FontWeight? fontWeight;
   final double fontSize;
   final Color? textColor;
   final bool? inCenter;
 
   const TitleText(
       {super.key,
-       this.fontWeight,
+      this.fontWeight,
       required this.text,
       this.fontSize = FontSize.s14,
       this.textColor,
@@ -64,11 +63,10 @@ class TitleText extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-       
         //fontFamily: FontConstants.iBMFontFamily,
         fontSize: fontSize,
         color: textColor ?? LightAppColors.black,
-        fontWeight: fontWeight??FontWeight.w500,
+        fontWeight: fontWeight ?? FontWeight.w500,
       ),
       textAlign: inCenter == true ? TextAlign.center : null,
     );
@@ -77,7 +75,7 @@ class TitleText extends StatelessWidget {
 
 class TitleMedium extends StatelessWidget {
   final String text;
-  final double ?fontSize;
+  final double? fontSize;
   final Color? textColor;
   final bool? inCenter;
   final bool? bold;
@@ -86,7 +84,7 @@ class TitleMedium extends StatelessWidget {
   const TitleMedium({
     super.key,
     required this.text,
-    this.fontSize ,
+    this.fontSize,
     this.textColor,
     this.inCenter,
     this.bold,
@@ -97,12 +95,11 @@ class TitleMedium extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-       overflow: bold == true ?TextOverflow.ellipsis:null,
+      overflow: bold == true ? TextOverflow.ellipsis : null,
       textAlign: inCenter == true ? TextAlign.center : null,
       style: TextStyle(
-        
         fontWeight: bold == true ? FontWeight.w500 : null,
-        fontSize: fontSize??FontSize.s16.sp,
+        fontSize: fontSize ?? FontSize.s16.sp,
         color: textColor ?? LightAppColors.graycolor700,
       ),
     );

@@ -3,11 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 
 class ListTil extends StatelessWidget {
-  ListTil({required this.icon, required this.text, this.trailing,this.istrailing,this.color});
+  ListTil(
+      {required this.icon,
+      required this.text,
+      this.trailing,
+      this.istrailing,
+      this.color});
   IconData icon;
   String text;
   Widget? trailing;
-  bool ?istrailing;
+  bool? istrailing;
   Color? color;
   @override
   Widget build(BuildContext context) {
@@ -16,7 +21,7 @@ class ListTil extends StatelessWidget {
         ListTile(
           leading: Icon(
             icon,
-            color: color??LightAppColors.black,
+            color: color ?? LightAppColors.black,
           ),
 
           title: Text(
@@ -24,14 +29,14 @@ class ListTil extends StatelessWidget {
             style: TextStyle(
               color: color,
             ),
-            
           ),
-         
-          trailing: istrailing==true ?
-              Icon(
-                Icons.arrow_forward_ios,
-                color: LightAppColors.black,
-              ):trailing,
+
+          trailing: istrailing == true
+              ? Icon(
+                  Icons.arrow_forward_ios,
+                  color: LightAppColors.black,
+                )
+              : trailing,
 
           // Icon(Icons.arrow_forward_ios,),
         ),

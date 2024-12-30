@@ -21,8 +21,10 @@ class ForgetPasswordBody extends StatelessWidget {
     return Stack(
       children: [
         const BackgroundImage(),
-         IconbuttonArrowBack(
-          route: Routes.loginScreen, iconColor:LightAppColors.maincolorgreen700, buttonColor: Colors.white,
+        IconbuttonArrowBack(
+          route: Routes.loginScreen,
+          iconColor: LightAppColors.maincolorgreen700,
+          buttonColor: Colors.white,
         ),
         Padding(
             padding: const EdgeInsets.only(top: 150),
@@ -44,7 +46,7 @@ class ForgetPasswordBody extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                       HeadLine22(
+                      HeadLine22(
                         text: 'Forget password',
                       ),
                       10.h.heightSizedBox,

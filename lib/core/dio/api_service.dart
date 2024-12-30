@@ -7,7 +7,7 @@ import 'package:myproducts/core/shared_preferences/app_prefs.dart';
 const String accept = '*/*';
 
 class ApiService {
-  final String _baseUrl = 'https://dummyjson.com/products/';
+  final String _baseUrl = 'https://dummyjson.com/';
   final Dio _dio;
   final Map<String, String> _headers = {
     'Accept': accept,

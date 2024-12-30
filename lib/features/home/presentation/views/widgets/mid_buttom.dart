@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 
 class MidButtom extends StatelessWidget {
-  const MidButtom({super.key,required this.text,required this.onPressed});
-    final   String text;
-     final       Function onPressed;
+  const MidButtom({super.key, required this.text, required this.onPressed});
+  final String text;
+  final Function onPressed;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(

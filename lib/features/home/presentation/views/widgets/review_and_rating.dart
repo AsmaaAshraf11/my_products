@@ -12,25 +12,26 @@ class ReviewAndRating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-                  padding: const EdgeInsets.symmetric(
-                              horizontal: 10
-                             ),
-                       child: Row(
-                                children: [
-                                   Icon(
-                                        Icons.watch_later_rounded,
-                                        color: LightAppColors.maincolorgreen400,
-                                        size: 25,
-                                      ),
-                                      TitleText(
-                                        fontWeight: FontWeight.normal,
-                                        text: ' 40min  (225 reviews)',
-                                        textColor: LightAppColors.graycolor600,
-                                      ),
-                                      100.w.widthSizedBox,
-                                      Rating(siz: 25.0, rating: '3.99',)
-                                    ],
-                                  ),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Row(
+        children: [
+          Icon(
+            Icons.watch_later_rounded,
+            color: LightAppColors.maincolorgreen400,
+            size: 25,
+          ),
+          TitleText(
+            fontWeight: FontWeight.normal,
+            text: ' 40min  (225 reviews)',
+            textColor: LightAppColors.graycolor600,
+          ),
+          100.w.widthSizedBox,
+          Rating(
+            siz: 25.0,
+            rating: '3.99',
+          )
+        ],
+      ),
     );
   }
 }

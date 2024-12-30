@@ -20,7 +20,7 @@ class FavoritesViewBody extends StatelessWidget {
     return Column(
       children: [
         GridViewPopular(),
-        ],
+      ],
     );
   }
 }

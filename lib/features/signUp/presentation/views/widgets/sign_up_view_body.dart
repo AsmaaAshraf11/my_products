@@ -31,8 +31,9 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
     return Stack(
       children: [
         const BackgroundImage(),
-         IconbuttonArrowBack(
-          route: Routes.start, iconColor:LightAppColors.maincolorgreen700, 
+        IconbuttonArrowBack(
+          route: Routes.start,
+          iconColor: LightAppColors.maincolorgreen700,
           buttonColor: Colors.white,
         ),
         Padding(
@@ -56,7 +57,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                         HeadLine22(
+                        HeadLine22(
                           text: 'Sign Up',
                         ),
                         10.h.heightSizedBox,

@@ -33,7 +33,7 @@ class CustomAppBar extends StatelessWidget {
             ],
           ),
           SizedBox(
-            width: context.screenWidth *0.25,
+            width: context.screenWidth * 0.25,
           ),
           Row(
             children: [
@@ -44,7 +44,7 @@ class CustomAppBar extends StatelessWidget {
                     color: LightAppColors.maincolorgreen700,
                     borderRadius: BorderRadius.circular(12)),
                 child: IconButton(
-                  padding:EdgeInsets.all(0),
+                  padding: EdgeInsets.all(0),
                   icon:
                       Icon(size: 26, Icons.shopping_cart, color: Colors.white),
                   onPressed: () {
@@ -60,7 +60,7 @@ class CustomAppBar extends StatelessWidget {
                     color: LightAppColors.maincolorgreen700,
                     borderRadius: BorderRadius.circular(12)),
                 child: IconButton(
-                  padding:EdgeInsets.all(0),
+                  padding: EdgeInsets.all(0),
                   icon:
                       Icon(size: 26, Icons.notifications, color: Colors.white),
                   onPressed: () {},

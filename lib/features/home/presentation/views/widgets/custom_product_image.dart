@@ -2,9 +2,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-
 class CustomProductImage extends StatelessWidget {
-  const CustomProductImage({Key? key, required this.imageUrl}) : super(key: key);
+  const CustomProductImage({Key? key, required this.imageUrl})
+      : super(key: key);
 
   final String imageUrl;
   @override
@@ -13,12 +13,11 @@ class CustomProductImage extends StatelessWidget {
       borderRadius: BorderRadius.circular(16),
       child: AspectRatio(
         aspectRatio: 2,
-        child:
-        CachedNetworkImage(
-         // fit: BoxFit.fill,
+        child: CachedNetworkImage(
+          // fit: BoxFit.fill,
           imageUrl: imageUrl,
-         errorWidget: (context, url, error) => const Icon(
-           Icons.error,
+          errorWidget: (context, url, error) => const Icon(
+            Icons.error,
           ),
         ),
       ),

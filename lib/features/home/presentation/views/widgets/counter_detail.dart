@@ -10,56 +10,58 @@ class CounterDetail extends StatefulWidget {
 }
 
 class _CounterDetailState extends State<CounterDetail> {
-   int number=1;
+  int number = 1;
 
   @override
   Widget build(BuildContext context) {
     return Positioned(
-                      top:230 ,
-                      left: 130,
-                      child: Row(
-                        children: [
-                               CircleAvatar(
-                    radius: 18,
-                    backgroundColor: LightAppColors.maincolorgreen700,
-                    child: IconButton(
-                      padding: EdgeInsets.zero,
-                      onPressed: (){
-                        setState(() {
-                          number++;
-                        });
-                      }, icon: Icon(
-                      Icons.add,color: LightAppColors.white,
-                      size: 28,
-                    )),
-                  ),
-                               Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 40
-                                ),
-                                child: HeadLine22(text: '$number',
-                                // style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                               CircleAvatar(
-                    radius: 18,
-                    backgroundColor: LightAppColors.maincolorgreen700,
-                    child: IconButton(
-                      padding: EdgeInsets.zero,
-                      onPressed: (){
-                        if(number>1){
-                          setState(() {
-                          number--;
-                        });
-                        }
-                      }, icon: Icon(
-                      Icons.remove,color: LightAppColors.white,
-                      size: 28,
-                    )),
-                  )
-                          
-                        
-                        ],),
-                    );
+      top: 230,
+      left: 130,
+      child: Row(
+        children: [
+          CircleAvatar(
+            radius: 18,
+            backgroundColor: LightAppColors.maincolorgreen700,
+            child: IconButton(
+                padding: EdgeInsets.zero,
+                onPressed: () {
+                  setState(() {
+                    number++;
+                  });
+                },
+                icon: Icon(
+                  Icons.add,
+                  color: LightAppColors.white,
+                  size: 28,
+                )),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40),
+            child: HeadLine22(
+              text: '$number',
+              // style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
+            ),
+          ),
+          CircleAvatar(
+            radius: 18,
+            backgroundColor: LightAppColors.maincolorgreen700,
+            child: IconButton(
+                padding: EdgeInsets.zero,
+                onPressed: () {
+                  if (number > 1) {
+                    setState(() {
+                      number--;
+                    });
+                  }
+                },
+                icon: Icon(
+                  Icons.remove,
+                  color: LightAppColors.white,
+                  size: 28,
+                )),
+          )
+        ],
+      ),
+    );
   }
 }

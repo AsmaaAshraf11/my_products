@@ -16,7 +16,7 @@ class StartViewBody extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          color:LightAppColors.green300,
+          color: LightAppColors.green300,
           width: double.infinity,
           height: double.infinity,
           child: Image.asset(

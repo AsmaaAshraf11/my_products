@@ -11,16 +11,18 @@ class DescriptionProduct extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const TitleText(text: 'Product Description',),
+        const TitleText(
+          text: 'Product Description',
+        ),
         Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 10
-                                      ),
-                                      child: TitleText(textColor: LightAppColors.graycolor600,fontWeight: FontWeight.normal,
-                                        text: 'The Powder Canister is a finely milled setting powder designed to set makeup and control shine. With a lightweight and translucent formula, it provides a smooth and matte finish.'),
-                                    ),
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: TitleText(
+              textColor: LightAppColors.graycolor600,
+              fontWeight: FontWeight.normal,
+              text:
+                  'The Powder Canister is a finely milled setting powder designed to set makeup and control shine. With a lightweight and translucent formula, it provides a smooth and matte finish.'),
+        ),
       ],
     );
-                                    
   }
 }

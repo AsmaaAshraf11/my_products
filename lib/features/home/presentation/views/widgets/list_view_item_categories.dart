@@ -18,13 +18,12 @@ class _ListViewItemCategoriesState extends State<ListViewItemCategories> {
   Color colotcontanr = Colors.white;
   @override
   Widget build(BuildContext context) {
-    // return BlocConsumer<CategoryCubit, CategoryState>(
-    //     listener: (BuildContext context, CategoryState state) {
-    //   if (state is CategorySuccess) {
-    //     print(state.Category);
-    //   }
-    // },
-    //  builder: (BuildContext context, CategoryState state) {
+    return BlocConsumer<CategoryCubit, CategoryState>(
+        listener: (BuildContext context, CategoryState state) {
+      if (state is CategorySuccess) {
+        print(state.Category);
+      }
+    }, builder: (BuildContext context, CategoryState state) {
       return GestureDetector(
         onTap: () {
           setState(() {
@@ -59,6 +58,6 @@ class _ListViewItemCategoriesState extends State<ListViewItemCategories> {
           ]),
         ),
       );
-    //});
+    });
   }
 }

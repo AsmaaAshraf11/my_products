@@ -1,12 +1,14 @@
 // features/home/data/data_source/home_remote_data_source.dart
 import 'package:myproducts/core/dio/api_service.dart';
 import 'package:myproducts/core/dio/end_points.dart';
+import 'package:myproducts/features/home/data/models/cart/cart.dart';
 import 'package:myproducts/features/home/data/models/products/product.dart';
 import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
 
 abstract class HomeRemoteDataSource {
   Future<List<String>> fetchCategory();
   Future<List<ProductsEntity>> fetchProducts();
+  Future<List<CartModel>> fetchMyCart();
 }
 
 class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
@@ -30,21 +32,38 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     return products;
   }
 
+  @override
+  Future<List<CartModel>> fetchMyCart() async {
+    var data =
+        await apiService.get(endPoint: 'cart', endpoint: Endpoint.getCrat);
+    List<CartModel> products = Listcart(data);
+    return products;
+  }
+
+  List<CartModel> Listcart(Map<String, dynamic> data) {
+    print('cart ');
+    List<CartModel> cart = [];
+    for (var Map in data['carts']) {
+      cart.add(CartModel.fromJson(Map));
+    }
+    return cart;
+  }
+
   List<ProductsEntity> productsList(Map<String, dynamic> data) {
     //print('products ');
     List<ProductsEntity> products = [];
-    for (var bookMap in data['products']) {
-      products.add(Product.fromJson(bookMap));
+    for (var Map in data['products']) {
+      products.add(Product.fromJson(Map));
     }
-   // print('products :$products');
+    // print('products :$products');
     return products;
   }
 
   List<String> categoryList(data) {
-    List<String> products = [];
-    for (var bookMap in data) {
-      products.add(bookMap);
+    List<String> category = [];
+    for (var Map in data) {
+      category.add(Map);
     }
-    return products;
+    return category;
   }
 }

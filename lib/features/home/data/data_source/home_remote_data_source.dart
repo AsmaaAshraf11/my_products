@@ -18,9 +18,10 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   @override
   Future<List<String>> fetchCategory() async {
     List<String> category = [];
-    var data = await apiService.get(
+    var data = await apiService.get2(
         endpoint: Endpoint.getCategories, endPoint: 'category-list');
     category = categoryList(data);
+    print('categoryList : $category');
     return category;
   }
 

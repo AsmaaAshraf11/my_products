@@ -78,6 +78,25 @@ class ApiService {
         parameter: parameter);
   }
 
+  Future<dynamic> get2({
+    required Endpoint endpoint,
+    bool isToken = true,
+    String parameter = '',
+    required String endPoint,
+  })  async {
+    _headers['Authorization'] = await _getAuthorizationToken(isToken: isToken);
+    _headers['Accept-Language'] = await _getLanguageCode();
+    final url = '$_baseUrl${endpoint.value}${parameter.isNotEmpty ? '/$parameter' : ''}';
+    Options options = Options(
+      headers: _headers,
+    );
+     var response = await _dio.get(
+      url,
+      options: options,
+    );
+    return response.data;
+  }
+
   Future<Map<String, dynamic>> post({
     required Endpoint endpoint,
     dynamic data = const {}, // Change to dynamic to accept FormData

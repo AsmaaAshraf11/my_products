@@ -1,5 +1,11 @@
 // core/resources/app_routers.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myproducts/core/di/service_locator.dart';
+import 'package:myproducts/features/home/data/repos/home_repo_impl.dart';
+import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
+import 'package:myproducts/features/home/domain/use_cases/fetchDetailProduct_use_case.dart';
+import 'package:myproducts/features/home/presentation/manger/featured_DetailProduct_cubit/cubit/datailproduct_cubit.dart';
 import 'package:myproducts/features/home/presentation/views/my_cart_view.dart';
 import 'package:myproducts/features/home/presentation/views/product_detail_view.dart';
 import 'package:myproducts/features/layout/presentation/views/myproducts_layout.dart';
@@ -52,7 +58,16 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => MyproductsLayout());
 
       case Routes.detail:
-        return MaterialPageRoute(builder: (_) => const ProductDetailView());
+        int id = settings.arguments as int;
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => DatailproductCubit(
+                    FetchdetailproductUseCase(
+                  getIt.get<HomeRepoImpl>(),
+                ),
+                  )..fetchDetail(id: id),
+                  child: ProductDetailView(),
+                ));
       case Routes.cart:
         return MaterialPageRoute(builder: (_) => const MyCartView());
       // case Routes.homeScreen:

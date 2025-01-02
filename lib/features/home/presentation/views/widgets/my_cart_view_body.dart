@@ -108,7 +108,7 @@ class _MyCartViewBodyState extends State<MyCartViewBody> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          HeadLine22(
+                          const HeadLine22(
                             text: 'Total cost',
                           ),
                           HeadLine22(
@@ -126,8 +126,8 @@ class _MyCartViewBodyState extends State<MyCartViewBody> {
                 ),
                   ],),
                  if(state is CartLoading)
-                    Center(
-      child: CircularProgressIndicator(),
+                    const Center(
+            child: CircularProgressIndicator(),
                     ),
                      if(state is CartFailure)
                   CustomErrorWidget(errMessage: state.errMessage),

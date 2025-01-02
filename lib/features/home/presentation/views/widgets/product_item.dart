@@ -10,7 +10,7 @@ import 'package:myproducts/features/home/presentation/views/widgets/rating.dart'
 
 class ProductItem extends StatefulWidget {
   ProductItem({super.key, required this.productsModel});
-  ProductsEntity productsModel;
+  ProductsEntity ?productsModel;
 
   @override
   State<ProductItem> createState() => _ProductItemState();
@@ -23,7 +23,7 @@ class _ProductItemState extends State<ProductItem> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        pushRoute(context, Routes.detail);
+        pushRoute(context, Routes.detail,arguments: widget.productsModel!.productId);
       },
       child: Container(
           // width: 170,
@@ -38,14 +38,11 @@ class _ProductItemState extends State<ProductItem> {
                   spreadRadius: 1,
                   blurRadius: 8)
             ],
-            //  bottom: BorderSide()
-
-            // color: Colors.green.shade100,
+           
             borderRadius: BorderRadius.circular(10),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Align(
                 alignment: Alignment.topRight,
@@ -63,7 +60,7 @@ class _ProductItemState extends State<ProductItem> {
                 ),
               ),
               CustomProductImage(
-                  imageUrl: widget.productsModel.images?[1] ?? ''),
+                  imageUrl: widget.productsModel!.images?[1] ?? ''),
               // const SizedBox(
               //   width: 30,
               // ),
@@ -74,14 +71,14 @@ class _ProductItemState extends State<ProductItem> {
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 TitleMedium(
                   overflow: true,
-                  text: widget.productsModel.titleProduct,
+                  text: widget.productsModel!.titleProduct??'',
                   // 'hair oil',
                   textColor: LightAppColors.black,
                   bold: true,
                 ),
                 RichText(
                   text: TextSpan(
-                    text: '${'\$'}' + '${widget.productsModel.price}',
+                    text: '${'\$'}' + '${widget.productsModel?.price??''}',
                     //'${'\$6.99'}' + ' ',
                     style: TextStyle(
                         fontSize: 14,
@@ -116,7 +113,7 @@ class _ProductItemState extends State<ProductItem> {
                       Row(
                         children: [
                           Rating(
-                            rating: '${widget.productsModel.rating}',
+                            rating: '${widget.productsModel?.rating}',
                           )
                         ],
                       )

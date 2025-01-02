@@ -8,7 +8,7 @@ import 'package:myproducts/core/resources/app_text.dart';
 import 'package:myproducts/features/home/data/models/cart/product.dart';
 
 class MyCartItem extends StatefulWidget {
-   MyCartItem({super.key,required this.model});
+  MyCartItem({super.key, required this.model});
   Product model;
 
   @override

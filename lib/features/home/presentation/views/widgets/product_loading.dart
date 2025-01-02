@@ -61,7 +61,7 @@ class ProductLoading extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: '${'/kg'}',
-                                              ),
+                    ),
                     ],
                   ),
                 ),

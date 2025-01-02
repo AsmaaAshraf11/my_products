@@ -8,6 +8,7 @@ import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
 abstract class HomeRemoteDataSource {
   Future<List<String>> fetchCategory();
   Future<List<ProductsEntity>> fetchProducts();
+  Future<ProductsEntity> fetchDetailProducts({required int id});
   Future<List<CartModel>> fetchMyCart();
 }
 
@@ -61,10 +62,28 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   }
 
   List<String> categoryList(data) {
-    List<String> category = [];
+     List<String> category = [];
     for (var Map in data) {
       category.add(Map);
     }
     return category;
   }
+  
+  
+  @override
+  Future<ProductsEntity> fetchDetailProducts({required int id})async {
+    // TODO: implement fetchDetailProducts
+    print('detail');
+var data = await apiService.get(
+  parameter:'$id' ,
+        endPoint: 'detail', endpoint: Endpoint.getDetailproduct);
+        
+        
+   // ProductsEntity products = data as ProductsEntity;
+     ProductsEntity? products;
+   // for (var Map in data['products']) {
+   products=   Product.fromJson(data);
+  //  }
+    return products;
+      }
 }

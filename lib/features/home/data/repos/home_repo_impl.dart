@@ -47,4 +47,16 @@ class HomeRepoImpl implements HomRepo {
       return left(ServerFailure(e.toString()));
     }
   }
+  
+  @override
+  Future<Either<Failure, ProductsEntity>> fetchDetailProducts(int id)async {
+    // TODO: implement fetchDetailProducts
+try {
+      ProductsEntity detailproduct;
+      detailproduct = await homeRemoteDataSource.fetchDetailProducts(id: id);
+      return right(detailproduct);
+    } on Exception catch (e) {
+      return left(ServerFailure(e.toString()));
+    }  }  
+
 }

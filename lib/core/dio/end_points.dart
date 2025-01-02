@@ -18,6 +18,7 @@ enum Endpoint {
   getCategories,
   getCrat,
   getproduct,
+  getDetailproduct,
   addStore,
   updateStore,
   myStores,
@@ -90,6 +91,8 @@ extension EndpointExtension on Endpoint {
         return 'products/category-list';
       case Endpoint.getproduct:
         return 'products/category/smartphones';
+        case Endpoint.getDetailproduct:
+        return 'products/';
       case Endpoint.getCrat:
         return 'carts';
       case Endpoint.addStore:

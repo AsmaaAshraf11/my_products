@@ -10,29 +10,29 @@ class CustomAppBarCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconbuttonArrowBack(
-                    route: Routes.layout,
-                    iconColor: Colors.white,
-                    padding: 20.0,
-                    buttonColor: LightAppColors.maincolorgreen700,
-                  ),
-                  Text(
-                    'My Cart',
-                    style: TextStyle(
-                      fontSize: 27,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  IconbuttonArrowBack(
-                    route: Routes.cart,
-                    iconColor: Colors.white,
-                    padding: 20.0,
-                    icon: Icons.notifications,
-                    buttonColor: LightAppColors.maincolorgreen700,
-                  ),
-                ],
-              );
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        IconbuttonArrowBack(
+          route: Routes.layout,
+          iconColor: Colors.white,
+          padding: 20.0,
+          buttonColor: LightAppColors.maincolorgreen700,
+        ),
+        Text(
+          'My Cart',
+          style: TextStyle(
+            fontSize: 27,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        IconbuttonArrowBack(
+          route: Routes.cart,
+          iconColor: Colors.white,
+          padding: 20.0,
+          icon: Icons.notifications,
+          buttonColor: LightAppColors.maincolorgreen700,
+        ),
+      ],
+    );
   }
 }

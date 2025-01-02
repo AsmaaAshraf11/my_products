@@ -4,12 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/extension/extensions.dart';
 import 'package:myproducts/core/resources/app_assets.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
-import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/resources/app_text.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/grid_view_popular.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/list_view_categories.dart';
-import 'package:myproducts/features/home/presentation/views/widgets/rating.dart';
-import 'package:myproducts/features/layout/presentation/views/widgets/custom_app_bar.dart';
 import 'package:myproducts/features/login/presentation/views/widgets/text_form_field.dart';
 
 class HomeViewBody extends StatefulWidget {
@@ -43,7 +40,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
         15.h.heightSizedBox,
         Container(
           height: context.screenHeight * .22,
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
             color: Colors.green.shade100,
             borderRadius: BorderRadius.circular(10),
@@ -72,7 +69,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Shop Now',
                     style: TextStyle(color: Colors.white),
                   ),
@@ -87,13 +84,13 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           ]),
         ),
         //  10.h.heightSizedBox,
-        Padding(
+        const Padding(
             padding: EdgeInsetsDirectional.symmetric(vertical: 10),
             child: HeadLine22(
               text: 'Categories',
             )),
         ListViewCategories(),
-        Padding(
+        const Padding(
           padding: EdgeInsetsDirectional.only(
             top: 15,
           ),
@@ -109,7 +106,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             ],
           ),
         ),
-        GridViewPopular()
+        const GridViewPopular()
       ]),
     );
   }

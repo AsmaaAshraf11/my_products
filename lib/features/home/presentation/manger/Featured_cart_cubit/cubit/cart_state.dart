@@ -9,9 +9,9 @@ final class CartInitial extends CartState {}
 class CartLoading extends CartState {}
 
 class CartFailure extends CartState {
-   String errMessage;
+ final String errMessage;
 
-  CartFailure( this.errMessage);
+  CartFailure(this.errMessage);
 }
 
 class CartSuccess extends CartState {

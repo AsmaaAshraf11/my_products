@@ -1,7 +1,9 @@
 // features/home/domain/entities/Products_Entity.dart
 
+import 'package:myproducts/features/home/data/models/products/review.dart';
+
 class ProductsEntity {
-  final int? productId;
+  final int productId;
 
   final String? Category;
 
@@ -14,6 +16,7 @@ class ProductsEntity {
   final num? price;
 
   final num? rating;
+  final List <Review> review;
 
   ProductsEntity(
       {required this.images,
@@ -22,5 +25,6 @@ class ProductsEntity {
       required this.Category,
       required this.price,
       required this.rating,
+      required this.review,
       required this.productId});
 }

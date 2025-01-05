@@ -14,17 +14,7 @@ class FetchdetailproductUseCase extends  UseCases<ProductsEntity, int> {
     // TODO: implement call
          return await homRepo.fetchDetailProducts( p);  }
   
-  // @override
-  // Future<Either<Failure, ProductsEntity>> call(int p) async{
-  //   // TODO: implement call
-  // return await homRepo.fetchDetailProducts(id: p);
-  //   }
-
-
-  // @override
-  //  Future<Either<Failure, ProductsEntity>> call(int p)async {
-  //   return await homRepo.fetchDetailProducts(id: p);
-  // }
+ 
  
 }
 abstract class UseCases<Type, parameter> {

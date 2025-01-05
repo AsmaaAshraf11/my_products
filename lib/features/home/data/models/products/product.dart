@@ -6,7 +6,7 @@ import 'meta.dart';
 import 'review.dart';
 
 class Product extends ProductsEntity {
-  int? id;
+  int id;
   String title;
   String? description;
   String? category;
@@ -22,7 +22,7 @@ class Product extends ProductsEntity {
   String? warrantyInformation;
   String? shippingInformation;
   String? availabilityStatus;
-  List<Review>? reviews;
+  List<Review> reviews;
   String? returnPolicy;
   int? minimumOrderQuantity;
   Meta? meta;
@@ -30,7 +30,7 @@ class Product extends ProductsEntity {
   String? thumbnail;
 
   Product({
-    this.id,
+    required this.id,
     required this.title,
     this.description,
     this.category,
@@ -46,7 +46,7 @@ class Product extends ProductsEntity {
     this.warrantyInformation,
     this.shippingInformation,
     this.availabilityStatus,
-    this.reviews,
+    required this.reviews,
     this.returnPolicy,
     this.minimumOrderQuantity,
     this.meta,
@@ -59,6 +59,7 @@ class Product extends ProductsEntity {
             Category: category,
             price: price,
             rating: rating,
+            review:reviews,
             productId: id);
 
   @override
@@ -67,7 +68,7 @@ class Product extends ProductsEntity {
   }
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-        id: json['id'] as int?,
+        id: json['id'] as int,
         title: json['title']! as String,
         description: json['description'] as String?,
         category: json['category'] as String?,
@@ -86,7 +87,7 @@ class Product extends ProductsEntity {
         shippingInformation: json['shippingInformation'] as String?,
         availabilityStatus: json['availabilityStatus'] as String?,
         reviews: (json['reviews'] as List<dynamic>?)
-            ?.map((e) => Review.fromJson(e as Map<String, dynamic>))
+            !.map((e) => Review.fromJson(e as Map<String, dynamic>))
             .toList(),
         returnPolicy: json['returnPolicy'] as String?,
         minimumOrderQuantity: json['minimumOrderQuantity'] as int?,

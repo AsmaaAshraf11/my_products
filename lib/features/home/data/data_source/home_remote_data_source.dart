@@ -10,25 +10,30 @@ abstract class HomeRemoteDataSource {
   Future<List<ProductsEntity>> fetchProducts();
   Future<ProductsEntity> fetchDetailProducts({required int id});
   Future<List<CartModel>> fetchMyCart();
+  Future<CartModel> fetchAddNewCart({required int id,required int quant});
 }
 
 class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   final ApiService apiService;
 
   HomeRemoteDataSourceImpl(this.apiService);
-  @override
-  Future<List<String>> fetchCategory() async {
-    List<String> category = [];
-    var data = await apiService.get2(
+  
+        @override
+        Future<List<String>> fetchCategory()async {
+          // TODO: implement fetchCategory
+                 List<String> category = [];
+    var data = await apiService.get2(parameter: 'category-list',
         endpoint: Endpoint.getCategories, endPoint: 'category-list');
+        //data.map((json) => Categorymodel.fromJson(json)).toList();
     category = categoryList(data);
-    print('categoryList : $category');
-    return category;
-  }
+   // print('categoryList : $category');
+    return category;       
+     }
+  
 
   @override
   Future<List<ProductsEntity>> fetchProducts() async {
-    var data = await apiService.get(
+    var data = await apiService.get(parameter: 'smartphones',
         endPoint: 'category/smaones', endpoint: Endpoint.getproduct);
     List<ProductsEntity> products = productsList(data);
     return products;
@@ -41,6 +46,47 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     List<CartModel> products = Listcart(data);
     return products;
   }
+
+ @override
+  Future<ProductsEntity> fetchDetailProducts({required int id})async {
+    // TODO: implement fetchDetailProducts
+    print('detail');
+var data = await apiService.get(
+  parameter:'$id' ,
+        endPoint: 'detail', endpoint: Endpoint.getDetailproduct);
+        
+        
+     ProductsEntity? products;
+   products=   Product.fromJson(data);
+    return products;
+      }
+      
+        @override
+         Future<CartModel> fetchAddNewCart({required int id, required int quant})async {
+          // TODO: implement fetchAddNewCart
+var data =
+        await apiService.post( endpoint: Endpoint.getCrat,isToken: true,parameter:'add',
+        data: {
+            'userId':1,
+            'products':[
+              {
+              'id':id,
+              'quantity':quant
+              }
+             ]}
+        );
+    CartModel newcart =  CartModel.fromJson(data);
+    return newcart;      
+      }
+      
+
+
+
+
+
+
+
+
 
   List<CartModel> Listcart(Map<String, dynamic> data) {
     print('cart ');
@@ -69,21 +115,5 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     return category;
   }
   
-  
-  @override
-  Future<ProductsEntity> fetchDetailProducts({required int id})async {
-    // TODO: implement fetchDetailProducts
-    print('detail');
-var data = await apiService.get(
-  parameter:'$id' ,
-        endPoint: 'detail', endpoint: Endpoint.getDetailproduct);
-        
-        
-   // ProductsEntity products = data as ProductsEntity;
-     ProductsEntity? products;
-   // for (var Map in data['products']) {
-   products=   Product.fromJson(data);
-  //  }
-    return products;
-      }
 }
+ 

@@ -7,6 +7,7 @@ import 'package:myproducts/core/di/service_locator.dart';
 import 'package:myproducts/core/resources/app_constants.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/features/home/data/repos/home_repo_impl.dart';
+import 'package:myproducts/features/home/domain/use_cases/fetchAddNweCart_use_case.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchCategory_use_cases.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchDetailProduct_use_case.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchMyCart_use_case.dart';
@@ -15,6 +16,7 @@ import 'package:myproducts/features/home/presentation/manger/Featured_cart_cubit
 import 'package:myproducts/features/home/presentation/manger/Featured_category_Cubit/category_Cubit.dart';
 import 'package:myproducts/features/home/presentation/manger/Featured_products_Cubit/products_Cubit.dart';
 import 'package:myproducts/features/home/presentation/manger/featured_DetailProduct_cubit/cubit/datailproduct_cubit.dart';
+import 'package:myproducts/features/home/presentation/manger/featured_new_cart/cubit/new_cart_cubit.dart';
 import 'package:myproducts/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -77,15 +79,13 @@ class MyApp extends StatelessWidget {
               )..fetchCart();
             },
           ),
-          // BlocProvider(
-          //   create: (context) {
-          //     return DatailproductCubit(
-          //       FetchdetailproductUseCase(
-          //         getIt.get<HomeRepoImpl>(),
-          //       ),
-          //     )..fetchDetail(id: null);
-          //   },
-          // ),
+          BlocProvider(
+            create: (context) {
+              return NewCartCubit(FetchAddNweCartUseCase(
+        getIt.get<HomeRepoImpl>(),
+      ));
+            },
+          ),
         ],
         child: const MaterialApp(
           title: AppConstants.appName,

@@ -57,6 +57,17 @@ try {
       return right(detailproduct);
     } on Exception catch (e) {
       return left(ServerFailure(e.toString()));
-    }  }  
+    }  }
+    
+      @override
+      Future<Either<Failure, CartModel>> fetchAddNewCart(int id,int quant)async {
+    // TODO: implement fetchAddNewCart
+try {
+    CartModel newCart;
+      newCart = await homeRemoteDataSource.fetchAddNewCart(id: id, quant: quant);
+      return right(newCart);
+    } on Exception catch (e) {
+      return left(ServerFailure(e.toString()));
+    }      }  
 
 }

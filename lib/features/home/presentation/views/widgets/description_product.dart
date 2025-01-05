@@ -4,8 +4,8 @@ import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_text.dart';
 
 class DescriptionProduct extends StatelessWidget {
-  const DescriptionProduct({super.key});
-
+   DescriptionProduct({super.key,required this.description});
+ String description;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,8 +19,7 @@ class DescriptionProduct extends StatelessWidget {
           child: TitleText(
               textColor: LightAppColors.graycolor600,
               fontWeight: FontWeight.normal,
-              text:
-                  'The Powder Canister is a finely milled setting powder designed to set makeup and control shine. With a lightweight and translucent formula, it provides a smooth and matte finish.'),
+              text:'$description'),
         ),
       ],
     );

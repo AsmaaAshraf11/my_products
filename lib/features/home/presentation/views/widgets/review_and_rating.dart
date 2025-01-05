@@ -7,8 +7,9 @@ import 'package:myproducts/core/resources/app_text.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/rating.dart';
 
 class ReviewAndRating extends StatelessWidget {
-  const ReviewAndRating({super.key});
-
+   ReviewAndRating({super.key,required this.numReview,required this.rating});
+    int numReview;
+    num? rating;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,13 +23,13 @@ class ReviewAndRating extends StatelessWidget {
           ),
           TitleText(
             fontWeight: FontWeight.normal,
-            text: ' 40min  (225 reviews)',
+            text: ' 40min  (${numReview} reviews)',
             textColor: LightAppColors.graycolor600,
           ),
           100.w.widthSizedBox,
           Rating(
             siz: 25.0,
-            rating: '3.99',
+            rating: '$rating',
           )
         ],
       ),

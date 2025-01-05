@@ -10,4 +10,5 @@ abstract class HomRepo {
   Future<Either<Failure, List<ProductsEntity>>> fetchProducts(); 
   Future<Either<Failure, ProductsEntity>> fetchDetailProducts(int id);
   Future<Either<Failure, List<CartModel>>> fetchCart();
+  Future<Either<Failure,CartModel>> fetchAddNewCart(int id,int quant);
 }

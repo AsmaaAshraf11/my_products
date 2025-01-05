@@ -17,7 +17,7 @@ class _ListViewCategoriesState extends State<ListViewCategories> {
     return BlocConsumer<CategoryCubit, CategoryState>(
       listener: (context, state) {
         if (state is CategorySuccess) {
-        print(state.Category);
+        //print(state.Category);
       }
         // TODO: implement listener
       },

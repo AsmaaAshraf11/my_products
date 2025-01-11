@@ -5,6 +5,7 @@ part of 'datailproduct_cubit.dart';
 sealed class DatailproductState {}
 
 final class DatailproductInitial extends DatailproductState {}
+
 class DatailLoading extends DatailproductState {}
 
 class DatailFailure extends DatailproductState {

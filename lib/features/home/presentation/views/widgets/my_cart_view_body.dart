@@ -27,10 +27,8 @@ class _MyCartViewBodyState extends State<MyCartViewBody> {
   Widget build(BuildContext context) {
     return BlocConsumer<CartCubit, CartState>(
       listener: (context, state) {
-        if (state is CartSuccess )
-         print(state.cart.length);
-        
-      }, 
+        if (state is CartSuccess) print(state.cart.length);
+      },
       builder: (context, state) {
         return Container(
           color: Colors.grey.shade100,
@@ -38,9 +36,8 @@ class _MyCartViewBodyState extends State<MyCartViewBody> {
             children: [
               CustomAppBarCart(),
               30.h.heightSizedBox,
-              if(state is CartSuccess)
-                
-              Column(
+              if (state is CartSuccess)
+                Column(
                   children: [
                     SizedBox(
                       height: context.screenHeight * 0.5,
@@ -52,85 +49,89 @@ class _MyCartViewBodyState extends State<MyCartViewBody> {
                             return Dismissible(
                               onDismissed: (direction) {
                                 setState(() {
-                                  if(index <state.cart[index].products!.length)
-                                  state.cart[index].products!.remove(index);
+                                  if (index <
+                                      state.cart[index].products!.length)
+                                    state.cart[index].products!.remove(index);
                                 });
                               },
                               background: DeletItemCart(),
-                              key: ValueKey(state.cart[index].products! ),
-                              child: MyCartItem( model: state.cart[index].products![index]),
+                              key: ValueKey(state.cart[index].products!),
+                              child: MyCartItem(
+                                  model: state.cart[index].products![index]),
                             );
                           }),
                     ),
                     Container(
-                  decoration: BoxDecoration(
-                    color: LightAppColors.white,
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(50),
+                      decoration: BoxDecoration(
+                        color: LightAppColors.white,
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(50),
+                        ),
+                      ),
+                      padding: EdgeInsets.all(34),
+                      height: context.screenHeight * .367,
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TitleMedium(
+                                text: 'Shopping cost',
+                                textColor: LightAppColors.graycolor600,
+                                fontSize: 18,
+                              ),
+                              TitleMedium(
+                                bold: true,
+                                text: '${'\$27.99'}',
+                                textColor: LightAppColors.black,
+                              )
+                            ],
+                          ),
+                          15.h.heightSizedBox,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TitleMedium(
+                                text: 'Delivery cost',
+                                textColor: LightAppColors.graycolor600,
+                                fontSize: 18,
+                              ),
+                              TitleMedium(
+                                bold: true,
+                                text: '${'\$12.99'}',
+                                textColor: LightAppColors.black,
+                              )
+                            ],
+                          ),
+                          15.h.heightSizedBox,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const HeadLine22(
+                                text: 'Total cost',
+                              ),
+                              HeadLine22(
+                                text: '${'\$40.99'}',
+                                textColor: LightAppColors.black,
+                              )
+                            ],
+                          ),
+                          25.h.heightSizedBox,
+                          defaultButton(
+                            onPressed: () {},
+                            text: 'Checkout',
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  padding: EdgeInsets.all(34),
-                  height: context.screenHeight * .367,
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          TitleMedium(
-                            text: 'Shopping cost',
-                            textColor: LightAppColors.graycolor600,
-                            fontSize: 18,
-                          ),
-                          TitleMedium(
-                            bold: true,
-                            text: '${'\$27.99'}',
-                            textColor: LightAppColors.black,
-                          )
-                        ],
-                      ),
-                      15.h.heightSizedBox,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          TitleMedium(
-                            text: 'Delivery cost',
-                            textColor: LightAppColors.graycolor600,
-                            fontSize: 18,
-                          ),
-                          TitleMedium(
-                            bold: true,
-                            text: '${'\$12.99'}',
-                            textColor: LightAppColors.black,
-                          )
-                        ],
-                      ),
-                      15.h.heightSizedBox,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const HeadLine22(
-                            text: 'Total cost',
-                          ),
-                          HeadLine22(
-                            text: '${'\$40.99'}',
-                            textColor: LightAppColors.black,
-                          )
-                        ],
-                      ),
-                      25.h.heightSizedBox,
-                      defaultButton(
-                        onPressed: () {},
-                        text: 'Checkout',
-                      ),
-                    ], ),
+                  ],
                 ),
-                  ],),
-                 if(state is CartLoading)
-                    const Center(
-            child: CircularProgressIndicator(),
-                    ),
-                     if(state is CartFailure)
-                  CustomErrorWidget(errMessage: state.errMessage),
+              if (state is CartLoading)
+                const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              if (state is CartFailure)
+                CustomErrorWidget(errMessage: state.errMessage),
             ],
           ),
         );

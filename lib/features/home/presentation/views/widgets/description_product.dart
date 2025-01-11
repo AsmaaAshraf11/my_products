@@ -4,8 +4,8 @@ import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_text.dart';
 
 class DescriptionProduct extends StatelessWidget {
-   DescriptionProduct({super.key,required this.description});
- String description;
+  DescriptionProduct({super.key, required this.description});
+  String description;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,7 +19,7 @@ class DescriptionProduct extends StatelessWidget {
           child: TitleText(
               textColor: LightAppColors.graycolor600,
               fontWeight: FontWeight.normal,
-              text:'$description'),
+              text: '$description'),
         ),
       ],
     );

@@ -5,10 +5,11 @@ part of 'new_cart_cubit.dart';
 sealed class NewCartState {}
 
 final class NewCartInitial extends NewCartState {}
+
 class NewCartLoading extends NewCartState {}
 
 class NewCartFailure extends NewCartState {
- final String errMessage;
+  final String errMessage;
 
   NewCartFailure(this.errMessage);
 }

@@ -6,7 +6,7 @@ import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_text.dart';
 
 class ListViewItemCategories extends StatefulWidget {
-   ListViewItemCategories({super.key,required this.category});
+  ListViewItemCategories({super.key, required this.category});
   String category;
 
   @override
@@ -30,12 +30,11 @@ class _ListViewItemCategoriesState extends State<ListViewItemCategories> {
           color: colotcontanr,
           border: Border.all(color: Colors.grey.shade300),
           //  bottom: BorderSide()
-    
+
           // color: Colors.green.shade100,
           borderRadius: BorderRadius.circular(10),
         ),
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
           Expanded(
               child: TitleMedium(
             text: '${widget.category}',

@@ -8,7 +8,7 @@ class CategoryInitial extends CategoryState {}
 class CategoryLoading extends CategoryState {}
 
 class CategorySuccess extends CategoryState {
-  final List< String> Category;
+  final List<String> Category;
 
   CategorySuccess(this.Category);
 }

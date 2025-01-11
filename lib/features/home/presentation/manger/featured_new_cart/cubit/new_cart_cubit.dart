@@ -9,10 +9,10 @@ part 'new_cart_state.dart';
 
 class NewCartCubit extends Cubit<NewCartState> {
   NewCartCubit(this.fetchAddNweCartUseCase) : super(NewCartInitial());
-     static NewCartCubit  get(context)=>BlocProvider.of(context);
+  static NewCartCubit get(context) => BlocProvider.of(context);
 
   final FetchAddNweCartUseCase fetchAddNweCartUseCase;
-  Future<void> fetchNewCart(int id ,int quant) async {
+  Future<void> fetchNewCart(int id, int quant) async {
     emit(NewCartLoading());
 
     var result = await fetchAddNweCartUseCase.call(id, quant);

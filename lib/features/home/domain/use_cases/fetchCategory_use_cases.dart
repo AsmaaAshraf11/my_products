@@ -10,7 +10,7 @@ class FetchcategoryUseCases {
   FetchcategoryUseCases(this.homeRepo);
 
   @override
-  Future<Either<Failure,List< String>>> call() async {
+  Future<Either<Failure, List<String>>> call() async {
     return await homeRepo.fetchCategory();
   }
 }

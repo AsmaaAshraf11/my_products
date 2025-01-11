@@ -1,10 +1,12 @@
 // features/onboarding/presentation/views/widgets/onboarding_view_body.dart
 
 import 'package:flutter/material.dart';
+import 'package:myproducts/core/di/service_locator.dart';
 import 'package:myproducts/core/helper_functions/route_navigation.dart';
 import 'package:myproducts/core/resources/app_assets.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
+import 'package:myproducts/core/shared_preferences/app_prefs.dart';
 import 'package:myproducts/features/onboarding/presentation/views/widgets/onboarding_view_item.dart';
 import 'package:myproducts/features/onboarding/presentation/views/widgets/onboarding_view_model.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -38,6 +40,7 @@ class _OnboardingViewbodyState extends State<OnboardingViewbody> {
   ];
   var boarderController = PageController();
   bool islast = false;
+   AppPreferences appPreferences=getIt.get<AppPreferences>();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -88,6 +91,7 @@ class _OnboardingViewbodyState extends State<OnboardingViewbody> {
                 backgroundColor: LightAppColors.maincolorgreen700,
                 onPressed: () {
                   if (islast) {
+                      appPreferences.setOnBoardingScreenViewed();   
                     pushRoute(context, Routes.start);
                   } else {
                     boarderController.nextPage(

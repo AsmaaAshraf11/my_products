@@ -1,3 +1,4 @@
+// core/shared_preferences/app_prefs.dart
 import 'package:shared_preferences/shared_preferences.dart';
 
 const String isUserLoggedKey = "isUserLoggedKey";
@@ -19,7 +20,7 @@ class AppPreferences {
   }
 
   // is login
-  Future<bool> isLogged() async {
+  bool isLogged()  {
     bool? isLog = _sharedPreferences.getBool(isUserLoggedKey);
     return isLog ?? false;
   }
@@ -35,7 +36,7 @@ class AppPreferences {
   }
 
   // set Auth Token
-  Future<void> setAuthToken(String token) async {
+   Future<void> setAuthToken(String token) async {
     _sharedPreferences.setString(authTokenKey, token);
   }
 
@@ -93,7 +94,7 @@ class AppPreferences {
   }
 
   // get on boarding
-  Future<bool> isOnBoardingScreenViewed() async {
+  bool isOnBoardingScreenViewed()  {
     return _sharedPreferences.getBool(onBoardingScreenViewed) ?? false;
   }
 

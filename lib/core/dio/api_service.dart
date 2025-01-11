@@ -83,14 +83,15 @@ class ApiService {
     bool isToken = true,
     String parameter = '',
     required String endPoint,
-  })  async {
+  }) async {
     _headers['Authorization'] = await _getAuthorizationToken(isToken: isToken);
     _headers['Accept-Language'] = await _getLanguageCode();
-    final url = '$_baseUrl${endpoint.value}${parameter.isNotEmpty ? '/$parameter' : ''}';
+    final url =
+        '$_baseUrl${endpoint.value}${parameter.isNotEmpty ? '/$parameter' : ''}';
     Options options = Options(
       headers: _headers,
     );
-     var response = await _dio.get(
+    var response = await _dio.get(
       url,
       options: options,
     );

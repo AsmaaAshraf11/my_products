@@ -17,39 +17,42 @@ class _ListViewCategoriesState extends State<ListViewCategories> {
     return BlocConsumer<CategoryCubit, CategoryState>(
       listener: (context, state) {
         if (state is CategorySuccess) {
-        //print(state.Category);
-      }
+          //print(state.Category);
+        }
         // TODO: implement listener
       },
       builder: (context, state) {
         return Skeletonizer(
           enabled: state is CategoryLoading,
-          child: state is CategorySuccess?SizedBox(
-            height: MediaQuery.of(context).size.height * .1,
-            child: ListView.separated(
-                physics: BouncingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => ListViewItemCategories(category: '${state.Category[index]}',
+          child: state is CategorySuccess
+              ? SizedBox(
+                  height: MediaQuery.of(context).size.height * .1,
+                  child: ListView.separated(
+                      physics: BouncingScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) => ListViewItemCategories(
+                            category: '${state.Category[index]}',
+                          ),
+                      separatorBuilder: (context, index) => SizedBox(
+                            width: 10,
+                          ),
+                      itemCount: state.Category.length),
+                )
+              : state is CategoryFailure
+                  ? CustomErrorWidget(errMessage: state.errMessage)
+                  : GestureDetector(
+                      child: Container(
+                        width: 120,
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          //  bottom: BorderSide()
 
-                ),
-                separatorBuilder: (context, index) => SizedBox(
-                      width: 10,
+                          // color: Colors.green.shade100,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Text('category'),
+                      ),
                     ),
-                itemCount: state.Category.length),
-          ):state is CategoryFailure
-                  ? CustomErrorWidget(errMessage: state.errMessage):GestureDetector(
-                    child: Container(
-                            width: 120,
-                            padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              //  bottom: BorderSide()
-                        
-                              // color: Colors.green.shade100,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child:Text('category'),
-                    ),
-                  ),
         );
       },
     );

@@ -7,9 +7,9 @@ import 'package:myproducts/core/resources/app_text.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/rating.dart';
 
 class ReviewAndRating extends StatelessWidget {
-   ReviewAndRating({super.key,required this.numReview,required this.rating});
-    int numReview;
-    num? rating;
+  ReviewAndRating({super.key, required this.numReview, required this.rating});
+  int numReview;
+  num? rating;
   @override
   Widget build(BuildContext context) {
     return Padding(

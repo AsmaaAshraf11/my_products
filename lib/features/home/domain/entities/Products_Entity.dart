@@ -16,7 +16,7 @@ class ProductsEntity {
   final num? price;
 
   final num? rating;
-  final List <Review> review;
+  final List<Review> review;
 
   ProductsEntity(
       {required this.images,

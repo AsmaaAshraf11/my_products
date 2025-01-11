@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:myproducts/core/errors/failures.dart';
 import 'package:myproducts/features/home/data/data_source/home_remote_data_source.dart';
 import 'package:myproducts/features/home/data/models/cart/cart.dart';
+import 'package:myproducts/features/home/data/models/login_model.dart';
 import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
 import 'package:myproducts/features/home/domain/repos/hom_repo.dart';
 
@@ -47,27 +48,40 @@ class HomeRepoImpl implements HomRepo {
       return left(ServerFailure(e.toString()));
     }
   }
-  
+
   @override
-  Future<Either<Failure, ProductsEntity>> fetchDetailProducts(int id)async {
+  Future<Either<Failure, ProductsEntity>> fetchDetailProducts(int id) async {
     // TODO: implement fetchDetailProducts
-try {
+    try {
       ProductsEntity detailproduct;
       detailproduct = await homeRemoteDataSource.fetchDetailProducts(id: id);
       return right(detailproduct);
     } on Exception catch (e) {
       return left(ServerFailure(e.toString()));
-    }  }
-    
-      @override
-      Future<Either<Failure, CartModel>> fetchAddNewCart(int id,int quant)async {
+    }
+  }
+
+  @override
+  Future<Either<Failure, CartModel>> fetchAddNewCart(int id, int quant) async {
     // TODO: implement fetchAddNewCart
-try {
-    CartModel newCart;
-      newCart = await homeRemoteDataSource.fetchAddNewCart(id: id, quant: quant);
+    try {
+      CartModel newCart;
+      newCart =
+          await homeRemoteDataSource.fetchAddNewCart(id: id, quant: quant);
       return right(newCart);
     } on Exception catch (e) {
       return left(ServerFailure(e.toString()));
-    }      }  
+    }
+  }
 
+  @override
+  Future<Either<Failure, LoginModel>> fetchDataLogin(String name, String password)async {
+try {
+      LoginModel datalogin;
+      datalogin = await homeRemoteDataSource.fetchDataLogin(name: name, password: password);
+      return right(datalogin);
+    } on Exception catch (e) {
+      return left(ServerFailure(e.toString()));
+    }
+      }
 }

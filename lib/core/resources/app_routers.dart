@@ -2,10 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myproducts/core/di/service_locator.dart';
+import 'package:myproducts/features/home/data/models/login_model.dart';
 import 'package:myproducts/features/home/data/repos/home_repo_impl.dart';
 import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
+import 'package:myproducts/features/home/domain/use_cases/fetchDataLogin_use_case.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchDetailProduct_use_case.dart';
 import 'package:myproducts/features/home/presentation/manger/featured_DetailProduct_cubit/cubit/datailproduct_cubit.dart';
+import 'package:myproducts/features/home/presentation/manger/featured_datalogin_cubit/cubit/data_login_cubit.dart';
 import 'package:myproducts/features/home/presentation/views/my_cart_view.dart';
 import 'package:myproducts/features/home/presentation/views/product_detail_view.dart';
 import 'package:myproducts/features/layout/presentation/views/myproducts_layout.dart';
@@ -42,7 +45,15 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const StartView());
 
       case Routes.loginScreen:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => DataLoginCubit(
+                    FetchdataloginUseCase(
+                       getIt.get<HomeRepoImpl>(),
+                    )
+                  ),
+                  child: const LoginScreen(),
+                ));
 
       case Routes.forgetPasswordScreen:
         return MaterialPageRoute(
@@ -55,7 +66,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const SignUpView());
 
       case Routes.layout:
-        return MaterialPageRoute(builder: (_) => MyproductsLayout());
+      LoginModel model = settings.arguments as LoginModel;
+        return MaterialPageRoute(builder: (_) => MyproductsLayout(loginModel: model,));
 
       case Routes.detail:
         int id = settings.arguments as int;
@@ -63,8 +75,8 @@ class RouteGenerator {
             builder: (_) => BlocProvider(
                   create: (context) => DatailproductCubit(
                     FetchdetailproductUseCase(
-                  getIt.get<HomeRepoImpl>(),
-                ),
+                      getIt.get<HomeRepoImpl>(),
+                    ),
                   )..fetchDetail(id: id),
                   child: ProductDetailView(),
                 ));

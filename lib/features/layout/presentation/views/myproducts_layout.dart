@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/features/favorites/presentation/views/favorites_view_body.dart';
+import 'package:myproducts/features/home/data/models/login_model.dart';
 import 'package:myproducts/features/layout/presentation/views/widgets/custom_app_bar.dart';
 import 'package:myproducts/features/home/presentation/views/home_view_body.dart';
 import 'package:myproducts/features/location/presentation/views/location_view_body.dart';
@@ -14,30 +15,40 @@ List<BottomNavigationBarItem> BottomItem = [
       icon: Icon(Icons.location_on), label: 'location'),
   const BottomNavigationBarItem(icon: Icon(Icons.person), label: 'profile')
 ];
-List<Widget> bottomScreen = [
-  HomeViewBody(),
-  FavoritesViewBody(),
-  LocationViewBody(),
-  ProfileViewBody(),
-];
+
 int currentIndex = 0;
 var Searchcontroller = TextEditingController();
 
 class MyproductsLayout extends StatefulWidget {
+  LoginModel ?loginModel;
+
+  MyproductsLayout({super.key, this.loginModel});
   @override
   State<MyproductsLayout> createState() => _MyproductsLayoutState();
 }
 
 class _MyproductsLayoutState extends State<MyproductsLayout> {
+  
   @override
   Widget build(BuildContext context) {
+    List<Widget> bottomScreen = [
+  HomeViewBody(),
+  FavoritesViewBody(),
+  LocationViewBody(),
+  ProfileViewBody(loginModel: widget.loginModel),
+];
     return Scaffold(
+      appBar: AppBar(
+        
+      ),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18),
+          padding: const EdgeInsets.symmetric(horizontal: 18,
+          //vertical: 40,
+          ),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                if (currentIndex != 3) CustomAppBar(),
+                if (currentIndex != 3) CustomAppBar(loginModel: widget.loginModel,),
                 bottomScreen[currentIndex],
               ],
             ),

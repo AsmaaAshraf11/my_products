@@ -5,11 +5,14 @@ import 'package:myproducts/core/extension/extensions.dart';
 import 'package:myproducts/core/resources/app_assets.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_text.dart';
+import 'package:myproducts/features/home/data/models/login_model.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/grid_view_popular.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/list_view_categories.dart';
 import 'package:myproducts/features/login/presentation/views/widgets/text_form_field.dart';
 
 class HomeViewBody extends StatefulWidget {
+   //LoginModel loginModel;
+    //HomeViewBody({super.key,required this.loginModel});
   @override
   State<HomeViewBody> createState() => _HomeViewBodyState();
 }

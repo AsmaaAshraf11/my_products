@@ -7,9 +7,12 @@ import 'package:myproducts/core/resources/app_assets.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/resources/app_text.dart';
+import 'package:myproducts/features/home/data/models/login_model.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+   CustomAppBar({super.key, this.loginModel});
+     LoginModel ?loginModel;
+
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +20,11 @@ class CustomAppBar extends StatelessWidget {
       padding: const EdgeInsets.only(top: 15),
       child: Row(
         children: [
-          const CircleAvatar(
+           CircleAvatar(
             radius: 30,
-            backgroundImage: AssetImage(ImageAssets.profile),
+            backgroundImage:loginModel?.image != null && loginModel!.image!.isNotEmpty?
+            NetworkImage('${loginModel?.image}'):
+            AssetImage(ImageAssets.profile),
           ),
           15.w.widthSizedBox,
           Column(
@@ -28,7 +33,7 @@ class CustomAppBar extends StatelessWidget {
                 text: 'welcome!',
               ),
               HeadLine22(
-                text: 'Aml Kamal',
+                text: '${loginModel?.firstName}',
               ),
             ],
           ),

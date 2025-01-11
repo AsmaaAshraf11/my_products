@@ -7,10 +7,11 @@ import 'package:myproducts/features/home/domain/use_cases/fetchDetailProduct_use
 part 'datailproduct_state.dart';
 
 class DatailproductCubit extends Cubit<DatailproductState> {
-  DatailproductCubit(this.fetchdetailproductUseCase) : super(DatailproductInitial());
+  DatailproductCubit(this.fetchdetailproductUseCase)
+      : super(DatailproductInitial());
   //int id
-   final FetchdetailproductUseCase fetchdetailproductUseCase;
-   Future<void> fetchDetail({required int id }) async {
+  final FetchdetailproductUseCase fetchdetailproductUseCase;
+  Future<void> fetchDetail({required int id}) async {
     emit(DatailLoading());
 
     var result = await fetchdetailproductUseCase.call(id);
@@ -21,5 +22,5 @@ class DatailproductCubit extends Cubit<DatailproductState> {
       emit(DatailSuccess(Products));
       print('detail');
     });
-}
+  }
 }

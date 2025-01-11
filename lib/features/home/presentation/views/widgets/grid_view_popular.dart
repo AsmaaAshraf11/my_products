@@ -1,6 +1,7 @@
 // features/home/presentation/views/widgets/grid_view_popular.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myproducts/core/extension/extensions.dart';
 import 'package:myproducts/core/resources/app_assets.dart';
 import 'package:myproducts/core/resources/app_text.dart';
 import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
@@ -22,24 +23,28 @@ class GridViewPopular extends StatelessWidget {
         print(state.products.length);
       }
     }, builder: (BuildContext context, ProductsState state) {
-        return Skeletonizer(
+      return Skeletonizer(
           enabled: state is ProductsLoading,
-          child:state is ProductsSuccess? GridView.count(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            crossAxisCount: 2,
-            crossAxisSpacing: 27,
-            mainAxisSpacing: 20,
-            childAspectRatio: .9,
-            children: List.generate(
-                state.products.length,
-                (index) => ProductItem(
-                      productsModel: state.products[index],
-                    )),
-          ):state is ProductsFailure
+          child: state is ProductsSuccess
+              ? GridView.count(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 27,
+                  mainAxisSpacing: 20,
+                  childAspectRatio: .9,
+                  children: List.generate(
+                      state.products.length,
+                      (index) => SizedBox(
+                      //  height:context.screenHeight*0.4,
+                        child: ProductItem(
+                              productsModel: state.products[index],
+                            ),
+                      )),
+                )
+              : state is ProductsFailure
                   ? CustomErrorWidget(errMessage: state.errMessage)
-                  :  ProductLoading()
-        );
+                  : ProductLoading());
     });
   }
 }

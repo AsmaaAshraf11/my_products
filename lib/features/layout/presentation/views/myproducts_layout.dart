@@ -38,22 +38,23 @@ class _MyproductsLayoutState extends State<MyproductsLayout> {
   ProfileViewBody(loginModel: widget.loginModel),
 ];
     return Scaffold(
-      appBar: AppBar(
+      // appBar: AppBar(
         
-      ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18,
-          //vertical: 40,
+      // ),
+        body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 18,
+          vertical: 40,
           ),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                if (currentIndex != 3) CustomAppBar(loginModel: widget.loginModel,),
-                bottomScreen[currentIndex],
-              ],
+              child: Column(
+                children: [
+                  if (currentIndex != 3) CustomAppBar(loginModel: widget.loginModel,),
+                  bottomScreen[currentIndex],
+                ],
+              ),
             ),
           ),
-        ),
+        
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           selectedItemColor: LightAppColors.maincolorgreen400,

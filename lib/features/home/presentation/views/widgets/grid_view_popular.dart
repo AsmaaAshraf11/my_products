@@ -32,7 +32,7 @@ class GridViewPopular extends StatelessWidget {
                   crossAxisCount: 2,
                   crossAxisSpacing: 27,
                   mainAxisSpacing: 20,
-                  childAspectRatio: .9,
+                  childAspectRatio: .86,
                   children: List.generate(
                       state.products.length,
                       (index) => SizedBox(

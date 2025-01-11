@@ -8,6 +8,7 @@ import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/resources/app_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/shared_preferences/app_prefs.dart';
+import 'package:myproducts/core/validations/validations.dart';
 import 'package:myproducts/features/home/presentation/manger/featured_datalogin_cubit/cubit/data_login_cubit.dart';
 import 'package:myproducts/features/login/presentation/views/widgets/background_image.dart';
 import 'package:myproducts/features/login/presentation/views/widgets/button.dart';
@@ -28,6 +29,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   var emailcontroller = TextEditingController();
 
   var passwordController = TextEditingController();
+   var _formkey = GlobalKey<FormState>();
 
   bool isobscureText = true;
 
@@ -76,65 +78,69 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                                 left: 30,
                                 right: 30,
                               ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  HeadLine22(
-                                    text: 'Log In',
-                                  ),
-                                  10.h.heightSizedBox,
-                                  const SmallHeader(
-                                      text:
-                                          'Welcome Back! Log in with your details'),
-                                  35.h.heightSizedBox,
-                                  const TitleText(
-                                    text: 'Email or Username',
-                                  ),
-                                  DefaultFormField(
-                                    Controller: emailcontroller,
-                                    Type: TextInputType.emailAddress,
-                                    Validator: null,
-                                    hintText: 'Enter your Email or Username',
-                                  ),
-                                  14.h.heightSizedBox,
-                                  const TitleText(
-                                    text: 'Password',
-                                  ),
-                                  DefaultFormField(
-                                      Controller: passwordController,
-                                      isobscureText: isobscureText,
-                                      Validator: null,
-                                      hintText: 'Enter your Password',
-                                      suffix: IconButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              isobscureText = !isobscureText;
-                                            });
-                                          },
-                                          icon: Icon(
-                                            color: LightAppColors
-                                                .maincolorgreen400,
-                                            isobscureText
-                                                ? Icons.visibility_off
-                                                : Icons.visibility,
-                                          ))),
-                                  46.h.heightSizedBox,
-                                  defaultButton(
-                                    onPressed: () {
-                                      DataLoginCubit.get(context).fetchDataLogin(name:'emilys' , password:'emilyspass',);
-
-                                      //pushRoute(context, Routes.layout);
-                                    },
-                                    text: 'Login',
-                                  ),
-                                  const TextAndTextButton(
-                                    text1: 'Forget your password?',
-                                    text2: 'Reset password',
-                                    Route: Routes.forgetPasswordScreen,
-                                  ),
-                                  const TextDivider(),
-                                  const ImagesGoogleAppleFece(),
-                                ],
+                              child: Form(
+                                key: _formkey,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    HeadLine22(
+                                      text: 'Log In',
+                                    ),
+                                    10.h.heightSizedBox,
+                                    const SmallHeader(
+                                        text:
+                                            'Welcome Back! Log in with your details'),
+                                    35.h.heightSizedBox,
+                                    const TitleText(
+                                      text: 'Email or Username',
+                                    ),
+                                    DefaultFormField(
+                                      Controller: emailcontroller,
+                                      Type: TextInputType.emailAddress,
+                                      Validator: validateEmail,
+                                      hintText: 'Enter your Email or Username',
+                                    ),
+                                    14.h.heightSizedBox,
+                                    const TitleText(
+                                      text: 'Password',
+                                    ),
+                                    DefaultFormField(
+                                        Controller: passwordController,
+                                        isobscureText: isobscureText,
+                                        Validator: validatePassword,
+                                        hintText: 'Enter your Password',
+                                        suffix: IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                isobscureText = !isobscureText;
+                                              });
+                                            },
+                                            icon: Icon(
+                                              color: LightAppColors
+                                                  .maincolorgreen400,
+                                              isobscureText
+                                                  ? Icons.visibility_off
+                                                  : Icons.visibility,
+                                            ))),
+                                    46.h.heightSizedBox,
+                                    defaultButton(
+                                      onPressed: () {
+                                        if (_formkey.currentState!.validate()) {
+                                        DataLoginCubit.get(context).fetchDataLogin(name:'emilys' , password:'emilyspass',);
+                                        }
+                                
+                                      },
+                                      text: 'Login',
+                                    ),
+                                    const TextAndTextButton(
+                                      text1: 'Forget your password?',
+                                      text2: 'Reset password',
+                                      Route: Routes.forgetPasswordScreen,
+                                    ),
+                                    const TextDivider(),
+                                    const ImagesGoogleAppleFece(),
+                                  ],
+                                ),
                               ),
                             ),
                           ]),

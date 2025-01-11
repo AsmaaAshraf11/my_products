@@ -104,8 +104,8 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           // theme: lightTheme,
           home: 
-          LoginScreen(),
-          //startWidget,
+          //LoginScreen(),
+          startWidget,
           //initialRoute: Routes.homeScreen,
           onGenerateRoute: RouteGenerator.getRoute,
         ),

@@ -79,6 +79,7 @@ class HomeRepoImpl implements HomRepo {
 try {
       LoginModel datalogin;
       datalogin = await homeRemoteDataSource.fetchDataLogin(name: name, password: password);
+
       return right(datalogin);
     } on Exception catch (e) {
       return left(ServerFailure(e.toString()));

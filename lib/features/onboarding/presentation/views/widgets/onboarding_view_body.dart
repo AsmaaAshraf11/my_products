@@ -1,7 +1,9 @@
 // features/onboarding/presentation/views/widgets/onboarding_view_body.dart
 
 import 'package:flutter/material.dart';
+import 'package:myproducts/core/constants/constants.dart';
 import 'package:myproducts/core/di/service_locator.dart';
+import 'package:myproducts/core/extension/extensions.dart';
 import 'package:myproducts/core/helper_functions/route_navigation.dart';
 import 'package:myproducts/core/resources/app_assets.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
@@ -95,8 +97,8 @@ class _OnboardingViewbodyState extends State<OnboardingViewbody> {
                     pushRoute(context, Routes.start);
                   } else {
                     boarderController.nextPage(
-                        duration: const Duration(
-                          milliseconds: 750,
+                        duration:  Duration(
+                          milliseconds: obBoardingSpeed,
                         ),
                         curve: Curves.linear);
                   }

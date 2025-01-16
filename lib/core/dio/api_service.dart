@@ -69,7 +69,6 @@ class ApiService {
     required Endpoint endpoint,
     bool isToken = true,
     String parameter = '',
-    required String endPoint,
   }) async {
     return await _request(
         method: 'GET',
@@ -82,7 +81,6 @@ class ApiService {
     required Endpoint endpoint,
     bool isToken = true,
     String parameter = '',
-    required String endPoint,
   }) async {
     _headers['Authorization'] = await _getAuthorizationToken(isToken: isToken);
     _headers['Accept-Language'] = await _getLanguageCode();

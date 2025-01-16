@@ -27,7 +27,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     var data = await apiService.get2(
         parameter: 'category-list',
         endpoint: Endpoint.getCategories,
-        endPoint: 'category-list');
+    );
     //data.map((json) => Categorymodel.fromJson(json)).toList();
     category = categoryList(data);
     // print('categoryList : $category');
@@ -38,7 +38,6 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   Future<List<ProductsEntity>> fetchProducts() async {
     var data = await apiService.get(
         parameter: 'smartphones',
-        endPoint: 'category/smaones',
         endpoint: Endpoint.getproduct);
     List<ProductsEntity> products = productsList(data);
     return products;
@@ -47,7 +46,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   @override
   Future<List<CartModel>> fetchMyCart() async {
     var data =
-        await apiService.get(endPoint: 'cart', endpoint: Endpoint.getCrat);
+        await apiService.get(endpoint: Endpoint.getCrat);
     List<CartModel> products = Listcart(data);
     return products;
   }
@@ -58,7 +57,6 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     print('detail');
     var data = await apiService.get(
         parameter: '$id',
-        endPoint: 'detail',
         endpoint: Endpoint.getDetailproduct);
 
     ProductsEntity? products;
@@ -94,7 +92,6 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
           'username': name,
           'password':password ,
         });
-
     LoginModel datalogin = LoginModel.fromJson(data);
     return datalogin;  }
 

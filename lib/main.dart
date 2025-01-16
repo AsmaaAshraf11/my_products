@@ -38,7 +38,7 @@ Widget getStartWidget()  {
   //currentUserName = await appPreferences.getUserName();
   if (isOnBoardingViewed) {
     final bool isLogged =  appPreferences.isLogged();
-    return isLogged ?  LoginScreen() : const LoginScreen();
+    return isLogged ?  MyproductsLayout() : const LoginScreen();
   } else {
     return const OnboardingView();
   }

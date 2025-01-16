@@ -28,8 +28,8 @@ class Routes {
   static const String signUpScreen = "/sign_Up_view";
 
   static const String homeScreen = "/homeScreen";
-  static const String layout = "/MyproductsLayout";
-  static const String detail = "/prductDetail";
+  static const String layout = "/myProductsLayout";
+  static const String detail = "/productDetail";
   static const String cart = "cart";
 }
 

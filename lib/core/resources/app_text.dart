@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_fonts.dart';
 
+
 class HeadLine22 extends StatelessWidget {
   final String text;
   final double fontSize;

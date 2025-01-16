@@ -37,9 +37,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   Widget build(BuildContext context) {
     return BlocConsumer<DataLoginCubit, DataLoginState>(
       listener: (context, state) {
-         AppPreferences appPreferences=getIt.get<AppPreferences>();
         if(state is DataLoginSuccess){
-        
+          AppPreferences appPreferences=getIt.get<AppPreferences>();
+
          appPreferences.setAuthToken(state.model.accessToken);
           appPreferences.setIsLogged();
           //var mode = DataLoginCubit.get(context).r
@@ -126,6 +126,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                                     defaultButton(
                                       onPressed: () {
                                         if (_formkey.currentState!.validate()) {
+
                                         DataLoginCubit.get(context).fetchDataLogin(name:'emilys' , password:'emilyspass',);
                                         }
                                 

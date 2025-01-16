@@ -1,8 +1,10 @@
 // features/layout/presentation/views/myproducts_layout.dart
 import 'package:flutter/material.dart';
+import 'package:myproducts/core/di/service_locator.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
+import 'package:myproducts/core/shared_preferences/app_prefs.dart';
 import 'package:myproducts/features/favorites/presentation/views/favorites_view_body.dart';
-import 'package:myproducts/features/home/data/models/login_model.dart';
+import 'package:myproducts/features/login/data/models/login_model.dart';
 import 'package:myproducts/features/layout/presentation/views/widgets/custom_app_bar.dart';
 import 'package:myproducts/features/home/presentation/views/home_view_body.dart';
 import 'package:myproducts/features/location/presentation/views/location_view_body.dart';
@@ -20,9 +22,7 @@ int currentIndex = 0;
 var Searchcontroller = TextEditingController();
 
 class MyproductsLayout extends StatefulWidget {
-  LoginModel ?loginModel;
 
-  MyproductsLayout({super.key, this.loginModel});
   @override
   State<MyproductsLayout> createState() => _MyproductsLayoutState();
 }
@@ -31,11 +31,14 @@ class _MyproductsLayoutState extends State<MyproductsLayout> {
   
   @override
   Widget build(BuildContext context) {
+      final AppPreferences appPreferences = getIt<AppPreferences>();
+      final String userName =  appPreferences.getUserName();
+
     List<Widget> bottomScreen = [
   HomeViewBody(),
   FavoritesViewBody(),
   LocationViewBody(),
-  ProfileViewBody(loginModel: widget.loginModel),
+  ProfileViewBody(),
 ];
     return Scaffold(
       // appBar: AppBar(
@@ -48,7 +51,7 @@ class _MyproductsLayoutState extends State<MyproductsLayout> {
           ),
               child: Column(
                 children: [
-                  if (currentIndex != 3) CustomAppBar(loginModel: widget.loginModel,),
+                  if (currentIndex != 3) CustomAppBar(userName: userName),
                   bottomScreen[currentIndex],
                 ],
               ),

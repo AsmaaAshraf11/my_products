@@ -3,6 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:myproducts/features/home/data/data_source/home_remote_data_source.dart';
 import 'package:myproducts/features/home/data/repos/home_repo_impl.dart';
+import 'package:myproducts/features/login/data/data_source/login_remote_data_source.dart';
+import 'package:myproducts/features/login/data/repos/login_repo_impl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:myproducts/core/dio/api_service.dart';
 import 'package:myproducts/core/shared_preferences/app_prefs.dart';
@@ -43,6 +45,11 @@ void _registerRepositories() {
   getIt.registerSingleton<HomeRepoImpl>(
     HomeRepoImpl(
       homeRemoteDataSource: HomeRemoteDataSourceImpl(apiService),
+    ),
+  );
+  getIt.registerSingleton<LoginRepoImpl>(
+    LoginRepoImpl(
+      loginRemoteDataSource: LoginRemoteDataSourceImpl(apiService),
     ),
   );
 

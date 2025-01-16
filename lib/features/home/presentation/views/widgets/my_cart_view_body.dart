@@ -44,20 +44,20 @@ class _MyCartViewBodyState extends State<MyCartViewBody> {
                       child: ListView.builder(
                           // physics: const NeverScrollableScrollPhysics(),
                           padding: EdgeInsets.zero,
-                          itemCount: state.cart.length,
+                          itemCount: state.cart[1].products!.length,
                           itemBuilder: (BuildContext context, int index) {
                             return Dismissible(
                               onDismissed: (direction) {
                                 setState(() {
                                   if (index <
-                                      state.cart[index].products!.length)
-                                    state.cart[index].products!.remove(index);
+                                      state.cart[1].products!.length)
+                                    state.cart[1].products!.remove(index);
                                 });
                               },
                               background: DeletItemCart(),
-                              key: ValueKey(state.cart[index].products!),
+                              key: ValueKey(state.cart[1].products!),
                               child: MyCartItem(
-                                  model: state.cart[index].products![index]),
+                                  model: state.cart[1].products![index]),
                             );
                           }),
                     ),

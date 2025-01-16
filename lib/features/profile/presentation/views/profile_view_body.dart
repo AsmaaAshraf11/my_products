@@ -4,16 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/extension/extensions.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_text.dart';
-import 'package:myproducts/features/home/data/models/login_model.dart';
+import 'package:myproducts/features/login/data/models/login_model.dart';
 import 'package:myproducts/features/profile/presentation/views/widgets/list_til.dart';
 import 'package:myproducts/features/profile/presentation/views/widgets/min_button.dart';
 
 import 'widgets/image_profile.dart';
 
 class ProfileViewBody extends StatefulWidget {
-  LoginModel ?loginModel;
 
-  ProfileViewBody({super.key,required this.loginModel});
   @override
   State<ProfileViewBody> createState() => _ProfileViewBodyState();
 }
@@ -30,7 +28,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
         50.h.heightSizedBox,
         ImageProfile(),
         HeadLine22(
-          text: '${widget. loginModel?.firstName}',
+          text: 'Aml Kamal',
         ),
         TitleMedium(
           text: '@amlkamal',

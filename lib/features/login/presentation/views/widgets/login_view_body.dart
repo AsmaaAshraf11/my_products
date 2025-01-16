@@ -9,7 +9,7 @@ import 'package:myproducts/core/resources/app_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/shared_preferences/app_prefs.dart';
 import 'package:myproducts/core/validations/validations.dart';
-import 'package:myproducts/features/home/presentation/manger/featured_datalogin_cubit/cubit/data_login_cubit.dart';
+import 'package:myproducts/features/login/presentation/manger/featured_datalogin_cubit/cubit/data_login_cubit.dart';
 import 'package:myproducts/features/login/presentation/views/widgets/background_image.dart';
 import 'package:myproducts/features/login/presentation/views/widgets/button.dart';
 import 'package:myproducts/features/login/presentation/views/widgets/iconbutton_arrow_back.dart';
@@ -42,8 +42,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
         
          appPreferences.setAuthToken(state.model.accessToken);
           appPreferences.setIsLogged();
-          //var mode = DataLoginCubit.get(context).r
-          pushRoute(context, Routes.layout,arguments: state.model);
+          appPreferences.setUserName('${state.model.firstName}');
+          pushRoute(context, Routes.layout,);
         }
         // TODO: implement listener
       },

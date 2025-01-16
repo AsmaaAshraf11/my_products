@@ -102,7 +102,7 @@ class ProductDetailViewBody extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               MidButtom(
-                                text: '\$/${state.products.price}',
+                                text: '\$${state.products.price}',
                                 onPressed: () {},
                               ),
                               MidButtom(

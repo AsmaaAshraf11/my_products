@@ -1,9 +1,9 @@
-// features/home/presentation/manger/featured_datalogin_cubit/cubit/data_login_cubit.dart
+// features/login/presentation/manger/featured_datalogin_cubit/cubit/data_login_cubit.dart
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:myproducts/features/home/data/models/login_model.dart';
-import 'package:myproducts/features/home/domain/use_cases/fetchDataLogin_use_case.dart';
+import 'package:myproducts/features/login/data/models/login_model.dart';
+import 'package:myproducts/features/login/domain/use_cases/fetchDataLogin_use_case.dart';
 
 part 'data_login_state.dart';
 

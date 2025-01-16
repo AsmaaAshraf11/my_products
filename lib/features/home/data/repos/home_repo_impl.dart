@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:myproducts/core/errors/failures.dart';
 import 'package:myproducts/features/home/data/data_source/home_remote_data_source.dart';
 import 'package:myproducts/features/home/data/models/cart/cart.dart';
-import 'package:myproducts/features/home/data/models/login_model.dart';
+import 'package:myproducts/features/login/data/models/login_model.dart';
 import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
 import 'package:myproducts/features/home/domain/repos/hom_repo.dart';
 
@@ -84,4 +84,10 @@ try {
       return left(ServerFailure(e.toString()));
     }
       }
+      
+        @override
+        Future<Either<Failure, LoginModel>> fetchDataRegister(String name, String password) {
+          // TODO: implement fetchDataRegister
+          throw UnimplementedError();
+        }
 }

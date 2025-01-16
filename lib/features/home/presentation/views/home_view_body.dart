@@ -22,6 +22,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         DefaultFormField(
             Controller: Searchcontroller,
@@ -48,7 +49,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             borderRadius: BorderRadius.circular(10),
           ),
           child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+               children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -80,7 +82,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             ),
             Image.asset(
               ImageAssets.img2,
-              width: 180,
+              width: 155.w,
+              fit: BoxFit.cover,
               // width: 175.w,
             )
           ]),

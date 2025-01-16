@@ -52,7 +52,7 @@ class AppPreferences {
   }
 
   // get user name
-  Future<String> getUserName() async {
+  String getUserName()  {
     String? name = _sharedPreferences.getString(userNameKey);
     return name ?? '';
   }

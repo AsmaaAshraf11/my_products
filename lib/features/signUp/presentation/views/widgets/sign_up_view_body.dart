@@ -2,9 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/extension/extensions.dart';
+import 'package:myproducts/core/helper_functions/route_navigation.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/resources/app_text.dart';
+import 'package:myproducts/core/validations/validations.dart';
 import 'package:myproducts/features/login/presentation/views/widgets/background_image.dart';
 import 'package:myproducts/features/login/presentation/views/widgets/button.dart';
 import 'package:myproducts/features/login/presentation/views/widgets/iconbutton_arrow_back.dart';
@@ -24,7 +26,7 @@ class SignUpViewBody extends StatefulWidget {
 class _SignUpViewBodyState extends State<SignUpViewBody> {
   var emailcontroller = TextEditingController();
   var passwordController = TextEditingController();
-
+  var _formkey = GlobalKey<FormState>();
   bool isobscureText = true;
   @override
   Widget build(BuildContext context) {
@@ -54,68 +56,76 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     right: 30,
                   ),
                   child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        HeadLine22(
-                          text: 'Sign Up',
-                        ),
-                        10.h.heightSizedBox,
-                        const SmallHeader(
-                            text: 'Hi! Let' 's create your account.'),
-                        25.h.heightSizedBox,
-                        const TitleText(text: 'Email or Username'),
-                        DefaultFormField(
-                          Controller: emailcontroller,
-                          Type: TextInputType.emailAddress,
-                          hintText: 'Enter your Email or Username',
-                          Validator: null,
-                        ),
-                        14.h.heightSizedBox,
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const TitleText(
-                              text: 'Password',
-                            ),
-                            TitleText(
-                              text: 'Low...',
-                              textColor: LightAppColors.pink0,
-                            )
-                          ],
-                        ),
-                        DefaultFormField(
-                            Controller: passwordController,
-                            isobscureText: isobscureText,
-                            Validator: null,
-                            hintText: 'Enter your Password',
-                            suffix: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  isobscureText = !isobscureText;
-                                });
-                              },
-                              icon: Icon(
-                                color: LightAppColors.maincolorgreen400,
-                                isobscureText
-                                    ? Icons.visibility_off
-                                    : Icons.visibility,
+                    child: Form(
+                       key: _formkey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          HeadLine22(
+                            text: 'Sign Up',
+                          ),
+                          10.h.heightSizedBox,
+                          const SmallHeader(
+                              text: 'Hi! Let' 's create your account.'),
+                          25.h.heightSizedBox,
+                          const TitleText(text: 'Email or Username'),
+                          DefaultFormField(
+                            Controller: emailcontroller,
+                            Type: TextInputType.emailAddress,
+                            hintText: 'Enter your Email or Username',
+                            Validator: validateEmail,
+                          ),
+                          14.h.heightSizedBox,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const TitleText(
+                                text: 'Password',
                               ),
-                            )),
-                        const TextPasswordValidat(),
-                        36.h.heightSizedBox,
-                        defaultButton(
-                          onPressed: () {},
-                          text: 'Sign Up',
-                        ),
-                        const TextAndTextButton(
-                          text1: 'Already have an account?',
-                          text2: 'Log in',
-                          Route: Routes.loginScreen,
-                        ),
-                        const TextDivider(),
-                        const ImagesGoogleAppleFece(),
-                      ],
+                              TitleText(
+                                text: 'Low...',
+                                textColor: LightAppColors.pink0,
+                              )
+                            ],
+                          ),
+                          DefaultFormField(
+                              Controller: passwordController,
+                              isobscureText: isobscureText,
+                              Validator: validatePassword,
+                              hintText: 'Enter your Password',
+                              suffix: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isobscureText = !isobscureText;
+                                  });
+                                },
+                                icon: Icon(
+                                  color: LightAppColors.maincolorgreen400,
+                                  isobscureText
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
+                                ),
+                              )),
+                          const TextPasswordValidat(),
+                          36.h.heightSizedBox,
+                          defaultButton(
+                            onPressed: () {
+                              if (_formkey.currentState!.validate()) 
+                              {
+                                  pushRoute(context, Routes.layout,);
+                              }
+                            },
+                            text: 'Sign Up',
+                          ),
+                          const TextAndTextButton(
+                            text1: 'Already have an account?',
+                            text2: 'Log in',
+                            Route: Routes.loginScreen,
+                          ),
+                          const TextDivider(),
+                          const ImagesGoogleAppleFece(),
+                        ],
+                      ),
                     ),
                   ),
                 )))

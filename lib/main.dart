@@ -1,6 +1,7 @@
 // main.dart
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myproducts/core/bloc_observer/bloc_observer.dart';
 import 'package:myproducts/core/constants/constants.dart';
@@ -11,13 +12,14 @@ import 'package:myproducts/core/shared_preferences/app_prefs.dart';
 import 'package:myproducts/features/home/data/repos/home_repo_impl.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchAddNweCart_use_case.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchCategory_use_cases.dart';
-import 'package:myproducts/features/home/domain/use_cases/fetchDataLogin_use_case.dart';
+import 'package:myproducts/features/login/data/repos/login_repo_impl.dart';
+import 'package:myproducts/features/login/domain/use_cases/fetchDataLogin_use_case.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchMyCart_use_case.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchProducts_use_cases.dart';
 import 'package:myproducts/features/home/presentation/manger/Featured_cart_cubit/cubit/cart_cubit.dart';
 import 'package:myproducts/features/home/presentation/manger/Featured_category_Cubit/category_Cubit.dart';
 import 'package:myproducts/features/home/presentation/manger/Featured_products_Cubit/products_Cubit.dart';
-import 'package:myproducts/features/home/presentation/manger/featured_datalogin_cubit/cubit/data_login_cubit.dart';
+import 'package:myproducts/features/login/presentation/manger/featured_datalogin_cubit/cubit/data_login_cubit.dart';
 import 'package:myproducts/features/home/presentation/manger/featured_new_cart/cubit/new_cart_cubit.dart';
 import 'package:myproducts/features/layout/presentation/views/myproducts_layout.dart';
 import 'package:myproducts/features/login/presentation/views/login_view.dart';
@@ -94,7 +96,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (context) {
               return DataLoginCubit(FetchdataloginUseCase(
-                getIt.get<HomeRepoImpl>(),
+                getIt.get<LoginRepoImpl>(),
               ));
             },
           ),
@@ -102,6 +104,10 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           title: AppConstants.appName,
           debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            
+           
+          ),
           // theme: lightTheme,
           home: 
           //LoginScreen(),

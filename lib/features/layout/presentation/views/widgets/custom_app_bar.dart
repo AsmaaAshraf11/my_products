@@ -7,11 +7,11 @@ import 'package:myproducts/core/resources/app_assets.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/resources/app_text.dart';
-import 'package:myproducts/features/home/data/models/login_model.dart';
+import 'package:myproducts/features/login/data/models/login_model.dart';
 
 class CustomAppBar extends StatelessWidget {
-   CustomAppBar({super.key, this.loginModel});
-     LoginModel ?loginModel;
+   CustomAppBar({super.key, this.userName});
+     String ?userName;
 
 
   @override
@@ -22,8 +22,9 @@ class CustomAppBar extends StatelessWidget {
         children: [
            CircleAvatar(
             radius: 30,
-            backgroundImage:loginModel?.image != null && loginModel!.image!.isNotEmpty?
-            NetworkImage('${loginModel?.image}'):
+            backgroundImage:
+            //loginModel?.image != null && loginModel!.image!.isNotEmpty?
+            //NetworkImage('${loginModel?.image}'):
             AssetImage(ImageAssets.profile),
           ),
           15.w.widthSizedBox,
@@ -33,21 +34,21 @@ class CustomAppBar extends StatelessWidget {
                 text: 'welcome!',
               ),
               HeadLine22(
-                text: '${loginModel?.firstName}',
+                text: '${userName}',
               ),
             ],
           ),
           SizedBox(
-            width: context.screenWidth * 0.25,
+            width: context.screenWidth * 0.28,
           ),
           Row(
             children: [
               Container(
-                height: 35.h,
-                width: 35.w,
+                height: 36.h,
+                width: 36.w,
                 decoration: BoxDecoration(
                     color: LightAppColors.maincolorgreen700,
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(11)),
                 child: IconButton(
                   padding: EdgeInsets.all(0),
                   icon:
@@ -59,11 +60,11 @@ class CustomAppBar extends StatelessWidget {
               ),
               7.w.widthSizedBox,
               Container(
-                height: 35.h,
-                width: 35.w,
+                height: 36.h,
+                width: 36.w,
                 decoration: BoxDecoration(
                     color: LightAppColors.maincolorgreen700,
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(11)),
                 child: IconButton(
                   padding: EdgeInsets.all(0),
                   icon:

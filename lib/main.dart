@@ -12,6 +12,7 @@ import 'package:myproducts/core/shared_preferences/app_prefs.dart';
 import 'package:myproducts/features/home/data/repos/home_repo_impl.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchAddNweCart_use_case.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchCategory_use_cases.dart';
+import 'package:myproducts/features/layout/presentation/manger/cubit/bottom_navigation_bar_cubit.dart';
 import 'package:myproducts/features/login/data/repos/login_repo_impl.dart';
 import 'package:myproducts/features/login/domain/use_cases/fetchDataLogin_use_case.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchMyCart_use_case.dart';
@@ -100,6 +101,9 @@ class MyApp extends StatelessWidget {
               ));
             },
           ),
+           BlocProvider(
+                create: (context) => BottomNavigationBarCubit(),
+            ),
         ],
         child: MaterialApp(
           title: AppConstants.appName,
@@ -109,9 +113,9 @@ class MyApp extends StatelessWidget {
            
           ),
           // theme: lightTheme,
-          home: 
+          home:OnboardingView(), 
           //LoginScreen(),
-          startWidget,
+          //startWidget,
           //initialRoute: Routes.homeScreen,
           onGenerateRoute: RouteGenerator.getRoute,
         ),

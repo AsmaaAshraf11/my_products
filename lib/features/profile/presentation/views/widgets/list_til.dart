@@ -32,10 +32,14 @@ class ListTil extends StatelessWidget {
           ),
 
           trailing: istrailing == true
-              ? Icon(
-                  Icons.arrow_forward_ios,
-                  color: LightAppColors.black,
-                )
+              ? IconButton(
+                onPressed: () {  },
+                icon: Icon(
+                    Icons.arrow_forward_ios,
+                    color: LightAppColors.black,
+                  ),
+                
+              )
               : trailing,
 
           // Icon(Icons.arrow_forward_ios,),

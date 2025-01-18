@@ -15,11 +15,14 @@ class LoginRepoImpl implements LoginRepo {
   @override
   Future<Either<Failure, LoginModel>> fetchDataLogin(String name, String password)async {
 try {
-      LoginModel datalogin;
+      var datalogin;
       datalogin = await loginRemoteDataSource.fetchDataLogin(name: name, password: password);
+
       return right(datalogin);
     } on Exception catch (e) {
-      return left(ServerFailure(e.toString()));
+    //        print('object5');
+
+       return left(ServerFailure(e.toString()));
     }
       }
       

@@ -16,9 +16,12 @@ class DataLoginCubit extends Cubit<DataLoginState> {
     emit(DataLoginLoading());
 
     var result = await fetchdataloginUseCase.call(name, password);
+
     result.fold((failure) {
+
+      print('Erronzr:${failure.errorMessage}');
       emit(DataLoginFailure(failure.errorMessage));
-      print(failure.errorMessage);
+     // print(failure.errorMessage);
     }, (data) {
       emit(DataLoginSuccess(data));
       print('${data.email}');

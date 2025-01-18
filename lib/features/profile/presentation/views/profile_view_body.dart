@@ -1,9 +1,13 @@
 // features/profile/presentation/views/profile_view_body.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:myproducts/core/di/service_locator.dart';
 import 'package:myproducts/core/extension/extensions.dart';
+import 'package:myproducts/core/helper_functions/route_navigation.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
+import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/resources/app_text.dart';
+import 'package:myproducts/core/shared_preferences/app_prefs.dart';
 import 'package:myproducts/features/login/data/models/login_model.dart';
 import 'package:myproducts/features/profile/presentation/views/widgets/list_til.dart';
 import 'package:myproducts/features/profile/presentation/views/widgets/min_button.dart';
@@ -21,6 +25,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
 
   bool notifications = false;
   bool isdark = false;
+   AppPreferences appPreferences=getIt.get<AppPreferences>();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -90,11 +95,32 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
             },
           ),
         ),
-        ListTil(
-          icon: Icons.logout,
-          text: 'Log out',
-          color: LightAppColors.red,
-        ),
+        // ListTil(
+        //   icon: Icons.logout,
+        //   text: 'Log out',
+        //   color: LightAppColors.red,
+        // ),
+        GestureDetector(
+          onTap:(){
+            appPreferences.logout();
+             pushRoute(context, Routes.loginScreen,);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Row(
+              children: [
+                Icon(Icons.logout,
+                color: LightAppColors.red,),
+                15.widthSizedBox,
+                 Text('Log out',style: TextStyle(
+                  fontSize: 17,
+                  color: LightAppColors.red,
+            
+                ),),
+              ],
+            ),
+          ),
+        )
       ],
     );
   }

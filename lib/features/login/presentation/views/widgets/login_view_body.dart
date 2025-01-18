@@ -1,4 +1,5 @@
 // features/login/presentation/views/widgets/login_view_body.dart
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myproducts/core/extension/extensions.dart';
@@ -18,7 +19,6 @@ import 'package:myproducts/features/login/presentation/views/widgets/images_goog
 import 'package:myproducts/features/login/presentation/views/widgets/text_divider.dart';
 import 'package:myproducts/features/login/presentation/views/widgets/text_form_field.dart';
 import 'package:myproducts/core/di/service_locator.dart';
-
 
 class LoginViewBody extends StatefulWidget {
   @override
@@ -45,9 +45,20 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           appPreferences.setUserName('${state.model.firstName}');
           pushRoute(context, Routes.layout,);
         }
+        if(state is DataLoginFailure){
+           ScaffoldMessenger.of(context).showSnackBar(
+                                              SnackBar(
+                                          content: Text("${state.errMessage}"),
+                                       duration: Duration(seconds: 2), //  
+                                          
+             ),
+                      );
+
+        }
         // TODO: implement listener
       },
       builder: (context, state) {
+      
         return Stack(
           children: [
             const BackgroundImage(),
@@ -123,16 +134,27 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                                                   : Icons.visibility,
                                             ))),
                                     46.h.heightSizedBox,
-                                    defaultButton(
-                                      onPressed: () {
-                                        if (_formkey.currentState!.validate()) {
+                                    ConditionalBuilder(
+                              builder: (BuildContext context) =>  defaultButton(
+                            onPressed: () {
+                                     
 
-                                        DataLoginCubit.get(context).fetchDataLogin(name:'emilys' , password:'emilyspass',);
-                                        }
-                                
-                                      },
-                                      text: 'Login',
-                                    ),
+               
+              
+                              // if (_formkey.currentState!.validate()){
+                              
+                                DataLoginCubit.get(context).fetchDataLogin(name:'emilys' , password:'emilyspas',);
+                                      //  }
+                              
+                              
+                            },
+                            text: 'Login',
+                          ),
+                              condition: state is! DataLoginLoading,
+                              fallback: (BuildContext context) =>
+                                  Center(child: CircularProgressIndicator()),
+                            ),
+                                    
                                     const TextAndTextButton(
                                       text1: 'Forget your password?',
                                       text2: 'Reset password',

@@ -39,6 +39,7 @@ class AppPreferences {
    Future<void> setAuthToken(String token) async {
     _sharedPreferences.setString(authTokenKey, token);
   }
+  
 
   // get Auth Token
   Future<String> getAuthToken() async {
@@ -71,7 +72,7 @@ class AppPreferences {
       return false;
     }
   }
-
+  
   // save store
   Future<void> saveStoreData(
       {required String storeId, required String storeName}) async {

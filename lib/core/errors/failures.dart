@@ -1,3 +1,4 @@
+// core/errors/failures.dart
 import 'package:dio/dio.dart';
 
 abstract class Failure {
@@ -8,6 +9,7 @@ abstract class Failure {
 
 class ServerFailure extends Failure {
   ServerFailure(super.errorMessage);
+  
 
   factory ServerFailure.fromDioError(DioException dioError) {
     const Map<DioExceptionType, String> errorMessages = {
@@ -21,7 +23,7 @@ class ServerFailure extends Failure {
       return ServerFailure(errorMessages[dioError.type]!);
     } else if (dioError.type == DioExceptionType.badResponse) {
       return ServerFailure.fromResponse(
-          dioError.response!.statusCode!, dioError.response!.data);
+          dioError.response!.statusCode!, dioError.response!);
     } else if (dioError.type == DioExceptionType.unknown &&
         dioError.message!.contains('SocketException')) {
       return ServerFailure('No Internet Connection');
@@ -29,8 +31,10 @@ class ServerFailure extends Failure {
       return ServerFailure('Unexpected Error. Try Again Later!');
     }
   }
+  
 
-  factory ServerFailure.fromResponse(int statusCode, dynamic response) {
+  factory ServerFailure.fromResponse(int statusCode,  response) {
+     
     const Map<int, String> statusErrorMessages = {
       400: 'Error occurred. Please try again.',
       401: 'Unauthorized access.',
@@ -38,14 +42,22 @@ class ServerFailure extends Failure {
       404: 'Your request not found. Please try again later.',
       500: 'Internal server error. Please try again later.',
     };
+    final statusCode = response!.statusCode;
+      final responseData = response?.data; 
+      if (statusCode == 400) {
+        // API returned an error with a 'message' field
+        return ServerFailure('Email or password incorrect');
+      }
 
-    if (statusErrorMessages.containsKey(statusCode) &&
-        response['message'] != null) {
-      return ServerFailure(response['message'].toString());
-    } else if (statusErrorMessages.containsKey(statusCode)) {
-      return ServerFailure(statusErrorMessages[statusCode]!);
-    } else {
+  //  else if (statusErrorMessages.containsKey(statusCode) &&
+  //       response['message'] != null) {
+  //     return ServerFailure(response['message'].toString());
+  //   } else if (statusErrorMessages.containsKey(statusCode)) {
+  //     return ServerFailure(statusErrorMessages[statusCode]!);
+  //   } 
+  else {
       return ServerFailure('Something went wrong. Please try again later.');
     }
-  }
+  
+}
 }

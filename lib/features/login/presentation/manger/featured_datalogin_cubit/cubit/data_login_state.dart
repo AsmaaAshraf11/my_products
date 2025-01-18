@@ -14,7 +14,7 @@ class DataLoginFailure extends DataLoginState {
 }
 
 class DataLoginSuccess extends DataLoginState {
-  final LoginModel model;
+  final LoginResult model;
 
   DataLoginSuccess(this.model);
 }

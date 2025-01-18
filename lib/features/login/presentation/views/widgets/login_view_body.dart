@@ -38,17 +38,26 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     return BlocConsumer<DataLoginCubit, DataLoginState>(
       listener: (context, state) {
         if(state is DataLoginSuccess){
-          AppPreferences appPreferences=getIt.get<AppPreferences>();
+          if(state.model.success == true){
+            AppPreferences appPreferences=getIt.get<AppPreferences>();
 
-         appPreferences.setAuthToken(state.model.accessToken);
-          appPreferences.setIsLogged();
-          appPreferences.setUserName('${state.model.firstName}');
-          pushRoute(context, Routes.layout,);
+            appPreferences.setAuthToken(state.model.loginData!.accessToken);
+            appPreferences.setIsLogged();
+            appPreferences.setUserName('${state.model.loginData!.firstName}');
+            pushRoute(context, Routes.layout,);
+          }else{
+            ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                    content: Text("${state.model.message}"),
+                    backgroundColor: Colors.redAccent,
+                    duration: Duration(seconds: 2)) );
+          }
         }
         if(state is DataLoginFailure){
            ScaffoldMessenger.of(context).showSnackBar(
                                               SnackBar(
                                           content: Text("${state.errMessage}"),
+                                                backgroundColor: Colors.redAccent,
                                        duration: Duration(seconds: 2), //  
                                           
              ),
@@ -143,7 +152,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               
                               // if (_formkey.currentState!.validate()){
                               
-                                DataLoginCubit.get(context).fetchDataLogin(name:'emilys' , password:'emilyspas',);
+                                DataLoginCubit.get(context).fetchDataLogin(name:emailcontroller.text ,
+                                  password:passwordController.text,);
                                       //  }
                               
                               

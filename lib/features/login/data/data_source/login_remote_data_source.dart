@@ -8,7 +8,7 @@ import 'package:myproducts/features/login/data/models/login_model.dart';
 
 abstract class LoginRemoteDataSource {
   
- Future<Either<Failure, LoginModel>> fetchDataLogin({required String name, required String password});
+ Future<LoginResult> fetchDataLogin({required String name, required String password});
 }
 
 class LoginRemoteDataSourceImpl extends LoginRemoteDataSource {
@@ -17,26 +17,20 @@ class LoginRemoteDataSourceImpl extends LoginRemoteDataSource {
   LoginRemoteDataSourceImpl(this.apiService);
 
    @override
-  Future<Either<Failure, LoginModel>> fetchDataLogin({required String name, required String password})async {
-     try{
-      var data = await apiService.post(
-        endpoint: Endpoint.login,
-        isToken: true,
-        parameter: 'login',
-        data: {
-          'username': name,
-          'password':password ,
-        });
-        LoginModel datalogin = LoginModel.fromJson(data);     
-      return right(datalogin);
-
-        
-     }on DioException catch (dioError) {
-
-    final failure = ServerFailure.fromDioError(dioError);
-    print('Error: ${failure.errorMessage}');
-    return left(failure);
-  }   
+  Future<LoginResult> fetchDataLogin({required String name, required String password})async {
+     var data = await apiService.post(
+         endpoint: Endpoint.login,
+         isToken: true,
+         data: {
+           'username': name,
+           'password':password ,
+         });
+     if (data['accessToken'] != null) {
+       LoginModel model =  LoginModel.fromJson(data);
+       return LoginResult(message: 'login success',loginData: model,success: true);
+     }else{
+       return LoginResult(message: 'Error in login', success: false);
+     }
     
     }
  

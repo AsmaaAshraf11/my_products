@@ -24,7 +24,6 @@ class DataLoginCubit extends Cubit<DataLoginState> {
      // print(failure.errorMessage);
     }, (data) {
       emit(DataLoginSuccess(data));
-      print('${data.email}');
     });
   }
 }

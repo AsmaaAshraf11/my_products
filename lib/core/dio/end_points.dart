@@ -76,7 +76,7 @@ extension EndpointExtension on Endpoint {
   String get value {
     switch (this) {
        case Endpoint.login:
-         return 'auth/';
+         return 'auth/login';
       // case Endpoint.sendCode:
       //   return 'resend-verification-code';
       // case Endpoint.verifyCode:

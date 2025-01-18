@@ -1,6 +1,16 @@
 // features/home/data/models/login_model.dart
 
 
+class LoginResult {
+  String message;
+  bool success;
+  LoginModel? loginData;
+  LoginResult({
+    required this.message,
+    required this.success,
+    this.loginData,
+  });
+}
 class LoginModel {
   String accessToken;
   String refreshToken;

@@ -1,5 +1,6 @@
 // features/login/data/repos/login_repo_impl.dart
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:myproducts/core/errors/failures.dart';
 import 'package:myproducts/features/home/data/data_source/home_remote_data_source.dart';
 import 'package:myproducts/features/login/data/data_source/login_remote_data_source.dart';
@@ -11,20 +12,20 @@ class LoginRepoImpl implements LoginRepo {
 
   LoginRepoImpl({required this.loginRemoteDataSource});
 
-
   @override
-  Future<Either<Failure, LoginModel>> fetchDataLogin(String name, String password)async {
-try {
+  Future<Either<Failure, LoginResult>> fetchDataLogin(
+      String name, String password) async {
+    try {
       var datalogin;
-      datalogin = await loginRemoteDataSource.fetchDataLogin(name: name, password: password);
+      datalogin = await loginRemoteDataSource.fetchDataLogin(
+          name: name, password: password);
 
       return right(datalogin);
     } on Exception catch (e) {
-    //        print('object5');
-
-       return left(ServerFailure(e.toString()));
-    }
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
       }
-      
-       
+      return left(ServerFailure(e.toString()));
+    }
+  }
 }

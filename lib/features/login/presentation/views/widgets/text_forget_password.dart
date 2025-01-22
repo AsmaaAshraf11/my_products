@@ -36,7 +36,7 @@ class TextAndTextButton extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                pushRoute(context, Route);
+                pushAndRemoveRoute(context, Route);
               },
               //onPressed: () {  },
               child: Text(

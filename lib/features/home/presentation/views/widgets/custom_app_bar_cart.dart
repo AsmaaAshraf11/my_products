@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
-import 'package:myproducts/features/login/presentation/views/widgets/iconbutton_arrow_back.dart';
+import 'package:myproducts/features/component/iconbutton_arrow_back.dart';
 
 class CustomAppBarCart extends StatelessWidget {
   const CustomAppBarCart({super.key});

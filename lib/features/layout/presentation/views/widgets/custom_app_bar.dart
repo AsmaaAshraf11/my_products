@@ -54,7 +54,7 @@ class CustomAppBar extends StatelessWidget {
                   icon:
                       Icon(size: 26, Icons.shopping_cart, color: Colors.white),
                   onPressed: () {
-                    pushRoute(context, Routes.cart);
+                    pushAndRemoveRoute(context, Routes.cart);
                   },
                 ),
               ),

@@ -1,39 +1,47 @@
-// features/login/presentation/views/widgets/change_password_view_body.dart
+// features/changePassword/presentation/views/change_password_view.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/extension/extensions.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/resources/app_text.dart';
-import 'package:myproducts/features/login/presentation/views/widgets/background_image.dart';
-import 'package:myproducts/features/login/presentation/views/widgets/button.dart';
-import 'package:myproducts/features/login/presentation/views/widgets/iconbutton_arrow_back.dart';
-import 'package:myproducts/features/login/presentation/views/widgets/text_form_field.dart';
-import 'package:myproducts/features/login/presentation/views/widgets/text_password_validat.dart';
+import 'package:myproducts/features/component/background_image.dart';
+import 'package:myproducts/features/component/button.dart';
+import 'package:myproducts/features/component/text_form_field.dart';
+import 'package:myproducts/features/component/iconbutton_arrow_back.dart';
+import 'package:myproducts/features/changePassword/presentation/views/widgets/text_password_validat.dart';
 
-class ChangePasswordViewBody extends StatefulWidget {
+class ChangePaswordView extends StatefulWidget {
+   ChangePaswordView({super.key});
+
   @override
-  State<ChangePasswordViewBody> createState() => _ChangePasswordViewBodyState();
+  State<ChangePaswordView> createState() => _ChangePaswordViewState();
 }
 
-class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
-  var emailcontroller = TextEditingController();
+class _ChangePaswordViewState extends State<ChangePaswordView> {
+var emailcontroller = TextEditingController();
 
   var passwordController = TextEditingController();
+
   bool isobscureText = true;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Scaffold(
+appBar: PreferredSize(
+        preferredSize:Size.fromHeight(40),
+      child: AppBar(
+        backgroundColor: LightAppColors.green300,
+      )),      body: Stack(
       children: [
         const BackgroundImage(),
         IconbuttonArrowBack(
-          route: Routes.loginScreen,
+          route: Routes.forgetPasswordScreen,
           iconColor: LightAppColors.maincolorgreen700,
           buttonColor: Colors.white,
         ),
         Padding(
-            padding: const EdgeInsets.only(top: 150),
+            padding: const EdgeInsets.only(top: 120),
             child: Container(
                 width: double.infinity,
                 height: double.infinity,
@@ -116,6 +124,7 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
                       ]),
                 )))
       ],
+    ),
     );
   }
 }

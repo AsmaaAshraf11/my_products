@@ -1,10 +1,8 @@
 // main.dart
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myproducts/core/bloc_observer/bloc_observer.dart';
-import 'package:myproducts/core/constants/constants.dart';
 import 'package:myproducts/core/di/service_locator.dart';
 import 'package:myproducts/core/resources/app_constants.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
@@ -41,9 +39,9 @@ Widget getStartWidget()  {
   //currentUserName = await appPreferences.getUserName();
   if (isOnBoardingViewed) {
     final bool isLogged =  appPreferences.isLogged();
-    return isLogged ?  MyproductsLayout() : const LoginScreen();
+    return isLogged ?  MyproductsLayout() :  LoginScreen();
   } else {
-    return const OnboardingView();
+    return  OnboardingView();
   }
 }
 void main() async {
@@ -113,9 +111,9 @@ class MyApp extends StatelessWidget {
            
           ),
           // theme: lightTheme,
-          home:OnboardingView(), 
-          //LoginScreen(),
-          //startWidget,
+          home: 
+         // LoginScreen(),
+          startWidget,
           //initialRoute: Routes.homeScreen,
           onGenerateRoute: RouteGenerator.getRoute,
         ),

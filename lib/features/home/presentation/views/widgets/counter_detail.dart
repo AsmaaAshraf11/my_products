@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_text.dart';
-import 'package:myproducts/features/home/presentation/views/widgets/count_button.dart';
+import 'package:myproducts/features/component/count_button.dart';
 
 class CounterDetail extends StatefulWidget {
   @override
@@ -15,7 +15,7 @@ class _CounterDetailState extends State<CounterDetail> {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: 230,
+      top: 250,
       left: 130,
       child: Row(
         children: [

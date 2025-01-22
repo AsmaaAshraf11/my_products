@@ -1,8 +1,8 @@
-// features/login/presentation/views/widgets/images_google_apple_fece.dart
+// features/component/images_google_apple_fece.dart
 import 'package:flutter/material.dart';
 import 'package:myproducts/core/resources/app_assets.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
-import 'package:myproducts/features/login/presentation/views/widgets/logo_image.dart';
+import 'package:myproducts/features/component/logo_image.dart';
 
 class ImagesGoogleAppleFece extends StatelessWidget {
   const ImagesGoogleAppleFece({super.key});
@@ -52,18 +52,6 @@ class ImagesGoogleAppleFece extends StatelessWidget {
           ),
         ),
 
-        // LogoImage(
-        // Image: ImageAssets.google,
-        //  Color: LightAppColors.pink50,
-        //  ),
-        //  LogoImage(
-        // Image: ImageAssets.apple,
-        //  Color:LightAppColors.blue50,
-        //  ),
-        //  LogoImage(
-        // Image: ImageAssets.face,
-        //  Color: LightAppColors.blue50,
-        //  ),
       ],
     );
   }

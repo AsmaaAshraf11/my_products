@@ -1,4 +1,4 @@
-// features/login/presentation/views/widgets/forget_Password_body.dart
+// features/login/presentation/views/forget_Password_viewdart.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/extension/extensions.dart';
@@ -6,19 +6,23 @@ import 'package:myproducts/core/helper_functions/route_navigation.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/resources/app_text.dart';
-import 'package:myproducts/features/login/presentation/views/widgets/background_image.dart';
-import 'package:myproducts/features/login/presentation/views/widgets/button.dart';
-import 'package:myproducts/features/login/presentation/views/widgets/iconbutton_arrow_back.dart';
-import 'package:myproducts/features/login/presentation/views/widgets/text_form_field.dart';
+import 'package:myproducts/features/component/background_image.dart';
+import 'package:myproducts/features/component/button.dart';
+import 'package:myproducts/features/component/iconbutton_arrow_back.dart';
+import 'package:myproducts/features/component/text_form_field.dart';
 
-class ForgetPasswordBody extends StatelessWidget {
+class ForgetPasswordViewdart extends StatelessWidget {
+   ForgetPasswordViewdart({super.key});
   var emailcontroller = TextEditingController();
-
-  ForgetPasswordBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: LightAppColors.green300,
+        elevation: 0,
+      ),
+      body: Stack(
       children: [
         const BackgroundImage(),
         IconbuttonArrowBack(
@@ -63,7 +67,7 @@ class ForgetPasswordBody extends StatelessWidget {
                       50.h.heightSizedBox,
                       defaultButton(
                         onPressed: () {
-                          pushRoute(context, Routes.changePasswordScreen);
+                          pushAndRemoveRoute(context, Routes.changePasswordScreen);
                         },
                         text: 'Send Link to Email',
                       ),
@@ -71,6 +75,7 @@ class ForgetPasswordBody extends StatelessWidget {
                   ),
                 )))
       ],
-    );
+    )
+      );
   }
 }

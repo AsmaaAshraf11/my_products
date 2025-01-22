@@ -21,7 +21,7 @@ class IconbuttonArrowBack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 20, top: padding ?? 40, left: 20),
+      padding: EdgeInsets.only(right: 20,  left: 20),
       child: Container(
         height: 40,
         width: 40,
@@ -34,7 +34,7 @@ class IconbuttonArrowBack extends StatelessWidget {
               color: iconColor),
           onPressed: onPressed ??
               () {
-                pushRoute(context, route);
+                pushAndRemoveRoute(context, route);
               },
         ),
       ),

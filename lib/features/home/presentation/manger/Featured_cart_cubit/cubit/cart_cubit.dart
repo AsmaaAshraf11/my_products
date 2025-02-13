@@ -9,6 +9,8 @@ part 'cart_state.dart';
 class CartCubit extends Cubit<CartState> {
   CartCubit(this.fetchmycartUseCase) : super(CartInitial());
   final FetchmycartUseCase fetchmycartUseCase;
+
+  List<CartModel> cartList = [];
   Future<void> fetchCart({int pageNamber = 0}) async {
     emit(CartLoading());
 
@@ -17,8 +19,16 @@ class CartCubit extends Cubit<CartState> {
       emit(CartFailure(failure.errorMessage));
       print('error5 :${failure.errorMessage}');
     }, (cart) {
+      cartList = cart;
       emit(CartSuccess(cart));
       print('yes cart');
     });
   }
+  // todo  remove cart
+  Future<void> removeCart({required int index}) async {
+
+    cartList[0].products!.removeAt(index);
+    emit(UpdateCartSuccess(''));
+  }
+
 }

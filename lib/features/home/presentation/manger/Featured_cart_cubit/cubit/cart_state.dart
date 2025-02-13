@@ -19,3 +19,9 @@ class CartSuccess extends CartState {
 
   CartSuccess(this.cart);
 }
+
+class UpdateCartSuccess extends CartState {
+  final String message;
+
+  UpdateCartSuccess(this.message);
+}

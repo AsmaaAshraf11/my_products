@@ -31,8 +31,12 @@ class _MyCartItemState extends State<MyCartItem> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Image.asset(
-                ImageAssets.imge1,
+              // Image.asset(
+              //   ImageAssets.imge1,
+              //   width: 100.w,
+              // ),
+              Image.network(
+                widget.model.thumbnail!,
                 width: 100.w,
               ),
               Column(

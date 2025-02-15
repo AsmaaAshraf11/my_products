@@ -1,17 +1,17 @@
-// features/home/domain/use_cases/fetchAddNweCart_use_case.dart
+// features/cart/domain/use_cases/fetchAddNweCart_use_case.dart
 import 'package:dartz/dartz.dart';
 import 'package:myproducts/core/errors/failures.dart';
-import 'package:myproducts/features/home/data/models/cart/cart.dart';
-import 'package:myproducts/features/home/domain/repos/hom_repo.dart';
+import 'package:myproducts/features/cart/data/models/cart/cart.dart';
+import 'package:myproducts/features/cart/domain/repos/cart_repo.dart';
 
 class FetchAddNweCartUseCase extends UseCases<CartModel, int> {
-  final HomRepo homRepo;
+ final CartRepo cartRepo;
 
-  FetchAddNweCartUseCase(this.homRepo);
+  FetchAddNweCartUseCase(this.cartRepo);
 
   @override
   Future<Either<Failure, CartModel>> call(int id, int quant) {
-    return homRepo.fetchAddNewCart(id, quant);
+    return cartRepo.fetchAddNewCart(id, quant);
   }
 }
 

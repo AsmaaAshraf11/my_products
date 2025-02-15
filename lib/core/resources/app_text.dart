@@ -10,11 +10,13 @@ class HeadLine22 extends StatelessWidget {
   final double fontSize;
   final Color? textColor;
   final bool? bold;
+  final bool? overflow;
   const HeadLine22(
       {super.key,
       this.bold = true,
       required this.text,
       this.fontSize = FontSize.s22,
+       this.overflow,
       this.textColor});
 
   @override
@@ -24,6 +26,7 @@ class HeadLine22 extends StatelessWidget {
       style: Theme.of(context).textTheme.displayLarge!.copyWith(
           color: textColor ?? AppColors.black,
           fontSize: fontSize,
+          overflow: overflow == true ? TextOverflow.ellipsis : null,
           fontWeight: bold == false ? FontWeight.normal : FontWeight.bold),
     );
   }
@@ -96,7 +99,7 @@ class TitleMedium extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      overflow: bold == true ? TextOverflow.ellipsis : null,
+      overflow: overflow == true ? TextOverflow.ellipsis : null,
       textAlign: inCenter == true ? TextAlign.center : null,
       style: TextStyle(
         fontWeight: bold == true ? FontWeight.w500 : null,

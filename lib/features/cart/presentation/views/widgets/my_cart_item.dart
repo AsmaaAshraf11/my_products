@@ -1,11 +1,12 @@
-// features/home/presentation/views/widgets/my_cart_item.dart
+// features/cart/presentation/views/widgets/my_cart_item.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/extension/extensions.dart';
 import 'package:myproducts/core/resources/app_assets.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_text.dart';
-import 'package:myproducts/features/home/data/models/cart/product.dart';
+import 'package:myproducts/features/cart/data/models/cart/product.dart';
+import 'package:myproducts/features/home/presentation/views/widgets/custom_product_image.dart';
 
 class MyCartItem extends StatefulWidget {
   MyCartItem({super.key, required this.model});
@@ -31,21 +32,24 @@ class _MyCartItemState extends State<MyCartItem> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              // Image.asset(
-              //   ImageAssets.imge1,
-              //   width: 100.w,
-              // ),
-              Image.network(
-                widget.model.thumbnail!,
+            
+              SizedBox(
                 width: 100.w,
-              ),
+                            height: 100.h,
+                            child: CustomProductImage(
+                                imageUrl:widget.model.thumbnail!),
+                          ),
               Column(
                 //mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   //Powder Canister
-                  HeadLine22(
-                    text: '${widget.model.title}',
-                    bold: false,
+                  SizedBox(
+                    width: 180,
+                    child: HeadLine22(
+                      text: '${widget.model.title}',
+                      bold: false,
+                      overflow: true,
+                    ),
                   ),
                   10.h.heightSizedBox,
                   Row(
@@ -53,6 +57,7 @@ class _MyCartItemState extends State<MyCartItem> {
                       HeadLine22(
                         text: '${'\$${widget.model.price}'}',
                         textColor: LightAppColors.maincolorgreen400,
+                        overflow: true,
                       ),
                       TitleMedium(
                         text: '${'/kg'}',

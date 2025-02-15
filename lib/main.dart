@@ -7,23 +7,31 @@ import 'package:myproducts/core/di/service_locator.dart';
 import 'package:myproducts/core/resources/app_constants.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/shared_preferences/app_prefs.dart';
+import 'package:myproducts/features/cart/data/repos/cart_repo_impl.dart';
 import 'package:myproducts/features/home/data/repos/home_repo_impl.dart';
-import 'package:myproducts/features/home/domain/use_cases/fetchAddNweCart_use_case.dart';
+import 'package:myproducts/features/cart/domain/use_cases/fetchAddNweCart_use_case.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchCategory_use_cases.dart';
+import 'package:myproducts/features/cart/domain/use_cases/fetchDeleteCart_use_cases.dart';
+import 'package:myproducts/features/cart/presentation/manger/Featured_cart_cubit/cart_cubit.dart';
+import 'package:myproducts/features/cart/presentation/manger/featured_DeleteCart_cubit/cubit/delete_cart_cubit.dart';
+import 'package:myproducts/features/home/domain/use_cases/fetchDetailProduct_use_case.dart';
+import 'package:myproducts/features/home/presentation/manger/featured_DetailProduct_cubit/cubit/datailproduct_cubit.dart';
 import 'package:myproducts/features/layout/presentation/manger/cubit/bottom_navigation_bar_cubit.dart';
 import 'package:myproducts/features/login/data/repos/login_repo_impl.dart';
 import 'package:myproducts/features/login/domain/use_cases/fetchDataLogin_use_case.dart';
-import 'package:myproducts/features/home/domain/use_cases/fetchMyCart_use_case.dart';
+import 'package:myproducts/features/cart/domain/use_cases/fetchMyCart_use_case.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchProducts_use_cases.dart';
-import 'package:myproducts/features/home/presentation/manger/Featured_cart_cubit/cubit/cart_cubit.dart';
 import 'package:myproducts/features/home/presentation/manger/Featured_category_Cubit/category_Cubit.dart';
 import 'package:myproducts/features/home/presentation/manger/Featured_products_Cubit/products_Cubit.dart';
 import 'package:myproducts/features/login/presentation/manger/featured_datalogin_cubit/cubit/data_login_cubit.dart';
-import 'package:myproducts/features/home/presentation/manger/featured_new_cart/cubit/new_cart_cubit.dart';
+import 'package:myproducts/features/cart/presentation/manger/featured_new_cart/cubit/new_cart_cubit.dart';
 import 'package:myproducts/features/layout/presentation/views/myproducts_layout.dart';
 import 'package:myproducts/features/login/presentation/views/login_view.dart';
 import 'package:myproducts/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:myproducts/features/search/data/repos/search_repo_impl.dart';
+import 'package:myproducts/features/search/domain/use_cases/search_use_cases.dart';
+import 'package:myproducts/features/search/presentation/manger/featured_search_cubit/search_cubit.dart';
 
 Future<void> initializeApp() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -76,11 +84,21 @@ class MyApp extends StatelessWidget {
               )..fetchCategory();
             },
           ),
+
+          BlocProvider(
+            create: (context) {
+              return DatailproductCubit(
+                FetchdetailproductUseCase(
+                  getIt.get<HomeRepoImpl>(),
+                ),
+              );
+            },
+          ),
           BlocProvider(
             create: (context) {
               return CartCubit(
                 FetchmycartUseCase(
-                  getIt.get<HomeRepoImpl>(),
+                  getIt.get<CartRepoImpl>(),
                 ),
               )..fetchCart();
             },
@@ -88,7 +106,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (context) {
               return NewCartCubit(FetchAddNweCartUseCase(
-                getIt.get<HomeRepoImpl>(),
+                getIt.get<CartRepoImpl>(),
               ));
             },
           ),
@@ -102,6 +120,24 @@ class MyApp extends StatelessWidget {
            BlocProvider(
                 create: (context) => BottomNavigationBarCubit(),
             ),
+             BlocProvider(
+            create: (context) {
+              return DeleteCartCubit(
+                FetchDeletecartUseCases(
+                  getIt.get<CartRepoImpl>(),
+                ),
+              );
+            },
+          ),
+           BlocProvider(
+            create: (context) {
+              return SearchCubit(
+                SearchUseCases(
+                  getIt.get<SearchRepoImpl>(),
+                ),
+              );
+            },
+          ),
         ],
         child: MaterialApp(
           title: AppConstants.appName,

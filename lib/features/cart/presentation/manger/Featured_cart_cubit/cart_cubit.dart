@@ -1,8 +1,8 @@
-// features/home/presentation/manger/Featured_cart_cubit/cubit/cart_cubit.dart
+// features/cart/presentation/manger/Featured_cart_cubit/cart_cubit.dart
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:myproducts/features/home/data/models/cart/cart.dart';
-import 'package:myproducts/features/home/domain/use_cases/fetchMyCart_use_case.dart';
+import 'package:myproducts/features/cart/data/models/cart/cart.dart';
+import 'package:myproducts/features/cart/domain/use_cases/fetchMyCart_use_case.dart';
 
 part 'cart_state.dart';
 

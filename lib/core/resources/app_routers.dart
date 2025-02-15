@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myproducts/core/di/service_locator.dart';
+import 'package:myproducts/features/home/presentation/views/praduct_all_view.dart';
 import 'package:myproducts/features/login/data/models/login_model.dart';
 import 'package:myproducts/features/home/data/repos/home_repo_impl.dart';
 import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
@@ -10,7 +11,7 @@ import 'package:myproducts/features/login/domain/use_cases/fetchDataLogin_use_ca
 import 'package:myproducts/features/home/domain/use_cases/fetchDetailProduct_use_case.dart';
 import 'package:myproducts/features/home/presentation/manger/featured_DetailProduct_cubit/cubit/datailproduct_cubit.dart';
 import 'package:myproducts/features/login/presentation/manger/featured_datalogin_cubit/cubit/data_login_cubit.dart';
-import 'package:myproducts/features/home/presentation/views/my_cart_view.dart';
+import 'package:myproducts/features/cart/presentation/views/my_cart_view.dart';
 import 'package:myproducts/features/home/presentation/views/product_detail_view.dart';
 import 'package:myproducts/features/layout/presentation/views/myproducts_layout.dart';
 import 'package:myproducts/features/changePassword/presentation/views/change_password_view.dart';
@@ -18,6 +19,7 @@ import 'package:myproducts/features/login/presentation/views/login_view.dart';
 import 'package:myproducts/features/changePassword/presentation/views/forget_Password_viewdart.dart';
 import 'package:myproducts/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:myproducts/features/onboarding/presentation/views/start_view.dart';
+import 'package:myproducts/features/search/presentation/views/search_view.dart';
 import 'package:myproducts/features/signUp/presentation/views/sign_up_view.dart';
 
 class Routes {
@@ -30,8 +32,11 @@ class Routes {
 
   static const String homeScreen = "/homeScreen";
   static const String layout = "/myProductsLayout";
+  static const String allProductshScreen = "PraductAllView";
   static const String detail = "/productDetail";
   static const String cart = "cart";
+    static const String searchScreen = "SearchScreen";
+
 }
 
 class RouteGenerator {
@@ -80,8 +85,13 @@ class RouteGenerator {
                   )..fetchDetail(id: id),
                   child: ProductDetailView(),
                 ));
+                case Routes.allProductshScreen:
+        return MaterialPageRoute(builder: (_) => const PraductAllView());
+
       case Routes.cart:
         return MaterialPageRoute(builder: (_) => const MyCartView());
+        case Routes.searchScreen:
+        return MaterialPageRoute(builder: (_) =>  SearchScreen());
       // case Routes.homeScreen:
       //   return MaterialPageRoute(builder: (_) => const HomeScreen());
       //

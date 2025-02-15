@@ -6,16 +6,23 @@ part 'products_state.dart';
 
 class ProductsCubit extends Cubit<ProductsState> {
   ProductsCubit(this.fetchproductsUseCases) : super(ProductsInitial());
+    static ProductsCubit get(context) => BlocProvider.of(context);
+
 
   final FetchproductsUseCases fetchproductsUseCases;
-  Future<void> fetchProduct({int pageNamber = 0}) async {
+  List<ProductsEntity> SomeProducts=[];
+  Future<void> fetchProduct({String category='beauty'}) async {
     emit(ProductsLoading());
 
-    var result = await fetchproductsUseCases.call(pageNamber);
+    var result = await fetchproductsUseCases.call(category);
     result.fold((failure) {
       emit(ProductsFailure(failure.errorMessage));
       print(failure.errorMessage);
     }, (Products) {
+      for(int i=0;i<4;i++){
+        SomeProducts.add(Products[i]);
+      }
+      print(SomeProducts.length);
       emit(ProductsSuccess(Products));
       print('yes');
     });

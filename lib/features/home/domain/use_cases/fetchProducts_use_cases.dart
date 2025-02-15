@@ -4,14 +4,14 @@ import 'package:myproducts/core/errors/failures.dart';
 import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
 import 'package:myproducts/features/home/domain/repos/hom_repo.dart';
 
-class FetchproductsUseCases extends UseCases<List<ProductsEntity>, void> {
+class FetchproductsUseCases extends UseCases<List<ProductsEntity>, String> {
   final HomRepo homRepo;
 
   FetchproductsUseCases(this.homRepo);
 
   @override
-  Future<Either<Failure, List<ProductsEntity>>> call([parameter]) {
-    return homRepo.fetchProducts();
+  Future<Either<Failure, List<ProductsEntity>>> call([String? category]) {
+    return homRepo.fetchProducts(category!);
   }
 }
 

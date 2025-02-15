@@ -8,9 +8,9 @@ class CounterDetail extends StatefulWidget {
   @override
   State<CounterDetail> createState() => _CounterDetailState();
 }
+ int number = 1;
 
 class _CounterDetailState extends State<CounterDetail> {
-  int number = 1;
 
   @override
   Widget build(BuildContext context) {

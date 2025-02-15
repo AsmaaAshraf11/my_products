@@ -5,7 +5,7 @@ import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/resources/app_text.dart';
 import 'package:myproducts/features/home/presentation/manger/featured_DetailProduct_cubit/cubit/datailproduct_cubit.dart';
-import 'package:myproducts/features/home/presentation/manger/featured_new_cart/cubit/new_cart_cubit.dart';
+import 'package:myproducts/features/cart/presentation/manger/featured_new_cart/cubit/new_cart_cubit.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/counter_detail.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/custom_product_image.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/description_product.dart';
@@ -113,7 +113,7 @@ class ProductDetailView extends StatelessWidget {
                                 text: 'Add Cart',
                                 onPressed: () {
                                   NewCartCubit.get(context).fetchNewCart(
-                                      state.products.productId, 2);
+                                      state.products.productId, number);
                                 },
                               )
                             ],

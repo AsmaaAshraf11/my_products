@@ -2,12 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/extension/extensions.dart';
+import 'package:myproducts/core/helper_functions/route_navigation.dart';
 import 'package:myproducts/core/resources/app_assets.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
+import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/resources/app_text.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/grid_view_popular.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/list_view_categories.dart';
-import 'package:myproducts/features/component/text_form_field.dart';
 
 class HomeViewBody extends StatefulWidget {
    //LoginModel loginModel;
@@ -24,11 +25,30 @@ class _HomeViewBodyState extends State<HomeViewBody> {
     return SingleChildScrollView(
       
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        DefaultFormField(
-            Controller: Searchcontroller,
-            hintText: 'what do you want?',
-            Validator: null,
-            Prefix: Icons.search_rounded),
+        InkWell(
+          onTap:(){
+            pushRoute(context, Routes.searchScreen);
+          } ,
+          child: Container(
+            height: 50.h,
+            margin: EdgeInsets.symmetric(vertical: 10),
+            decoration: BoxDecoration(
+              color:  Colors.grey[100],
+              border: Border.all(color: LightAppColors.maincolorgreen400,),
+              borderRadius: BorderRadius.circular(15)
+            ),
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(Icons.search_rounded, color: LightAppColors.maincolorgreen400),
+                ),
+                TitleText( text: 'what do you want?',textColor: LightAppColors.graycolor400,)
+              ],
+            ),
+            
+          ),
+        ),
         const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -95,18 +115,23 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               text: 'Categories',
             )),
         ListViewCategories(),
-        const Padding(
-          padding: EdgeInsetsDirectional.only(
+        Padding(
+          padding: const EdgeInsetsDirectional.only(
             top: 15,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              HeadLine22(
+              const HeadLine22(
                 text: 'Popular',
               ),
-              SmallHeader(
-                text: 'See all >',
+              InkWell(
+                child: const SmallHeader(
+                  text: 'See all >',
+                ),
+                onTap: (){
+                  pushRoute(context, Routes.allProductshScreen);
+                }
               )
             ],
           ),

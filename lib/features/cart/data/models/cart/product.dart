@@ -1,5 +1,6 @@
+// features/home/data/models/cart/product.dart
 class Product {
-  int? id;
+  int id;
   String? title;
   double? price;
   int? quantity;
@@ -9,7 +10,7 @@ class Product {
   String? thumbnail;
 
   Product({
-    this.id,
+    required this.id,
     this.title,
     this.price,
     this.quantity,
@@ -20,7 +21,7 @@ class Product {
   });
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-        id: json['id'] as int?,
+        id: json['id'] as int,
         title: json['title'] as String?,
         price: (json['price'] as num?)?.toDouble(),
         quantity: json['quantity'] as int?,

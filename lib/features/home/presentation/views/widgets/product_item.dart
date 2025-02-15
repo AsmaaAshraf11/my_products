@@ -31,7 +31,6 @@ class _ProductItemState extends State<ProductItem> {
               arguments: widget.productsModel!.productId);
         },
         child: Container(
-            // width: 170,
              //height:context.screenHeight*0.5,
             padding: EdgeInsets.only(left: 10),
             decoration: BoxDecoration(
@@ -63,7 +62,7 @@ class _ProductItemState extends State<ProductItem> {
                   ),
                 ),
                 CustomProductImage(
-                    imageUrl: widget.productsModel!.images?[1] ?? ''),
+                    imageUrl: widget.productsModel!.images?[0] ?? ''),
                 // const SizedBox(
                 //   width: 30,
                 // ),

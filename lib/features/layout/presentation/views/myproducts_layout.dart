@@ -5,7 +5,6 @@ import 'package:myproducts/core/di/service_locator.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/shared_preferences/app_prefs.dart';
 import 'package:myproducts/features/layout/presentation/manger/cubit/bottom_navigation_bar_cubit.dart';
-import 'package:myproducts/features/layout/presentation/views/widgets/custom_app_bar.dart';
 
 var Searchcontroller = TextEditingController();
 
@@ -33,8 +32,7 @@ class MyproductsLayout extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    if (cubit.currentIndex != 3)
-                      CustomAppBar(userName: userName),
+                   // if (cubit.currentIndex != 3)
                     cubit.bottomScreen[cubit.currentIndex],
                   ],
                 ),

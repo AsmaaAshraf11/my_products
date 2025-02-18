@@ -1,30 +1,37 @@
 // features/home/presentation/views/home_view_body.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:myproducts/core/constants/constants.dart';
+import 'package:myproducts/core/di/service_locator.dart';
 import 'package:myproducts/core/extension/extensions.dart';
 import 'package:myproducts/core/helper_functions/route_navigation.dart';
 import 'package:myproducts/core/resources/app_assets.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/resources/app_text.dart';
+import 'package:myproducts/core/shared_preferences/app_prefs.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/grid_view_popular.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/list_view_categories.dart';
+import 'package:myproducts/features/layout/presentation/views/widgets/custom_app_bar.dart';
 
 class HomeViewBody extends StatefulWidget {
-   //LoginModel loginModel;
-    //HomeViewBody({super.key,required this.loginModel});
   @override
   State<HomeViewBody> createState() => _HomeViewBodyState();
 }
 
 class _HomeViewBodyState extends State<HomeViewBody> {
   var Searchcontroller = TextEditingController();
+   AppPreferences appPreferences=getIt.get<AppPreferences>();
 
   @override
   Widget build(BuildContext context) {
+      currentUserName =  appPreferences.getUserName();
+
     return SingleChildScrollView(
       
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+       CustomAppBar(userName:currentUserName),
+
         InkWell(
           onTap:(){
             pushRoute(context, Routes.searchScreen);

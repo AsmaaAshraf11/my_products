@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_text.dart';
-import 'package:myproducts/features/component/count_button.dart';
 
 class CounterDetail extends StatefulWidget {
   @override

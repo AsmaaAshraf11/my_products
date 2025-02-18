@@ -8,6 +8,14 @@ import 'package:myproducts/core/resources/app_constants.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/shared_preferences/app_prefs.dart';
 import 'package:myproducts/features/cart/data/repos/cart_repo_impl.dart';
+import 'package:myproducts/features/favorites/data/data_source/favorites_local_data_source.dart';
+import 'package:myproducts/features/favorites/data/repos/favorites_repo_impl.dart';
+import 'package:myproducts/features/favorites/domain/use_cases/deleteFavorites_use_cases%20.dart';
+import 'package:myproducts/features/favorites/domain/use_cases/fetchfavorites_use_cases.dart';
+import 'package:myproducts/features/favorites/domain/use_cases/getFavorites_use_cases%20.dart';
+import 'package:myproducts/features/favorites/presentation/manger/Featured_add_favorites_Cubit/cubit/add_favorites_cubit.dart';
+import 'package:myproducts/features/favorites/presentation/manger/Featured_delet_favorites_Cubit/cubit/deletefavorites_cubit.dart';
+import 'package:myproducts/features/favorites/presentation/manger/Featured_get_favorites_Cubit/cubit/get_favorites_cubit.dart';
 import 'package:myproducts/features/home/data/repos/home_repo_impl.dart';
 import 'package:myproducts/features/cart/domain/use_cases/fetchAddNweCart_use_case.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchCategory_use_cases.dart';
@@ -36,7 +44,9 @@ import 'package:myproducts/features/search/presentation/manger/featured_search_c
 Future<void> initializeApp() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupServiceLocator();
-  Bloc.observer = MyBlocObserver();
+ // await SqlServices().initDb();
+ await FavoritesLocalDataSourceImpl().initDb();
+   Bloc.observer = MyBlocObserver();
 }
 
 // getStartWidget
@@ -44,7 +54,7 @@ Future<void> initializeApp() async {
 Widget getStartWidget()  {
   final AppPreferences appPreferences = getIt<AppPreferences>();
   final bool isOnBoardingViewed =  appPreferences.isOnBoardingScreenViewed();
-  //currentUserName = await appPreferences.getUserName();
+ // currentUserName = await appPreferences.getUserName();
   if (isOnBoardingViewed) {
     final bool isLogged =  appPreferences.isLogged();
     return isLogged ?  MyproductsLayout() :  LoginScreen();
@@ -135,6 +145,30 @@ class MyApp extends StatelessWidget {
                 SearchUseCases(
                   getIt.get<SearchRepoImpl>(),
                 ),
+              );
+            },
+          ),
+
+          BlocProvider(
+            create: (context) {
+              return AddFavoritesCubit(FetchfavoritesUseCases(
+                getIt.get<FavoritesRepoImpl>(),
+              ));
+            },
+          ),
+          BlocProvider(
+            create: (context) {
+              return GetFavoritesCubit(GetfavoritesUseCases(
+                getIt.get<FavoritesRepoImpl>(),
+              )
+              )..GetFavorites();
+            },
+          ),
+          BlocProvider(
+            create: (context) {
+              return DeletefavoritesCubit(DeletefavoritesUseCases(
+                getIt.get<FavoritesRepoImpl>(),
+              )
               );
             },
           ),

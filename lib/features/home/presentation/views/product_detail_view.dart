@@ -73,7 +73,7 @@ class ProductDetailView extends StatelessWidget {
                           SizedBox(
                             height: 160,
                             child: CustomProductImage(
-                                imageUrl: state.products.images![1] ?? ''),
+                                imageUrl: state.products.image ?? ''),
                           ),
                         ],
                       ),
@@ -89,7 +89,7 @@ class ProductDetailView extends StatelessWidget {
                     )),
                   ),
                   ReviewAndRating(
-                    numReview: state.products.images!.length,
+                    numReview: state.products.image!.length,
                     rating: state.products.rating,
                   ),
                   Padding(

@@ -1,15 +1,10 @@
 // features/home/presentation/views/widgets/grid_view_popular.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:myproducts/core/extension/extensions.dart';
-import 'package:myproducts/core/resources/app_assets.dart';
-import 'package:myproducts/core/resources/app_text.dart';
 import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
 import 'package:myproducts/features/home/presentation/manger/Featured_products_Cubit/products_Cubit.dart';
-import 'package:myproducts/features/home/presentation/views/widgets/custom_product_image.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/product_item.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/product_loading.dart';
-import 'package:myproducts/features/home/presentation/views/widgets/rating.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class GridViewPopular extends StatelessWidget {

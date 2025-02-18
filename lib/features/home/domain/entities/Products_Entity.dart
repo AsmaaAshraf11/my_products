@@ -7,7 +7,7 @@ class ProductsEntity {
 
   final String? Category;
 
-  final List<String>? images;
+  final String? image;
 
   final String titleProduct;
 
@@ -16,15 +16,15 @@ class ProductsEntity {
   final num? price;
 
   final num? rating;
-  final List<Review> review;
+  //final List<Review> review;
 
   ProductsEntity(
-      {required this.images,
+      {required this.image,
       required this.titleProduct,
       required this.descriptionProduct,
       required this.Category,
       required this.price,
       required this.rating,
-      required this.review,
+     // required this.review,
       required this.productId});
 }

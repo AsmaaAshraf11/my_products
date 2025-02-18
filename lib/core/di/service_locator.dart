@@ -3,6 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:myproducts/features/cart/data/data_source/cart_remote_data_source.dart';
 import 'package:myproducts/features/cart/data/repos/cart_repo_impl.dart';
+import 'package:myproducts/features/favorites/data/data_source/favorites_local_data_source.dart';
+import 'package:myproducts/features/favorites/data/repos/favorites_repo_impl.dart';
 import 'package:myproducts/features/home/data/data_source/home_remote_data_source.dart';
 import 'package:myproducts/features/home/data/repos/home_repo_impl.dart';
 import 'package:myproducts/features/login/data/data_source/login_remote_data_source.dart';
@@ -64,6 +66,12 @@ void _registerRepositories() {
   getIt.registerSingleton<SearchRepoImpl>(
     SearchRepoImpl(
      searchRemoteDataSource: SearchRemoteDataSourceImpl(apiService),
+    ),
+  );
+
+  getIt.registerSingleton<FavoritesRepoImpl>(
+    FavoritesRepoImpl(
+      favoritesLocalDataSourceImpl: FavoritesLocalDataSourceImpl(),
     ),
   );
 

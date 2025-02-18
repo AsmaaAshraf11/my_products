@@ -44,7 +44,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   @override
   Future<ProductsEntity> fetchDetailProducts({required int id}) async {
     // TODO: implement fetchDetailProducts
-    print('detail');
+   // print('detail');
     var data = await apiService.get(
         parameter: '$id',
         endpoint: Endpoint.getDetailproduct);

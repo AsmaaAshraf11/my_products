@@ -8,6 +8,7 @@ import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/resources/app_text.dart';
 import 'package:myproducts/features/favorites/presentation/manger/Featured_add_favorites_Cubit/cubit/add_favorites_cubit.dart';
 import 'package:myproducts/features/favorites/presentation/manger/Featured_delet_favorites_Cubit/cubit/deletefavorites_cubit.dart';
+import 'package:myproducts/features/favorites/presentation/manger/Featured_get_favorites_Cubit/cubit/get_favorites_cubit.dart';
 import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/custom_product_image.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/rating.dart';
@@ -21,8 +22,8 @@ class ProductItem extends StatefulWidget {
 }
 
 class _ProductItemState extends State<ProductItem> {
-  Color? isfavorite = LightAppColors.graycolor400;
-
+ // Color? isfavorite = LightAppColors.graycolor400;
+  bool isfavorite=false;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DeletefavoritesCubit, DeletefavoritesState>(
@@ -32,6 +33,10 @@ class _ProductItemState extends State<ProductItem> {
             // TODO: implement listener
           },
           builder: (context, state) {
+            var deletecubit=DeletefavoritesCubit.get(context);
+            var addFavoritesCubit=AddFavoritesCubit.get(context);
+            List<int>idfavorit= GetFavoritesCubit. get(context).idfavorit;
+             List<ProductsEntity>favorit= GetFavoritesCubit. get(context).favorite;
             return SizedBox(
               height: context.screenHeight * 0.4,
               child: GestureDetector(
@@ -58,29 +63,28 @@ class _ProductItemState extends State<ProductItem> {
                         Align(
                           alignment: Alignment.topRight,
                           child: IconButton(
-                            color: LightAppColors.graycolor400,
                             onPressed: () {
                               setState(() {
-                                isfavorite = LightAppColors.red;
-                                AddFavoritesCubit.get(context)
-                                    .AddFavorites(widget.productsModel);
-                               // DeletefavoritesCubit.get(context).DeleteFavorites(widget.productsModel.productId);
-                              });
+              if ((GetFavoritesCubit. get(context).isExist(product:widget. productsModel))) {
+                deletecubit.DeleteFavorites(widget.productsModel.productId);
+              }
+              else{
+                addFavoritesCubit.AddFavorites(widget.productsModel);
+                isfavorite = true;
+              }
+            });
+                              
+                        
                             },
                             icon: Icon(
                               Icons.favorite,
-                              color: isfavorite,
+                              color: GetFavoritesCubit. get(context).isExist(product:widget. productsModel)?LightAppColors.red:LightAppColors.graycolor400,
                             ),
                           ),
                         ),
                         CustomProductImage(
                             imageUrl: widget.productsModel.image ?? ''),
-                        // const SizedBox(
-                        //   width: 30,
-                        // ),
-                        // Image.asset(
-                        //   ImageAssets.imge1,
-                        //   width: 100,
+                       
                         // ),
                         Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

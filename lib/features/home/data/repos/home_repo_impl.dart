@@ -24,7 +24,7 @@ class HomeRepoImpl implements HomRepo {
   }
 
   @override
-  Future<Either<Failure, List<ProductsEntity>>> fetchProducts([String? category='fragrances']) async {
+  Future<Either<Failure, List<ProductsEntity>>> fetchProducts([String? category]) async {
     try {
       List<ProductsEntity> productsList = [];
       productsList = await homeRemoteDataSource.fetchProducts(category!);

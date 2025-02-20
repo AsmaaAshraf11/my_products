@@ -1,4 +1,5 @@
 // features/favorites/data/data_source/favorites_local_data_source.dart
+import 'package:myproducts/features/favorites/data/models/favorite.dart';
 import 'package:myproducts/features/home/data/models/products/product.dart';
 import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
 import 'package:sqflite/sqflite.dart';
@@ -14,6 +15,7 @@ Future getFavorites();
   
   
   static Database? _database;
+  List<ProductsEntity> products =[];
 
  Future<Database> get database async {
     if (_database != null) return _database!;
@@ -74,7 +76,7 @@ Future getFavorites();
     print(data.length);
     for (var element in data) {
      // print('element:$element');
-        products.add(Product.fromJson(element));
+        products.add(Favorite.fromJson(element));
       }
     print('product${products.length}');
         return products;  
@@ -86,7 +88,7 @@ Future getFavorites();
   
   return await db.delete(
     'products',
-    where: 'id = ?',
+    where: 'idProduct = ?',
     whereArgs: [id],
   );
         

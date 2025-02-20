@@ -13,12 +13,12 @@ class AddFavoritesCubit extends Cubit<AddFavoritesState> {
 
 
   final FetchfavoritesUseCases fetchfavoritesUseCases;
+  
   Future<void> AddFavorites(ProductsEntity product) async {
     try{
           var data = await fetchfavoritesUseCases.call(product);
            emit(AddFavoritesSuccess());
-          // print(' insert2 table$data');
-
+                
     }catch(erorr) {
           print(' error when insert table${erorr.toString()}');
           emit(AddFavoritesFailure(erorr.toString()));

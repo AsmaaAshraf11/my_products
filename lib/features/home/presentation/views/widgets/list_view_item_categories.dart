@@ -4,29 +4,29 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_text.dart';
 import 'package:myproducts/features/home/presentation/manger/Featured_products_Cubit/products_Cubit.dart';
-import 'package:myproducts/features/home/presentation/views/widgets/list_view_categories.dart';
 
 class ListViewItemCategories extends StatefulWidget {
-  ListViewItemCategories({super.key, required this.category});
+  ListViewItemCategories({super.key, required this.category,required this.index});
   String category;
-
+   int index;
+ 
   @override
   State<ListViewItemCategories> createState() => _ListViewItemCategoriesState();
 }
-String NamCategory=category;
+//String NamCategory=category;
 class _ListViewItemCategoriesState extends State<ListViewItemCategories> {
   Color colotcontanr = Colors.white;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProductsCubit, ProductsState>(
       builder: (context, state) {
+
         return GestureDetector(
           onTap: () {
              ProductsCubit.get(context).fetchProduct(category: widget.category);
-            setState(() {
-              
-              colotcontanr = Colors.green.shade100;
-            });
+                           colotcontanr = Colors.green.shade100;
+
+            
           },
           child: Container(
             width: 120,
@@ -48,12 +48,7 @@ class _ListViewItemCategoriesState extends State<ListViewItemCategories> {
                     textColor: LightAppColors.black,
                     bold: true,
                   )),
-                  // Expanded(
-                  //   child: Image.asset(
-                  //     ImageAssets.imge1,
-                  //     width: 70.w,
-                  //   ),
-                  // ),
+                 
                 ]),
           ),
         );

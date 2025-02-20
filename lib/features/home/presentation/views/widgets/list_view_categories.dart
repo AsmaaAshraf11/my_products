@@ -10,7 +10,7 @@ class ListViewCategories extends StatefulWidget {
   @override
   State<ListViewCategories> createState() => _ListViewCategoriesState();
 }
-String category='';
+String? category;
 class _ListViewCategoriesState extends State<ListViewCategories> {
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,8 @@ class _ListViewCategoriesState extends State<ListViewCategories> {
                       itemBuilder: (context, index) 
                       {
                         return ListViewItemCategories(
-                            category: '${state.Category[index]}',
+                            category: '${state.Category[index]}', index: index,
+                           // category=
                           );
                           
                       },

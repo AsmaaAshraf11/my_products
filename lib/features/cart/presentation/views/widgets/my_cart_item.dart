@@ -27,7 +27,7 @@ class _MyCartItemState extends State<MyCartItem> {
           padding: EdgeInsets.all(9),
           height: context.screenHeight * 0.18,
           decoration: BoxDecoration(
-              color: LightAppColors.white,
+              color: LightAppColors.scaffoldBackgroundColor,
               borderRadius: BorderRadius.circular(15)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -56,12 +56,12 @@ class _MyCartItemState extends State<MyCartItem> {
                     children: [
                       HeadLine22(
                         text: '${'\$${widget.model.price}'}',
-                        textColor: LightAppColors.maincolorgreen400,
+                        textColor: LightAppColors.primary400,
                         overflow: true,
                       ),
                       TitleMedium(
                         text: '${'/kg'}',
-                        textColor: LightAppColors.black,
+                        textColor: LightAppColors.textcolor,
                       )
                     ],
                   )
@@ -72,7 +72,7 @@ class _MyCartItemState extends State<MyCartItem> {
                 children: [
                   CircleAvatar(
                     radius: 11,
-                    backgroundColor: LightAppColors.maincolorgreen400,
+                    backgroundColor: LightAppColors.primary400,
                     child: IconButton(
                         padding: EdgeInsets.zero,
                         onPressed: () {
@@ -82,18 +82,18 @@ class _MyCartItemState extends State<MyCartItem> {
                         },
                         icon: Icon(
                           Icons.add,
-                          color: LightAppColors.white,
+                          color: Colors.white,
                           size: 17,
                         )),
                   ),
                   TitleMedium(
                     text: '$number',
-                    textColor: LightAppColors.black,
+                    textColor: LightAppColors.textcolor,
                     bold: true,
                   ),
                   CircleAvatar(
                     radius: 11,
-                    backgroundColor: LightAppColors.maincolorgreen400,
+                    backgroundColor: LightAppColors.primary400,
                     child: IconButton(
                         padding: EdgeInsets.zero,
                         onPressed: () {
@@ -105,7 +105,7 @@ class _MyCartItemState extends State<MyCartItem> {
                         },
                         icon: Icon(
                           Icons.remove,
-                          color: LightAppColors.white,
+                          color: Colors.white,
                           size: 15,
                         )),
                   )

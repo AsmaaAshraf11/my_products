@@ -87,12 +87,12 @@ List<BoardindModel> boarding = [
                   expansionFactor: 3,
                   dotWidth: 7,
                   spacing: 5,
-                  activeDotColor: LightAppColors.maincolorgreen400,
+                  activeDotColor: LightAppColors.primary400,
                 ),
               ),
               FloatingActionButton(
                 shape: const CircleBorder(),
-                backgroundColor: LightAppColors.maincolorgreen700,
+                backgroundColor: LightAppColors.primary700,
                 onPressed: () {
                   if (islast) {
                       appPreferences.setOnBoardingScreenViewed();   

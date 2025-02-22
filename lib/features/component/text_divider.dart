@@ -1,4 +1,4 @@
-// features/login/presentation/views/widgets/text_divider.dart
+// features/component/text_divider.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/extension/extensions.dart';

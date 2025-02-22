@@ -1,3 +1,4 @@
+// core/resources/theme_manager.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
@@ -11,6 +12,13 @@ import 'package:myproducts/core/resources/values_manager.dart';
 // }
 
 ThemeData lightTheme = ThemeData(
+
+
+
+
+
+
+
   primarySwatch: LightAppColors.primarySwatch,
   primaryColor: LightAppColors.primary,
   primaryColorLight: LightAppColors.primaryTextColor,

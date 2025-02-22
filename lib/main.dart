@@ -6,6 +6,7 @@ import 'package:myproducts/core/bloc_observer/bloc_observer.dart';
 import 'package:myproducts/core/di/service_locator.dart';
 import 'package:myproducts/core/resources/app_constants.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
+import 'package:myproducts/core/resources/theme_manager.dart';
 import 'package:myproducts/core/shared_preferences/app_prefs.dart';
 import 'package:myproducts/features/cart/data/repos/cart_repo_impl.dart';
 import 'package:myproducts/features/favorites/data/data_source/favorites_local_data_source.dart';
@@ -24,6 +25,7 @@ import 'package:myproducts/features/cart/presentation/manger/Featured_cart_cubit
 import 'package:myproducts/features/cart/presentation/manger/featured_DeleteCart_cubit/cubit/delete_cart_cubit.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchDetailProduct_use_case.dart';
 import 'package:myproducts/features/home/presentation/manger/featured_DetailProduct_cubit/cubit/datailproduct_cubit.dart';
+import 'package:myproducts/features/home/presentation/manger/theme/cubit/theme_cubit.dart';
 import 'package:myproducts/features/layout/presentation/manger/cubit/bottom_navigation_bar_cubit.dart';
 import 'package:myproducts/features/login/data/repos/login_repo_impl.dart';
 import 'package:myproducts/features/login/domain/use_cases/fetchDataLogin_use_case.dart';
@@ -44,32 +46,35 @@ import 'package:myproducts/features/search/presentation/manger/featured_search_c
 Future<void> initializeApp() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupServiceLocator();
- // await SqlServices().initDb();
- await FavoritesLocalDataSourceImpl().initDb();
-   Bloc.observer = MyBlocObserver();
+  // await SqlServices().initDb();
+  await FavoritesLocalDataSourceImpl().initDb();
+  Bloc.observer = MyBlocObserver();
 }
 
 // getStartWidget
 // todo this will  return i must open any screen
-Widget getStartWidget()  {
+Widget getStartWidget() {
   final AppPreferences appPreferences = getIt<AppPreferences>();
-  final bool isOnBoardingViewed =  appPreferences.isOnBoardingScreenViewed();
- // currentUserName = await appPreferences.getUserName();
+  final bool isOnBoardingViewed = appPreferences.isOnBoardingScreenViewed();
+  // currentUserName = await appPreferences.getUserName();
   if (isOnBoardingViewed) {
-    final bool isLogged =  appPreferences.isLogged();
-    return isLogged ?  MyproductsLayout() :  LoginScreen();
+    final bool isLogged = appPreferences.isLogged();
+    return isLogged ? MyproductsLayout() : LoginScreen();
   } else {
-    return  OnboardingView();
+    return OnboardingView();
   }
 }
+
 void main() async {
   await initializeApp();
-  runApp(  MyApp(startWidget: getStartWidget(),));
+  runApp(MyApp(
+    startWidget: getStartWidget(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
-    MyApp({super.key, required this.startWidget});
-   final Widget startWidget;
+  MyApp({super.key, required this.startWidget});
+  final Widget startWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +99,6 @@ class MyApp extends StatelessWidget {
               )..fetchCategory();
             },
           ),
-
           BlocProvider(
             create: (context) {
               return DatailproductCubit(
@@ -127,10 +131,10 @@ class MyApp extends StatelessWidget {
               ));
             },
           ),
-           BlocProvider(
-                create: (context) => BottomNavigationBarCubit(),
-            ),
-             BlocProvider(
+          BlocProvider(
+            create: (context) => BottomNavigationBarCubit(),
+          ),
+          BlocProvider(
             create: (context) {
               return DeleteCartCubit(
                 FetchDeletecartUseCases(
@@ -139,7 +143,7 @@ class MyApp extends StatelessWidget {
               );
             },
           ),
-           BlocProvider(
+          BlocProvider(
             create: (context) {
               return SearchCubit(
                 SearchUseCases(
@@ -148,7 +152,6 @@ class MyApp extends StatelessWidget {
               );
             },
           ),
-
           BlocProvider(
             create: (context) {
               return AddFavoritesCubit(FetchfavoritesUseCases(
@@ -160,32 +163,42 @@ class MyApp extends StatelessWidget {
             create: (context) {
               return GetFavoritesCubit(GetfavoritesUseCases(
                 getIt.get<FavoritesRepoImpl>(),
-              )
-              )..GetFavorites();
+              ))
+                ..GetFavorites();
             },
           ),
           BlocProvider(
             create: (context) {
               return DeletefavoritesCubit(DeletefavoritesUseCases(
                 getIt.get<FavoritesRepoImpl>(),
-              )
-              );
+              ));
+            },
+          ),
+          BlocProvider(
+            create: (context) {
+              return ThemeCubit()..isDarkMode();
             },
           ),
         ],
-        child: MaterialApp(
-          title: AppConstants.appName,
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            
-           
-          ),
-          // theme: lightTheme,
-          home: 
-         // LoginScreen(),
-          startWidget,
-          //initialRoute: Routes.homeScreen,
-          onGenerateRoute: RouteGenerator.getRoute,
+        child: BlocBuilder<ThemeCubit, ThemeState>(
+          builder: (context, state) {
+            if(state is ThemeSuccess) {
+              return MaterialApp(
+              title: AppConstants.appName,
+              debugShowCheckedModeBanner: false,
+              theme: state.themeMode==MyThemeMode.light?lightTheme:darkTheme,
+              //ThemeData(),
+              // theme: lightTheme,
+              home:
+                  // LoginScreen(),
+                  startWidget,
+              //initialRoute: Routes.homeScreen,
+              onGenerateRoute: RouteGenerator.getRoute,
+            );
+            } else{
+              return CircularProgressIndicator();
+            }
+          },
         ),
       ),
     );

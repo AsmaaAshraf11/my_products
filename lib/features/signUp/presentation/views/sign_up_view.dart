@@ -45,7 +45,7 @@ class _SignUpViewState extends State<SignUpView> {
         const BackgroundImage(),
         IconbuttonArrowBack(
           route: Routes.start,
-          iconColor: LightAppColors.maincolorgreen700,
+          iconColor: LightAppColors.primary700,
           buttonColor: Colors.white,
         ),
         Padding(
@@ -110,7 +110,7 @@ class _SignUpViewState extends State<SignUpView> {
                                   });
                                 },
                                 icon: Icon(
-                                  color: LightAppColors.maincolorgreen400,
+                                  color: LightAppColors.primary400,
                                   isobscureText
                                       ? Icons.visibility_off
                                       : Icons.visibility,

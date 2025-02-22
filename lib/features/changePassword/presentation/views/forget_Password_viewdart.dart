@@ -1,4 +1,4 @@
-// features/login/presentation/views/forget_Password_viewdart.dart
+// features/changePassword/presentation/views/forget_Password_viewdart.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/extension/extensions.dart';
@@ -27,7 +27,7 @@ class ForgetPasswordViewdart extends StatelessWidget {
         const BackgroundImage(),
         IconbuttonArrowBack(
           route: Routes.loginScreen,
-          iconColor: LightAppColors.maincolorgreen700,
+          iconColor: LightAppColors.primary700,
           buttonColor: Colors.white,
         ),
         Padding(

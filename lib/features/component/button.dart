@@ -1,11 +1,11 @@
-// features/login/presentation/views/widgets/button.dart
+// features/component/button.dart
 import 'package:flutter/material.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 
 Widget defaultButton({required String text, required Function onPressed}) {
   return MaterialButton(
       minWidth: double.infinity,
-      color: LightAppColors.maincolorgreen700,
+      color: LightAppColors.primary700,
       // const Color.fromARGB(255, 76, 144, 175),
       height: 50,
       shape: const RoundedRectangleBorder(

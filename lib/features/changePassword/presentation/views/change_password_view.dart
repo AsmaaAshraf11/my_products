@@ -37,7 +37,7 @@ appBar: PreferredSize(
         const BackgroundImage(),
         IconbuttonArrowBack(
           route: Routes.forgetPasswordScreen,
-          iconColor: LightAppColors.maincolorgreen700,
+          iconColor: LightAppColors.primary700,
           buttonColor: Colors.white,
         ),
         Padding(
@@ -82,7 +82,7 @@ appBar: PreferredSize(
                                   ),
                                   SmallHeader(
                                     text: 'Strong...',
-                                    color: LightAppColors.maincolorgreen400,
+                                    color: LightAppColors.primary400,
                                   )
                                 ],
                               ),
@@ -108,7 +108,7 @@ appBar: PreferredSize(
                                         });
                                       },
                                       icon: Icon(
-                                        color: LightAppColors.maincolorgreen400,
+                                        color: LightAppColors.primary400,
                                         isobscureText
                                             ? Icons.visibility_off
                                             : Icons.visibility,

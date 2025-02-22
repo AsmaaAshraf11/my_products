@@ -47,7 +47,7 @@ class CustomAppBar extends StatelessWidget {
                 height: 36.h,
                 width: 36.w,
                 decoration: BoxDecoration(
-                    color: LightAppColors.maincolorgreen700,
+                    color: LightAppColors.primary700,
                     borderRadius: BorderRadius.circular(11)),
                 child: IconButton(
                   padding: EdgeInsets.all(0),
@@ -63,7 +63,7 @@ class CustomAppBar extends StatelessWidget {
                 height: 36.h,
                 width: 36.w,
                 decoration: BoxDecoration(
-                    color: LightAppColors.maincolorgreen700,
+                    color: LightAppColors.primary700,
                     borderRadius: BorderRadius.circular(11)),
                 child: IconButton(
                   padding: EdgeInsets.all(0),

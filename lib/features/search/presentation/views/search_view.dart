@@ -45,7 +45,7 @@ class SearchScreen extends StatelessWidget {
                        SearchCubit.get(context).SearchProduct(text);
                     },
                     Prefix: Icons.search_rounded,
-                    suffix: Icon(Icons.filter_list,color: LightAppColors.maincolorgreen400,)
+                    suffix: Icon(Icons.filter_list,color: LightAppColors.primary400,)
                     ),
                     50.h.heightSizedBox,
                     Skeletonizer(

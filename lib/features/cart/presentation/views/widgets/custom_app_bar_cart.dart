@@ -1,4 +1,4 @@
-// features/home/presentation/views/widgets/custom_app_bar_cart.dart
+// features/cart/presentation/views/widgets/custom_app_bar_cart.dart
 import 'package:flutter/material.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
@@ -16,7 +16,9 @@ class CustomAppBarCart extends StatelessWidget {
           route: Routes.layout,
           iconColor: Colors.white,
           padding: 20.0,
-          buttonColor: LightAppColors.maincolorgreen700,
+          buttonColor:
+           LightAppColors.primary700,
+          //Theme.of(context).
         ),
         Text(
           'My Cart',
@@ -30,7 +32,7 @@ class CustomAppBarCart extends StatelessWidget {
           iconColor: Colors.white,
           padding: 20.0,
           icon: Icons.notifications,
-          buttonColor: LightAppColors.maincolorgreen700,
+          buttonColor: LightAppColors.primary700,
         ),
       ],
     );

@@ -51,7 +51,7 @@ class StartView extends StatelessWidget {
                     child: Text(
                       "OR Shopping as guest",
                       style: TextStyle(
-                          color: LightAppColors.maincolorgreen700,
+                          color: LightAppColors.primary700,
                           fontWeight: FontWeight.bold,
                           decoration: TextDecoration.underline),
                     ),

@@ -41,14 +41,14 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             margin: EdgeInsets.symmetric(vertical: 10),
             decoration: BoxDecoration(
               color:  Colors.grey[100],
-              border: Border.all(color: LightAppColors.maincolorgreen400,),
+              border: Border.all(color: LightAppColors.primary400,),
               borderRadius: BorderRadius.circular(15)
             ),
             child: Row(
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Icon(Icons.search_rounded, color: LightAppColors.maincolorgreen400),
+                  child: Icon(Icons.search_rounded, color: LightAppColors.primary400),
                 ),
                 TitleText( text: 'what do you want?',textColor: LightAppColors.graycolor400,)
               ],
@@ -84,18 +84,18 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                 TitleMedium(
                   text: 'Up to 25% offer!',
                   bold: true,
-                  textColor: LightAppColors.maincolorgreen400,
+                  textColor: LightAppColors.primary400,
                 ),
                 4.h.heightSizedBox,
                 TitleText(
                   text: 'Hurry to catch this',
-                  textColor: LightAppColors.maincolorgreen400,
+                  textColor: LightAppColors.primary400,
                 ),
                 5.h.heightSizedBox,
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: LightAppColors.maincolorgreen400,
+                    backgroundColor: LightAppColors.primary400,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),

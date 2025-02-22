@@ -11,7 +11,7 @@ class MidButtom extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
         minWidth: 140.w,
-        color: LightAppColors.maincolorgreen700,
+        color: LightAppColors.primary700,
         height: 42,
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10))),

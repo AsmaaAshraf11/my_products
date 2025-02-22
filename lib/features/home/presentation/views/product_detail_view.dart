@@ -55,13 +55,13 @@ class ProductDetailView extends StatelessWidget {
                                 route: Routes.layout,
                                 iconColor: Colors.white,
                                 padding: 20.0,
-                                buttonColor: LightAppColors.maincolorgreen700,
+                                buttonColor: LightAppColors.primary700,
                               ),
                               IconbuttonArrowBack(
                                 iconColor: Colors.white,
                                 padding: 20.0,
                                 icon: Icons.favorite,
-                                buttonColor: LightAppColors.maincolorgreen700,
+                                buttonColor: LightAppColors.primary700,
                               )
                             ],
                           ),

@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const BackgroundImage(),
               IconbuttonArrowBack(
                 route: Routes.start,
-                iconColor: LightAppColors.maincolorgreen700,
+                iconColor: LightAppColors.primary700,
                 buttonColor: Colors.white,
               ),
               Padding(
@@ -147,7 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               },
                                               icon: Icon(
                                                 color: LightAppColors
-                                                    .maincolorgreen400,
+                                                    .primary400,
                                                 isobscureText
                                                     ? Icons.visibility_off
                                                     : Icons.visibility,

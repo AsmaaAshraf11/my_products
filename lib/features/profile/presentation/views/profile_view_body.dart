@@ -8,6 +8,7 @@ import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/resources/app_text.dart';
 import 'package:myproducts/core/shared_preferences/app_prefs.dart';
+import 'package:myproducts/features/home/presentation/manger/theme/cubit/theme_cubit.dart';
 import 'package:myproducts/features/login/data/models/login_model.dart';
 import 'package:myproducts/features/profile/presentation/views/widgets/list_til.dart';
 import 'package:myproducts/features/profile/presentation/views/widgets/min_button.dart';
@@ -72,8 +73,9 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
           text: 'Notification',
           trailing: Switch(
             value: notifications,
-            activeTrackColor: LightAppColors.maincolorgreen700,
-            activeColor: LightAppColors.white,
+            activeTrackColor: LightAppColors.primary700,
+            activeColor: LightAppColors.colorSwatch,
+            inactiveThumbColor:LightAppColors.colorSwatch,
             onChanged: (bool value) {
               setState(() {
                 notifications = value;
@@ -86,11 +88,14 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
           text: 'Dark mode',
           trailing: Switch(
             value: isdark,
-            activeTrackColor: LightAppColors.maincolorgreen700,
-            activeColor: LightAppColors.white,
+            activeTrackColor: LightAppColors.primary700,
+            inactiveThumbColor:LightAppColors.colorSwatch,
+
+            activeColor: LightAppColors.colorSwatch,
             onChanged: (bool value) {
               setState(() {
                 isdark = value;
+                ThemeCubit .get(context).setDarkMode(value);
               });
             },
           ),

@@ -31,12 +31,12 @@ class ButtonSignLogin extends StatelessWidget {
                 fontSize: 18,
                 fontStyle: FontStyle.normal,
                 fontWeight: FontWeight.bold,
-                color: LightAppColors.maincolorgreen700,
+                color: LightAppColors.primary700,
               )),
         ),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: LightAppColors.maincolorgreen700,
+            backgroundColor: LightAppColors.primary700,
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(25),

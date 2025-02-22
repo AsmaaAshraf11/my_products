@@ -1,16 +1,16 @@
-// features/home/presentation/views/widgets/count_button.dart
+// features/component/count_button.dart
 import 'package:flutter/material.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 
 class CountButton extends StatelessWidget {
   IconData icons;
   double size;
-  double radius;
+  //double radius;
   Function onPressed;
   CountButton(
       {required this.icons,
       required this.onPressed,
-      required this.radius,
+     // required this.radius,
       required this.size,
       super.key});
 
@@ -19,14 +19,14 @@ class CountButton extends StatelessWidget {
     return Column(
       children: [
         CircleAvatar(
-          radius: radius,
-          backgroundColor: LightAppColors.maincolorgreen700,
+          radius: 8,
+          backgroundColor: LightAppColors.primary700,
           child: IconButton(
               padding: EdgeInsets.zero,
               onPressed: onPressed(),
               icon: Icon(
                 icons,
-                color: LightAppColors.white,
+                color: Colors.white,
                 size: size,
               )),
         ),

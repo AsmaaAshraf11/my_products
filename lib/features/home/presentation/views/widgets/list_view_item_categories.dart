@@ -13,7 +13,9 @@ class ListViewItemCategories extends StatefulWidget {
   @override
   State<ListViewItemCategories> createState() => _ListViewItemCategoriesState();
 }
-//String NamCategory=category;
+  int select=0;
+
+   
 class _ListViewItemCategoriesState extends State<ListViewItemCategories> {
   Color colotcontanr = Colors.white;
   @override
@@ -25,14 +27,14 @@ class _ListViewItemCategoriesState extends State<ListViewItemCategories> {
           onTap: () {
              ProductsCubit.get(context).fetchProduct(category: widget.category);
                            colotcontanr = Colors.green.shade100;
-
+                            select=widget.index;
             
           },
           child: Container(
             width: 120,
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: colotcontanr,
+              color:select==widget.index? Colors.green.shade100 : Colors.white,
               border: Border.all(color: Colors.grey.shade300),
               //  bottom: BorderSide()
 
@@ -45,7 +47,7 @@ class _ListViewItemCategoriesState extends State<ListViewItemCategories> {
                   Expanded(
                       child: TitleMedium(
                     text: '${widget.category}',
-                    textColor: LightAppColors.black,
+                    textColor: LightAppColors.textcolor,
                     bold: true,
                   )),
                  

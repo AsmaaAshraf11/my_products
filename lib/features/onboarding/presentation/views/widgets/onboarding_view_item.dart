@@ -42,7 +42,7 @@ class OnboardingViewItem extends StatelessWidget {
             children: [
               TextSpan(
                 text: '${model.subTitle}',
-                style: TextStyle(color: LightAppColors.maincolorgreen400),
+                style: TextStyle(color: LightAppColors.primary400),
               ),
             ],
           ),

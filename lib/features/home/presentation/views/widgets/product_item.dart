@@ -93,7 +93,7 @@ class _ProductItemState extends State<ProductItem> {
                                 overflow: true,
                                 text: widget.productsModel!.titleProduct ?? '',
                                 // 'hair oil',
-                                textColor: LightAppColors.black,
+                                textColor: LightAppColors.textcolor,
                                 bold: true,
                               ),
                               RichText(
@@ -104,7 +104,7 @@ class _ProductItemState extends State<ProductItem> {
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
-                                      color: LightAppColors.maincolorgreen400),
+                                      color: LightAppColors.primary400),
                                   children: [
                                     TextSpan(
                                       text: '${'/kg'}',

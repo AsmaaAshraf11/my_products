@@ -24,6 +24,7 @@ class MyproductsLayout extends StatelessWidget {
             // appBar: AppBar(
     
             // ),
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             body: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.symmetric(
@@ -40,7 +41,7 @@ class MyproductsLayout extends StatelessWidget {
             ),
             bottomNavigationBar: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
-              selectedItemColor: LightAppColors.maincolorgreen400,
+              selectedItemColor: LightAppColors.primary400,
               unselectedItemColor: LightAppColors.graycolor400,
               backgroundColor: Colors.white,
               items: cubit.BottomItem,

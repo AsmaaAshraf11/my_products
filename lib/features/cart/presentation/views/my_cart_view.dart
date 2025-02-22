@@ -71,7 +71,7 @@ class _MyCartViewState extends State<MyCartView> {
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                color: LightAppColors.white,
+                                color: Colors.white,
                                 borderRadius: BorderRadius.vertical(
                                   top: Radius.circular(50),
                                 ),
@@ -92,7 +92,7 @@ class _MyCartViewState extends State<MyCartView> {
                                       TitleMedium(
                                         bold: true,
                                         text: '${'\$27.99'}',
-                                        textColor: LightAppColors.black,
+                                        textColor: LightAppColors.textcolor,
                                       )
                                     ],
                                   ),
@@ -109,7 +109,7 @@ class _MyCartViewState extends State<MyCartView> {
                                       TitleMedium(
                                         bold: true,
                                         text: '${'\$12.99'}',
-                                        textColor: LightAppColors.black,
+                                        textColor: LightAppColors.textcolor,
                                       )
                                     ],
                                   ),
@@ -123,7 +123,7 @@ class _MyCartViewState extends State<MyCartView> {
                                       ),
                                       HeadLine22(
                                         text: '${'\$40.99'}',
-                                        textColor: LightAppColors.black,
+                                        textColor: LightAppColors.textcolor,
                                       )
                                     ],
                                   ),

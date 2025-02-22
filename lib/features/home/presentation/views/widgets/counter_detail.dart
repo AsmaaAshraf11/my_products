@@ -20,7 +20,7 @@ class _CounterDetailState extends State<CounterDetail> {
         children: [
           CircleAvatar(
             radius: 18,
-            backgroundColor: LightAppColors.maincolorgreen700,
+            backgroundColor: LightAppColors.primary700,
             child: IconButton(
                 padding: EdgeInsets.zero,
                 onPressed: () {
@@ -30,7 +30,7 @@ class _CounterDetailState extends State<CounterDetail> {
                 },
                 icon: Icon(
                   Icons.add,
-                  color: LightAppColors.white,
+                  color:Colors.white,
                   size: 28,
                 )),
           ),
@@ -43,7 +43,7 @@ class _CounterDetailState extends State<CounterDetail> {
           ),
           CircleAvatar(
             radius: 18,
-            backgroundColor: LightAppColors.maincolorgreen700,
+            backgroundColor: LightAppColors.primary700,
             child: IconButton(
                 padding: EdgeInsets.zero,
                 onPressed: () {
@@ -55,7 +55,7 @@ class _CounterDetailState extends State<CounterDetail> {
                 },
                 icon: Icon(
                   Icons.remove,
-                  color: LightAppColors.white,
+                  color: Colors.white,
                   size: 28,
                 )),
           )

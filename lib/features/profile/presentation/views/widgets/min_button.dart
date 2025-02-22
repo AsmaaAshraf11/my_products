@@ -13,7 +13,7 @@ class MinButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
         minWidth: 100.w,
-        color: LightAppColors.maincolorgreen700,
+        color: LightAppColors.primary700,
         height: 35,
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(30))),

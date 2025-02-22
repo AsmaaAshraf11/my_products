@@ -18,7 +18,7 @@ class ReviewAndRating extends StatelessWidget {
         children: [
           Icon(
             Icons.watch_later_rounded,
-            color: LightAppColors.maincolorgreen400,
+            color: LightAppColors.primary400,
             size: 25,
           ),
           TitleText(

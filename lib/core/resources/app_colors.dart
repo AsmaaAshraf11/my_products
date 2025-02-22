@@ -3,17 +3,25 @@ import 'package:flutter/material.dart';
 
 class LightAppColors {
   static const MaterialColor primarySwatch = Colors.blue;
-  static Color maincolorgreen700 = Color(0XFF179700);
-  static Color maincolorgreen400 = Color(0XFF20B400);
+  static const Color primary700 = Color(0XFF179700);
+  static const Color primary400 = Color(0XFF20B400);
   static Color? graycolor700 = Colors.grey[700];
-  static Color graycolor600 = Colors.grey[600]!;
-  static Color graycolor400 = Colors.grey[400]!;
+  static  Color graycolor600 = Colors.grey[600]!;
+  static  Color graycolor400 = Colors.grey[400]!;
   static Color? pink50 = Colors.pink[50];
   static Color? blue50 = Colors.blue[100];
-  static Color? pink0 = Colors.pink;
-  static Color? white = Colors.white!;
+  static const Color? pink0 = Colors.pink;
+  //static const Color? colorbutton = Colors.white;
+    static const Color? scaffoldBackgroundColor = Colors.white;
+
+  static const Color? iconListTil = Colors.black;
+  static const Color textcolor = Colors.black;
+
+
+  static Color? colorSwatch = Colors.white;
+
   static Color? red = Colors.red;
-  static Color? black = Colors.black!;
+  //static Color? black = Colors.black;
   static Color? green300 = Colors.green[300];
 
   static Color primary = hexToColor('076CD8');
@@ -59,7 +67,32 @@ class LightAppColors {
 }
 
 class DarkAppColors {
-  static const MaterialColor primarySwatch = Colors.amber;
+  static const MaterialColor primarySwatch = Colors.blue;
+  static const Color primary700 = Color(0XFF179700);
+  static const Color primary400 = Color(0XFF20B400);
+  static Color? graycolor700 = Colors.grey[700];
+  static  Color graycolor600 = Colors.grey[600]!;
+  static  Color graycolor400 = Colors.grey[400]!;
+  static Color? pink50 = Colors.pink[50];
+  static Color? blue50 = Colors.blue[100];
+  static const Color? pink0 = Colors.pink;
+  static const Color? colorbutton = Colors.white;
+    static const Color? scaffoldBackgroundColor = Colors.black;
+
+  static const Color? iconListTil = Colors.white;
+  static const Color textcolor = Colors.white;
+
+
+  static Color? colorSwatch = Colors.white;
+
+  static Color? red = Colors.red;
+  static Color? green300 = Colors.green[300];
+
+
+
+
+
+  //static const MaterialColor primarySwatch = Colors.amber;
   static const Color primary = Color.fromRGBO(254, 173, 34, 1);
   static const Color primary2 = Color.fromRGBO(65, 68, 87, 1);
   static const Color splash = Colors.amberAccent;

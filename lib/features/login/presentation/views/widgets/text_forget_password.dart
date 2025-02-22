@@ -44,7 +44,7 @@ class TextAndTextButton extends StatelessWidget {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 13,
-                    color: LightAppColors.maincolorgreen700),
+                    color: LightAppColors.primary700),
               ),
             ),
           ],

@@ -22,7 +22,7 @@ class ImageProfile extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.bottomRight,
                   child: CircleAvatar(
-                    backgroundColor: LightAppColors.maincolorgreen400,
+                    backgroundColor: LightAppColors.primary400,
                     radius: 17,
                     child: IconButton(
                         onPressed: () {},

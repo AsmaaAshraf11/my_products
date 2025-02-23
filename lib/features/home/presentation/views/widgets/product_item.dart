@@ -15,6 +15,7 @@ import 'package:myproducts/features/home/presentation/views/widgets/rating.dart'
 
 class ProductItem extends StatefulWidget {
   ProductItem({super.key, required this.productsModel});
+
   ProductsEntity productsModel;
 
   @override
@@ -22,8 +23,20 @@ class ProductItem extends StatefulWidget {
 }
 
 class _ProductItemState extends State<ProductItem> {
- // Color? isfavorite = LightAppColors.graycolor400;
-  bool isfavorite=false;
+  // Color? isfavorite = LightAppColors.graycolor400;
+  bool isfavorite = false;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    if(
+    BlocProvider.of<GetFavoritesCubit>(context).idfavorit.contains(widget.productsModel.productId)) {
+      setState(() {
+        isfavorite  = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DeletefavoritesCubit, DeletefavoritesState>(
@@ -33,10 +46,10 @@ class _ProductItemState extends State<ProductItem> {
             // TODO: implement listener
           },
           builder: (context, state) {
-            var deletecubit=DeletefavoritesCubit.get(context);
-            var addFavoritesCubit=AddFavoritesCubit.get(context);
-            List<int>idfavorit= GetFavoritesCubit. get(context).idfavorit;
-             List<ProductsEntity>favorit= GetFavoritesCubit. get(context).favorite;
+            var deletecubit = DeletefavoritesCubit.get(context);
+            var addFavoritesCubit = AddFavoritesCubit.get(context);
+            List<int> idfavorit = GetFavoritesCubit.get(context).idfavorit;
+            List<ProductsEntity> favorit = GetFavoritesCubit.get(context).favorite;
             return SizedBox(
               height: context.screenHeight * 0.4,
               child: GestureDetector(
@@ -60,31 +73,37 @@ class _ProductItemState extends State<ProductItem> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+                       // Text('$isfavorite'),
                         Align(
                           alignment: Alignment.topRight,
                           child: IconButton(
                             onPressed: () {
-                              setState(() {
-              if ((GetFavoritesCubit. get(context).isExist(product:widget. productsModel))) {
-                deletecubit.DeleteFavorites(widget.productsModel.productId);
-              }
-              else{
-                addFavoritesCubit.AddFavorites(widget.productsModel);
-                isfavorite = true;
-              }
-            });
-                              
-                        
+                              if(isfavorite){
+                                // delete
+                                deletecubit.DeleteFavorites(widget.productsModel.productId);
+                                setState(() {
+                                  isfavorite = false;
+                                });
+                              }else{
+                                // add
+                                addFavoritesCubit.AddFavorites(
+                                            widget.productsModel);
+                                setState(() {
+                                  isfavorite =true;
+                                });
+                              }
                             },
                             icon: Icon(
                               Icons.favorite,
-                              color: GetFavoritesCubit. get(context).isExist(product:widget. productsModel)?LightAppColors.red:LightAppColors.graycolor400,
+                              color: isfavorite
+                                  ? LightAppColors.red
+                                  : LightAppColors.graycolor400,
                             ),
                           ),
                         ),
                         CustomProductImage(
                             imageUrl: widget.productsModel.image ?? ''),
-                       
+
                         // ),
                         Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

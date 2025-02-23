@@ -26,7 +26,21 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
 
   bool notifications = false;
   bool isdark = false;
-   AppPreferences appPreferences=getIt.get<AppPreferences>();
+  AppPreferences appPreferences=getIt.get<AppPreferences>();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getTheme();
+  }
+
+  Future<void> getTheme()async{
+    bool drk = await appPreferences.isDarkMode();
+    setState(() {
+      isdark =drk;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -95,6 +109,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
             onChanged: (bool value) {
               setState(() {
                 isdark = value;
+                print('value :$value');
                 ThemeCubit .get(context).setDarkMode(value);
               });
             },

@@ -16,66 +16,63 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 15),
-      child: Row(
-        children: [
-           CircleAvatar(
-            radius: 30,
-            backgroundImage:
-            //loginModel?.image != null && loginModel!.image!.isNotEmpty?
-            //NetworkImage('${loginModel?.image}'):
-            AssetImage(ImageAssets.profile),
-          ),
-          15.w.widthSizedBox,
-          Column(
-            children: [
-              const TitleMedium(
-                text: 'welcome!',
+    return Row(
+      children: [
+         CircleAvatar(
+          radius: 30,
+          backgroundImage:
+          //loginModel?.image != null && loginModel!.image!.isNotEmpty?
+          //NetworkImage('${loginModel?.image}'):
+          AssetImage(ImageAssets.profile),
+        ),
+        15.w.widthSizedBox,
+        Column(
+          children: [
+            const TitleMedium(
+              text: 'welcome!',
+            ),
+            HeadLine22(
+              text: '${userName}',
+            ),
+          ],
+        ),
+        SizedBox(
+          width: context.screenWidth * 0.28,
+        ),
+        Row(
+          children: [
+            Container(
+              height: 36.h,
+              width: 36.w,
+              decoration: BoxDecoration(
+                  color: LightAppColors.primary700,
+                  borderRadius: BorderRadius.circular(11)),
+              child: IconButton(
+                padding: EdgeInsets.all(0),
+                icon:
+                    Icon(size: 26, Icons.shopping_cart, color: Colors.white),
+                onPressed: () {
+                  pushAndRemoveRoute(context, Routes.cart);
+                },
               ),
-              HeadLine22(
-                text: '${userName}',
+            ),
+            7.w.widthSizedBox,
+            Container(
+              height: 36.h,
+              width: 36.w,
+              decoration: BoxDecoration(
+                  color: LightAppColors.primary700,
+                  borderRadius: BorderRadius.circular(11)),
+              child: IconButton(
+                padding: EdgeInsets.all(0),
+                icon:
+                    Icon(size: 26, Icons.notifications, color: Colors.white),
+                onPressed: () {},
               ),
-            ],
-          ),
-          SizedBox(
-            width: context.screenWidth * 0.28,
-          ),
-          Row(
-            children: [
-              Container(
-                height: 36.h,
-                width: 36.w,
-                decoration: BoxDecoration(
-                    color: LightAppColors.primary700,
-                    borderRadius: BorderRadius.circular(11)),
-                child: IconButton(
-                  padding: EdgeInsets.all(0),
-                  icon:
-                      Icon(size: 26, Icons.shopping_cart, color: Colors.white),
-                  onPressed: () {
-                    pushAndRemoveRoute(context, Routes.cart);
-                  },
-                ),
-              ),
-              7.w.widthSizedBox,
-              Container(
-                height: 36.h,
-                width: 36.w,
-                decoration: BoxDecoration(
-                    color: LightAppColors.primary700,
-                    borderRadius: BorderRadius.circular(11)),
-                child: IconButton(
-                  padding: EdgeInsets.all(0),
-                  icon:
-                      Icon(size: 26, Icons.notifications, color: Colors.white),
-                  onPressed: () {},
-                ),
-              ),
-            ],
-          )
-        ],
-      ),
+            ),
+          ],
+        )
+      ],
     );
   }
 }

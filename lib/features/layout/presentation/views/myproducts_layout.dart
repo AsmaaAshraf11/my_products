@@ -15,43 +15,50 @@ class MyproductsLayout extends StatelessWidget {
     final String userName = appPreferences.getUserName();
 
     return BlocConsumer<BottomNavigationBarCubit, BottomNavigationBarState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
-      builder: (context, state) {
-        var cubit = BottomNavigationBarCubit.get(context);
-        return Scaffold(
-            // appBar: AppBar(
-    
-            // ),
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            body: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 18,
-                  vertical: 40,
-                ),
-                child: Column(
-                  children: [
-                   // if (cubit.currentIndex != 3)
-                    cubit.bottomScreen[cubit.currentIndex],
-                  ],
-                ),
+        listener: (context, state) {
+          // TODO: implement listener
+        },
+        builder: (context, state) {
+          var cubit = BottomNavigationBarCubit.get(context);
+          return Scaffold(
+
+            appBar: PreferredSize(
+             // preferredSize: Size.fromHeight(70),
+              preferredSize: Size.fromHeight(0),
+              child: AppBar(
+                centerTitle: true,
+                backgroundColor: LightAppColors.blue50,
+                title: Text('data'),
               ),
             ),
-            bottomNavigationBar: BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              selectedItemColor: LightAppColors.primary400,
-              unselectedItemColor: LightAppColors.graycolor400,
-              backgroundColor: Colors.white,
-              items: cubit.BottomItem,
-              elevation: 3,
-              onTap: (index) {
-                cubit.changBottomNavBar(index);
-              },
-              currentIndex: cubit.currentIndex,
-            ));
-      },
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              body: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 18,
+                    // vertical: 40,
+                  ),
+                  child: Column(
+                    children: [
+                      // if (cubit.currentIndex != 3)
+                      cubit.bottomScreen[cubit.currentIndex],
+                    ],
+                  ),
+                ),
+              ),
+              bottomNavigationBar: BottomNavigationBar(
+                type: BottomNavigationBarType.fixed,
+                selectedItemColor: LightAppColors.primary400,
+                unselectedItemColor: LightAppColors.graycolor400,
+                backgroundColor: Colors.white,
+                items: cubit.BottomItem,
+                elevation: 3,
+                onTap: (index) {
+                  cubit.changBottomNavBar(index);
+                },
+                currentIndex: cubit.currentIndex,
+              ));
+        },
     );
   }
 }

@@ -18,6 +18,7 @@ class ImageAssets {
   static const String imge1 = '$imagePath/imge1.png';
 
   static const String google = '$imagePath/Google.png';
+  static const String category = '$imagePath/category.png';
 
   // using in app
   static const String logo = '$imagePath/logo.png';

@@ -24,7 +24,7 @@ class HeadLine22 extends StatelessWidget {
     return Text(
       text,
       style: Theme.of(context).textTheme.displayLarge!.copyWith(
-          color: textColor ?? LightAppColors.textcolor,
+          color: textColor ??Theme.of(context).focusColor,
           fontSize: fontSize,
           overflow: overflow == true ? TextOverflow.ellipsis : null,
           fontWeight: bold == false ? FontWeight.normal : FontWeight.bold),
@@ -69,7 +69,7 @@ class TitleText extends StatelessWidget {
       style: TextStyle(
         //fontFamily: FontConstants.iBMFontFamily,
         fontSize: fontSize,
-        color: textColor ?? LightAppColors.textcolor,
+        color: textColor ??Theme.of(context).focusColor,
         fontWeight: fontWeight ?? FontWeight.w500,
       ),
       textAlign: inCenter == true ? TextAlign.center : null,

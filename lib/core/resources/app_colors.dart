@@ -11,12 +11,11 @@ class LightAppColors {
   static Color? pink50 = Colors.pink[50];
   static Color? blue50 = Colors.blue[100];
   static const Color? pink0 = Colors.pink;
-  //static const Color? colorbutton = Colors.white;
     static const Color? scaffoldBackgroundColor = Colors.white;
 
   static const Color? iconListTil = Colors.black;
   static const Color textcolor = Colors.black;
-
+   static Color?  unselecteColor=Colors.grey[400]!;
 
   static Color? colorSwatch = Colors.white;
 
@@ -24,7 +23,14 @@ class LightAppColors {
   //static Color? black = Colors.black;
   static Color? green300 = Colors.green[300];
 
-  static Color primary = hexToColor('076CD8');
+
+
+
+
+
+  
+
+  static Color primary = Color(0XFF179700);
   static Color primary2 = hexToColor('007BFF');
   static Color primary3 = hexToColor('3180D6');
   static Color primary4 = hexToColor('63366E');
@@ -81,7 +87,7 @@ class DarkAppColors {
 
   static const Color? iconListTil = Colors.white;
   static const Color textcolor = Colors.white;
-
+static Color?  unselecteColor= Colors.white;
 
   static Color? colorSwatch = Colors.white;
 

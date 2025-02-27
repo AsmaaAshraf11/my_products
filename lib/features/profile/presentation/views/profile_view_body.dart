@@ -123,7 +123,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
         GestureDetector(
           onTap:(){
             appPreferences.logout();
-             pushRoute(context, Routes.loginScreen,);
+             pushAndRemoveRoute(context, Routes.loginScreen,);
           },
           child: Padding(
             padding: const EdgeInsets.all(15),

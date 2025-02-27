@@ -2,7 +2,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:myproducts/core/errors/failures.dart';
 import 'package:myproducts/features/cart/data/models/cart/cart.dart';
+import 'package:myproducts/features/cart/data/models/cart_model.dart';
 import 'package:myproducts/features/cart/domain/repos/cart_repo.dart';
+import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
 
 class FetchmycartUseCase extends UseCases<List<CartModel>, void> {
   final CartRepo cartRepo;
@@ -10,11 +12,19 @@ class FetchmycartUseCase extends UseCases<List<CartModel>, void> {
   FetchmycartUseCase(this.cartRepo);
 
   @override
-  Future<Either<Failure, List<CartModel>>> call([parameter]) {
+  Future<Either<Failure, List<CartModel>>> call() {
     return cartRepo.fetchCart();
+  }
+   
+     Future<void>callAdd(ProductsEntity product, int quant) {
+    return cartRepo.fetchAddCart(product, quant);
+  }
+  
+  Future<void> Call(int id) {
+    return cartRepo.DeletCart(id);
   }
 }
 
 abstract class UseCases<Type, parameter> {
-  Future<Either<Failure, Type>> call([parameter p]);
+  Future<Either<Failure, Type>> call();
 }

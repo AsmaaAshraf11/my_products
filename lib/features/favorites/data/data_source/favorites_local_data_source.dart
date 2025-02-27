@@ -1,6 +1,5 @@
 // features/favorites/data/data_source/favorites_local_data_source.dart
 import 'package:myproducts/features/favorites/data/models/favorite.dart';
-import 'package:myproducts/features/home/data/models/products/product.dart';
 import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
 import 'package:sqflite/sqflite.dart';
 

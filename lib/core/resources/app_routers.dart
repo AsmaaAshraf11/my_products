@@ -2,6 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myproducts/core/di/service_locator.dart';
+import 'package:myproducts/features/cart/data/repos/cart_repo_impl.dart';
+import 'package:myproducts/features/cart/domain/use_cases/fetchMyCart_use_case.dart';
+import 'package:myproducts/features/cart/presentation/manger/Featured_cart_cubit/cart_cubit.dart';
 import 'package:myproducts/features/home/presentation/views/praduct_all_view.dart';
 import 'package:myproducts/features/login/data/models/login_model.dart';
 import 'package:myproducts/features/home/data/repos/home_repo_impl.dart';
@@ -35,8 +38,7 @@ class Routes {
   static const String allProductshScreen = "PraductAllView";
   static const String detail = "/productDetail";
   static const String cart = "cart";
-    static const String searchScreen = "SearchScreen";
-
+  static const String searchScreen = "SearchScreen";
 }
 
 class RouteGenerator {
@@ -45,7 +47,7 @@ class RouteGenerator {
       // todo will add routes and screens here
       // todo this types when navigate route , simple , with var , use BlocProvider
       case Routes.onboard:
-        return MaterialPageRoute(builder: (_) =>  OnboardingView());
+        return MaterialPageRoute(builder: (_) => OnboardingView());
 
       case Routes.start:
         return MaterialPageRoute(builder: (_) => const StartView());
@@ -53,23 +55,20 @@ class RouteGenerator {
       case Routes.loginScreen:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
-                  create: (context) => DataLoginCubit(
-                    FetchdataloginUseCase(
-                       getIt.get<LoginRepoImpl>(),
-                    )
-                  ),
-                  child:  LoginScreen(),
+                  create: (context) => DataLoginCubit(FetchdataloginUseCase(
+                    getIt.get<LoginRepoImpl>(),
+                  )),
+                  child: LoginScreen(),
                 ));
 
       case Routes.forgetPasswordScreen:
-        return MaterialPageRoute(
-            builder: (_) =>  ForgetPasswordViewdart());
+        return MaterialPageRoute(builder: (_) => ForgetPasswordViewdart());
 
       case Routes.changePasswordScreen:
-        return MaterialPageRoute(builder: (_) =>  ChangePaswordView());
+        return MaterialPageRoute(builder: (_) => ChangePaswordView());
 
       case Routes.signUpScreen:
-        return MaterialPageRoute(builder: (_) =>  SignUpView());
+        return MaterialPageRoute(builder: (_) => SignUpView());
 
       case Routes.layout:
         return MaterialPageRoute(builder: (_) => MyproductsLayout());
@@ -85,13 +84,19 @@ class RouteGenerator {
                   )..fetchDetail(id: id),
                   child: ProductDetailView(),
                 ));
-                case Routes.allProductshScreen:
+      case Routes.allProductshScreen:
         return MaterialPageRoute(builder: (_) => const PraductAllView());
 
       case Routes.cart:
-        return MaterialPageRoute(builder: (_) => const MyCartView());
-        case Routes.searchScreen:
-        return MaterialPageRoute(builder: (_) =>  SearchScreen());
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) =>CartCubit(FetchmycartUseCase(
+                  getIt.get<CartRepoImpl>(),
+                ),)..fetchCart(),
+                  child: const MyCartView(),
+                ));
+      case Routes.searchScreen:
+        return MaterialPageRoute(builder: (_) => SearchScreen());
       // case Routes.homeScreen:
       //   return MaterialPageRoute(builder: (_) => const HomeScreen());
       //

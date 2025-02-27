@@ -1,20 +1,18 @@
-// features/home/presentation/manger/featured_DeleteCart_cubit/cubit/delete_cart_state.dart
-part of 'delete_cart_cubit.dart';
+// features/cart/presentation/manger/featured_DeleteCart_cubit/cubit/delete_cart_state.dart
+// part of 'delete_cart_cubit.dart';
 
-@immutable
-sealed class DeleteCartState {}
+// @immutable
+// sealed class DeleteCartState {}
 
-final class DeleteCartInitial extends DeleteCartState {}
-class CartLoading extends DeleteCartState {}
+// final class DeleteCartInitial extends DeleteCartState {}
+// class CartLoading extends DeleteCartState {}
 
-class DeleteCartFailure extends DeleteCartState {
-  final String errMessage;
+// class DeleteCartFailure extends DeleteCartState {
+//   final String errMessage;
 
-  DeleteCartFailure(this.errMessage);
-}
+//   DeleteCartFailure(this.errMessage);
+// }
 
-class DeleteCartSuccess extends DeleteCartState {
-  final CartModel cart;
+// class DeleteCartSuccess extends DeleteCartState {
 
-  DeleteCartSuccess(this.cart);
-}
+// }

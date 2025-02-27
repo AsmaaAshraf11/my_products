@@ -31,12 +31,12 @@ class MyproductsLayout extends StatelessWidget {
                 title: Text('data'),
               ),
             ),
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              backgroundColor: Theme.of(context).canvasColor,
               body: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 18,
-                    // vertical: 40,
+                     vertical: 30,
                   ),
                   child: Column(
                     children: [
@@ -49,8 +49,8 @@ class MyproductsLayout extends StatelessWidget {
               bottomNavigationBar: BottomNavigationBar(
                 type: BottomNavigationBarType.fixed,
                 selectedItemColor: LightAppColors.primary400,
-                unselectedItemColor: LightAppColors.graycolor400,
-                backgroundColor: Colors.white,
+                unselectedItemColor: Theme.of(context).unselectedWidgetColor,
+                backgroundColor: Theme.of(context).canvasColor,
                 items: cubit.BottomItem,
                 elevation: 3,
                 onTap: (index) {

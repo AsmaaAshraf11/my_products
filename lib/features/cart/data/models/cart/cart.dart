@@ -1,7 +1,7 @@
-// features/home/data/models/card/cart.dart
+// features/cart/data/models/cart/cart.dart
 import 'product.dart';
 
-class CartModel {
+class CartModl {
   int? id;
   List<Product>? products;
   double total;
@@ -10,7 +10,7 @@ class CartModel {
   int? totalProducts;
   int? totalQuantity;
 
-  CartModel({
+  CartModl({
     this.id,
     this.products,
     required this.total,
@@ -20,7 +20,7 @@ class CartModel {
     this.totalQuantity,
   });
 
-  factory CartModel.fromJson(Map<String, dynamic> json) => CartModel(
+  factory CartModl.fromJson(Map<String, dynamic> json) => CartModl(
         id: json['id'] as int?,
         products: (json['products'] as List<dynamic>?)
             ?.map((e) => Product.fromJson(e as Map<String, dynamic>))

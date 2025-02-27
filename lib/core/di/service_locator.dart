@@ -1,6 +1,7 @@
 // core/di/service_locator.dart
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:myproducts/features/cart/data/data_source/cart_local_data_source.dart';
 import 'package:myproducts/features/cart/data/data_source/cart_remote_data_source.dart';
 import 'package:myproducts/features/cart/data/repos/cart_repo_impl.dart';
 import 'package:myproducts/features/favorites/data/data_source/favorites_local_data_source.dart';
@@ -60,7 +61,7 @@ void _registerRepositories() {
   );
   getIt.registerSingleton<CartRepoImpl>(
     CartRepoImpl(
-       cartRemoteDataSource: CartRemoteDataSourceImpl(apiService),
+        cartLocalDataSource: CartLocaleDataSourceImpl(),
     ),
   );
   getIt.registerSingleton<SearchRepoImpl>(

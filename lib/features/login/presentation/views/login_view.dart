@@ -48,6 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
             appPreferences.setAuthToken(state.model.loginData!.accessToken);
             appPreferences.setIsLogged();
             appPreferences.setUserName('${state.model.loginData!.firstName}');
+            print('id: ${state.model.loginData?.id}');
             pushRoute(context, Routes.layout,);
           }else{
             ScaffoldMessenger.of(context).showSnackBar(

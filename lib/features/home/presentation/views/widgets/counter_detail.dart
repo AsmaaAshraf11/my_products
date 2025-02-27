@@ -14,7 +14,7 @@ class _CounterDetailState extends State<CounterDetail> {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: 250,
+      top: 240,
       left: 130,
       child: Row(
         children: [

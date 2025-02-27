@@ -1,4 +1,4 @@
-// features/home/presentation/manger/Featured_cart_cubit/cubit/cart_state.dart
+// features/cart/presentation/manger/Featured_cart_cubit/cart_state.dart
 part of 'cart_cubit.dart';
 
 @immutable
@@ -19,9 +19,28 @@ class CartSuccess extends CartState {
 
   CartSuccess(this.cart);
 }
+class DeleteCartFailure extends CartState {
+  final String errMessage;
 
+  DeleteCartFailure(this.errMessage);
+}
+
+class DeleteCartSuccess extends CartState {
+
+}
 class UpdateCartSuccess extends CartState {
   final String message;
 
   UpdateCartSuccess(this.message);
+}
+class AddCartLoading extends CartState {}
+
+class AddCartFailure extends CartState {
+  final String errMessage;
+
+  AddCartFailure(this.errMessage);
+}
+
+class AddCartSuccess extends CartState {
+
 }

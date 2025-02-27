@@ -21,13 +21,13 @@ class ListTil extends StatelessWidget {
         ListTile(
           leading: Icon(
             icon,
-            color: color ?? LightAppColors.iconListTil,
+            color: color ??Theme.of(context).disabledColor,
           ),
 
           title: Text(
             text,
             style: TextStyle(
-              color: color,
+              color: color ??Theme.of(context).disabledColor,
             ),
           ),
 
@@ -36,7 +36,7 @@ class ListTil extends StatelessWidget {
                 onPressed: () {  },
                 icon: Icon(
                     Icons.arrow_forward_ios,
-                    color: LightAppColors.iconListTil,
+                    color: Theme.of(context).disabledColor,
                   ),
                 
               )

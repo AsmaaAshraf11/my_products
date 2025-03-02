@@ -15,11 +15,8 @@ import 'package:myproducts/features/favorites/data/repos/favorites_repo_impl.dar
 import 'package:myproducts/features/favorites/domain/use_cases/fetchfavorites_use_cases.dart';
 import 'package:myproducts/features/favorites/presentation/manger/Featured_fetch_favorites_Cubit/cubit/fetch_favorites_cubit.dart';
 import 'package:myproducts/features/home/data/repos/home_repo_impl.dart';
-import 'package:myproducts/features/cart/domain/use_cases/fetchAddCart_use_case.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchCategory_use_cases.dart';
-import 'package:myproducts/features/cart/domain/use_cases/fetchDeleteCart_use_cases.dart';
 import 'package:myproducts/features/cart/presentation/manger/Featured_cart_cubit/cart_cubit.dart';
-import 'package:myproducts/features/cart/presentation/manger/featured_DeleteCart_cubit/cubit/delete_cart_cubit.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchDetailProduct_use_case.dart';
 import 'package:myproducts/features/home/presentation/manger/featured_DetailProduct_cubit/cubit/datailproduct_cubit.dart';
 import 'package:myproducts/features/home/presentation/manger/theme/cubit/theme_cubit.dart';
@@ -31,7 +28,6 @@ import 'package:myproducts/features/home/domain/use_cases/fetchProducts_use_case
 import 'package:myproducts/features/home/presentation/manger/Featured_category_Cubit/category_Cubit.dart';
 import 'package:myproducts/features/home/presentation/manger/Featured_products_Cubit/products_Cubit.dart';
 import 'package:myproducts/features/login/presentation/manger/featured_datalogin_cubit/cubit/data_login_cubit.dart';
-import 'package:myproducts/features/cart/presentation/manger/featured_new_cart/cubit/add_cart_cubit.dart';
 import 'package:myproducts/features/layout/presentation/views/myproducts_layout.dart';
 import 'package:myproducts/features/login/presentation/views/login_view.dart';
 import 'package:myproducts/features/onboarding/presentation/views/onboarding_view.dart';

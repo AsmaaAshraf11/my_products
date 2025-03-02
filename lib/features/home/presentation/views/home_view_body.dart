@@ -123,8 +123,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             )),
         ListViewCategories(),
         Padding(
-          padding: const EdgeInsetsDirectional.only(
-            top: 15,
+          padding: const EdgeInsetsDirectional.symmetric(
+            vertical: 13
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -133,8 +133,9 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                 text: 'Popular',
               ),
               InkWell(
-                child: const SmallHeader(
-                  text: 'See all >',
+                
+                child: const TitleMedium(
+                  text: 'See all ',
                 ),
                 onTap: (){
                   pushRoute(context, Routes.allProductshScreen);

@@ -73,6 +73,22 @@ class CartCubit extends Cubit<CartState> {
     emit(UpdateCartSuccess(''));
   }
 
+
+  Future<void> fetchApdatCart(int id, int quant) async {
+
+    
+    try{
+          var result = await fetchmycartUseCase.callUpdat(id, quant);
+           fetchCart();
+           emit(ApdatCartSuccess());
+          
+                
+    }catch(erorr) {
+          print(' error when add${erorr.toString()}');
+        };
+    
+  }
+
   
 
 }

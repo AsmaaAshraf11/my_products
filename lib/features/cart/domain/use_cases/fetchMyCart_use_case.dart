@@ -23,8 +23,13 @@ class FetchmycartUseCase extends UseCases<List<CartModel>, void> {
   Future<void> Call(int id) {
     return cartRepo.DeletCart(id);
   }
+   
+     Future<void>callUpdat(int id, int quant) {
+    return cartRepo.UpdatQuant(id, quant);
+  }
 }
 
 abstract class UseCases<Type, parameter> {
   Future<Either<Failure, Type>> call();
 }
+

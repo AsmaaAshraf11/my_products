@@ -2,18 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:myproducts/core/di/service_locator.dart';
 import 'package:myproducts/core/extension/extensions.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_text.dart';
 import 'package:myproducts/features/cart/data/models/cart_model.dart';
-import 'package:myproducts/features/cart/data/repos/cart_repo_impl.dart';
-import 'package:myproducts/features/cart/domain/use_cases/fetchMyCart_use_case.dart';
 import 'package:myproducts/features/cart/presentation/manger/Featured_cart_cubit/cart_cubit.dart';
-import 'package:myproducts/features/cart/presentation/manger/featured_DeleteCart_cubit/cubit/delete_cart_cubit.dart';
 import 'package:myproducts/features/cart/presentation/views/widgets/custom_app_bar_cart.dart';
 import 'package:myproducts/features/cart/presentation/views/widgets/delet_item_cart.dart';
-import 'package:myproducts/features/home/presentation/views/widgets/grid_view_popular.dart';
 import 'package:myproducts/features/cart/presentation/views/widgets/my_cart_item.dart';
 import 'package:myproducts/features/component/button.dart';
 
@@ -24,11 +19,22 @@ class MyCartView extends StatefulWidget {
   State<MyCartView> createState() => _MyCartViewState();
 }
 
-
+ 
 class _MyCartViewState extends State<MyCartView> {
-  double costDel=12.99;
+  double costDel=15;
+  double total=0;
   @override
   Widget build(BuildContext context) {
+    
+double sum(List< CartModel > cart) {
+
+  for(int i=0;i<cart.length;i++){
+    total += cart[i].price *cart[i].quantity;   
+       }
+    
+
+    return total=double.parse(total.toStringAsFixed(2));
+  }
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(20),
@@ -86,10 +92,10 @@ class _MyCartViewState extends State<MyCartView> {
                                   text: 'Shopping cost',
                                   textColor: LightAppColors.graycolor600,
                                   fontSize: 18,
-                                ),
+                                                               ),
                                 TitleMedium(
                                   bold: true,
-                                  text: '${'\$'+' {totat},'}',
+                                  text: '${'\$'+' ${sum(cart)},'}',
                                   textColor: Theme.of(context).focusColor,
                                 )
                               ],

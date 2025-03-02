@@ -7,7 +7,6 @@ import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_text.dart';
 import 'package:myproducts/features/cart/data/models/cart_model.dart';
 import 'package:myproducts/features/cart/presentation/manger/Featured_cart_cubit/cart_cubit.dart';
-import 'package:myproducts/features/cart/presentation/manger/featured_DeleteCart_cubit/cubit/delete_cart_cubit.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/custom_product_image.dart';
 
 class MyCartItem extends StatefulWidget {
@@ -16,32 +15,34 @@ class MyCartItem extends StatefulWidget {
   @override
   State<MyCartItem> createState() => _MyCartItemState();
 }
+ 
+  double total = 0;
 
 class _MyCartItemState extends State<MyCartItem> {
-  int ?quantity;
-    double totat=0;
+  int? quantity;
+// double sum(int quant, double price) {
+//     total += price * quant;
 
-double sum(int quant,double price){
-  //quantity=0;
+//     return total;
+//   }
 
-  
-    totat+=price*quant;
-  
-  return totat;
-}
- @override
-  void initState() {
-    super.initState();
-    quantity = widget.model.quantity; 
-    sum(quantity!, widget.model.price);
-  }
-  
   
 
   @override
+  void initState() {
+    super.initState();
+    quantity = widget.model.quantity;
+   // sum(quantity!, widget.model.price);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    
-    return Column(
+    return BlocConsumer<CartCubit, CartState>(
+      listener: (context, state) {
+        // TODO: implement listener
+      },
+      builder: (context, state) {
+        return Column(
           children: [
             Container(
               margin: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
@@ -53,17 +54,14 @@ double sum(int quant,double price){
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                
                   SizedBox(
                     width: 100.w,
-                                height: 100.h,
-                                child: CustomProductImage(
-                                    imageUrl:widget.model.image!),
-                              ),
+                    height: 100.h,
+                    child: CustomProductImage(imageUrl: widget.model.image!),
+                  ),
                   Column(
                     //mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      //Powder Canister
                       SizedBox(
                         width: 180,
                         child: HeadLine22(
@@ -98,11 +96,13 @@ double sum(int quant,double price){
                             padding: EdgeInsets.zero,
                             onPressed: () {
                               setState(() {
-                               // quantity!++;
-                                 quantity=(quantity!+1)!;
-                                 sum(quantity!, widget.model.price);
-                                 print(totat);
-                                 print(quantity);
+                                 quantity = (quantity! + 1)!;
+                                CartCubit.get(context).fetchApdatCart(
+                                    widget.model.productId, (quantity! ));
+                                   // 
+                               
+                                //sum(quantity!, widget.model.price);
+                               // print(total);
                               });
                             },
                             icon: Icon(
@@ -122,12 +122,14 @@ double sum(int quant,double price){
                         child: IconButton(
                             padding: EdgeInsets.zero,
                             onPressed: () {
-                              
                               if (quantity! > 1) {
                                 setState(() {
-                                    quantity=(quantity!-1)!;
-                                     sum(quantity!, widget.model.price);
-                                    print(totat);
+                                  quantity = (quantity! - 1)!;
+                                  CartCubit.get(context).fetchApdatCart(
+                                    widget.model.productId, (quantity!));
+                               // sum(quantity!, widget.model.price);
+                                //print(total);
+                                  
                                 });
                               }
                             },
@@ -144,6 +146,7 @@ double sum(int quant,double price){
             )
           ],
         );
-      
+      },
+    );
   }
 }

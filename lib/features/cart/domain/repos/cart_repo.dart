@@ -9,5 +9,6 @@ abstract class CartRepo {
   
   Future<Either<Failure, List<CartModel>>> fetchCart();
   Future<void> fetchAddCart(ProductsEntity product,int quant);
-  Future<void> DeletCart(int id, ); 
+  Future<void> DeletCart(int id, );
+  Future<void> UpdatQuant(int id,int newquant ); 
 }

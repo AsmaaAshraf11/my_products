@@ -1,5 +1,6 @@
 // features/signUp/presentation/views/sign_up_view.dart
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/extension/extensions.dart';
 import 'package:myproducts/core/helper_functions/route_navigation.dart';
@@ -38,6 +39,10 @@ class _SignUpViewState extends State<SignUpView> {
        appBar: PreferredSize(
         preferredSize:Size.fromHeight(40),
       child: AppBar(
+         elevation: 0,
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: LightAppColors.green300!.withOpacity(0.6),
+          ),
         backgroundColor: LightAppColors.green300,
       )),
       body:Stack(

@@ -1,5 +1,6 @@
 // features/onboarding/presentation/views/start_view.dart
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:myproducts/core/extension/extensions.dart';
 import 'package:myproducts/core/resources/app_assets.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
@@ -15,6 +16,10 @@ class StartView extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize:Size.fromHeight(40),
       child: AppBar(
+         elevation: 0,
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: LightAppColors.green300!.withOpacity(0.6),
+          ),
         backgroundColor: LightAppColors.green300,
       )),
       body: Stack(

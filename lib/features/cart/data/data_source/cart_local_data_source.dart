@@ -11,6 +11,7 @@ abstract class CartLocalDataSource {
 
 Future<List<CartModel>> fetchMyCart();
   Future<void> DeletCartCart({required int id});
+  Future<void> fetchUpdateCart(int id, int newQuantity);
   }
 
  class CartLocaleDataSourceImpl extends CartLocalDataSource {
@@ -86,6 +87,23 @@ final db = await database;
     print('cart${catr.length}');
         return catr;  
           }
+
+
+          Future<void> fetchUpdateCart(int id, int newQuantity) async {
+  final Database db = await initDb();
+
+  await db.update(
+    'carts',
+    {'quantity': newQuantity}, 
+    where: 'productId = ?', 
+    whereArgs: [id],
+  ).then((value) {
+   // print(' Quantity updated for productId: $id');
+  }).catchError((error) {
+    print(' Error updating quantity: ${error.toString()}');
+  });
+}
+
         
 
 

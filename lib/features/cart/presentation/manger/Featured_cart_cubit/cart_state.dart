@@ -44,3 +44,5 @@ class AddCartFailure extends CartState {
 class AddCartSuccess extends CartState {
 
 }
+class ApdatCartSuccess extends CartState {
+}

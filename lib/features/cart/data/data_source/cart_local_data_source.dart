@@ -1,7 +1,4 @@
 // features/cart/data/data_source/cart_local_data_source.dart
-import 'package:myproducts/core/dio/api_service.dart';
-import 'package:myproducts/core/dio/end_points.dart';
-import 'package:myproducts/features/cart/data/models/cart/cart.dart';
 import 'package:myproducts/features/cart/data/models/cart_model.dart';
 import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
 import 'package:sqflite/sqflite.dart';

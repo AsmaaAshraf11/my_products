@@ -35,6 +35,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/features/search/data/repos/search_repo_impl.dart';
 import 'package:myproducts/features/search/domain/use_cases/search_use_cases.dart';
 import 'package:myproducts/features/search/presentation/manger/featured_search_cubit/search_cubit.dart';
+import 'package:myproducts/generated/l10n.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
 
 Future<void> initializeApp() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -154,6 +157,14 @@ class MyApp extends StatelessWidget {
           builder: (context, state) {
             if(state is ThemeSuccess) {
               return MaterialApp(
+                locale: Locale('en'),
+                 localizationsDelegates: const [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: S.delegate.supportedLocales,
               title: AppConstants.appName,
               debugShowCheckedModeBanner: false,
               theme: state.themeMode==MyThemeMode.light?lightTheme:darkTheme,

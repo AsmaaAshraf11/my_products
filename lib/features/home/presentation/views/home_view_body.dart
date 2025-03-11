@@ -13,6 +13,7 @@ import 'package:myproducts/core/shared_preferences/app_prefs.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/grid_view_popular.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/list_view_categories.dart';
 import 'package:myproducts/features/layout/presentation/views/widgets/custom_app_bar.dart';
+import 'package:myproducts/generated/l10n.dart';
 
 class HomeViewBody extends StatefulWidget {
   @override
@@ -116,10 +117,11 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           ]),
         ),
         //  10.h.heightSizedBox,
-        const Padding(
+         Padding(
             padding: EdgeInsetsDirectional.symmetric(vertical: 10),
             child: HeadLine22(
-              text: 'Categories',
+              text:'${S.of(context).categories}',
+              // 'Categories',
             )),
         ListViewCategories(),
         Padding(

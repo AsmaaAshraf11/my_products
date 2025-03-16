@@ -1,5 +1,6 @@
 // features/component/text_form_field.dart
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 
@@ -17,11 +18,15 @@ Widget DefaultFormField({
   IconData? Prefix,
   Widget? suffix,
   String? hintText,
+  double? fonthintText,
+  double? width,
+  List<TextInputFormatter>?inputFormatter,
   //Function? suffixprees,
 }) =>
     Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       height: 50.h,
+      width: width,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
       child: TextFormField(
         controller: Controller,
@@ -32,14 +37,15 @@ Widget DefaultFormField({
         onTap: onTap,
         enabled: IsClickable,
         validator: Validator,
+        inputFormatters: inputFormatter,
         decoration: InputDecoration(
             label: Label,
             labelStyle: TextStyle(
                 fontSize: 18, color: LightAppColors.primary400),
             hintText: hintText,
             hintStyle: TextStyle(
-              fontSize: 13,
-              color: LightAppColors.graycolor400,
+              fontSize: fonthintText??13,
+              color: LightAppColors.graycolor600,
             ),
             floatingLabelStyle: const TextStyle(fontSize: 18),
             prefixIcon: Icon(Prefix, color: LightAppColors.primary400),
@@ -51,17 +57,26 @@ Widget DefaultFormField({
                 width: 2,
               ),
             ),
-           // border: InputBorder.none,
+           
+            border: OutlineInputBorder(
+            
+              borderRadius: BorderRadius.circular(9)
+            ),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide.none,
-              //   BorderSide
-              //  (
-              //   width: 1,
-              //  color: LightAppColors.graycolor600,
-              //  ),
+              borderSide:
+              // BorderSide.none,
+                BorderSide
+               (
+                width: 1,
+               color: LightAppColors.graycolor600,
+               ),
               borderRadius: BorderRadius.circular(15),
             ),
-            filled: true,
-            fillColor: Colors.grey[100]),
+
+            
+
+           filled: true,
+            fillColor: Colors.grey[100]
+            ),
       ),
     );

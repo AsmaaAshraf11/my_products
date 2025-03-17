@@ -5,10 +5,9 @@ import 'package:myproducts/core/di/service_locator.dart';
 import 'package:myproducts/features/cart/data/repos/cart_repo_impl.dart';
 import 'package:myproducts/features/cart/domain/use_cases/fetchMyCart_use_case.dart';
 import 'package:myproducts/features/cart/presentation/manger/Featured_cart_cubit/cart_cubit.dart';
+import 'package:myproducts/features/cart/presentation/views/payment_view.dart';
 import 'package:myproducts/features/home/presentation/views/praduct_all_view.dart';
-import 'package:myproducts/features/login/data/models/login_model.dart';
 import 'package:myproducts/features/home/data/repos/home_repo_impl.dart';
-import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
 import 'package:myproducts/features/login/data/repos/login_repo_impl.dart';
 import 'package:myproducts/features/login/domain/use_cases/fetchDataLogin_use_case.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchDetailProduct_use_case.dart';
@@ -38,6 +37,7 @@ class Routes {
   static const String allProductshScreen = "PraductAllView";
   static const String detail = "/productDetail";
   static const String cart = "cart";
+   static const String PaymentView = "PaymentView";
   static const String searchScreen = "SearchScreen";
 }
 
@@ -97,6 +97,9 @@ class RouteGenerator {
                 ));
       case Routes.searchScreen:
         return MaterialPageRoute(builder: (_) => SearchScreen());
+
+         case Routes.PaymentView:
+        return MaterialPageRoute(builder: (_) => PaymentView());
       // case Routes.homeScreen:
       //   return MaterialPageRoute(builder: (_) => const HomeScreen());
       //

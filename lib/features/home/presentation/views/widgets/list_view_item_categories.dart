@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myproducts/core/resources/app_assets.dart';
-import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_text.dart';
 import 'package:myproducts/features/home/presentation/manger/Featured_products_Cubit/products_Cubit.dart';
 
@@ -60,7 +59,7 @@ class _ListViewItemCategoriesState extends State<ListViewItemCategories> {
                     child: Image.asset(
                       ImageAssets.category,
                      // height: 180,
-                     width: 5,
+                    // width: 5,
                     ),
                   ),
                  

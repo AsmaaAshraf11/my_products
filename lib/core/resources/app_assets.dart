@@ -22,6 +22,9 @@ class ImageAssets {
 
   // using in app
   static const String logo = '$imagePath/logo.png';
+  static const String visa = '$imagePath/visa_logo.png';
+  static const String paypal = '$imagePath/Paypal-Logo.png';
+  static const String MasterCard = '$imagePath/MasterCard.png';
   static const String loginIcon = '$imagePath/boy.png';
   static const String profile = '$imagePath/profile.jpg';
   static const String filter = '$imagePath/filter.png';

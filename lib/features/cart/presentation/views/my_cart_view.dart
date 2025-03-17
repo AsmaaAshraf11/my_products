@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/extension/extensions.dart';
+import 'package:myproducts/core/helper_functions/route_navigation.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
+import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/resources/app_text.dart';
 import 'package:myproducts/features/cart/data/models/cart_model.dart';
 import 'package:myproducts/features/cart/presentation/manger/Featured_cart_cubit/cart_cubit.dart';
@@ -37,14 +39,13 @@ double sum(List< CartModel > cart) {
   }
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(20),
+          preferredSize: Size.fromHeight(0),
           child: AppBar(
-            backgroundColor: Colors.grey.shade100,
           )),
       body: Column(
         children: [
           CustomAppBarCart(),
-          30.h.heightSizedBox,
+          20.h.heightSizedBox,
           BlocConsumer<CartCubit, CartState>(
             listener: (context, state) {},
             builder: (context, state) {
@@ -55,7 +56,7 @@ double sum(List< CartModel > cart) {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: context.screenHeight * 0.46,
+                        height: context.screenHeight * 0.44,
                         child: ListView.builder(
                             padding: EdgeInsets.zero,
                             itemCount: cart.length,
@@ -79,8 +80,8 @@ double sum(List< CartModel > cart) {
                             top: Radius.circular(50),
                           ),
                         ),
-                        padding: EdgeInsets.all(34),
-                        height: context.screenHeight * .367,
+                        padding: EdgeInsets.all(27),
+                        height: context.screenHeight * .365,
                         child: Column(
                           children: [
                             Row(
@@ -131,9 +132,11 @@ double sum(List< CartModel > cart) {
                                 )
                               ],
                             ),
-                            25.h.heightSizedBox,
+                            20.h.heightSizedBox,
                             defaultButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                 pushRoute(context, Routes.PaymentView,);
+                              },
                               text: 'Checkout',
                             ),
                           ],

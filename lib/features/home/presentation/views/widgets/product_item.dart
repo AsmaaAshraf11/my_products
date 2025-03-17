@@ -106,58 +106,53 @@ class _ProductItemState extends State<ProductItem> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                          
-                          TitleMedium(
-                            overflow: true,
-                            text: widget.productsModel!.titleProduct ?? '',
-                            // 'hair oil',
-                            textColor: Theme.of(context).focusColor,
-                            bold: true,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 5),
+                            child: TitleMedium(
+                              overflow: true,
+                              text: widget.productsModel!.titleProduct ?? '',
+                              // 'hair oil',
+                              textColor: Theme.of(context).focusColor,
+                              bold: true,
+                            ),
                           ),
-                          RichText(
-                            text: TextSpan(
-                              text: '${'\$'}' +
-                                  '${widget.productsModel?.price ?? ''}',
-                              //'${'\$6.99'}' + ' ',
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                  color: LightAppColors.primary400),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 4),
+                            child: Row(
+                               mainAxisAlignment:
+                                MainAxisAlignment.spaceAround,
                               children: [
-                                TextSpan(
-                                  text: '${'/kg'}',
-                                  style: TextStyle(
-                                      color: LightAppColors.graycolor400,
-                                      fontWeight: FontWeight.normal),
+                                RichText(
+                                  text: TextSpan(
+                                    text: '${'\$'}'+
+                                        '${widget.productsModel?.price ?? ''}',
+                                    //'${'\$6.99'}' + ' ',
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: LightAppColors.primary400),
+                                    children: [
+                                      TextSpan(
+                                        text: '${'/kg'}',
+                                        style: TextStyle(
+                                            color: LightAppColors.graycolor400,
+                                            fontWeight: FontWeight.normal),
+                                      ),
+                                    ],
+                                  ),
                                 ),
+                                Rating(
+                                  rating:
+                                      '${widget.productsModel.rating}',
+                                )
                               ],
                             ),
                           ),
                           Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.watch_later_rounded,
-                                      color: LightAppColors.graycolor400,
-                                      size: 14,
-                                    ),
-                                    SmallHeader(
-                                      text: '40min',
-                                      color: LightAppColors.graycolor400,
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Rating(
-                                      rating:
-                                          '${widget.productsModel?.rating}',
-                                    )
-                                  ],
-                                )
-                              ])
+                            children: [
+                              
+                            ],
+                          )
                         ])
                   ],
                 )),

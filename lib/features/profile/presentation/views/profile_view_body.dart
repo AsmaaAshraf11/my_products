@@ -43,105 +43,112 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
   }
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        50.h.heightSizedBox,
-        ImageProfile(),
-        HeadLine22(
-          text: 'Aml Kamal',
-        ),
-        TitleMedium(
-          text: '@amlkamal',
-        ),
-        MinButton(
-          text: 'Edit profile',
-          onPressed: () {},
-        ),
-        ListTil(
-          icon: Icons.settings,
-          istrailing: true,
-          text: 'Setting',
-        ),
-        ListTil(
-          icon: Icons.help,
-          istrailing: true,
-          text: 'Git help',
-        ),
-        ListTil(
-          icon: Icons.language,
-          text: 'Language',
-          istrailing: true,
-        ),
-        ListTil(
-          icon: Icons.location_on,
-          istrailing: true,
-          text: 'Manage Location',
-        ),
-        ListTil(
-          icon: Icons.wallet_travel,
-          istrailing: true,
-          text: 'My wallet',
-        ),
-        ListTil(
-          icon: Icons.notifications,
-          text: 'Notification',
-          trailing: Switch(
-            value: notifications,
-            activeTrackColor: LightAppColors.primary700,
-            activeColor: LightAppColors.colorSwatch,
-            inactiveThumbColor:LightAppColors.colorSwatch,
-            onChanged: (bool value) {
-              setState(() {
-                notifications = value;
-              });
-            },
-          ),
-        ),
-        ListTil(
-          icon: Icons.dark_mode,
-          text: 'Dark mode',
-          trailing: Switch(
-            value: isdark,
-            activeTrackColor: LightAppColors.primary700,
-            inactiveThumbColor:LightAppColors.colorSwatch,
-
-            activeColor: LightAppColors.colorSwatch,
-            onChanged: (bool value) {
-              setState(() {
-                isdark = value;
-                print('value :$value');
-                ThemeCubit .get(context).setDarkMode(value);
-              });
-            },
-          ),
-        ),
-        // ListTil(
-        //   icon: Icons.logout,
-        //   text: 'Log out',
-        //   color: LightAppColors.red,
-        // ),
-        GestureDetector(
-          onTap:(){
-            appPreferences.logout();
-             pushAndRemoveRoute(context, Routes.loginScreen,);
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(15),
-            child: Row(
-              children: [
-                Icon(Icons.logout,
-                color: LightAppColors.red,),
-                15.widthSizedBox,
-                 Text('Log out',style: TextStyle(
-                  fontSize: 17,
-                  color: LightAppColors.red,
-            
-                ),),
-              ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+                    horizontal: 18,
+                  ),
+        child: Column(
+          children: [
+            50.h.heightSizedBox,
+            ImageProfile(),
+            HeadLine22(
+              text: 'Aml Kamal',
             ),
-          ),
-        )
-      ],
+            TitleMedium(
+              text: '@amlkamal',
+            ),
+            MinButton(
+              text: 'Edit profile',
+              onPressed: () {},
+            ),
+            ListTil(
+              icon: Icons.settings,
+              istrailing: true,
+              text: 'Setting',
+            ),
+            ListTil(
+              icon: Icons.help,
+              istrailing: true,
+              text: 'Git help',
+            ),
+            ListTil(
+              icon: Icons.language,
+              text: 'Language',
+              istrailing: true,
+            ),
+            ListTil(
+              icon: Icons.location_on,
+              istrailing: true,
+              text: 'Manage Location',
+            ),
+            ListTil(
+              icon: Icons.wallet_travel,
+              istrailing: true,
+              text: 'My wallet',
+            ),
+            ListTil(
+              icon: Icons.notifications,
+              text: 'Notification',
+              trailing: Switch(
+                value: notifications,
+                activeTrackColor: LightAppColors.primary700,
+                activeColor: LightAppColors.colorSwatch,
+                inactiveThumbColor:LightAppColors.colorSwatch,
+                onChanged: (bool value) {
+                  setState(() {
+                    notifications = value;
+                  });
+                },
+              ),
+            ),
+            ListTil(
+              icon: Icons.dark_mode,
+              text: 'Dark mode',
+              trailing: Switch(
+                value: isdark,
+                activeTrackColor: LightAppColors.primary700,
+                inactiveThumbColor:LightAppColors.colorSwatch,
+        
+                activeColor: LightAppColors.colorSwatch,
+                onChanged: (bool value) {
+                  setState(() {
+                    isdark = value;
+                    print('value :$value');
+                    ThemeCubit .get(context).setDarkMode(value);
+                  });
+                },
+              ),
+            ),
+            // ListTil(
+            //   icon: Icons.logout,
+            //   text: 'Log out',
+            //   color: LightAppColors.red,
+            // ),
+            GestureDetector(
+              onTap:(){
+                appPreferences.logout();
+                 pushAndRemoveRoute(context, Routes.loginScreen,);
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(15),
+                child: Row(
+                  children: [
+                    Icon(Icons.logout,
+                    color: LightAppColors.red,),
+                    15.widthSizedBox,
+                     Text('Log out',style: TextStyle(
+                      fontSize: 17,
+                      color: LightAppColors.red,
+                
+                    ),),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

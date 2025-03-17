@@ -45,7 +45,7 @@ class _MyCartItemState extends State<MyCartItem> {
         return Column(
           children: [
             Container(
-              margin: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+              margin: EdgeInsets.symmetric(vertical: 9, horizontal: 10),
               padding: EdgeInsets.all(9),
               height: context.screenHeight * 0.18,
               decoration: BoxDecoration(

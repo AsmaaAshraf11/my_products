@@ -1,3 +1,4 @@
+// core/validations/validations.dart
 // name
 String? validateName(String? value) {
   if (value == null || value.isEmpty) {
@@ -79,6 +80,16 @@ String? validatePositiveIntNumber(String? value) {
   }
   if (number < 0) {
     return 'positive_num';
+  }
+  return null;
+}
+
+String? validateCardNumber(String? value) {
+  if (value == null || value.isEmpty) {
+    return 'Enter the number';
+  }
+  if (!RegExp(r'^[0-9]{16}$').hasMatch(value)) {
+    return 'invalid_number';
   }
   return null;
 }

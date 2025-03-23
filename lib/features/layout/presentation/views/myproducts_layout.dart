@@ -33,20 +33,7 @@ class MyproductsLayout extends StatelessWidget {
             ),
              backgroundColor: Theme.of(context).canvasColor,
               body:cubit.bottomScreen[cubit.currentIndex],
-              //  SingleChildScrollView(
-              //   child: Padding(
-              //     padding: const EdgeInsets.symmetric(
-              //       horizontal: 18,
-              //        vertical: 30,
-              //     ),
-              //     child: Column(
-              //       children: [
-              //         // if (cubit.currentIndex != 3)
-              //         cubit.bottomScreen[cubit.currentIndex],
-              //       ],
-              //     ),
-              //   ),
-              // ),
+             
               bottomNavigationBar: BottomNavigationBar(
                 type: BottomNavigationBarType.fixed,
                 selectedItemColor: LightAppColors.primary400,

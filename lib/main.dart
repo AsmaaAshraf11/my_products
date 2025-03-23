@@ -21,6 +21,10 @@ import 'package:myproducts/features/home/domain/use_cases/fetchDetailProduct_use
 import 'package:myproducts/features/home/presentation/manger/featured_DetailProduct_cubit/cubit/datailproduct_cubit.dart';
 import 'package:myproducts/features/home/presentation/manger/theme/cubit/theme_cubit.dart';
 import 'package:myproducts/features/layout/presentation/manger/cubit/bottom_navigation_bar_cubit.dart';
+import 'package:myproducts/features/location/data/data_source/save_location_local_data_source.dart';
+import 'package:myproducts/features/location/data/repos/location_repo_impl.dart';
+import 'package:myproducts/features/location/domain/use_cases/fetchlocation_use_cases.dart';
+import 'package:myproducts/features/location/presentation/manger/cubit/fetch_location_cubit.dart';
 import 'package:myproducts/features/login/data/repos/login_repo_impl.dart';
 import 'package:myproducts/features/login/domain/use_cases/fetchDataLogin_use_case.dart';
 import 'package:myproducts/features/cart/domain/use_cases/fetchMyCart_use_case.dart';
@@ -42,6 +46,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 Future<void> initializeApp() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupServiceLocator();
+  await SaveLocationLocalDataSourceImpl().initDb();
   await FavoritesLocalDataSourceImpl().initDb();
   await CartLocaleDataSourceImpl().initDb();
   Bloc.observer = MyBlocObserver();
@@ -144,6 +149,14 @@ class MyApp extends StatelessWidget {
               return FetchFavoritesCubit(FetchfavoritesUseCases(
                 getIt.get<FavoritesRepoImpl>(),
               ))..GetFavorites();
+            },
+          ),
+
+           BlocProvider(
+            create: (context) {
+              return FetchLocationCubit(FetchLocationUseCases(
+                getIt.get<LocationRepoImpl>(),
+              ))..GetLocation();
             },
           ),
           

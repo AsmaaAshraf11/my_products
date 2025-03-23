@@ -13,14 +13,14 @@ class FavoritesRepoImpl implements FavoritesRepo {
   
   @override
   Future<void> AddFavorites(ProductsEntity product) async{
-   var data= favoritesLocalDataSourceImpl.addFavorite(product);
+   favoritesLocalDataSourceImpl.addFavorite(product);
    //return data;
 
   }
   
   @override
   Future<void> deleteFavorites(int id) async{
-       var data= favoritesLocalDataSourceImpl.deleteFavorites(id);
+       favoritesLocalDataSourceImpl.deleteFavorites(id);
 
   }
   

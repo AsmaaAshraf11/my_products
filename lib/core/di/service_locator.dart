@@ -8,6 +8,8 @@ import 'package:myproducts/features/favorites/data/data_source/favorites_local_d
 import 'package:myproducts/features/favorites/data/repos/favorites_repo_impl.dart';
 import 'package:myproducts/features/home/data/data_source/home_remote_data_source.dart';
 import 'package:myproducts/features/home/data/repos/home_repo_impl.dart';
+import 'package:myproducts/features/location/data/data_source/save_location_local_data_source.dart';
+import 'package:myproducts/features/location/data/repos/location_repo_impl.dart';
 import 'package:myproducts/features/login/data/data_source/login_remote_data_source.dart';
 import 'package:myproducts/features/login/data/repos/login_repo_impl.dart';
 import 'package:myproducts/features/search/data/data_source/search_remote_data_source.dart';
@@ -73,6 +75,12 @@ void _registerRepositories() {
   getIt.registerSingleton<FavoritesRepoImpl>(
     FavoritesRepoImpl(
       favoritesLocalDataSourceImpl: FavoritesLocalDataSourceImpl(),
+    ),
+  );
+
+  getIt.registerSingleton<LocationRepoImpl>(
+    LocationRepoImpl(
+      saveLocationLocalDataSourceImpl: SaveLocationLocalDataSourceImpl(),
     ),
   );
 

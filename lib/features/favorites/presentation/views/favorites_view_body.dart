@@ -8,8 +8,8 @@ import 'package:myproducts/features/favorites/domain/use_cases/fetchfavorites_us
 import 'package:myproducts/features/favorites/presentation/manger/Featured_fetch_favorites_Cubit/cubit/fetch_favorites_cubit.dart';
 import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/product_item.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
+// ignore: must_be_immutable
 class FavoritesViewBody extends StatelessWidget {
   var Searchcontroller = TextEditingController();
 
@@ -23,7 +23,6 @@ class FavoritesViewBody extends StatelessWidget {
               ))..GetFavorites(),
       child: BlocConsumer<FetchFavoritesCubit, FetchFavoritesState>(
         listener: (context, state) {
-          // TODO: implement listener
         },
         builder: (context, state) {
          List<ProductsEntity> product=  FetchFavoritesCubit. get(context).favorite;
@@ -35,7 +34,7 @@ class FavoritesViewBody extends StatelessWidget {
                   ),
               child: Column(
                 children: [
-                  Align(
+                  const Align(
                       alignment: Alignment.center,
                       child: HeadLine22(
                         text: 'My favorite products',

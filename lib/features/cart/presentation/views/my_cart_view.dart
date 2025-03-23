@@ -135,7 +135,7 @@ double sum(List< CartModel > cart) {
                             20.h.heightSizedBox,
                             defaultButton(
                               onPressed: () {
-                                 pushRoute(context, Routes.PaymentView,);
+                                 pushRoute(context, Routes.paymentView,);
                               },
                               text: 'Checkout',
                             ),

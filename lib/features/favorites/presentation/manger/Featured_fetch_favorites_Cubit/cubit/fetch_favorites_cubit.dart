@@ -17,7 +17,7 @@ class FetchFavoritesCubit extends Cubit<FetchFavoritesState> {
   
   Future<void> AddFavorites(ProductsEntity product) async {
     try{
-          var data = await fetchfavoritesUseCases.call(product);
+          await fetchfavoritesUseCases.call(product);
           idfavorit.add(product.productId);
            emit(AddFavoritesSuccess());
                 

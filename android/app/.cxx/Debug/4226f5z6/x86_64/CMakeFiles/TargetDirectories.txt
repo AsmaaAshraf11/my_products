@@ -1,0 +1,2 @@
+/Volumes/data/Flutter Projects/my_products_asmaa/android/app/.cxx/Debug/4226f5z6/x86_64/CMakeFiles/edit_cache.dir
+/Volumes/data/Flutter Projects/my_products_asmaa/android/app/.cxx/Debug/4226f5z6/x86_64/CMakeFiles/rebuild_cache.dir

@@ -1,7 +1,5 @@
-// features/login/presentation/views/widgets/logo_image.dart
+// features/component/logo_image.dart
 import 'package:flutter/material.dart';
-import 'package:myproducts/core/resources/app_assets.dart';
-import 'package:myproducts/core/resources/app_colors.dart';
 
 class LogoImage extends StatelessWidget {
   const LogoImage({super.key, required this.Image, required this.Color});

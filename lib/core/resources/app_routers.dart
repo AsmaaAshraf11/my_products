@@ -8,6 +8,7 @@ import 'package:myproducts/features/cart/presentation/manger/Featured_cart_cubit
 import 'package:myproducts/features/cart/presentation/views/payment_view.dart';
 import 'package:myproducts/features/home/presentation/views/praduct_all_view.dart';
 import 'package:myproducts/features/home/data/repos/home_repo_impl.dart';
+import 'package:myproducts/features/location/presentation/views/google_maps_view.dart';
 import 'package:myproducts/features/login/data/repos/login_repo_impl.dart';
 import 'package:myproducts/features/login/domain/use_cases/fetchDataLogin_use_case.dart';
 import 'package:myproducts/features/home/domain/use_cases/fetchDetailProduct_use_case.dart';
@@ -37,8 +38,9 @@ class Routes {
   static const String allProductshScreen = "PraductAllView";
   static const String detail = "/productDetail";
   static const String cart = "cart";
-   static const String PaymentView = "PaymentView";
+   static const String paymentView = "PaymentView";
   static const String searchScreen = "SearchScreen";
+  static const String GoogleMapsView = "GoogleMapsView";
 }
 
 class RouteGenerator {
@@ -98,8 +100,10 @@ class RouteGenerator {
       case Routes.searchScreen:
         return MaterialPageRoute(builder: (_) => SearchScreen());
 
-         case Routes.PaymentView:
+         case Routes.paymentView:
         return MaterialPageRoute(builder: (_) => PaymentView());
+        case Routes.GoogleMapsView:
+        return MaterialPageRoute(builder: (_) => GoogleMapsView());
       // case Routes.homeScreen:
       //   return MaterialPageRoute(builder: (_) => const HomeScreen());
       //

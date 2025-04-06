@@ -11,12 +11,13 @@ class FetchdataloginUseCase extends UseCases<LoginResult, String> {
   FetchdataloginUseCase(this.loginRepo);
 
   @override
-  Future<Either<Failure, LoginResult>> call(String name,String password) async {
+  Future<Either<Failure, LoginResult>> call(
+      String name, String password) async {
     // TODO: implement call
     return await loginRepo.fetchDataLogin(name, password);
   }
 }
 
 abstract class UseCases<Type, parameter> {
-  Future<Either<Failure, Type>> call(parameter p,parameter s);
+  Future<Either<Failure, Type>> call(parameter p, parameter s);
 }

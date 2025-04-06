@@ -11,7 +11,6 @@ class SearchCubit extends Cubit<SearchState> {
   SearchCubit(this.searchUseCases) : super(SearchInitial());
   static SearchCubit get(context) => BlocProvider.of(context);
 
-
   final SearchUseCases searchUseCases;
   Future<void> SearchProduct(String product) async {
     emit(SearchLoading());
@@ -22,7 +21,7 @@ class SearchCubit extends Cubit<SearchState> {
       print(failure.errorMessage);
     }, (Products) {
       emit(SearchSuccess(Products));
-    //  print(Products.length);
+      //  print(Products.length);
       print('search');
     });
   }

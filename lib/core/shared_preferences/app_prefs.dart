@@ -20,7 +20,7 @@ class AppPreferences {
   }
 
   // is login
-  bool isLogged()  {
+  bool isLogged() {
     bool? isLog = _sharedPreferences.getBool(isUserLoggedKey);
     return isLog ?? false;
   }
@@ -36,10 +36,9 @@ class AppPreferences {
   }
 
   // set Auth Token
-   Future<void> setAuthToken(String token) async {
+  Future<void> setAuthToken(String token) async {
     _sharedPreferences.setString(authTokenKey, token);
   }
-  
 
   // get Auth Token
   Future<String> getAuthToken() async {
@@ -53,7 +52,7 @@ class AppPreferences {
   }
 
   // get user name
-  String getUserName()  {
+  String getUserName() {
     String? name = _sharedPreferences.getString(userNameKey);
     return name ?? '';
   }
@@ -72,7 +71,7 @@ class AppPreferences {
       return false;
     }
   }
-  
+
   // save store
   Future<void> saveStoreData(
       {required String storeId, required String storeName}) async {
@@ -95,7 +94,7 @@ class AppPreferences {
   }
 
   // get on boarding
-  bool isOnBoardingScreenViewed()  {
+  bool isOnBoardingScreenViewed() {
     return _sharedPreferences.getBool(onBoardingScreenViewed) ?? false;
   }
 

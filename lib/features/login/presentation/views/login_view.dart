@@ -22,7 +22,7 @@ import 'package:myproducts/features/login/presentation/views/widgets/text_forget
 import 'package:myproducts/features/component/text_form_field.dart';
 
 class LoginScreen extends StatefulWidget {
-   LoginScreen({Key? key}) : super(key: key);
+  LoginScreen({Key? key}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -33,57 +33,55 @@ class _LoginScreenState extends State<LoginScreen> {
 
   var passwordController = TextEditingController();
 
-   final _formkey = GlobalKey<FormState>();
+  final _formkey = GlobalKey<FormState>();
 
   bool isobscureText = true;
 
   @override
-  
   Widget build(BuildContext context) {
-    return  BlocConsumer<DataLoginCubit, DataLoginState>(
+    return BlocConsumer<DataLoginCubit, DataLoginState>(
       listener: (context, state) {
-        if(state is DataLoginSuccess){
-          if(state.model.success == true){
-            AppPreferences appPreferences=getIt.get<AppPreferences>();
+        if (state is DataLoginSuccess) {
+          if (state.model.success == true) {
+            AppPreferences appPreferences = getIt.get<AppPreferences>();
 
             appPreferences.setAuthToken(state.model.loginData!.accessToken);
             appPreferences.setIsLogged();
             appPreferences.setUserName('${state.model.loginData!.firstName}');
             print('id: ${state.model.loginData?.id}');
-            pushRoute(context, Routes.layout,);
-          }else{
-            ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                    content: Text("${state.model.message}"),
-                    backgroundColor: Colors.redAccent,
-                    duration: Duration(seconds: 2)) );
+            pushRoute(
+              context,
+              Routes.layout,
+            );
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("${state.model.message}"),
+                backgroundColor: Colors.redAccent,
+                duration: Duration(seconds: 2)));
           }
         }
-        if(state is DataLoginFailure){
-           ScaffoldMessenger.of(context).showSnackBar(
-                                              SnackBar(
-                                          content: Text("${state.errMessage}"),
-                                                backgroundColor: Colors.redAccent,
-                                       duration: Duration(seconds: 2), //  
-                                          
-             ),
-                      );
-
+        if (state is DataLoginFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("${state.errMessage}"),
+              backgroundColor: Colors.redAccent,
+              duration: Duration(seconds: 2), //
+            ),
+          );
         }
         // TODO: implement listener
       },
       builder: (context, state) {
-      
         return Scaffold(
           appBar: PreferredSize(
-        preferredSize:Size.fromHeight(40),
-      child: AppBar(
-         elevation: 0,
-          systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: LightAppColors.green300!.withOpacity(0.6),
-          ),
-        backgroundColor: LightAppColors.green300,
-      )),
+              preferredSize: Size.fromHeight(40),
+              child: AppBar(
+                elevation: 0,
+                systemOverlayStyle: SystemUiOverlayStyle(
+                  statusBarColor: LightAppColors.green300!.withOpacity(0.6),
+                ),
+                backgroundColor: LightAppColors.green300,
+              )),
           body: Stack(
             children: [
               const BackgroundImage(),
@@ -117,7 +115,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: Form(
                                   key: _formkey,
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       const HeadLine22(
                                         text: 'Log In',
@@ -134,7 +133,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                         Controller: emailcontroller,
                                         Type: TextInputType.emailAddress,
                                         Validator: validateEmail,
-                                        hintText: 'Enter your Email or Username',
+                                        hintText:
+                                            'Enter your Email or Username',
                                       ),
                                       14.h.heightSizedBox,
                                       const TitleText(
@@ -148,37 +148,39 @@ class _LoginScreenState extends State<LoginScreen> {
                                           suffix: IconButton(
                                               onPressed: () {
                                                 setState(() {
-                                                  isobscureText = !isobscureText;
+                                                  isobscureText =
+                                                      !isobscureText;
                                                 });
                                               },
                                               icon: Icon(
-                                                color: LightAppColors
-                                                    .primary400,
+                                                color:
+                                                    LightAppColors.primary400,
                                                 isobscureText
                                                     ? Icons.visibility_off
                                                     : Icons.visibility,
                                               ))),
                                       46.h.heightSizedBox,
                                       ConditionalBuilder(
-                                builder: (BuildContext context) =>  defaultButton(
-                              onPressed: () {
-                                       
-                                    
-                 
-                
-                                // if (_formkey.currentState!.validate()){
-                                
-                                  DataLoginCubit.get(context).fetchDataLogin(name:emailcontroller.text ,
-                                    password:passwordController.text,);
-                                        //  }                              
-                              },
-                              text: 'Login',
-                            ),
-                                condition: state is! DataLoginLoading,
-                                fallback: (BuildContext context) =>
-                                    Center(child: CircularProgressIndicator()),
-                              ),
-                                      
+                                        builder: (BuildContext context) =>
+                                            defaultButton(
+                                          onPressed: () {
+                                            // if (_formkey.currentState!.validate()){
+
+                                            DataLoginCubit.get(context)
+                                                .fetchDataLogin(
+                                              name: emailcontroller.text,
+                                              password: passwordController.text,
+                                            );
+                                            //  }
+                                          },
+                                          text: 'Login',
+                                        ),
+                                        condition: state is! DataLoginLoading,
+                                        fallback: (BuildContext context) =>
+                                            Center(
+                                                child:
+                                                    CircularProgressIndicator()),
+                                      ),
                                       const TextAndTextButton(
                                         text1: 'Forget your password?',
                                         text2: 'Reset password',
@@ -197,6 +199,5 @@ class _LoginScreenState extends State<LoginScreen> {
         );
       },
     );
-      
   }
 }

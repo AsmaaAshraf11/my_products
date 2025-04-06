@@ -7,10 +7,10 @@ class CounterDetail extends StatefulWidget {
   @override
   State<CounterDetail> createState() => _CounterDetailState();
 }
- int number = 1;
+
+int number = 1;
 
 class _CounterDetailState extends State<CounterDetail> {
-
   @override
   Widget build(BuildContext context) {
     return Positioned(
@@ -30,7 +30,7 @@ class _CounterDetailState extends State<CounterDetail> {
                 },
                 icon: Icon(
                   Icons.add,
-                  color:Colors.white,
+                  color: Colors.white,
                   size: 28,
                 )),
           ),

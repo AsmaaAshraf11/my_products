@@ -20,8 +20,7 @@ class CustomAppBarCart extends StatelessWidget {
             route: Routes.layout,
             iconColor: Colors.white,
             padding: 20.0,
-            buttonColor:
-             LightAppColors.primary700,
+            buttonColor: LightAppColors.primary700,
             //Theme.of(context).
           ),
           Text(

@@ -9,7 +9,6 @@ TextStyle _getTextStyle(double fontSize, FontWeight fontWeight, Color color) {
       fontWeight: fontWeight);
 }
 
-
 // regular style
 TextStyle getRegularStyle(
     {double fontSize = FontSize.s12, required Color color}) {

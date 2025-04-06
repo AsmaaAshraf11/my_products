@@ -1,7 +1,6 @@
 // features/home/presentation/views/widgets/product_item.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:myproducts/core/constants/constants.dart';
 import 'package:myproducts/core/extension/extensions.dart';
 import 'package:myproducts/core/helper_functions/route_navigation.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
@@ -12,6 +11,7 @@ import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/custom_product_image.dart';
 import 'package:myproducts/features/home/presentation/views/widgets/rating.dart';
 
+// ignore: must_be_immutable
 class ProductItem extends StatefulWidget {
   ProductItem({super.key, required this.productsModel});
 
@@ -26,12 +26,12 @@ class _ProductItemState extends State<ProductItem> {
   bool isfavorite = false;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    if(
-          FetchFavoritesCubit.get(context).idfavorit.contains(widget.productsModel.productId)) {
+    if (FetchFavoritesCubit.get(context)
+        .idfavorit
+        .contains(widget.productsModel.productId)) {
       setState(() {
-        isfavorite  = true;
+        isfavorite = true;
       });
     }
   }
@@ -40,12 +40,12 @@ class _ProductItemState extends State<ProductItem> {
   Widget build(BuildContext context) {
     return BlocConsumer<FetchFavoritesCubit, FetchFavoritesState>(
       listener: (context, state) {
-        // TODO: implement listener
       },
       builder: (context, state) {
         var cubit = FetchFavoritesCubit.get(context);
-       // List<int> idfavorit = FetchFavoritesCubit.get(context).idfavorit;
-        List<ProductsEntity> favorit = FetchFavoritesCubit.get(context).favorite;
+        // List<int> idfavorit = FetchFavoritesCubit.get(context).idfavorit;
+        List<ProductsEntity> favorit =
+            FetchFavoritesCubit.get(context).favorite;
         return SizedBox(
           height: context.screenHeight * 0.4,
           child: GestureDetector(
@@ -69,23 +69,23 @@ class _ProductItemState extends State<ProductItem> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                   // Text('$isfavorite'),
+                    // Text('$isfavorite'),
                     Align(
                       alignment: Alignment.topRight,
                       child: IconButton(
                         onPressed: () {
-                          if(isfavorite){
+                          if (isfavorite) {
                             // delete
-                            cubit.DeleteFavorites(widget.productsModel.productId);
+                            cubit.DeleteFavorites(
+                                widget.productsModel.productId);
                             setState(() {
                               isfavorite = false;
                             });
-                          }else{
+                          } else {
                             // add
-                            cubit.AddFavorites(
-                                        widget.productsModel);
+                            cubit.AddFavorites(widget.productsModel);
                             setState(() {
-                              isfavorite =true;
+                              isfavorite = true;
                             });
                           }
                         },
@@ -97,20 +97,19 @@ class _ProductItemState extends State<ProductItem> {
                         ),
                       ),
                     ),
-                   //  Text('${FetchFavoritesCubit.get(context).idfavorit}'),
+                    //  Text('${FetchFavoritesCubit.get(context).idfavorit}'),
                     CustomProductImage(
                         imageUrl: widget.productsModel.image ?? ''),
-    
+
                     // ),
                     Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                         
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 5),
                             child: TitleMedium(
                               overflow: true,
-                              text: widget.productsModel!.titleProduct ?? '',
+                              text: widget.productsModel.titleProduct,
                               // 'hair oil',
                               textColor: Theme.of(context).focusColor,
                               bold: true,
@@ -119,15 +118,14 @@ class _ProductItemState extends State<ProductItem> {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 4),
                             child: Row(
-                               mainAxisAlignment:
-                                MainAxisAlignment.spaceAround,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 RichText(
                                   text: TextSpan(
-                                    text: '${'\$'}'+
-                                        '${widget.productsModel?.price ?? ''}',
+                                    text: '${'\$'}' +
+                                        '${widget.productsModel.price ?? ''}',
                                     //'${'\$6.99'}' + ' ',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold,
                                         color: LightAppColors.primary400),
@@ -142,17 +140,12 @@ class _ProductItemState extends State<ProductItem> {
                                   ),
                                 ),
                                 Rating(
-                                  rating:
-                                      '${widget.productsModel.rating}',
+                                  rating: '${widget.productsModel.rating}',
                                 )
                               ],
                             ),
                           ),
-                          Row(
-                            children: [
-                              
-                            ],
-                          )
+                         
                         ])
                   ],
                 )),

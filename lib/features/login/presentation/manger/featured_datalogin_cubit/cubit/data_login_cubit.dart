@@ -9,19 +9,19 @@ part 'data_login_state.dart';
 
 class DataLoginCubit extends Cubit<DataLoginState> {
   DataLoginCubit(this.fetchdataloginUseCase) : super(DataLoginInitial());
-    static DataLoginCubit get(context) => BlocProvider.of(context);
+  static DataLoginCubit get(context) => BlocProvider.of(context);
 
   final FetchdataloginUseCase fetchdataloginUseCase;
-  Future<void> fetchDataLogin({required String name,required String password}) async {
+  Future<void> fetchDataLogin(
+      {required String name, required String password}) async {
     emit(DataLoginLoading());
 
     var result = await fetchdataloginUseCase.call(name, password);
 
     result.fold((failure) {
-
       print('Erronzr:${failure.errorMessage}');
       emit(DataLoginFailure(failure.errorMessage));
-     // print(failure.errorMessage);
+      // print(failure.errorMessage);
     }, (data) {
       emit(DataLoginSuccess(data));
     });

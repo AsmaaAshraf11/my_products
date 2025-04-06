@@ -5,8 +5,7 @@ import 'package:myproducts/features/home/data/models/products/product.dart';
 import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
 
 abstract class SearchRemoteDataSource {
-  
- Future<List<ProductsEntity>> SearchProducts(String product);
+  Future<List<ProductsEntity>> SearchProducts(String product);
 }
 
 class SearchRemoteDataSourceImpl extends SearchRemoteDataSource {
@@ -14,21 +13,21 @@ class SearchRemoteDataSourceImpl extends SearchRemoteDataSource {
 
   SearchRemoteDataSourceImpl(this.apiService);
 
-      @override
-      Future<List<ProductsEntity>> SearchProducts(String product)async{
+  @override
+  Future<List<ProductsEntity>> SearchProducts(String product) async {
     // TODO: implement SearchProducts
-var data = await apiService.get(
-        parameter: 'search?q=$product',
-        endpoint: Endpoint.getCategories);
+    var data = await apiService.get(
+        parameter: 'search?q=$product', endpoint: Endpoint.getCategories);
     List<ProductsEntity> products = productsList(data);
     print(products.length);
-    return products;      
-    }
-    List<ProductsEntity> productsList(Map<String, dynamic> data) {
+    return products;
+  }
+
+  List<ProductsEntity> productsList(Map<String, dynamic> data) {
     List<ProductsEntity> products = [];
     for (var Map in data['products']) {
       products.add(Product.fromJson(Map));
     }
     return products;
-    }
+  }
 }

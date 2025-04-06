@@ -15,16 +15,16 @@ class FetchmycartUseCase extends UseCases<List<CartModel>, void> {
   Future<Either<Failure, List<CartModel>>> call() {
     return cartRepo.fetchCart();
   }
-   
-     Future<void>callAdd(ProductsEntity product, int quant) {
+
+  Future<void> callAdd(ProductsEntity product, int quant) {
     return cartRepo.fetchAddCart(product, quant);
   }
-  
+
   Future<void> Call(int id) {
     return cartRepo.DeletCart(id);
   }
-   
-     Future<void>callUpdat(int id, int quant) {
+
+  Future<void> callUpdat(int id, int quant) {
     return cartRepo.UpdatQuant(id, quant);
   }
 }
@@ -32,4 +32,3 @@ class FetchmycartUseCase extends UseCases<List<CartModel>, void> {
 abstract class UseCases<Type, parameter> {
   Future<Either<Failure, Type>> call();
 }
-

@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_fonts.dart';
 
-
 class HeadLine22 extends StatelessWidget {
   final String text;
   final double fontSize;
@@ -16,7 +15,7 @@ class HeadLine22 extends StatelessWidget {
       this.bold = true,
       required this.text,
       this.fontSize = FontSize.s22,
-       this.overflow,
+      this.overflow,
       this.textColor});
 
   @override
@@ -24,7 +23,7 @@ class HeadLine22 extends StatelessWidget {
     return Text(
       text,
       style: Theme.of(context).textTheme.displayLarge!.copyWith(
-          color: textColor ??Theme.of(context).focusColor,
+          color: textColor ?? Theme.of(context).focusColor,
           fontSize: fontSize,
           overflow: overflow == true ? TextOverflow.ellipsis : null,
           fontWeight: bold == false ? FontWeight.normal : FontWeight.bold),
@@ -69,7 +68,7 @@ class TitleText extends StatelessWidget {
       style: TextStyle(
         //fontFamily: FontConstants.iBMFontFamily,
         fontSize: fontSize,
-        color: textColor ??Theme.of(context).focusColor,
+        color: textColor ?? Theme.of(context).focusColor,
         fontWeight: fontWeight ?? FontWeight.w500,
       ),
       textAlign: inCenter == true ? TextAlign.center : null,

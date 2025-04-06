@@ -12,9 +12,8 @@ class AddFavoritesFailure extends FetchFavoritesState {
   AddFavoritesFailure(this.errMessage);
 }
 
-class AddFavoritesSuccess extends FetchFavoritesState {
+class AddFavoritesSuccess extends FetchFavoritesState {}
 
-}
 class GetFavoritesFailure extends FetchFavoritesState {
   final String errMessage;
 
@@ -25,8 +24,8 @@ class GetFavoritesSuccess extends FetchFavoritesState {
   final List<ProductsEntity> products;
 
   GetFavoritesSuccess(this.products);
-
 }
+
 class DeleteFavoritesFailure extends FetchFavoritesState {
   final String errMessage;
 

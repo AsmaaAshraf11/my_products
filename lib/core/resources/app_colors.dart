@@ -6,29 +6,22 @@ class LightAppColors {
   static const Color primary700 = Color(0XFF179700);
   static const Color primary400 = Color(0XFF20B400);
   static Color? graycolor700 = Colors.grey[700];
-  static  Color graycolor600 = Colors.grey[600]!;
-  static  Color graycolor400 = Colors.grey[400]!;
+  static Color graycolor600 = Colors.grey[600]!;
+  static Color graycolor400 = Colors.grey[400]!;
   static Color? pink50 = Colors.pink[50];
   static Color? blue50 = Colors.blue[100];
   static const Color? pink0 = Colors.pink;
-    static const Color? scaffoldBackgroundColor = Colors.white;
+  static const Color? scaffoldBackgroundColor = Colors.white;
 
   static const Color? iconListTil = Colors.black;
   static const Color textcolor = Colors.black;
-   static Color?  unselecteColor=Colors.grey[400]!;
+  static Color? unselecteColor = Colors.grey[400]!;
 
   static Color? colorSwatch = Colors.white;
 
   static Color? red = Colors.red;
   //static Color? black = Colors.black;
   static Color? green300 = Colors.green[300];
-
-
-
-
-
-
-  
 
   static Color primary = Color(0XFF179700);
   static Color primary2 = hexToColor('007BFF');
@@ -77,26 +70,22 @@ class DarkAppColors {
   static const Color primary700 = Color(0XFF179700);
   static const Color primary400 = Color(0XFF20B400);
   static Color? graycolor700 = Colors.grey[700];
-  static  Color graycolor600 = Colors.grey[600]!;
-  static  Color graycolor400 = Colors.grey[400]!;
+  static Color graycolor600 = Colors.grey[600]!;
+  static Color graycolor400 = Colors.grey[400]!;
   static Color? pink50 = Colors.pink[50];
   static Color? blue50 = Colors.blue[100];
   static const Color? pink0 = Colors.pink;
   static const Color? colorbutton = Colors.white;
-    static const Color? scaffoldBackgroundColor = Colors.black;
+  static const Color? scaffoldBackgroundColor = Colors.black;
 
   static const Color? iconListTil = Colors.white;
   static const Color textcolor = Colors.white;
-static Color?  unselecteColor= Colors.white;
+  static Color? unselecteColor = Colors.white;
 
   static Color? colorSwatch = Colors.white;
 
   static Color? red = Colors.red;
   static Color? green300 = Colors.green[300];
-
-
-
-
 
   //static const MaterialColor primarySwatch = Colors.amber;
   static const Color primary = Color.fromRGBO(254, 173, 34, 1);

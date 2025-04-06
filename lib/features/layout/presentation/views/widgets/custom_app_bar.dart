@@ -10,20 +10,19 @@ import 'package:myproducts/core/resources/app_text.dart';
 import 'package:myproducts/features/login/data/models/login_model.dart';
 
 class CustomAppBar extends StatelessWidget {
-   CustomAppBar({super.key, this.userName});
-     String ?userName;
-
+  CustomAppBar({super.key, this.userName});
+  String? userName;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-         CircleAvatar(
+        CircleAvatar(
           radius: 30,
           backgroundImage:
-          //loginModel?.image != null && loginModel!.image!.isNotEmpty?
-          //NetworkImage('${loginModel?.image}'):
-          AssetImage(ImageAssets.profile),
+              //loginModel?.image != null && loginModel!.image!.isNotEmpty?
+              //NetworkImage('${loginModel?.image}'):
+              AssetImage(ImageAssets.profile),
         ),
         15.w.widthSizedBox,
         Column(
@@ -49,8 +48,7 @@ class CustomAppBar extends StatelessWidget {
                   borderRadius: BorderRadius.circular(11)),
               child: IconButton(
                 padding: EdgeInsets.all(0),
-                icon:
-                    Icon(size: 26, Icons.shopping_cart, color: Colors.white),
+                icon: Icon(size: 26, Icons.shopping_cart, color: Colors.white),
                 onPressed: () {
                   pushAndRemoveRoute(context, Routes.cart);
                 },
@@ -65,8 +63,7 @@ class CustomAppBar extends StatelessWidget {
                   borderRadius: BorderRadius.circular(11)),
               child: IconButton(
                 padding: EdgeInsets.all(0),
-                icon:
-                    Icon(size: 26, Icons.notifications, color: Colors.white),
+                icon: Icon(size: 26, Icons.notifications, color: Colors.white),
                 onPressed: () {},
               ),
             ),

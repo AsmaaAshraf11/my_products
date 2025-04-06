@@ -19,19 +19,20 @@ class FavoritesViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => FetchFavoritesCubit(FetchfavoritesUseCases(
-                getIt.get<FavoritesRepoImpl>(),
-              ))..GetFavorites(),
+        getIt.get<FavoritesRepoImpl>(),
+      ))
+        ..GetFavorites(),
       child: BlocConsumer<FetchFavoritesCubit, FetchFavoritesState>(
-        listener: (context, state) {
-        },
+        listener: (context, state) {},
         builder: (context, state) {
-         List<ProductsEntity> product=  FetchFavoritesCubit. get(context).favorite;
+          List<ProductsEntity> product =
+              FetchFavoritesCubit.get(context).favorite;
           return SingleChildScrollView(
             child: Padding(
-             padding: const EdgeInsets.symmetric(
-                    horizontal: 18,
-                     vertical: 30,
-                  ),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 18,
+                vertical: 30,
+              ),
               child: Column(
                 children: [
                   const Align(
@@ -39,28 +40,26 @@ class FavoritesViewBody extends StatelessWidget {
                       child: HeadLine22(
                         text: 'My favorite products',
                       )),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 35
-                      ),
-                      child: GridView.count(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 27,
-                        mainAxisSpacing: 20,
-                        childAspectRatio: .86,
-                        children: List.generate(
-                            product.length,
-                            (index) => SizedBox(
-                                  //  height:context.screenHeight*0.4,
-                                  child: ProductItem(
-                                    productsModel: product[index],
-                                  ),
-                                )),
-                      ),
-                    )
-              
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 35),
+                    child: GridView.count(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 27,
+                      mainAxisSpacing: 20,
+                      childAspectRatio: .86,
+                      children: List.generate(
+                          product.length,
+                          (index) => SizedBox(
+                                //  height:context.screenHeight*0.4,
+                                child: ProductItem(
+                                  productsModel: product[index],
+                                ),
+                              )),
+                    ),
+                  )
+
                   // GridViewPopular(),
                 ],
               ),

@@ -10,35 +10,24 @@ class FavoritesRepoImpl implements FavoritesRepo {
 
   FavoritesRepoImpl({required this.favoritesLocalDataSourceImpl});
 
-  
   @override
-  Future<void> AddFavorites(ProductsEntity product) async{
-   favoritesLocalDataSourceImpl.addFavorite(product);
-   //return data;
-
+  Future<void> AddFavorites(ProductsEntity product) async {
+    favoritesLocalDataSourceImpl.addFavorite(product);
+    //return data;
   }
-  
-  @override
-  Future<void> deleteFavorites(int id) async{
-       favoritesLocalDataSourceImpl.deleteFavorites(id);
 
-  }
-  
   @override
-  Future<Either<Failure, List<ProductsEntity>>> getFavorites() async{
-    try{
-   var data= await favoritesLocalDataSourceImpl.getFavorites();
-    return right(data);
-    }on Failure catch (e) {
+  Future<void> deleteFavorites(int id) async {
+    favoritesLocalDataSourceImpl.deleteFavorites(id);
+  }
+
+  @override
+  Future<Either<Failure, List<ProductsEntity>>> getFavorites() async {
+    try {
+      var data = await favoritesLocalDataSourceImpl.getFavorites();
+      return right(data);
+    } on Failure catch (e) {
       return left(ServerFailure(e.toString()));
     }
   }
-
-  
-  
-  
-
-  
-      
-       
 }

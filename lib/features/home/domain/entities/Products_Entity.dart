@@ -25,6 +25,6 @@ class ProductsEntity {
       required this.Category,
       required this.price,
       required this.rating,
-     // required this.review,
+      // required this.review,
       required this.productId});
 }

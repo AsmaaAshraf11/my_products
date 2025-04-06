@@ -17,7 +17,6 @@ import 'package:myproducts/features/home/presentation/views/widgets/review_and_r
 import 'package:myproducts/features/component/iconbutton_arrow_back.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 
-
 class ProductDetailView extends StatelessWidget {
   ProductDetailView({
     super.key,
@@ -39,15 +38,13 @@ class ProductDetailView extends StatelessWidget {
 
       body: BlocConsumer<CartCubit, CartState>(
         listener: (context, state) {
-          if(state is AddCartSuccess ){
-             AwesomeDialog(
-            context: context,
-            dialogType: DialogType.success,
-            animType: AnimType.rightSlide,
-            desc: 'Successfully added ',descTextStyle: const TextStyle(
-              fontSize: 18
-            ),
-           
+          if (state is AddCartSuccess) {
+            AwesomeDialog(
+              context: context,
+              dialogType: DialogType.success,
+              animType: AnimType.rightSlide,
+              desc: 'Successfully added ',
+              descTextStyle: const TextStyle(fontSize: 18),
             ).show();
           }
           // TODO: implement listener
@@ -150,16 +147,14 @@ class ProductDetailView extends StatelessWidget {
                                             .idproduct
                                             .contains(
                                                 state.products.productId)) {
-                                                  AwesomeDialog(
-            context: context,
-            dialogType: DialogType.warning,
-            animType: AnimType.rightSlide,
-            desc: ' it already exists  ',descTextStyle: const TextStyle(
-              fontSize: 18
-            ),
-           
-            ).show();
-
+                                          AwesomeDialog(
+                                            context: context,
+                                            dialogType: DialogType.warning,
+                                            animType: AnimType.rightSlide,
+                                            desc: ' it already exists  ',
+                                            descTextStyle:
+                                                const TextStyle(fontSize: 18),
+                                          ).show();
                                         } else {
                                           CartCubit.get(context).fetAddchCart(
                                               state.products, number);

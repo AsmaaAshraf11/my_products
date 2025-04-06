@@ -5,7 +5,6 @@ import 'package:myproducts/core/di/service_locator.dart';
 import 'package:myproducts/features/cart/data/repos/cart_repo_impl.dart';
 import 'package:myproducts/features/cart/domain/use_cases/fetchMyCart_use_case.dart';
 import 'package:myproducts/features/cart/presentation/manger/Featured_cart_cubit/cart_cubit.dart';
-import 'package:myproducts/features/cart/presentation/views/payment_view.dart';
 import 'package:myproducts/features/home/presentation/views/praduct_all_view.dart';
 import 'package:myproducts/features/home/data/repos/home_repo_impl.dart';
 import 'package:myproducts/features/location/presentation/views/google_maps_view.dart';
@@ -22,6 +21,9 @@ import 'package:myproducts/features/login/presentation/views/login_view.dart';
 import 'package:myproducts/features/changePassword/presentation/views/forget_Password_viewdart.dart';
 import 'package:myproducts/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:myproducts/features/onboarding/presentation/views/start_view.dart';
+import 'package:myproducts/features/payment/data/repos/payment_repo_impl.dart';
+import 'package:myproducts/features/payment/presentation/views/payment_view.dart';
+import 'package:myproducts/features/payment/presentation/manger/cubit/payment_cubit.dart';
 import 'package:myproducts/features/search/presentation/views/search_view.dart';
 import 'package:myproducts/features/signUp/presentation/views/sign_up_view.dart';
 
@@ -38,7 +40,7 @@ class Routes {
   static const String allProductshScreen = "PraductAllView";
   static const String detail = "/productDetail";
   static const String cart = "cart";
-   static const String paymentView = "PaymentView";
+  static const String paymentView = "PaymentView";
   static const String searchScreen = "SearchScreen";
   static const String GoogleMapsView = "GoogleMapsView";
 }
@@ -92,17 +94,23 @@ class RouteGenerator {
       case Routes.cart:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
-                  create: (context) =>CartCubit(FetchmycartUseCase(
-                  getIt.get<CartRepoImpl>(),
-                ),)..fetchCart(),
+                  create: (context) => CartCubit(
+                    FetchmycartUseCase(
+                      getIt.get<CartRepoImpl>(),
+                    ),
+                  )..fetchCart(),
                   child: const MyCartView(),
                 ));
       case Routes.searchScreen:
         return MaterialPageRoute(builder: (_) => SearchScreen());
 
-         case Routes.paymentView:
-        return MaterialPageRoute(builder: (_) => PaymentView());
-        case Routes.GoogleMapsView:
+      case Routes.paymentView:
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => PaymentCubit(PaymentRepoImpl()),
+                  child: PaymentView(),
+                ));
+      case Routes.GoogleMapsView:
         return MaterialPageRoute(builder: (_) => GoogleMapsView());
       // case Routes.homeScreen:
       //   return MaterialPageRoute(builder: (_) => const HomeScreen());

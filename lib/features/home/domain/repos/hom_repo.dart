@@ -6,7 +6,7 @@ import 'package:myproducts/features/home/domain/entities/Products_Entity.dart';
 
 abstract class HomRepo {
   Future<Either<Failure, List<String>>> fetchCategory();
-  Future<Either<Failure, List<ProductsEntity>>> fetchProducts([String category='beauty']);
+  Future<Either<Failure, List<ProductsEntity>>> fetchProducts(
+      [String category = 'beauty']);
   Future<Either<Failure, ProductsEntity>> fetchDetailProducts(int id);
-  
 }

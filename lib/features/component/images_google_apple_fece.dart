@@ -51,7 +51,6 @@ class ImagesGoogleAppleFece extends StatelessWidget {
                 child: Image.asset(ImageAssets.face)),
           ),
         ),
-
       ],
     );
   }

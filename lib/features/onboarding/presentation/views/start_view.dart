@@ -14,60 +14,60 @@ class StartView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize:Size.fromHeight(40),
-      child: AppBar(
-         elevation: 0,
-          systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: LightAppColors.green300!.withOpacity(0.6),
-          ),
-        backgroundColor: LightAppColors.green300,
-      )),
-      body: Stack(
-      children: [
-        Container(
-          color: LightAppColors.green300,
-          width: double.infinity,
-          height: double.infinity,
-          child: Image.asset(
-            ImageAssets.start,
-            width: double.infinity,
-            fit: BoxFit.fill,
-            //  color: Colors.green.shade100,
-          ),
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Container(
-            width: double.infinity,
-            height: context.screenHeight * .4,
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(30),
-              ),
+          preferredSize: Size.fromHeight(40),
+          child: AppBar(
+            elevation: 0,
+            systemOverlayStyle: SystemUiOverlayStyle(
+              statusBarColor: LightAppColors.green300!.withOpacity(0.6),
             ),
-            child: Column(
-              children: [
-                StartViewTitleAndDescription(),
-                ButtonSignLogin(),
-                TextButton(
-                  onPressed: () {},
-                  child: Center(
-                    child: Text(
-                      "OR Shopping as guest",
-                      style: TextStyle(
-                          color: LightAppColors.primary700,
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.underline),
+            backgroundColor: LightAppColors.green300,
+          )),
+      body: Stack(
+        children: [
+          Container(
+            color: LightAppColors.green300,
+            width: double.infinity,
+            height: double.infinity,
+            child: Image.asset(
+              ImageAssets.start,
+              width: double.infinity,
+              fit: BoxFit.fill,
+              //  color: Colors.green.shade100,
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              width: double.infinity,
+              height: context.screenHeight * .4,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(30),
+                ),
+              ),
+              child: Column(
+                children: [
+                  StartViewTitleAndDescription(),
+                  ButtonSignLogin(),
+                  TextButton(
+                    onPressed: () {},
+                    child: Center(
+                      child: Text(
+                        "OR Shopping as guest",
+                        style: TextStyle(
+                            color: LightAppColors.primary700,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.underline),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-      ],
-    ),
+        ],
+      ),
     );
   }
 }

@@ -9,7 +9,6 @@ abstract class Failure {
 
 class ServerFailure extends Failure {
   ServerFailure(super.errorMessage);
-  
 
   factory ServerFailure.fromDioError(DioException dioError) {
     const Map<DioExceptionType, String> errorMessages = {
@@ -31,10 +30,8 @@ class ServerFailure extends Failure {
       return ServerFailure('Unexpected Error. Try Again Later!');
     }
   }
-  
 
-  factory ServerFailure.fromResponse(int statusCode,  response) {
-     
+  factory ServerFailure.fromResponse(int statusCode, response) {
     const Map<int, String> statusErrorMessages = {
       400: 'Error occurred. Please try again.',
       401: 'Unauthorized access.',
@@ -43,21 +40,20 @@ class ServerFailure extends Failure {
       500: 'Internal server error. Please try again later.',
     };
     final statusCode = response!.statusCode;
-      final responseData = response?.data; 
-      if (statusCode == 400) {
-        // API returned an error with a 'message' field
-        return ServerFailure('Email or password incorrect');
-      }
+    final responseData = response?.data;
+    if (statusCode == 400) {
+      // API returned an error with a 'message' field
+      return ServerFailure('Email or password incorrect');
+    }
 
-  //  else if (statusErrorMessages.containsKey(statusCode) &&
-  //       response['message'] != null) {
-  //     return ServerFailure(response['message'].toString());
-  //   } else if (statusErrorMessages.containsKey(statusCode)) {
-  //     return ServerFailure(statusErrorMessages[statusCode]!);
-  //   } 
-  else {
+    //  else if (statusErrorMessages.containsKey(statusCode) &&
+    //       response['message'] != null) {
+    //     return ServerFailure(response['message'].toString());
+    //   } else if (statusErrorMessages.containsKey(statusCode)) {
+    //     return ServerFailure(statusErrorMessages[statusCode]!);
+    //   }
+    else {
       return ServerFailure('Something went wrong. Please try again later.');
     }
-  
-}
+  }
 }

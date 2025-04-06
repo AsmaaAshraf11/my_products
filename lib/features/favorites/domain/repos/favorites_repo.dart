@@ -8,5 +8,4 @@ abstract class FavoritesRepo {
   Future<void> AddFavorites(ProductsEntity product);
   Future<Either<Failure, List<ProductsEntity>>> getFavorites();
   Future<void> deleteFavorites(int id);
-  
 }

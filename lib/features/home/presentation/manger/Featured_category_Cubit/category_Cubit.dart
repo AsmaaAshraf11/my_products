@@ -15,7 +15,7 @@ class CategoryCubit extends Cubit<CategoryState> {
       emit(CategoryFailure(failure.errorMessage));
     }, (Category) {
       emit(CategorySuccess(Category));
-     // print('category');
+      // print('category');
     });
   }
 }

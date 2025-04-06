@@ -15,8 +15,8 @@ class MyCartItem extends StatefulWidget {
   @override
   State<MyCartItem> createState() => _MyCartItemState();
 }
- 
-  double total = 0;
+
+double total = 0;
 
 class _MyCartItemState extends State<MyCartItem> {
   int? quantity;
@@ -26,27 +26,23 @@ class _MyCartItemState extends State<MyCartItem> {
 //     return total;
 //   }
 
-  
-
   @override
   void initState() {
     super.initState();
     quantity = widget.model.quantity;
-   // sum(quantity!, widget.model.price);
+    // sum(quantity!, widget.model.price);
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CartCubit, CartState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         return Column(
           children: [
             Container(
-              margin: EdgeInsets.symmetric(vertical: 9, horizontal: 10),
-              padding: EdgeInsets.all(9),
+              margin: const EdgeInsets.symmetric(vertical: 9, horizontal: 10),
+              padding: const EdgeInsets.all(9),
               height: context.screenHeight * 0.18,
               decoration: BoxDecoration(
                   color: LightAppColors.scaffoldBackgroundColor,
@@ -74,7 +70,7 @@ class _MyCartItemState extends State<MyCartItem> {
                       Row(
                         children: [
                           HeadLine22(
-                            text: '${'\$${widget.model.price}'}',
+                            text: '\$${widget.model.price}',
                             textColor: LightAppColors.primary400,
                             overflow: true,
                           ),
@@ -96,23 +92,23 @@ class _MyCartItemState extends State<MyCartItem> {
                             padding: EdgeInsets.zero,
                             onPressed: () {
                               setState(() {
-                                 quantity = (quantity! + 1)!;
+                                quantity = (quantity! + 1)!;
                                 CartCubit.get(context).fetchApdatCart(
-                                    widget.model.productId, (quantity! ));
-                                   // 
-                               
+                                    widget.model.productId, (quantity!));
+                                //
+
                                 //sum(quantity!, widget.model.price);
-                               // print(total);
+                                // print(total);
                               });
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.add,
                               color: Colors.white,
                               size: 17,
                             )),
                       ),
                       TitleMedium(
-                        text: '${quantity}',
+                        text: '$quantity',
                         textColor: Theme.of(context).focusColor,
                         bold: true,
                       ),
@@ -126,14 +122,13 @@ class _MyCartItemState extends State<MyCartItem> {
                                 setState(() {
                                   quantity = (quantity! - 1)!;
                                   CartCubit.get(context).fetchApdatCart(
-                                    widget.model.productId, (quantity!));
-                               // sum(quantity!, widget.model.price);
-                                //print(total);
-                                  
+                                      widget.model.productId, (quantity!));
+                                  // sum(quantity!, widget.model.price);
+                                  //print(total);
                                 });
                               }
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.remove,
                               color: Colors.white,
                               size: 15,

@@ -5,19 +5,20 @@ import 'package:myproducts/core/errors/failures.dart';
 import 'package:myproducts/features/location/data/models/location._model.dart';
 import 'package:myproducts/features/location/domain/repos/location_repo.dart';
 
-class FetchLocationUseCases  {
+class FetchLocationUseCases {
   final LocationRepo locationRepo;
 
   FetchLocationUseCases(this.locationRepo);
 
-  Future<void> call(String address,LatLng latLngt) {
+  Future<void> call(String address, LatLng latLngt) {
     return locationRepo.addLocation(address, latLngt);
   }
-  
-           Future<Either<Failure, List<LocationModel>>> NoParam() {
+
+  Future<Either<Failure, List<LocationModel>>> NoParam() {
     return locationRepo.getLocation();
   }
-  Future<void> Call( int id) {
+
+  Future<void> Call(int id) {
     return locationRepo.deleteLocation(id);
   }
 }

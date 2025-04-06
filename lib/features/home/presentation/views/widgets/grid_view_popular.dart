@@ -15,10 +15,10 @@ class GridViewPopular extends StatelessWidget {
     return BlocConsumer<ProductsCubit, ProductsState>(
         listener: (BuildContext context, ProductsState state) {
       if (state is ProductsSuccess) {
-       // print(state.products.length);
+        // print(state.products.length);
       }
     }, builder: (BuildContext context, ProductsState state) {
-      List<ProductsEntity> products=ProductsCubit.get(context).SomeProducts;
+      List<ProductsEntity> products = ProductsCubit.get(context).SomeProducts;
       return Skeletonizer(
           enabled: state is ProductsLoading,
           child: state is ProductsSuccess
@@ -32,11 +32,11 @@ class GridViewPopular extends StatelessWidget {
                   children: List.generate(
                       products.length,
                       (index) => SizedBox(
-                      //  height:context.screenHeight*0.4,
-                        child: ProductItem(
+                            //  height:context.screenHeight*0.4,
+                            child: ProductItem(
                               productsModel: products[index],
                             ),
-                      )),
+                          )),
                 )
               : state is ProductsFailure
                   ? CustomErrorWidget(errMessage: state.errMessage)

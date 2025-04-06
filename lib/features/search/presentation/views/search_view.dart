@@ -26,7 +26,7 @@ class SearchScreen extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            
+
               // backgroundColor: LightAppColors.green300,
               ),
           body: SingleChildScrollView(
@@ -42,39 +42,43 @@ class SearchScreen extends StatelessWidget {
                       return null;
                     },
                     onSubmit: (String text) {
-                       SearchCubit.get(context).SearchProduct(text);
+                      SearchCubit.get(context).SearchProduct(text);
                     },
                     Prefix: Icons.search_rounded,
-                    suffix: Icon(Icons.filter_list,color: LightAppColors.primary400,)
-                    ),
-                    50.h.heightSizedBox,
-                    Skeletonizer(
-                                enabled: state is SearchLoading,
-                                child: state is SearchSuccess
-                                    ? Padding(
-                                      padding: const EdgeInsets.all(20),
-                                      child: GridView.count(
-                                                            shrinkWrap: true,
-                                                            physics: NeverScrollableScrollPhysics(),
-                                                            crossAxisCount: 2,
-                                                            crossAxisSpacing: 27,
-                                                            mainAxisSpacing: 20,
-                                                            childAspectRatio: .86,
-                                                            children: List.generate(
-                                                                state.products.length,
-                                                                (index) => SizedBox(
-                                                                  height:context.screenHeight*0.4,
-                                                                  child: ProductItem(
-                                                                        productsModel: state.products[index],
-                                                                      ),
-                                                                )),
-                                                          ),
-                                    )
-                                    : state is SearchFailure
-                      ? CustomErrorWidget(errMessage: state.errMessage)
-                      :state is SearchLoading? ProductLoading():
-                      TitleMedium(text: 'search',)
-                    )
+                    suffix: Icon(
+                      Icons.filter_list,
+                      color: LightAppColors.primary400,
+                    )),
+                50.h.heightSizedBox,
+                Skeletonizer(
+                    enabled: state is SearchLoading,
+                    child: state is SearchSuccess
+                        ? Padding(
+                            padding: const EdgeInsets.all(20),
+                            child: GridView.count(
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 27,
+                              mainAxisSpacing: 20,
+                              childAspectRatio: .86,
+                              children: List.generate(
+                                  state.products.length,
+                                  (index) => SizedBox(
+                                        height: context.screenHeight * 0.4,
+                                        child: ProductItem(
+                                          productsModel: state.products[index],
+                                        ),
+                                      )),
+                            ),
+                          )
+                        : state is SearchFailure
+                            ? CustomErrorWidget(errMessage: state.errMessage)
+                            : state is SearchLoading
+                                ? ProductLoading()
+                                : TitleMedium(
+                                    text: 'search',
+                                  ))
               ],
             ),
           ),

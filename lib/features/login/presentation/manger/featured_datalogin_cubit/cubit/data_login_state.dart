@@ -5,6 +5,7 @@ part of 'data_login_cubit.dart';
 sealed class DataLoginState {}
 
 final class DataLoginInitial extends DataLoginState {}
+
 class DataLoginLoading extends DataLoginState {}
 
 class DataLoginFailure extends DataLoginState {
@@ -18,4 +19,3 @@ class DataLoginSuccess extends DataLoginState {
 
   DataLoginSuccess(this.model);
 }
-

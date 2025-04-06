@@ -24,7 +24,8 @@ class HomeRepoImpl implements HomRepo {
   }
 
   @override
-  Future<Either<Failure, List<ProductsEntity>>> fetchProducts([String? category]) async {
+  Future<Either<Failure, List<ProductsEntity>>> fetchProducts(
+      [String? category]) async {
     try {
       List<ProductsEntity> productsList = [];
       productsList = await homeRemoteDataSource.fetchProducts(category!);
@@ -33,8 +34,6 @@ class HomeRepoImpl implements HomRepo {
       return left(ServerFailure(e.toString()));
     }
   }
-
- 
 
   @override
   Future<Either<Failure, ProductsEntity>> fetchDetailProducts(int id) async {
@@ -47,12 +46,4 @@ class HomeRepoImpl implements HomRepo {
       return left(ServerFailure(e.toString()));
     }
   }
-
-  
-  
-  
-
-  
-      
-       
 }

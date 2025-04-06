@@ -1,6 +1,5 @@
 // features/home/data/models/login_model.dart
 
-
 class LoginResult {
   String message;
   bool success;
@@ -11,6 +10,7 @@ class LoginResult {
     this.loginData,
   });
 }
+
 class LoginModel {
   String accessToken;
   String refreshToken;

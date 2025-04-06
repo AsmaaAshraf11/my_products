@@ -10,10 +10,10 @@ class HomeRepoImpl implements RegisterRepo {
 
   HomeRepoImpl({required this.registerRemoteDataSource});
 
- 
-        @override
-        Future<Either<Failure, LoginModel>> fetchDataRegister(String name, String password) {
-          // TODO: implement fetchDataRegister
-          throw UnimplementedError();
-        }
+  @override
+  Future<Either<Failure, LoginModel>> fetchDataRegister(
+      String name, String password) {
+    // TODO: implement fetchDataRegister
+    throw UnimplementedError();
+  }
 }

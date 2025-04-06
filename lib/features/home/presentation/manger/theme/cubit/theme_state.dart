@@ -5,11 +5,13 @@ part of 'theme_cubit.dart';
 sealed class ThemeState {}
 
 final class ThemeInitial extends ThemeState {}
-class   ThemeLoading extends ThemeState {}
+
+class ThemeLoading extends ThemeState {}
 
 class ThemeSuccess extends ThemeState {
   final MyThemeMode themeMode;
 
   ThemeSuccess(this.themeMode);
 }
-enum MyThemeMode{ light,dark}
+
+enum MyThemeMode { light, dark }

@@ -8,7 +8,6 @@ abstract class HomeRemoteDataSource {
   Future<List<String>> fetchCategory();
   Future<List<ProductsEntity>> fetchProducts(String category);
   Future<ProductsEntity> fetchDetailProducts({required int id});
-  
 }
 
 class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
@@ -21,8 +20,8 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     // TODO: implement fetchCategory
     List<String> category = [];
     var data = await apiService.get2(
-        parameter: 'category-list',
-        endpoint: Endpoint.getCategories,
+      parameter: 'category-list',
+      endpoint: Endpoint.getCategories,
     );
     //data.map((json) => Categorymodel.fromJson(json)).toList();
     category = categoryList(data);
@@ -33,27 +32,22 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   @override
   Future<List<ProductsEntity>> fetchProducts(String category) async {
     var data = await apiService.get(
-        parameter: '$category',
-        endpoint: Endpoint.getproduct);
+        parameter: '$category', endpoint: Endpoint.getproduct);
     List<ProductsEntity> products = productsList(data);
     return products;
   }
 
-  
-
   @override
   Future<ProductsEntity> fetchDetailProducts({required int id}) async {
     // TODO: implement fetchDetailProducts
-   // print('detail');
+    // print('detail');
     var data = await apiService.get(
-        parameter: '$id',
-        endpoint: Endpoint.getDetailproduct);
+        parameter: '$id', endpoint: Endpoint.getDetailproduct);
 
     ProductsEntity? products;
     products = Product.fromJson(data);
     return products;
   }
-
 
   List<ProductsEntity> productsList(Map<String, dynamic> data) {
     //print('products ');
@@ -72,10 +66,4 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     }
     return category;
   }
-  
- 
-  
-  
-  
- 
 }

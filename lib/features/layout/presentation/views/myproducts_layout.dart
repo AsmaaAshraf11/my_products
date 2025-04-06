@@ -15,15 +15,14 @@ class MyproductsLayout extends StatelessWidget {
     final String userName = appPreferences.getUserName();
 
     return BlocConsumer<BottomNavigationBarCubit, BottomNavigationBarState>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
-        builder: (context, state) {
-          var cubit = BottomNavigationBarCubit.get(context);
-          return Scaffold(
-
+      listener: (context, state) {
+        // TODO: implement listener
+      },
+      builder: (context, state) {
+        var cubit = BottomNavigationBarCubit.get(context);
+        return Scaffold(
             appBar: PreferredSize(
-             // preferredSize: Size.fromHeight(70),
+              // preferredSize: Size.fromHeight(70),
               preferredSize: Size.fromHeight(0),
               child: AppBar(
                 centerTitle: true,
@@ -31,22 +30,21 @@ class MyproductsLayout extends StatelessWidget {
                 title: Text('data'),
               ),
             ),
-             backgroundColor: Theme.of(context).canvasColor,
-              body:cubit.bottomScreen[cubit.currentIndex],
-             
-              bottomNavigationBar: BottomNavigationBar(
-                type: BottomNavigationBarType.fixed,
-                selectedItemColor: LightAppColors.primary400,
-                unselectedItemColor: Theme.of(context).unselectedWidgetColor,
-                backgroundColor: Theme.of(context).canvasColor,
-                items: cubit.BottomItem,
-                elevation: 3,
-                onTap: (index) {
-                  cubit.changBottomNavBar(index);
-                },
-                currentIndex: cubit.currentIndex,
-              ));
-        },
+            backgroundColor: Theme.of(context).canvasColor,
+            body: cubit.bottomScreen[cubit.currentIndex],
+            bottomNavigationBar: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              selectedItemColor: LightAppColors.primary400,
+              unselectedItemColor: Theme.of(context).unselectedWidgetColor,
+              backgroundColor: Theme.of(context).canvasColor,
+              items: cubit.BottomItem,
+              elevation: 3,
+              onTap: (index) {
+                cubit.changBottomNavBar(index);
+              },
+              currentIndex: cubit.currentIndex,
+            ));
+      },
     );
   }
 }

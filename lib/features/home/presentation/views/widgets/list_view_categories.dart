@@ -10,6 +10,7 @@ class ListViewCategories extends StatefulWidget {
   @override
   State<ListViewCategories> createState() => _ListViewCategoriesState();
 }
+
 class _ListViewCategoriesState extends State<ListViewCategories> {
   @override
   Widget build(BuildContext context) {
@@ -29,13 +30,11 @@ class _ListViewCategoriesState extends State<ListViewCategories> {
                   child: ListView.separated(
                       physics: BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) 
-                      {
+                      itemBuilder: (context, index) {
                         return ListViewItemCategories(
-                            category: '${state.Category[index]}', index: index,
-                           // category=
-                          );
-                          
+                          category: '${state.Category[index]}', index: index,
+                          // category=
+                        );
                       },
                       separatorBuilder: (context, index) => SizedBox(
                             width: 10,

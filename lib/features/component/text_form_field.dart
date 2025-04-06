@@ -20,7 +20,7 @@ Widget DefaultFormField({
   String? hintText,
   double? fonthintText,
   double? width,
-  List<TextInputFormatter>?inputFormatter,
+  List<TextInputFormatter>? inputFormatter,
   //Function? suffixprees,
 }) =>
     Container(
@@ -40,11 +40,11 @@ Widget DefaultFormField({
         inputFormatters: inputFormatter,
         decoration: InputDecoration(
             label: Label,
-            labelStyle: TextStyle(
-                fontSize: 18, color: LightAppColors.primary400),
+            labelStyle:
+                TextStyle(fontSize: 18, color: LightAppColors.primary400),
             hintText: hintText,
             hintStyle: TextStyle(
-              fontSize: fonthintText??13,
+              fontSize: fonthintText ?? 13,
               color: LightAppColors.graycolor600,
             ),
             floatingLabelStyle: const TextStyle(fontSize: 18),
@@ -57,26 +57,17 @@ Widget DefaultFormField({
                 width: 2,
               ),
             ),
-           
-            border: OutlineInputBorder(
-            
-              borderRadius: BorderRadius.circular(9)
-            ),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(9)),
             enabledBorder: OutlineInputBorder(
               borderSide:
-              // BorderSide.none,
-                BorderSide
-               (
+                  // BorderSide.none,
+                  BorderSide(
                 width: 1,
-               color: LightAppColors.graycolor600,
-               ),
+                color: LightAppColors.graycolor600,
+              ),
               borderRadius: BorderRadius.circular(15),
             ),
-
-            
-
-           filled: true,
-            fillColor: Colors.grey[100]
-            ),
+            filled: true,
+            fillColor: Colors.grey[100]),
       ),
     );

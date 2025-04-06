@@ -19,20 +19,21 @@ class CartSuccess extends CartState {
 
   CartSuccess(this.cart);
 }
+
 class DeleteCartFailure extends CartState {
   final String errMessage;
 
   DeleteCartFailure(this.errMessage);
 }
 
-class DeleteCartSuccess extends CartState {
+class DeleteCartSuccess extends CartState {}
 
-}
 class UpdateCartSuccess extends CartState {
   final String message;
 
   UpdateCartSuccess(this.message);
 }
+
 class AddCartLoading extends CartState {}
 
 class AddCartFailure extends CartState {
@@ -41,8 +42,6 @@ class AddCartFailure extends CartState {
   AddCartFailure(this.errMessage);
 }
 
-class AddCartSuccess extends CartState {
+class AddCartSuccess extends CartState {}
 
-}
-class ApdatCartSuccess extends CartState {
-}
+class ApdatCartSuccess extends CartState {}

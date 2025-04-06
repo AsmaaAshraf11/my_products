@@ -1,4 +1,5 @@
 // features/cart/presentation/views/my_cart_view.dart
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,27 +22,21 @@ class MyCartView extends StatefulWidget {
   State<MyCartView> createState() => _MyCartViewState();
 }
 
- 
 class _MyCartViewState extends State<MyCartView> {
-  double costDel=15;
-  double total=0;
+  double costDel = 15;
+  double total = 0;
   @override
   Widget build(BuildContext context) {
-    
-double sum(List< CartModel > cart) {
+    double sum(List<CartModel> cart) {
+      for (int i = 0; i < cart.length; i++) {
+        total += cart[i].price * cart[i].quantity;
+      }
 
-  for(int i=0;i<cart.length;i++){
-    total += cart[i].price *cart[i].quantity;   
-       }
-    
+      return total = double.parse(total.toStringAsFixed(2));
+    }
 
-    return total=double.parse(total.toStringAsFixed(2));
-  }
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: Size.fromHeight(0),
-          child: AppBar(
-          )),
+      appBar: PreferredSize(preferredSize: Size.fromHeight(0), child: AppBar()),
       body: Column(
         children: [
           CustomAppBarCart(),
@@ -49,6 +44,7 @@ double sum(List< CartModel > cart) {
           BlocConsumer<CartCubit, CartState>(
             listener: (context, state) {},
             builder: (context, state) {
+             
               List<CartModel> cart =
                   BlocProvider.of<CartCubit>(context).cartList;
               return Container(
@@ -64,8 +60,11 @@ double sum(List< CartModel > cart) {
                               return Dismissible(
                                 onDismissed: (direction) {
                                   //  CartCubit .get(context).fetchDeleteCart(cart[index].productId,);
-                                    BlocProvider.of<CartCubit>(context)
-                                        .removeCart(index: index, id: cart[index].productId,);
+                                  BlocProvider.of<CartCubit>(context)
+                                      .removeCart(
+                                    index: index,
+                                    id: cart[index].productId,
+                                  );
                                 },
                                 background: DeletItemCart(),
                                 key: ValueKey(cart[index]),
@@ -74,37 +73,34 @@ double sum(List< CartModel > cart) {
                             }),
                       ),
                       Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(50),
                           ),
                         ),
-                        padding: EdgeInsets.all(27),
+                        padding: const EdgeInsets.all(27),
                         height: context.screenHeight * .365,
                         child: Column(
                           children: [
                             Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                               
                                 TitleMedium(
                                   text: 'Shopping cost',
                                   textColor: LightAppColors.graycolor600,
                                   fontSize: 18,
-                                                               ),
+                                ),
                                 TitleMedium(
                                   bold: true,
-                                  text: '${'\$'+' ${sum(cart)},'}',
+                                  text: '${'\$' + ' ${sum(cart)},'}',
                                   textColor: Theme.of(context).focusColor,
                                 )
                               ],
                             ),
                             15.h.heightSizedBox,
                             Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 TitleMedium(
                                   text: 'Delivery cost',
@@ -113,21 +109,20 @@ double sum(List< CartModel > cart) {
                                 ),
                                 TitleMedium(
                                   bold: true,
-                                  text: '${'\$'+'$costDel'}',
+                                  text: '${'\$' + '$costDel'}',
                                   textColor: Theme.of(context).focusColor,
                                 )
                               ],
                             ),
                             15.h.heightSizedBox,
                             Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 const HeadLine22(
                                   text: 'Total cost',
                                 ),
                                 HeadLine22(
-                                  text: '${'\$'+'40.99'}',
+                                  text: '${'\$' + '40.99'}',
                                   textColor: Theme.of(context).focusColor,
                                 )
                               ],
@@ -135,7 +130,12 @@ double sum(List< CartModel > cart) {
                             20.h.heightSizedBox,
                             defaultButton(
                               onPressed: () {
-                                 pushRoute(context, Routes.paymentView,);
+                                // var transcitionData = getTransctionsData();
+                                
+                                pushRoute(
+                                  context,
+                                  Routes.paymentView,
+                                );
                               },
                               text: 'Checkout',
                             ),

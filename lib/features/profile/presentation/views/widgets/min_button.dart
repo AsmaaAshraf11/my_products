@@ -1,5 +1,4 @@
 // features/profile/presentation/views/widgets/min_button.dart
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
@@ -19,7 +18,7 @@ class MinButton extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(30))),
         child: Text(
           text,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 15,
           ),

@@ -21,16 +21,15 @@ class IconbuttonArrowBack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 20,  left: 20),
+      padding: EdgeInsets.only(right: 20, left: 20),
       child: Container(
         height: 40,
         width: 40,
         decoration: BoxDecoration(
             color: buttonColor, borderRadius: BorderRadius.circular(12)),
         child: IconButton(
-          padding:EdgeInsets.all(0),
+          padding: EdgeInsets.all(0),
           icon: Icon(
-          
               size: 27,
               icon ?? Icons.arrow_back_ios_new_rounded,
               color: iconColor),

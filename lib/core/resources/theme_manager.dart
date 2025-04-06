@@ -12,13 +12,9 @@ import 'package:myproducts/core/resources/values_manager.dart';
 // }
 
 ThemeData lightTheme = ThemeData(
-disabledColor: LightAppColors.iconListTil,
+  disabledColor: LightAppColors.iconListTil,
   focusColor: LightAppColors.textcolor,
- unselectedWidgetColor:LightAppColors.unselecteColor,
-
-
-
-
+  unselectedWidgetColor: LightAppColors.unselecteColor,
 
   primarySwatch: LightAppColors.primarySwatch,
   primaryColor: LightAppColors.primary,
@@ -26,7 +22,7 @@ disabledColor: LightAppColors.iconListTil,
   primaryColorDark: LightAppColors.secondaryTextColor,
   canvasColor: LightAppColors.background2,
   secondaryHeaderColor: LightAppColors.secondary,
-  
+
   indicatorColor: LightAppColors.inactive,
   cardColor: LightAppColors.card,
   // highlightColor: LightAppColors.primary,
@@ -54,7 +50,7 @@ disabledColor: LightAppColors.iconListTil,
     systemOverlayStyle: SystemUiOverlayStyle(
       statusBarColor: LightAppColors.background2,
       // top bg color
-      systemNavigationBarColor:Colors.black,
+      systemNavigationBarColor: Colors.black,
       // bottom bg color
       statusBarBrightness: Brightness.light,
       // top text color  // make this light
@@ -65,25 +61,21 @@ disabledColor: LightAppColors.iconListTil,
     ),
   ),
   // button theme
-  
 );
 
 //
 ThemeData darkTheme = ThemeData(
-   disabledColor: DarkAppColors.iconListTil,
-    focusColor: DarkAppColors.textcolor,
-    unselectedWidgetColor:DarkAppColors.unselecteColor,
-
-
-
+  disabledColor: DarkAppColors.iconListTil,
+  focusColor: DarkAppColors.textcolor,
+  unselectedWidgetColor: DarkAppColors.unselecteColor,
 
   primarySwatch: DarkAppColors.primarySwatch,
   primaryColor: DarkAppColors.primary,
- // primaryColorLight: DarkAppColors.iconListTil,
+  // primaryColorLight: DarkAppColors.iconListTil,
   primaryColorDark: DarkAppColors.secondaryTextColor,
   canvasColor: DarkAppColors.background,
   secondaryHeaderColor: DarkAppColors.secondary,
- 
+
   indicatorColor: DarkAppColors.inactive,
   cardColor: DarkAppColors.card,
   highlightColor: DarkAppColors.primary2,
@@ -102,7 +94,7 @@ ThemeData darkTheme = ThemeData(
     surfaceTintColor: DarkAppColors.background,
     backgroundColor: DarkAppColors.background,
     systemOverlayStyle: SystemUiOverlayStyle(
-      systemNavigationBarColor:Colors.black,
+      systemNavigationBarColor: Colors.black,
       statusBarColor: DarkAppColors.background,
       statusBarBrightness: Brightness.dark,
       systemNavigationBarIconBrightness: Brightness.light,
@@ -111,9 +103,8 @@ ThemeData darkTheme = ThemeData(
     ),
   ),
   // button theme
-  
+
   // elevated button them
-  
+
   // text theme
-  
 );

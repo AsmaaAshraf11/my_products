@@ -5,5 +5,6 @@ import 'package:myproducts/features/login/data/models/login_model.dart';
 import '../../../../core/errors/failures.dart';
 
 abstract class RegisterRepo {
-   Future<Either<Failure, LoginModel>> fetchDataRegister(String name,String password);
+  Future<Either<Failure, LoginModel>> fetchDataRegister(
+      String name, String password);
 }

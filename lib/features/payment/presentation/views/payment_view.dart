@@ -1,20 +1,29 @@
-// features/cart/presentation/views/payment_view.dart
+// features/payment/presentation/views/payment_view.dart
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:myproducts/core/resources/app_assets.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_text.dart';
+import 'package:myproducts/core/utils/api_keys.dart';
 import 'package:myproducts/core/validations/validations.dart';
-import 'package:myproducts/features/cart/presentation/views/widgets/custom_app_bar_paymet.dart';
-import 'package:myproducts/features/cart/presentation/views/widgets/list_view_item_payment.dart';
 import 'package:myproducts/features/component/button.dart';
 import 'package:myproducts/features/component/text_form_field.dart';
 import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 import 'package:myproducts/features/location/data/models/location._model.dart';
 import 'package:myproducts/features/location/presentation/manger/cubit/fetch_location_cubit.dart';
+import 'package:myproducts/features/payment/data/models/Payment_Intent_input_Model.dart';
+import 'package:myproducts/features/payment/data/models/amount/amount.dart';
+import 'package:myproducts/features/payment/data/models/amount/details.dart';
+import 'package:myproducts/features/payment/data/models/item_list_model/item.dart';
+import 'package:myproducts/features/payment/data/models/item_list_model/item_list_model.dart';
+import 'package:myproducts/features/payment/presentation/views/widgets/custom_app_bar_paymet.dart';
+import 'package:myproducts/features/payment/presentation/views/widgets/list_view_item_payment.dart';
+import 'package:myproducts/features/payment/presentation/manger/cubit/payment_cubit.dart';
 
 class PaymentView extends StatefulWidget {
   @override
@@ -40,11 +49,26 @@ class _PaymentViewState extends State<PaymentView> {
       body: BlocConsumer<FetchLocationCubit, FetchLocationState>(
         listener: (context, state) {},
         builder: (context, state) {
+           var amount = AmountModel(
+                  total: '100',
+                  currency: 'USD',
+                  details: Details(
+                      subtotal: '100', shipping: '0', shippingDiscount: 0));
+              List<OrderItem> order = [
+                OrderItem(
+                    currency: "USD", name: "Apple", quantity: 4, price: '10'),
+                OrderItem(
+                    currency: "USD",
+                    name: "Pineapple",
+                    quantity: 5,
+                    price: '12')
+              ];
+              var itemListModel = ItemListModel(orders: order);
           List<LocationModel> location =
               FetchLocationCubit.get(context).locations;
 
           return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: SingleChildScrollView(
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,8 +79,8 @@ class _PaymentViewState extends State<PaymentView> {
                       bold: true,
                       fontSize: 15,
                     ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 15),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 15),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -64,13 +88,52 @@ class _PaymentViewState extends State<PaymentView> {
                             name: 'MasterCard',
                             image: ImageAssets.MasterCard,
                           ),
-                          ItemPayment(
+                           ItemPayment(
                             name: 'visa',
                             image: ImageAssets.visa,
                           ),
-                          ItemPayment(
+                           ItemPayment(
                             name: 'paypal',
                             image: ImageAssets.paypal,
+                             payment: (){
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      PaypalCheckoutView(
+                                    sandboxMode: true,
+                                    clientId: ApiKeys.clientId,
+                                    secretKey: ApiKeys.secretKey,
+                                    transactions: [
+                                      {
+                                        "amount": amount.toJson(),
+                                        
+
+                                        "description":
+                                            "The payment transaction description.",
+                                        // "payment_options": {
+                                        //   "allowed_payment_method":
+                                        //       "INSTANT_FUNDING_SOURCE"
+                                        // },
+                                        "item_list": itemListModel.toJson(),
+                                        
+                                      }
+                                    ],
+                                    note:
+                                        "Contact us for any questions on your order.",
+                                    onSuccess: (Map params) async {
+                                      log("onSuccess: $params");
+                                      Navigator.pop(context);
+                                    },
+                                    onError: (error) {
+                                      log("onError: $error");
+                                      Navigator.pop(context);
+                                    },
+                                    onCancel: () {
+                                      print('cancelled:');
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                ));
+                            },
                           ),
                         ],
                       ),
@@ -84,9 +147,7 @@ class _PaymentViewState extends State<PaymentView> {
                       width: MediaQuery.of(context).size.width,
                       child: DropdownButtonFormField<int>(
                         isExpanded: true,
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 10
-                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 10),
                         decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
@@ -100,8 +161,8 @@ class _PaymentViewState extends State<PaymentView> {
                             borderSide: const BorderSide(
                                 width: 2, color: LightAppColors.primary400),
                           ),
-                          contentPadding:
-                              const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 8),
                         ),
                         value: selected,
                         items: location
@@ -238,14 +299,25 @@ class _PaymentViewState extends State<PaymentView> {
                                 ),
                               ],
                             ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 15),
-                              child: defaultButton(
-                                onPressed: () {
-                                  if (_formkey.currentState!.validate()) {}
-                                },
-                                text: 'Pay\$90',
-                              ),
+                            BlocConsumer<PaymentCubit, PaymentState>(
+                              listener: (context, state) {
+                              },
+                              builder: (context, state) {
+                                return Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 15),
+                                  child: defaultButton(
+                                    onPressed: () {
+                                       // if (_formkey.currentState!.validate()) {}
+                                      PaymentIntentInputModel paymentIntentInputModel=PaymentIntentInputModel(amount:'100' , currency: 'USD',
+                                       customerId: 'cus_S4g0JokzDYwxKh');
+                                      PaymentCubit .get(context).makePayment(paymentIntentInputModel: paymentIntentInputModel);
+                                    
+                                    },
+                                    text: 'Pay\$90',
+                                  ),
+                                );
+                              },
                             ),
                           ],
                         ),

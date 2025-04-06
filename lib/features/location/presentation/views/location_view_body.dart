@@ -29,41 +29,43 @@ class LocationViewBody extends StatelessWidget {
       backgroundColor: Theme.of(context).canvasColor,
       body: BlocProvider(
         create: (context) {
-           return FetchLocationCubit(FetchLocationUseCases(
-                getIt.get<LocationRepoImpl>(),
-              ))..GetLocation();
+          return FetchLocationCubit(FetchLocationUseCases(
+            getIt.get<LocationRepoImpl>(),
+          ))
+            ..GetLocation();
         },
         child: BlocConsumer<FetchLocationCubit, FetchLocationState>(
           listener: (context, state) {
             // TODO: implement listener
           },
           builder: (context, state) {
-            List<LocationModel>location=
-            FetchLocationCubit. get(context).locations;
+            List<LocationModel> location =
+                FetchLocationCubit.get(context).locations;
             return SingleChildScrollView(
-                  
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        //  vertical: 30,
-                        ),
-                    child: Column(
-                      children: [
-                        if(state is GetLocationSuccess)
-                        ListView.separated(
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
-                            itemBuilder: (context, index) => ListLocationItem( location: location[index],),
-                            separatorBuilder: (context, index) => Divider(
-                                thickness: 1,
-                                height: 0.1,
-                                color: LightAppColors.graycolor400),
-                            itemCount: location.length),
-        
-                        //
-                      ],
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    //  vertical: 30,
                     ),
-                  ),
-                );
+                child: Column(
+                  children: [
+                    if (state is GetLocationSuccess)
+                      ListView.separated(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          itemBuilder: (context, index) => ListLocationItem(
+                                location: location[index],
+                              ),
+                          separatorBuilder: (context, index) => Divider(
+                              thickness: 1,
+                              height: 0.1,
+                              color: LightAppColors.graycolor400),
+                          itemCount: location.length),
+
+                    //
+                  ],
+                ),
+              ),
+            );
           },
         ),
       ),

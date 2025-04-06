@@ -11,34 +11,23 @@ class LocationRepoImpl implements LocationRepo {
 
   LocationRepoImpl({required this.saveLocationLocalDataSourceImpl});
 
-  
   @override
-  Future<void> addLocation(String address,LatLng latLng) async{
-   saveLocationLocalDataSourceImpl.addLocation(address, latLng);
-
+  Future<void> addLocation(String address, LatLng latLng) async {
+    saveLocationLocalDataSourceImpl.addLocation(address, latLng);
   }
-  
-  @override
-  Future<void> deleteLocation(int id) async{
-       saveLocationLocalDataSourceImpl.deleteLocation(id);
 
-  }
-  
   @override
-  Future<Either<Failure, List<LocationModel>>> getLocation() async{
-    try{
-   var data= await saveLocationLocalDataSourceImpl.getLocation();
-    return right(data);
-    }on Failure catch (e) {
+  Future<void> deleteLocation(int id) async {
+    saveLocationLocalDataSourceImpl.deleteLocation(id);
+  }
+
+  @override
+  Future<Either<Failure, List<LocationModel>>> getLocation() async {
+    try {
+      var data = await saveLocationLocalDataSourceImpl.getLocation();
+      return right(data);
+    } on Failure catch (e) {
       return left(ServerFailure(e.toString()));
     }
   }
-
-  
-  
-  
-
-  
-      
-       
 }

@@ -1,6 +1,6 @@
 // core/dio/end_points.dart
 enum Endpoint {
-   login,
+  login,
   // sendCode,
   // verifyCode,
   // resetCode,
@@ -75,8 +75,8 @@ enum Endpoint {
 extension EndpointExtension on Endpoint {
   String get value {
     switch (this) {
-       case Endpoint.login:
-         return 'auth/login';
+      case Endpoint.login:
+        return 'auth/login';
       // case Endpoint.sendCode:
       //   return 'resend-verification-code';
       // case Endpoint.verifyCode:

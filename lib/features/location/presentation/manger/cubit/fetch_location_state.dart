@@ -5,15 +5,15 @@ part of 'fetch_location_cubit.dart';
 sealed class FetchLocationState {}
 
 final class FeaturedLocationInitial extends FetchLocationState {}
+
 class AddLocationFailure extends FetchLocationState {
   final String errMessage;
 
   AddLocationFailure(this.errMessage);
 }
 
-class AddLocationSuccess extends FetchLocationState {
+class AddLocationSuccess extends FetchLocationState {}
 
-}
 class GetLocationFailure extends FetchLocationState {
   final String errMessage;
 
@@ -24,8 +24,8 @@ class GetLocationSuccess extends FetchLocationState {
   final List<LocationModel> locations;
 
   GetLocationSuccess(this.locations);
-
 }
+
 class DeleteLocationFailure extends FetchLocationState {
   final String errMessage;
 

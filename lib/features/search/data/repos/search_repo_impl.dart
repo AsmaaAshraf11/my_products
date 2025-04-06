@@ -9,10 +9,10 @@ class SearchRepoImpl implements SearchRepo {
   final SearchRemoteDataSource searchRemoteDataSource;
 
   SearchRepoImpl({required this.searchRemoteDataSource});
-  
-  @override
-  Future<Either<Failure, List<ProductsEntity>>> SearchProducts(String product) async{
 
+  @override
+  Future<Either<Failure, List<ProductsEntity>>> SearchProducts(
+      String product) async {
     try {
       List<ProductsEntity> products = [];
 
@@ -22,6 +22,4 @@ class SearchRepoImpl implements SearchRepo {
       return left(ServerFailure(e.toString()));
     }
   }
-
- 
 }

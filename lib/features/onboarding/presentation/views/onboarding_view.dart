@@ -17,7 +17,7 @@ class OnboardingView extends StatefulWidget {
 }
 
 class _OnboardingViewState extends State<OnboardingView> {
-List<BoardindModel> boarding = [
+  List<BoardindModel> boarding = [
     BoardindModel(
         image: ImageAssets.onBoarding1,
         title: 'Your favorite ',
@@ -41,80 +41,80 @@ List<BoardindModel> boarding = [
 
   bool islast = false;
 
-   AppPreferences appPreferences=getIt.get<AppPreferences>();
+  AppPreferences appPreferences = getIt.get<AppPreferences>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body:Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Expanded(
-          child: PageView.builder(
-            scrollDirection: Axis.horizontal,
-            controller: boarderController,
-            onPageChanged: (index) {
-              if (index == boarding.length - 1) {
-                setState(() {
-                  islast = true;
-                });
-              } else {
-                (' notlast');
-                setState(() {
-                  islast = false;
-                });
-              }
-            },
-            itemCount: boarding.length,
-            // physics:BouncingScrollPhysics(),
-            itemBuilder: ((BuildContext context, int index) {
-              return OnboardingViewItem(model: boarding[index]);
-            }),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            child: PageView.builder(
+              scrollDirection: Axis.horizontal,
+              controller: boarderController,
+              onPageChanged: (index) {
+                if (index == boarding.length - 1) {
+                  setState(() {
+                    islast = true;
+                  });
+                } else {
+                  (' notlast');
+                  setState(() {
+                    islast = false;
+                  });
+                }
+              },
+              itemCount: boarding.length,
+              // physics:BouncingScrollPhysics(),
+              itemBuilder: ((BuildContext context, int index) {
+                return OnboardingViewItem(model: boarding[index]);
+              }),
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(40),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SmoothPageIndicator(
-                controller: boarderController,
-                count: boarding.length,
-                effect: ExpandingDotsEffect(
-                  dotColor: Colors.grey,
-                  dotHeight: 7,
-                  expansionFactor: 3,
-                  dotWidth: 7,
-                  spacing: 5,
-                  activeDotColor: LightAppColors.primary400,
+          Padding(
+            padding: const EdgeInsets.all(40),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SmoothPageIndicator(
+                  controller: boarderController,
+                  count: boarding.length,
+                  effect: ExpandingDotsEffect(
+                    dotColor: Colors.grey,
+                    dotHeight: 7,
+                    expansionFactor: 3,
+                    dotWidth: 7,
+                    spacing: 5,
+                    activeDotColor: LightAppColors.primary400,
+                  ),
                 ),
-              ),
-              FloatingActionButton(
-                shape: const CircleBorder(),
-                backgroundColor: LightAppColors.primary700,
-                onPressed: () {
-                  if (islast) {
-                      appPreferences.setOnBoardingScreenViewed();   
-                    pushAndRemoveRoute(context, Routes.start);
-                  } else {
-                    boarderController.nextPage(
-                        duration:  Duration(
-                          milliseconds: obBoardingSpeed,
-                        ),
-                        curve: Curves.linear);
-                  }
-                },
-                child: const Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  color: Colors.white,
+                FloatingActionButton(
+                  shape: const CircleBorder(),
+                  backgroundColor: LightAppColors.primary700,
+                  onPressed: () {
+                    if (islast) {
+                      appPreferences.setOnBoardingScreenViewed();
+                      pushAndRemoveRoute(context, Routes.start);
+                    } else {
+                      boarderController.nextPage(
+                          duration: Duration(
+                            milliseconds: obBoardingSpeed,
+                          ),
+                          curve: Curves.linear);
+                    }
+                  },
+                  child: const Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ],
-    ),
+        ],
+      ),
     );
   }
 }

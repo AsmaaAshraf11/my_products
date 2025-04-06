@@ -59,7 +59,7 @@ class Product extends ProductsEntity {
             Category: category,
             price: price,
             rating: rating,
-           // review: reviews,
+            // review: reviews,
             productId: id);
 
   @override
@@ -94,7 +94,7 @@ class Product extends ProductsEntity {
         meta: json['meta'] == null
             ? null
             : Meta.fromJson(json['meta'] as Map<String, dynamic>),
-       // images: (json['images'] as List<dynamic>).cast<String>(),
+        // images: (json['images'] as List<dynamic>).cast<String>(),
         thumbnail: json['thumbnail'] as String,
       );
 

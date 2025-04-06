@@ -23,7 +23,7 @@ String locationTitle = " ";
 
 class _GoogleMapsViewState extends State<GoogleMapsView> {
   final MapController _mapController = MapController();
-   LatLng _currentPosition=const LatLng(30.033333,31.233334);
+  LatLng _currentPosition = const LatLng(30.033333, 31.233334);
   loc.Location location = loc.Location();
 
   @override
@@ -120,7 +120,7 @@ class _GoogleMapsViewState extends State<GoogleMapsView> {
                       MarkerLayer(
                         markers: [
                           Marker(
-                            point: _currentPosition!,
+                            point: _currentPosition,
                             width: 150.w,
                             height: 65.h,
                             child: Column(
@@ -150,11 +150,12 @@ class _GoogleMapsViewState extends State<GoogleMapsView> {
                         backgroundColor: LightAppColors.primary,
                         child: const Icon(Icons.check),
                         onPressed: () {
-                           FetchLocationCubit. get(context).addLocation(locationTitle, _currentPosition);
-                            pushAndRemoveRoute(
-            context,
-            Routes.layout,
-          );
+                          FetchLocationCubit.get(context)
+                              .addLocation(locationTitle, _currentPosition);
+                          pushAndRemoveRoute(
+                            context,
+                            Routes.layout,
+                          );
                         },
                       ),
                     ),

@@ -20,8 +20,7 @@ class CustomAppBarPaymet extends StatelessWidget {
             route: Routes.cart,
             iconColor: Colors.white,
             padding: 20.0,
-            buttonColor:
-             LightAppColors.primary700,
+            buttonColor: LightAppColors.primary700,
             //Theme.of(context).
           ),
           Text(
@@ -32,7 +31,7 @@ class CustomAppBarPaymet extends StatelessWidget {
             ),
           ),
           IconbuttonArrowBack(
-          //  route: Routes.cart,
+            //  route: Routes.cart,
             iconColor: Colors.white,
             padding: 20.0,
             icon: Icons.qr_code,

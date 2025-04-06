@@ -8,6 +8,7 @@ import 'package:myproducts/core/resources/app_constants.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/core/resources/theme_manager.dart';
 import 'package:myproducts/core/shared_preferences/app_prefs.dart';
+import 'package:myproducts/core/utils/api_keys.dart';
 import 'package:myproducts/features/cart/data/data_source/cart_local_data_source.dart';
 import 'package:myproducts/features/cart/data/repos/cart_repo_impl.dart';
 import 'package:myproducts/features/favorites/data/data_source/favorites_local_data_source.dart';
@@ -41,7 +42,7 @@ import 'package:myproducts/features/search/domain/use_cases/search_use_cases.dar
 import 'package:myproducts/features/search/presentation/manger/featured_search_cubit/search_cubit.dart';
 import 'package:myproducts/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 Future<void> initializeApp() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,6 +50,7 @@ Future<void> initializeApp() async {
   await SaveLocationLocalDataSourceImpl().initDb();
   await FavoritesLocalDataSourceImpl().initDb();
   await CartLocaleDataSourceImpl().initDb();
+  Stripe.publishableKey = ApiKeys.stripePublishableKey;
   Bloc.observer = MyBlocObserver();
 }
 
@@ -109,7 +111,7 @@ class MyApp extends StatelessWidget {
               );
             },
           ),
-         
+
           // BlocProvider(
           //   create: (context) {
           //     return DeleteCartCubit(FetchDeletecartUseCases(
@@ -117,11 +119,12 @@ class MyApp extends StatelessWidget {
           //     ));
           //   },
           // ),
-           BlocProvider(
+          BlocProvider(
             create: (context) {
               return CartCubit(FetchmycartUseCase(
                 getIt.get<CartRepoImpl>(),
-              ))..fetchCart();
+              ))
+                ..fetchCart();
             },
           ),
           BlocProvider(
@@ -134,7 +137,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (context) => BottomNavigationBarCubit(),
           ),
-         
+
           BlocProvider(
             create: (context) {
               return SearchCubit(
@@ -148,18 +151,20 @@ class MyApp extends StatelessWidget {
             create: (context) {
               return FetchFavoritesCubit(FetchfavoritesUseCases(
                 getIt.get<FavoritesRepoImpl>(),
-              ))..GetFavorites();
+              ))
+                ..GetFavorites();
             },
           ),
 
-           BlocProvider(
+          BlocProvider(
             create: (context) {
               return FetchLocationCubit(FetchLocationUseCases(
                 getIt.get<LocationRepoImpl>(),
-              ))..GetLocation();
+              ))
+                ..GetLocation();
             },
           ),
-          
+
           BlocProvider(
             create: (context) {
               return ThemeCubit()..isDarkMode();
@@ -168,29 +173,31 @@ class MyApp extends StatelessWidget {
         ],
         child: BlocBuilder<ThemeCubit, ThemeState>(
           builder: (context, state) {
-            if(state is ThemeSuccess) {
+            if (state is ThemeSuccess) {
               return MaterialApp(
                 locale: Locale('en'),
-                 localizationsDelegates: const [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: S.delegate.supportedLocales,
-              title: AppConstants.appName,
-              debugShowCheckedModeBanner: false,
-              theme: state.themeMode==MyThemeMode.light?lightTheme:darkTheme,
-              //ThemeData(),
-              // theme: lightTheme,
-              home:
-                  // LoginScreen(),
-                 // OnboardingView(),
-                  startWidget,
-              //initialRoute: Routes.homeScreen,
-              onGenerateRoute: RouteGenerator.getRoute,
-            );
-            } else{
+                localizationsDelegates: const [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: S.delegate.supportedLocales,
+                title: AppConstants.appName,
+                debugShowCheckedModeBanner: false,
+                theme: state.themeMode == MyThemeMode.light
+                    ? lightTheme
+                    : darkTheme,
+                //ThemeData(),
+                // theme: lightTheme,
+                home:
+                    // LoginScreen(),
+                    // OnboardingView(),
+                    startWidget,
+                //initialRoute: Routes.homeScreen,
+                onGenerateRoute: RouteGenerator.getRoute,
+              );
+            } else {
               return CircularProgressIndicator();
             }
           },

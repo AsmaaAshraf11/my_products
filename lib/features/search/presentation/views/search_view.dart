@@ -29,6 +29,7 @@ class SearchScreen extends StatelessWidget {
 
               // backgroundColor: LightAppColors.green300,
               ),
+              backgroundColor: Theme.of(context).canvasColor,
           body: SingleChildScrollView(
             child: Column(
               children: [

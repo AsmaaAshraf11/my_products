@@ -43,6 +43,8 @@ import 'package:myproducts/features/search/presentation/manger/featured_search_c
 import 'package:myproducts/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+
 
 Future<void> initializeApp() async {
   WidgetsFlutterBinding.ensureInitialized();

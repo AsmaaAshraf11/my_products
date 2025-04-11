@@ -38,6 +38,9 @@ class ListLocationItem extends StatelessWidget {
                 ),
               ),
               PopupMenuButton(
+                color:Theme.of(context).focusColor ,
+                surfaceTintColor:Theme.of(context).focusColor,
+                shadowColor: Theme.of(context).focusColor,
                   itemBuilder: (BuildContext context) => <PopupMenuEntry>[
                         // <PopupMenuEntry<String>>[
                         PopupMenuItem(

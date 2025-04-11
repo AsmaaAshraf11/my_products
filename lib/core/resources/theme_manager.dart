@@ -71,8 +71,8 @@ ThemeData darkTheme = ThemeData(
 
   primarySwatch: DarkAppColors.primarySwatch,
   primaryColor: DarkAppColors.primary,
-  // primaryColorLight: DarkAppColors.iconListTil,
-  primaryColorDark: DarkAppColors.secondaryTextColor,
+   primaryColorLight:LightAppColors.primaryTextColor,
+  primaryColorDark: DarkAppColors.textcolor,
   canvasColor: DarkAppColors.background,
   secondaryHeaderColor: DarkAppColors.secondary,
 

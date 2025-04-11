@@ -39,8 +39,7 @@ class _ProductItemState extends State<ProductItem> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<FetchFavoritesCubit, FetchFavoritesState>(
-      listener: (context, state) {
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         var cubit = FetchFavoritesCubit.get(context);
         // List<int> idfavorit = FetchFavoritesCubit.get(context).idfavorit;
@@ -111,7 +110,7 @@ class _ProductItemState extends State<ProductItem> {
                               overflow: true,
                               text: widget.productsModel.titleProduct,
                               // 'hair oil',
-                              textColor: Theme.of(context).focusColor,
+                              textColor: Theme.of(context).disabledColor,
                               bold: true,
                             ),
                           ),
@@ -145,7 +144,6 @@ class _ProductItemState extends State<ProductItem> {
                               ],
                             ),
                           ),
-                         
                         ])
                   ],
                 )),

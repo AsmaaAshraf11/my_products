@@ -1,4 +1,4 @@
-// features/cart/presentation/views/widgets/custom_app_bar_paymet.dart
+// features/payment/presentation/views/widgets/custom_app_bar_paymet.dart
 import 'package:flutter/material.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 import 'package:myproducts/core/resources/app_routers.dart';
@@ -28,6 +28,7 @@ class CustomAppBarPaymet extends StatelessWidget {
             style: TextStyle(
               fontSize: 27,
               fontWeight: FontWeight.w500,
+              color: Theme.of(context).focusColor,
             ),
           ),
           IconbuttonArrowBack(

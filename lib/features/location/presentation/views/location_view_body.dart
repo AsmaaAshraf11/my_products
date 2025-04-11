@@ -20,9 +20,9 @@ class LocationViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title:  Text(
           'your places',
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500,color: Theme.of(context).focusColor,),
         ),
         centerTitle: true,
       ),

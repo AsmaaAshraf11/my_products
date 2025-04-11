@@ -38,7 +38,7 @@ class Favorite extends ProductsEntity {
   factory Favorite.fromJson(Map<String, dynamic> json) => Favorite(
         productId: json['idProduct'] as int,
         id: json['id'] as int,
-        titleProduct: json['title'] as String? ?? '',
+        titleProduct: json['titleProduct'] as String? ?? '',
         descriptionProduct: json['description'] as String? ?? '',
         Category: json['category'] as String? ?? '',
         price: (json['price'] as num?)?.toDouble() ?? 0.0,

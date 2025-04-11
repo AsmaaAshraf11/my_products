@@ -45,7 +45,7 @@ class _MyCartItemState extends State<MyCartItem> {
               padding: const EdgeInsets.all(9),
               height: context.screenHeight * 0.18,
               decoration: BoxDecoration(
-                  color: LightAppColors.scaffoldBackgroundColor,
+                  color: Theme.of(context).canvasColor ,
                   borderRadius: BorderRadius.circular(15)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -95,7 +95,7 @@ class _MyCartItemState extends State<MyCartItem> {
                                 quantity = (quantity! + 1)!;
                                 CartCubit.get(context).fetchApdatCart(
                                     widget.model.productId, (quantity!));
-                                //
+                                 CartCubit.get(context).fetchCart();
 
                                 //sum(quantity!, widget.model.price);
                                 // print(total);

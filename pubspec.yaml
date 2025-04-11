@@ -41,9 +41,11 @@ dependencies:
     sdk: flutter
   flutter_advanced_switch: ^3.1.0
   flutter_bloc: ^8.1.6
+  flutter_launcher_icons: ^0.14.3
   flutter_localizations:
     sdk: flutter
   flutter_map: ^7.0.2
+  flutter_native_splash: ^2.4.4
   flutter_paypal_payment: ^1.0.8
   flutter_screenutil: ^5.9.3
   flutter_stripe: ^11.4.0
@@ -61,15 +63,21 @@ dependencies:
   toast: ^0.3.0
 
 dev_dependencies:
+  flutter_launcher_icons: "^0.14.3"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
+
   flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/splash.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

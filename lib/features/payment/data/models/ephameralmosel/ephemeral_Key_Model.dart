@@ -4,7 +4,7 @@ import 'associated_object.dart';
 class EphemeralKeyModel {
   String? id;
   String? object;
- // List<AssociatedObject>? associatedObjects;
+  // List<AssociatedObject>? associatedObjects;
   int? created;
   int? expires;
   bool? livemode;

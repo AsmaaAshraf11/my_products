@@ -26,12 +26,11 @@ class CustomAppBarCart extends StatelessWidget {
           Text(
             'My Cart',
             style: TextStyle(
-              fontSize: 27,
+              fontSize: 27,color: Theme.of(context).focusColor,
               fontWeight: FontWeight.w500,
             ),
           ),
           IconbuttonArrowBack(
-            route: Routes.cart,
             iconColor: Colors.white,
             padding: 20.0,
             icon: Icons.notifications,

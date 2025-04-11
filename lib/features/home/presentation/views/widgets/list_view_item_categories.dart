@@ -49,7 +49,7 @@ class _ListViewItemCategoriesState extends State<ListViewItemCategories> {
                   TitleMedium(
                     fontSize: 15,
                     text: '${widget.category}',
-                    textColor: Theme.of(context).focusColor,
+                    textColor: Theme.of(context).disabledColor,
                     bold: true,
                     //overflow: true,
                   ),

@@ -46,24 +46,21 @@ class _PaymentViewState extends State<PaymentView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(preferredSize: Size.fromHeight(0), child: AppBar()),
+      backgroundColor: Theme.of(context).canvasColor,
       body: BlocConsumer<FetchLocationCubit, FetchLocationState>(
         listener: (context, state) {},
         builder: (context, state) {
-           var amount = AmountModel(
-                  total: '100',
-                  currency: 'USD',
-                  details: Details(
-                      subtotal: '100', shipping: '0', shippingDiscount: 0));
-              List<OrderItem> order = [
-                OrderItem(
-                    currency: "USD", name: "Apple", quantity: 4, price: '10'),
-                OrderItem(
-                    currency: "USD",
-                    name: "Pineapple",
-                    quantity: 5,
-                    price: '12')
-              ];
-              var itemListModel = ItemListModel(orders: order);
+          var amount = AmountModel(
+              total: '100',
+              currency: 'USD',
+              details:
+                  Details(subtotal: '100', shipping: '0', shippingDiscount: 0));
+          List<OrderItem> order = [
+            OrderItem(currency: "USD", name: "Apple", quantity: 4, price: '10'),
+            OrderItem(
+                currency: "USD", name: "Pineapple", quantity: 5, price: '12')
+          ];
+          var itemListModel = ItemListModel(orders: order);
           List<LocationModel> location =
               FetchLocationCubit.get(context).locations;
 
@@ -88,51 +85,49 @@ class _PaymentViewState extends State<PaymentView> {
                             name: 'MasterCard',
                             image: ImageAssets.MasterCard,
                           ),
-                           ItemPayment(
+                          ItemPayment(
                             name: 'visa',
                             image: ImageAssets.visa,
                           ),
-                           ItemPayment(
+                          ItemPayment(
                             name: 'paypal',
                             image: ImageAssets.paypal,
-                             payment: (){
+                            payment: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      PaypalCheckoutView(
-                                    sandboxMode: true,
-                                    clientId: ApiKeys.clientId,
-                                    secretKey: ApiKeys.secretKey,
-                                    transactions: [
-                                      {
-                                        "amount": amount.toJson(),
-                                        
+                                builder: (BuildContext context) =>
+                                    PaypalCheckoutView(
+                                  sandboxMode: true,
+                                  clientId: ApiKeys.clientId,
+                                  secretKey: ApiKeys.secretKey,
+                                  transactions: [
+                                    {
+                                      "amount": amount.toJson(),
 
-                                        "description":
-                                            "The payment transaction description.",
-                                        // "payment_options": {
-                                        //   "allowed_payment_method":
-                                        //       "INSTANT_FUNDING_SOURCE"
-                                        // },
-                                        "item_list": itemListModel.toJson(),
-                                        
-                                      }
-                                    ],
-                                    note:
-                                        "Contact us for any questions on your order.",
-                                    onSuccess: (Map params) async {
-                                      log("onSuccess: $params");
-                                      Navigator.pop(context);
-                                    },
-                                    onError: (error) {
-                                      log("onError: $error");
-                                      Navigator.pop(context);
-                                    },
-                                    onCancel: () {
-                                      print('cancelled:');
-                                      Navigator.pop(context);
-                                    },
-                                  ),
-                                ));
+                                      "description":
+                                          "The payment transaction description.",
+                                      // "payment_options": {
+                                      //   "allowed_payment_method":
+                                      //       "INSTANT_FUNDING_SOURCE"
+                                      // },
+                                      "item_list": itemListModel.toJson(),
+                                    }
+                                  ],
+                                  note:
+                                      "Contact us for any questions on your order.",
+                                  onSuccess: (Map params) async {
+                                    log("onSuccess: $params");
+                                    Navigator.pop(context);
+                                  },
+                                  onError: (error) {
+                                    log("onError: $error");
+                                    Navigator.pop(context);
+                                  },
+                                  onCancel: () {
+                                    print('cancelled:');
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                              ));
                             },
                           ),
                         ],
@@ -300,19 +295,23 @@ class _PaymentViewState extends State<PaymentView> {
                               ],
                             ),
                             BlocConsumer<PaymentCubit, PaymentState>(
-                              listener: (context, state) {
-                              },
+                              listener: (context, state) {},
                               builder: (context, state) {
                                 return Padding(
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 15),
                                   child: defaultButton(
                                     onPressed: () {
-                                       // if (_formkey.currentState!.validate()) {}
-                                      PaymentIntentInputModel paymentIntentInputModel=PaymentIntentInputModel(amount:'100' , currency: 'USD',
-                                       customerId: 'cus_S4g0JokzDYwxKh');
-                                      PaymentCubit .get(context).makePayment(paymentIntentInputModel: paymentIntentInputModel);
-                                    
+                                      // if (_formkey.currentState!.validate()) {}
+                                      PaymentIntentInputModel
+                                          paymentIntentInputModel =
+                                          PaymentIntentInputModel(
+                                              amount: '100',
+                                              currency: 'USD',
+                                              customerId: 'cus_S4g0JokzDYwxKh');
+                                      PaymentCubit.get(context).makePayment(
+                                          paymentIntentInputModel:
+                                              paymentIntentInputModel);
                                     },
                                     text: 'Pay\$90',
                                   ),

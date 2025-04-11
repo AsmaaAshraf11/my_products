@@ -21,13 +21,13 @@ class ListTil extends StatelessWidget {
         ListTile(
           leading: Icon(
             icon,
-            color: color ?? Theme.of(context).disabledColor,
+            color: color ?? Theme.of(context).focusColor,
           ),
 
           title: Text(
             text,
             style: TextStyle(
-              color: color ?? Theme.of(context).disabledColor,
+              color: color ?? Theme.of(context).focusColor,
             ),
           ),
 
@@ -36,7 +36,7 @@ class ListTil extends StatelessWidget {
                   onPressed: () {},
                   icon: Icon(
                     Icons.arrow_forward_ios,
-                    color: Theme.of(context).disabledColor,
+                    color: Theme.of(context).focusColor,
                   ),
                 )
               : trailing,

@@ -28,23 +28,27 @@ class _MyCartViewState extends State<MyCartView> {
   @override
   Widget build(BuildContext context) {
     double sum(List<CartModel> cart) {
+      total=0;
       for (int i = 0; i < cart.length; i++) {
         total += cart[i].price * cart[i].quantity;
       }
 
       return total = double.parse(total.toStringAsFixed(2));
+      
     }
 
     return Scaffold(
       appBar: PreferredSize(preferredSize: Size.fromHeight(0), child: AppBar()),
+        backgroundColor: Theme.of(context).canvasColor,
       body: Column(
         children: [
           CustomAppBarCart(),
           20.h.heightSizedBox,
           BlocConsumer<CartCubit, CartState>(
-            listener: (context, state) {},
+            listener: (context, state) {
+              
+            },
             builder: (context, state) {
-             
               List<CartModel> cart =
                   BlocProvider.of<CartCubit>(context).cartList;
               return Container(
@@ -73,8 +77,8 @@ class _MyCartViewState extends State<MyCartView> {
                             }),
                       ),
                       Container(
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
+                        decoration:  BoxDecoration(
+                          color:Theme.of(context).canvasColor,
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(50),
                           ),
@@ -130,8 +134,7 @@ class _MyCartViewState extends State<MyCartView> {
                             20.h.heightSizedBox,
                             defaultButton(
                               onPressed: () {
-                                // var transcitionData = getTransctionsData();
-                                
+
                                 pushRoute(
                                   context,
                                   Routes.paymentView,

@@ -1,6 +1,5 @@
 // features/profile/presentation/views/profile_view_body.dart
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/di/service_locator.dart';
 import 'package:myproducts/core/extension/extensions.dart';
@@ -25,9 +24,6 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
 
   bool notifications = false;
   bool isdark = false;
-  final switchDarkController = ValueNotifier<bool>(false);
-    final switchController = ValueNotifier<bool>(false);
-
 
   AppPreferences appPreferences = getIt.get<AppPreferences>();
 
@@ -94,32 +90,33 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
             ListTil(
               icon: Icons.notifications,
               text: 'Notification',
-              trailing: AdvancedSwitch(
-                onChanged: (valu) {
-                  setState(() {
-                   
-                  });
-                },
-                activeColor: LightAppColors.primary700,
-                width: 56,height: 28,
-                controller: switchController,
-              ),
-            ),
+              trailing:  Switch(
+            value: notifications,
+            activeTrackColor: LightAppColors.primary700,
+            activeColor: LightAppColors.colorSwatch,
+            inactiveThumbColor:LightAppColors.colorSwatch,
+            onChanged: (bool value) {
+              setState(() {
+                notifications = value;
+            });
+            }
+              ),),
             ListTil(
               icon: Icons.dark_mode,
               text: 'Dark mode',
-              trailing: AdvancedSwitch(
-                onChanged: (valu) {
-                  setState(() {
-                    isdark = valu;
-                    print('value :$valu');
-                    ThemeCubit.get(context).setDarkMode(valu);
-                  });
-                },
-                activeColor: LightAppColors.primary700,
-                width: 56,height: 28,
-                controller: switchDarkController,
-              ),
+              trailing: Switch(
+            value: isdark,
+            activeTrackColor: LightAppColors.primary700,
+            inactiveThumbColor:LightAppColors.colorSwatch,
+
+            activeColor: LightAppColors.colorSwatch,
+            onChanged: (bool value) {
+              setState(() {
+                isdark = value;
+                ThemeCubit .get(context).setDarkMode(value);
+              });
+            },
+          ),
             ),
             // ListTil(
             //   icon: Icons.logout,

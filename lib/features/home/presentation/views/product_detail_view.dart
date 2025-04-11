@@ -34,7 +34,7 @@ class ProductDetailView extends StatelessWidget {
           ),
         ),
       ),
-      // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+       backgroundColor: Theme.of(context).canvasColor,
 
       body: BlocConsumer<CartCubit, CartState>(
         listener: (context, state) {
@@ -44,7 +44,7 @@ class ProductDetailView extends StatelessWidget {
               dialogType: DialogType.success,
               animType: AnimType.rightSlide,
               desc: 'Successfully added ',
-              descTextStyle: const TextStyle(fontSize: 18),
+              descTextStyle:  TextStyle(fontSize: 18,color: Theme.of(context).focusColor,),
             ).show();
           }
           // TODO: implement listener
@@ -153,7 +153,7 @@ class ProductDetailView extends StatelessWidget {
                                             animType: AnimType.rightSlide,
                                             desc: ' it already exists  ',
                                             descTextStyle:
-                                                const TextStyle(fontSize: 18),
+                                                 TextStyle(fontSize: 18,color:  Theme.of(context).focusColor),
                                           ).show();
                                         } else {
                                           CartCubit.get(context).fetAddchCart(

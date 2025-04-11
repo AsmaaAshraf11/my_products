@@ -2,10 +2,11 @@
 import 'package:flutter/material.dart';
 
 class ItemPayment extends StatefulWidget {
-   ItemPayment({super.key, required this.name, required this.image,this.payment});
+  ItemPayment(
+      {super.key, required this.name, required this.image, this.payment});
   final String name;
   final String image;
-  Function ?payment;
+  Function? payment;
 
   @override
   State<ItemPayment> createState() => _ItemPaymentState();
@@ -17,7 +18,7 @@ class _ItemPaymentState extends State<ItemPayment> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-          widget. payment!();
+        widget.payment!();
 
         setState(() {
           selectedPayment = widget.name;

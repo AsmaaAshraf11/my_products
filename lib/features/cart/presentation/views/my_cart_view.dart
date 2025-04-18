@@ -126,7 +126,7 @@ class _MyCartViewState extends State<MyCartView> {
                                   text: 'Total cost',
                                 ),
                                 HeadLine22(
-                                  text: '${'\$' + '40.99'}',
+                                  text: '${'\$' + '224.96'}',
                                   textColor: Theme.of(context).focusColor,
                                 )
                               ],

@@ -18,7 +18,7 @@ class ProductsCubit extends Cubit<ProductsState> {
       print(failure.errorMessage);
     }, (Products) {
       SomeProducts.clear();
-      for (int i = 0; i < 4; i++) {
+      for (int i = 0; i < 2; i++) {
         SomeProducts.add(Products[i]);
       }
       print(SomeProducts.length);

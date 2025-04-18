@@ -1,4 +1,4 @@
-package com.example.myproducts
+package com.xproducts.app
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.android.FlutterFragmentActivity

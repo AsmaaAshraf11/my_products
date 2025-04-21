@@ -31,6 +31,7 @@ class CustomAppBarCart extends StatelessWidget {
             ),
           ),
           IconbuttonArrowBack(
+             route: Routes.cart,
             iconColor: Colors.white,
             padding: 20.0,
             icon: Icons.notifications,

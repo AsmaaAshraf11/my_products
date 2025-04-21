@@ -32,7 +32,7 @@ class CustomAppBarPaymet extends StatelessWidget {
             ),
           ),
           IconbuttonArrowBack(
-            //  route: Routes.cart,
+              route: Routes.paymentView,
             iconColor: Colors.white,
             padding: 20.0,
             icon: Icons.qr_code,

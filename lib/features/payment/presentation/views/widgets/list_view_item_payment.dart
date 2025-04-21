@@ -1,12 +1,15 @@
 // features/payment/presentation/views/widgets/list_view_item_payment.dart
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
 
 class ItemPayment extends StatefulWidget {
   ItemPayment(
-      {super.key, required this.name, required this.image, this.payment});
+      {super.key, required this.name, required this.image, this.payment,this.ispayment});
   final String name;
   final String image;
   Function? payment;
+  final bool? ispayment;
+
 
   @override
   State<ItemPayment> createState() => _ItemPaymentState();
@@ -18,7 +21,10 @@ class _ItemPaymentState extends State<ItemPayment> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        widget.payment!();
+        if(widget. ispayment==true){
+             widget.payment!();
+        }
+      //
 
         setState(() {
           selectedPayment = widget.name;
@@ -27,7 +33,7 @@ class _ItemPaymentState extends State<ItemPayment> {
       child: Container(
         width: 90,
         height: 50,
-        padding: EdgeInsets.all(7),
+        padding: const EdgeInsets.all(7),
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(

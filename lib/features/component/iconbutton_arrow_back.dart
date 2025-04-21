@@ -4,6 +4,7 @@ import 'package:myproducts/core/helper_functions/route_navigation.dart';
 
 class IconbuttonArrowBack extends StatelessWidget {
   final route;
+  final arguments;
   Color iconColor;
   Color buttonColor;
   var padding;
@@ -12,6 +13,7 @@ class IconbuttonArrowBack extends StatelessWidget {
   IconbuttonArrowBack(
       {super.key,
       this.route,
+      this.arguments,
       required this.iconColor,
       this.onPressed,
       this.icon,
@@ -35,7 +37,7 @@ class IconbuttonArrowBack extends StatelessWidget {
               color: iconColor),
           onPressed: onPressed ??
               () {
-                pushAndRemoveRoute(context, route);
+                pushAndRemoveRoute(context, route,arguments:arguments );
               },
         ),
       ),

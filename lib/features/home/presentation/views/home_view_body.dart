@@ -52,8 +52,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                   borderRadius: BorderRadius.circular(15)),
               child: Row(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Icon(Icons.search_rounded,
                         color: LightAppColors.primary400),
                   ),
@@ -90,30 +90,35 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TitleMedium(
+                      const TitleMedium(
                         text: 'Up to 25% offer!',
                         bold: true,
                         textColor: LightAppColors.primary400,
                       ),
                       4.h.heightSizedBox,
-                      TitleText(
+                      const TitleText(
                         text: 'Hurry to catch this',
                         textColor: LightAppColors.primary400,
                       ),
                       5.h.heightSizedBox,
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: LightAppColors.primary400,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
+                      Container(
+                        height: 45,
+                        width: 110,
+                        decoration: BoxDecoration(
+                            color:LightAppColors.primary400,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: const Center(
+                          child: Text(
+                            'Shop Now',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500
+                            ),
                           ),
                         ),
-                        child: const Text(
-                          'Shop Now',
-                          style: TextStyle(color: Colors.white),
-                        ),
                       ),
+                    
                     ],
                   ),
                   Image.asset(

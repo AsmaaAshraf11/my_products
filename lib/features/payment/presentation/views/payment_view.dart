@@ -92,6 +92,7 @@ class _PaymentViewState extends State<PaymentView> {
                           ItemPayment(
                             name: 'paypal',
                             image: ImageAssets.paypal,
+                            ispayment: true,
                             payment: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                 builder: (BuildContext context) =>

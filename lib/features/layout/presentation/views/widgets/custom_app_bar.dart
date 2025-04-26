@@ -54,7 +54,7 @@ class CustomAppBar extends StatelessWidget {
                 },
               ),
             ),
-            7.w.widthSizedBox,
+            7.w.widthSizedBox,  
             Container(
               height: 36.h,
               width: 36.w,

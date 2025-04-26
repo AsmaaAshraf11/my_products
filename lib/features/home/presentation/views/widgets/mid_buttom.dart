@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
 
 class MidButtom extends StatelessWidget {
-  const MidButtom({super.key, required this.text, required this.onPressed});
+  const MidButtom({super.key, required this.text,  required this.onPressed});
   final String text;
   final Function onPressed;
   @override
@@ -19,11 +19,11 @@ class MidButtom extends StatelessWidget {
           text,
           style: TextStyle(
             color: Colors.white,
-            fontSize: 15,
+            fontSize: 18,
           ),
         ),
         onPressed: () {
-          onPressed();
+          onPressed!();
         });
   }
 }

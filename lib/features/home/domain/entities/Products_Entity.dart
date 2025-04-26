@@ -13,7 +13,7 @@ class ProductsEntity {
 
   final String? descriptionProduct;
 
-  final num? price;
+  final num price;
 
   final num? rating;
   //final List<Review> review;

@@ -2,8 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:myproducts/core/extension/extensions.dart';
+import 'package:myproducts/core/helper_functions/route_navigation.dart';
 import 'package:myproducts/core/resources/app_assets.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
+import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/features/onboarding/presentation/views/widgets/button_sign_login.dart';
 import 'package:myproducts/features/onboarding/presentation/views/widgets/start_view_title_and_description.dart';
 
@@ -51,7 +53,9 @@ class StartView extends StatelessWidget {
                   StartViewTitleAndDescription(),
                   ButtonSignLogin(),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      pushRoute(context, Routes.newFeatur);
+                    },
                     child: Center(
                       child: Text(
                         "OR Shopping as guest",

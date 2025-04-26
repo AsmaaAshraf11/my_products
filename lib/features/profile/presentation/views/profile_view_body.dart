@@ -54,51 +54,38 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
           const TitleMedium(
             text: '@amlkamal',
           ),
-          Container(
-            height: 30,
-            width: 110,
-            decoration: BoxDecoration(
-              color: LightAppColors.primary700,
-              borderRadius: BorderRadius.circular(15)
-            ),
-         child:Center(
-           child: Text('Edit profile',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-            ),
-           ),
-         ),
+       
+          MinButton(
+            text: 'Edit profile',
+            onPressed: () {
+               pushRoute(context, Routes.newFeatur);
+            },
           ),
-          // MinButton(
-          //   text: 'Edit profile',
-          //   onPressed: () {},
-          // ),
-          // ListTil(
-          //   icon: Icons.settings,
-          //   istrailing: true,
-          //   text: 'Setting',
-          // ),
-          // ListTil(
-          //   icon: Icons.help,
-          //   istrailing: true,
-          //   text: 'Git help',
-          // ),
-          // ListTil(
-          //   icon: Icons.language,
-          //   text: 'Language',
-          //   istrailing: true,
-          // ),
-          // ListTil(
-          //   icon: Icons.location_on,
-          //   istrailing: true,
-          //   text: 'Manage Location',
-          // ),
-          // ListTil(
-          //   icon: Icons.wallet_travel,
-          //   istrailing: true,
-          //   text: 'My wallet',
-          // ),
+          ListTil(
+            icon: Icons.settings,
+            istrailing: true,
+            text: 'Setting',
+          ),
+          ListTil(
+            icon: Icons.help,
+            istrailing: true,
+            text: 'Git help',
+          ),
+          ListTil(
+            icon: Icons.language,
+            text: 'Language',
+            istrailing: true,
+          ),
+          ListTil(
+            icon: Icons.location_on,
+            istrailing: true,
+            text: 'Manage Location',
+          ),
+          ListTil(
+            icon: Icons.wallet_travel,
+            istrailing: true,
+            text: 'My wallet',
+          ),
           ListTil(
             icon: Icons.notifications,
             text: 'Notification',

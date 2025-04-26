@@ -86,6 +86,6 @@ class PraductAllView extends StatelessWidget {
         ),
       );
     });
-    ;
+    
   }
 }

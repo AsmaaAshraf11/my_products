@@ -131,39 +131,38 @@ class ProductDetailView extends StatelessWidget {
                                 description:
                                     '${state.products.descriptionProduct}',
                               ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Align(
+                                    alignment:Alignment.centerLeft ,
+                                    child: TitleText(text: '\$${state.products.price}' ,fontSize: 20,
+                                       textColor: LightAppColors.primary400,fontWeight: FontWeight.bold,
+                                       ),
+                                  ),
+                                ),
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 30),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    MidButtom(
-                                      text: '\$${state.products.price}',
-                                      onPressed: () {},
-                                    ),
-                                    MidButtom(
-                                      text: 'Add Cart',
-                                      onPressed: () {
-                                        if (CartCubit.get(context)
-                                            .idproduct
-                                            .contains(
-                                                state.products.productId)) {
-                                          AwesomeDialog(
-                                            context: context,
-                                            dialogType: DialogType.warning,
-                                            animType: AnimType.rightSlide,
-                                            desc: ' it already exists  ',
-                                            descTextStyle:
-                                                 TextStyle(fontSize: 18,color:  Theme.of(context).focusColor),
-                                          ).show();
-                                        } else {
-                                          CartCubit.get(context).fetAddchCart(
-                                              state.products, number);
-                                        }
-                                      },
-                                    )
-                                  ],
+                                child: MidButtom(
+                                  text: 'Add Cart',
+                                  onPressed: () {
+                                    if (CartCubit.get(context)
+                                        .idproduct
+                                        .contains(
+                                            state.products.productId)) {
+                                      AwesomeDialog(
+                                        context: context,
+                                        dialogType: DialogType.warning,
+                                        animType: AnimType.rightSlide,
+                                        desc: ' it already exists  ',
+                                        descTextStyle:
+                                             TextStyle(fontSize: 18,color:  Theme.of(context).focusColor),
+                                      ).show();
+                                    } else {
+                                      CartCubit.get(context).fetAddchCart(
+                                          state.products, number);
+                                    }
+                                  },
                                 ),
                               )
                             ],

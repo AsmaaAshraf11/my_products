@@ -41,7 +41,7 @@ class _ImageProfileState extends State<ImageProfile> {
                     radius: 17,
                     child: IconButton(
                         onPressed: ()async {
-                           final pickedFile = await picker.pickImage(source: ImageSource.camera);
+                           final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
       setState(() {
         if (pickedFile != null) {

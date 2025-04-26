@@ -5,6 +5,7 @@ import 'package:myproducts/core/di/service_locator.dart';
 import 'package:myproducts/features/cart/data/repos/cart_repo_impl.dart';
 import 'package:myproducts/features/cart/domain/use_cases/fetchMyCart_use_case.dart';
 import 'package:myproducts/features/cart/presentation/manger/Featured_cart_cubit/cart_cubit.dart';
+import 'package:myproducts/features/component/new_featur.dart';
 import 'package:myproducts/features/home/presentation/views/praduct_all_view.dart';
 import 'package:myproducts/features/home/data/repos/home_repo_impl.dart';
 import 'package:myproducts/features/location/presentation/views/google_maps_view.dart';
@@ -43,6 +44,7 @@ class Routes {
   static const String paymentView = "PaymentView";
   static const String searchScreen = "SearchScreen";
   static const String GoogleMapsView = "GoogleMapsView";
+   static const String newFeatur = "NewFeatur";
 }
 
 class RouteGenerator {
@@ -112,6 +114,9 @@ class RouteGenerator {
                 ));
       case Routes.GoogleMapsView:
         return MaterialPageRoute(builder: (_) => GoogleMapsView());
+
+         case Routes.newFeatur:
+        return MaterialPageRoute(builder: (_) => const NewFeatur());
       // case Routes.homeScreen:
       //   return MaterialPageRoute(builder: (_) => const HomeScreen());
       //

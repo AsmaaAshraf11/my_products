@@ -1,7 +1,9 @@
 // features/component/images_google_apple_fece.dart
 import 'package:flutter/material.dart';
+import 'package:myproducts/core/helper_functions/route_navigation.dart';
 import 'package:myproducts/core/resources/app_assets.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
+import 'package:myproducts/core/resources/app_routers.dart';
 import 'package:myproducts/features/component/logo_image.dart';
 
 class ImagesGoogleAppleFece extends StatelessWidget {
@@ -13,7 +15,9 @@ class ImagesGoogleAppleFece extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         GestureDetector(
-          onDoubleTap: () {},
+          onDoubleTap: () {
+             pushRoute(context, Routes.newFeatur);
+          },
           child: Padding(
             padding: EdgeInsets.all(10),
             child: Container(
@@ -26,7 +30,9 @@ class ImagesGoogleAppleFece extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onDoubleTap: () {},
+          onDoubleTap: () {
+             pushRoute(context, Routes.newFeatur);
+          },
           child: Padding(
             padding: const EdgeInsets.all(10),
             child: Container(
@@ -39,7 +45,9 @@ class ImagesGoogleAppleFece extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onDoubleTap: () {},
+          onDoubleTap: () {
+             pushRoute(context, Routes.newFeatur);
+          },
           child: Padding(
             padding: const EdgeInsets.all(10),
             child: Container(

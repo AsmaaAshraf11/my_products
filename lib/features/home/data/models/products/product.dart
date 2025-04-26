@@ -10,7 +10,7 @@ class Product extends ProductsEntity {
   String title;
   String? description;
   String? category;
-  double? price;
+  double price;
   double? discountPercentage;
   double? rating;
   int? stock;
@@ -34,7 +34,7 @@ class Product extends ProductsEntity {
     required this.title,
     this.description,
     this.category,
-    this.price,
+    required this.price,
     this.discountPercentage,
     this.rating,
     this.stock,
@@ -72,7 +72,7 @@ class Product extends ProductsEntity {
         title: json['title'] as String,
         description: json['description'] as String,
         category: json['category'] as String,
-        price: (json['price'] as num?)?.toDouble(),
+        price: (json['price'] as num?)!.toDouble(),
         discountPercentage: (json['discountPercentage'] as num?)?.toDouble(),
         rating: (json['rating'] as num?)!.toDouble(),
         stock: json['stock'] as int,

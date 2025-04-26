@@ -65,14 +65,19 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               ),
             ),
           ),
-          const Row(
+           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              HeadLine22(
+              const HeadLine22(
                 text: 'Sales',
               ),
-              SmallHeader(
-                text: 'See more >',
+              InkWell(
+                child: SmallHeader(
+                  text: 'See more >',
+                ),
+                onTap: () {
+                   pushRoute(context, Routes.allProductshScreen);
+                },
               )
             ],
           ),
@@ -101,23 +106,21 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                         textColor: LightAppColors.primary400,
                       ),
                       5.h.heightSizedBox,
-                      Container(
-                        height: 45,
-                        width: 110,
-                        decoration: BoxDecoration(
-                            color:LightAppColors.primary400,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: const Center(
-                          child: Text(
-                            'Shop Now',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500
-                            ),
-                          ),
-                        ),
-                      ),
+                     ElevatedButton(
+                  onPressed: () {
+                    pushRoute(context, Routes.allProductshScreen);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:LightAppColors.primary400,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: Text(
+                    'Shop Now',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
                     
                     ],
                   ),

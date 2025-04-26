@@ -13,7 +13,7 @@ class Favorite extends ProductsEntity {
 
   final String descriptionProduct;
 
-  final num? price;
+  final num price;
 
   final num? rating;
 

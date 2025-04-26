@@ -64,7 +64,9 @@ class CustomAppBar extends StatelessWidget {
               child: IconButton(
                 padding: EdgeInsets.all(0),
                 icon: Icon(size: 26, Icons.notifications, color: Colors.white),
-                onPressed: () {},
+                onPressed: () {
+                   pushRoute(context, Routes.newFeatur);
+                },
               ),
             ),
           ],

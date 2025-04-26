@@ -1,6 +1,8 @@
 // features/profile/presentation/views/widgets/list_til.dart
 import 'package:flutter/material.dart';
+import 'package:myproducts/core/helper_functions/route_navigation.dart';
 import 'package:myproducts/core/resources/app_colors.dart';
+import 'package:myproducts/core/resources/app_routers.dart';
 
 class ListTil extends StatelessWidget {
   ListTil(
@@ -32,10 +34,14 @@ class ListTil extends StatelessWidget {
           ),
 
           trailing: istrailing == true
-              ? Icon(
+              ?IconButton( 
+                icon:  Icon(
                     Icons.arrow_forward_ios,
                     color: Theme.of(context).focusColor,
-                  )
+                  ), onPressed: () { 
+                     pushRoute(context, Routes.newFeatur);
+                   },
+              )
               : trailing,
 
           // Icon(Icons.arrow_forward_ios,),
